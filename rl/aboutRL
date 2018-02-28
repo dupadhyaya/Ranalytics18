@@ -1,0 +1,5 @@
+# Reinforced Learning
+Machine is trained to make specific decisions. 
+Machine is exposed to an env where it trains itself continually using trial and error.
+This machine learns from past experience and tries to capture the best possible knowledge to make accurate business decisions. 
+Eg. Markov Decision Process

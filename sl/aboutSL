@@ -1,0 +1,4 @@
+# Supervised Learning
+Algo consists of a target/ outcome variable (DV) which is to be predicted from a given set of predictors (IV). Using tese set of variables, we generate a function that map inputs to desired outputs. 
+The training process continues until the model achieves a desired level of accuracy on the training data. 
+Egs - Regression, Decision Treee, Random Forest, KNN, Logistic Regression
