@@ -1,0 +1,61 @@
+@relation dar1w
+
+@attribute java {Yes,No}
+@attribute cpp {Yes,No}
+@attribute dbms {Yes,No}
+@attribute dwm {Yes,No}
+@attribute cbnst {Yes,No}
+@attribute os {Yes,No}
+@attribute grade {Pass,Fail}
+
+@data
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+No,No,No,Yes,No,No,Fail
+No,Yes,No,No,No,No,Fail
+Yes,Yes,Yes,No,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,No,No,Pass
+No,No,No,No,No,Yes,Fail
+Yes,Yes,Yes,Yes,No,No,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+No,Yes,No,No,No,No,Fail
+No,Yes,No,Yes,No,No,Fail
+No,No,No,No,No,No,Fail
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,No,Yes,Yes,No,Fail
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+No,Yes,No,No,No,No,Fail
+No,No,No,No,No,No,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,No,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+No,No,Yes,No,No,No,Fail
+No,Yes,Yes,Yes,No,No,Pass
+No,No,Yes,No,No,No,Fail
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+No,Yes,No,No,No,No,Fail
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+No,Yes,No,No,Yes,Yes,Pass
+No,No,No,No,Yes,No,Fail
+No,No,Yes,No,No,No,Fail
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+No,Yes,No,No,No,No,Fail
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,No,No,Yes,No,No,Fail
+No,Yes,No,No,No,No,Fail
+No,No,No,Yes,Yes,No,Fail
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+No,No,Yes,No,No,No,Fail
+No,No,No,Yes,No,No,Fail
+Yes,Yes,Yes,Yes,Yes,Yes,Pass
+No,No,No,No,No,Yes,Fail

@@ -1,0 +1,42 @@
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.9 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -c -1
+Relation:     dar1w-weka.filters.unsupervised.attribute.Remove-R7
+Instances:    50
+Attributes:   6
+              java
+              cpp
+              dbms
+              dwm
+              cbnst
+              os
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.55 (27 instances)
+Minimum metric <confidence>: 0.9
+Number of cycles performed: 9
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 6
+
+Size of set of large itemsets L(2): 6
+
+Size of set of large itemsets L(3): 3
+
+Best rules found:
+
+ 1. java=Yes dbms=Yes 27 ==> cpp=Yes 27    conf:(1)
+ 2. dbms=Yes dwm=Yes 27 ==> cpp=Yes 27    conf:(1)
+ 3. java=Yes 29 ==> cpp=Yes 28    conf:(0.97)
+ 4. java=Yes 29 ==> dwm=Yes 28    conf:(0.97)
+ 5. cpp=Yes dbms=Yes 28 ==> java=Yes 27    conf:(0.96)
+ 6. java=Yes cpp=Yes 28 ==> dbms=Yes 27    conf:(0.96)
+ 7. java=Yes dwm=Yes 28 ==> cpp=Yes 27    conf:(0.96)
+ 8. java=Yes cpp=Yes 28 ==> dwm=Yes 27    conf:(0.96)
+ 9. cpp=Yes dbms=Yes 28 ==> dwm=Yes 27    conf:(0.96)
+10. java=Yes 29 ==> dbms=Yes 27    conf:(0.93)
