@@ -1,6 +1,7 @@
 #Classification
 
-data <- read.csv("E:/rWork/Projects/edm/studentdata.csv")
+data <- read.csv("./data/studentdata.csv")
+head(data)
 data$class = sample(c('Pass','Fail'), size=100, replace=TRUE, prob=c(0.6,0.4))
 str(data)
 head(data[c(1:4,13)])
@@ -9,16 +10,14 @@ str(data1)
 head(data1)
 library(rpart)
 set.seed(1234)
-train = sample(nrow(data1),
-              0.7*nrow(data1) )
+train = sample(nrow(data1), 0.7*nrow(data1) )
 data1.train = data1[train, ]
 data1.train
 data1.validate= data1[-train, ]
 table(data1.train$class)
 table(data1.validate$class)
 
-dtree = rpart(class ~ ., data=data1.train,
-              method= 'class', parms =
+dtree = rpart(class ~ ., data=data1.train, method= 'class', parms =
                 list(split='information') )
 print(dtree)
 summary(dtree)
@@ -34,10 +33,10 @@ dtree.perf = table(data1.validate$class, dtree.pred, dnn=c('Actual', 'Predicted'
 dtree.perf
 
 
-#Method2
+#Method2  : errors
 #Eg  Character Value not supported
 library(party)
-fit.ctree = ctree(class ~ ., data = data1.train)
-
+fit.ctree = party::ctree(class ~ ., data = data1.train)
+plot(fit.ctree)
 #Logistics
 fit.logit = glm(class ~. , data = data1.train, family = binomial() )
