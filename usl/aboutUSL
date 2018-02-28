@@ -1,0 +1,4 @@
+# Unsupervised Learning
+We do not have any target or outcome variable to predict / estimate
+It is used for clustering population in different groups, which is widely used for segmenting customers in different groups for specific intervention.
+Egs - Apriori Algo, K-means
