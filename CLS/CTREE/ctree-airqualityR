@@ -1,12 +1,16 @@
-#ctree
+#ctree using Air Quality
+
+
 #
+library(partykit)
 head(airquality)
 airq <- subset(airquality, !is.na(Ozone))
-air.ct <- ctree(Ozone ~ ., data = airq, 
-      controls = ctree_control(maxsurrogate = 3))
+summary(lm(Ozone ~., data=airq))
+air.ct <- partykit::ctree(Ozone ~ ., data = airq)
 air.ct
 plot(air.ct)
 nodes(air.ct, 1)
+
 nodes(air.ct, 5)
 nodes(air.ct, 7)
 ?ctree
@@ -31,11 +35,3 @@ airq$node = predict(air.ct, type = "node")
 head(airq)
 where(air.ct)
 
-# 2nd Example
-head(iris)
-table(iris$Species, predict(iris.ct), dnn = c("Actual species", "Predicted species"))
-new.iris
-predict(iris.ct, newdata = new.iris)
-predict(iris.ct, newdata = new.iris, type = "node")
-#https://www.r-bloggers.com/package-party-conditional-inference-trees/
-#

@@ -1,4 +1,4 @@
-# Decision Tree 2
+# Decision Tree 2 : Not Working
 
 refund=c('Yes','No' ,'No', 'Yes','No','No', 'Yes','No','No','No')
 married=c('S','M','S','M','D','M','D','S','M','S')

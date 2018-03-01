@@ -1,5 +1,5 @@
 # Data
-#Students of Class IX & X (M & F) play sports
+#Students : Gender - (Male & Female) play sports
 rollno = paste('S',1:30, sep='')
 rollno
 set.seed(1)
@@ -7,7 +7,7 @@ gender = sample(x=c('Male','Female'), size=30, replace=T, prob=c(0.5,0.5) )
 gender
 table(gender)
 set.seed(1)
-play = sample(x=c('Yes','No'), size=30, replace=T, prob=c(15/30,15/30) )
+play = sample(x=c('Play','NotPlay'), size=30, replace=T, prob=c(15/30,15/30) )
 play
 table(play)
 students1 = data.frame(gender, play)
@@ -35,11 +35,11 @@ gender = sample(x=c('Male','Female'), size=30, replace=T, prob=c(0.5,0.5) )
 gender; table(gender)
 
 set.seed(1)
-married = sample(x=c('Yes','No'), size=30, replace=T, prob=c(0.5,0.5) )
+married = sample(x=c('Married','Single'), size=30, replace=T, prob=c(0.5,0.5) )
 married; table(married)
 
 set.seed(1)
-play = sample(x=c('Yes','No'), size=30, replace=T, prob=c(15/30,15/30) )
+play = sample(x=c('Play','NotPlay'), size=30, replace=T, prob=c(15/30,15/30) )
 play; table(play)
 students2 = data.frame(gender, married, play)
 rownames(students2) = rollno
@@ -54,11 +54,11 @@ fit2
 library(rpart.plot)
 rpart.plot(fit2, main='Classification Tree')
 
-predict(fit2, newdata = data.frame(gender='Male', married='Yes'))
-predict(fit2, newdata = data.frame(gender='Male', married='No'))
+predict(fit2, newdata = data.frame(gender='Male', married='Married'))
+predict(fit2, newdata = data.frame(gender='Male', married='Single'))
 
-predict(fit2, newdata = data.frame(gender='Female', married='Yes'))
-predict(fit2, newdata = data.frame(gender='Female', married='No'))
+predict(fit2, newdata = data.frame(gender='Female', married='Married'))
+predict(fit2, newdata = data.frame(gender='Female', married='Single'))
 
 head(students2)
 printcp(fit2)
@@ -73,11 +73,11 @@ gender = sample(x=c('Male','Female'), size=100, replace=T, prob=c(0.5,0.5) )
 gender; table(gender)
 
 set.seed(1)
-married = sample(x=c('Yes','No'), size=100, replace=T, prob=c(0.3,0.7) )
+married = sample(x=c('Married','Single'), size=100, replace=T, prob=c(0.3,0.7) )
 married; table(married)
 
 set.seed(2)
-play = sample(x=c('Yes','No'), size=100, replace=T, prob=c(.4,.6) )
+play = sample(x=c('Married','Single'), size=100, replace=T, prob=c(.4,.6) )
 play; table(play)
 students3 = data.frame(gender, married, play)
 
@@ -85,6 +85,7 @@ students3 = data.frame(gender, married, play)
 #rownames(students3) = rollno
 students3
 table(students3)
+ftable(students3$gender, students3$married, students3$play)
 
 # Model2
 library(rpart)
@@ -94,11 +95,11 @@ fit3
 library(rpart.plot)
 rpart.plot(fit3, main='Classification Tree')
 
-predict(fit3, newdata = data.frame(gender='Male', married='Yes'))
-predict(fit3, newdata = data.frame(gender='Male', married='No'))
+predict(fit3, newdata = data.frame(gender='Male', married='Married'))
+predict(fit3, newdata = data.frame(gender='Male', married='Single'))
 
-predict(fit3, newdata = data.frame(gender='Female', married='Yes'))
-predict(fit3, newdata = data.frame(gender='Female', married='No'))
+predict(fit3, newdata = data.frame(gender='Female', married='Married'))
+predict(fit3, newdata = data.frame(gender='Female', married='Single'))
 
 head(students3)
 printcp(fit3)

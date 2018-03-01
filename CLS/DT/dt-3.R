@@ -10,22 +10,25 @@ mytree1 = rpart (play ~ gender, data=train1, method='class')
 mytree1
 
 #more data
-train2 = data.frame(rollno=c(1,2,3,4), gender=c('M','M','F','F'), 
-                    play=c('Play','NoPlay','Play','Play'))
+train2 = data.frame(rollno=c(1,2,3,4), gender=c('M','M','F','F'), play=c('Play','NoPlay','Play','Play'))
 rpart (play ~ gender, data=train2, method='class')
 rpart (play ~ gender, data=train2, method='class',
        minsplit=1, minbucket=1)
 train2
 
-# Part -2 
-train3 = data.frame(rollno=c(1,2,3,4,5,6,7), 
-      gender=c('M','M','F','M','F','F','M'),
-      play=c('Play','Play','NoPlay','Play','Play','NoPlay','Play'))
+# Part -2 : increase data points
+train3 = data.frame(rollno=c(1,2,3,4,5,6,7),  gender=c('M','M','F','M','F','F','M'), play=c('Play','Play','NoPlay','Play','Play','NoPlay','Play'))
+train3
 mytree3 = rpart (play ~ gender, data=train3, method='class',
         minsplit=2, minbucket=1 )
 #method - class uses gini index
 mytree3
 train3
+path.rpart(mytree3, nodes=c(1,2,3), pretty = 0, print.it = TRUE)
+mytree3$where
+predict(mytree3, newdata=data.frame(gender='F'),
+        type = c("class"))
+
 table(train3$gender,train3$play)
 library(rattle)
 library(rpart.plot)
