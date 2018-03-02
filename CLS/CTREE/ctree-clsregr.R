@@ -34,6 +34,9 @@ plot(irisct, type='simple')
 strucchange::sctest(irisct, node = 1)
 strucchange::sctest(irisct, node = c(3,4,7))
 #7 not significant
+nodeapply(irisct, ids = nodeids(irisct), function(n) info_node(n)$p.value)
+
+
 
 
 table(predict(irisct), iris$Species)

@@ -10,3 +10,15 @@ iris_ctree <- ctree(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.
 print(iris_ctree)
 plot(iris_ctree)
 plot(iris_ctree,type='simple')
+
+
+
+
+# 2nd Example
+head(iris)
+table(iris$Species, predict(iris.ct), dnn = c("Actual species", "Predicted species"))
+new.iris
+predict(iris.ct, newdata = new.iris)
+predict(iris.ct, newdata = new.iris, type = "node")
+#https://www.r-bloggers.com/package-party-conditional-inference-trees/
+#

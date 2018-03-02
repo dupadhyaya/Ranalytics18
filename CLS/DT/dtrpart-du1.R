@@ -10,6 +10,7 @@ set.seed(1)
 play = sample(x=c('Play','NotPlay'), size=30, replace=T, prob=c(15/30,15/30) )
 play
 table(play)
+prop.table(table(play))
 students1 = data.frame(gender, play)
 rownames(students1) = rollno
 students1
@@ -19,136 +20,139 @@ table(students1)
 library(rpart)
 ?rpart
 fit1 = rpart(play ~ gender, data=students1)
-fit1
-print(fit1)
+fit1  #print(fit1)
 
 library(rpart.plot)
 rpart.plot(fit1, main='Classification Tree')
 
-predict(fit1, newdata = data.frame(gender='Male'))
+predict(fit1, newdata = data.frame(gender=c('Male','Female','Male')))
 predict(fit1, newdata = data.frame(gender='Female'))
 
 
 #---- Part -2 Add another column
-set.seed(1)
-gender = sample(x=c('Male','Female'), size=30, replace=T, prob=c(0.5,0.5) )
-gender; table(gender)
+set.seed(100)
+gender = sample(x=c('Male','Female'), size=30, replace=T, prob=c(0.4,0.6) )
+table(gender)
 
-set.seed(1)
-married = sample(x=c('Married','Single'), size=30, replace=T, prob=c(0.5,0.5) )
-married; table(married)
+set.seed(101)
+married = sample(x=c('Married','Single'), size=30, replace=T, prob=c(0.3,0.7) )
+table(married)
 
-set.seed(1)
+set.seed(102)
 play = sample(x=c('Play','NotPlay'), size=30, replace=T, prob=c(15/30,15/30) )
-play; table(play)
+table(play)
 students2 = data.frame(gender, married, play)
 rownames(students2) = rollno
-students2
-table(students2)
+head(students2)
+str(students2)
+ftable(students2)
 
 # Model2
 library(rpart)
 fit2 = rpart(play ~ gender + married, data=students2)
+summary(fit2)
 fit2
 
-library(rpart.plot)
-rpart.plot(fit2, main='Classification Tree')
+#Plot----
+library(RColorBrewer)
+library(rattle)
+rpart.plot::rpart.plot(fit2, main='Classification Tree')
+rpart.plot::rpart.plot(fit2, extra=104, box.palette="GnBu", branch.lty=3, shadow.col="gray", nn=TRUE)
+
+rpart.plot::prp(fit2,fallen.leaves = F)
+prp(fit2, type=2)
+
+windows()
+rattle::fancyRpartPlot(model = fit2, main = "Final CART Regression Tree", cex = 0.6, sub = "Model2")
+
+#Predict
+#
+predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='prob')
+predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='class')
+predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='vector')
+
+
 
 predict(fit2, newdata = data.frame(gender='Male', married='Married'))
-predict(fit2, newdata = data.frame(gender='Male', married='Single'))
+?predict
 
-predict(fit2, newdata = data.frame(gender='Female', married='Married'))
-predict(fit2, newdata = data.frame(gender='Female', married='Single'))
+testdata = data.frame(gender=c('Male','Male','Female','Female'), married=c('Married','Single','Married','Single'))
+testdata
+                               
+(p1 = predict(fit2, newdata = testdata, type='vector'))  #node/level
+(p2 = predict(fit2, newdata = testdata, type='class')) #factor
+(p3 = predict(fit2, newdata = testdata, type='prob')) # prob
+cbind(testdata, p1, p2, p3)
+
+#level number, class frequencies, probabilities
+predict(fit2, newdata= testdata, type = "matrix")
 
 head(students2)
+
+#Parameters Setting : CP
 printcp(fit2)
+printcp(fit2, digits = getOption("digits") - 5)
 plotcp(fit2)
-printcp(fit2, digits = getOption("digits") - 2)
+
 fit2$where
 rownames(fit2$frame) [ fit2$where]
+#--------------------------------------------------------
 
-#---- Part -3 Change Probabilities and size
-set.seed(1)
-gender = sample(x=c('Male','Female'), size=100, replace=T, prob=c(0.5,0.5) )
-gender; table(gender)
-
-set.seed(1)
-married = sample(x=c('Married','Single'), size=100, replace=T, prob=c(0.3,0.7) )
-married; table(married)
-
-set.seed(2)
-play = sample(x=c('Married','Single'), size=100, replace=T, prob=c(.4,.6) )
-play; table(play)
-students3 = data.frame(gender, married, play)
-
-
-#rownames(students3) = rollno
-students3
-table(students3)
-ftable(students3$gender, students3$married, students3$play)
-
-# Model2
-library(rpart)
-fit3 = rpart(play ~ gender + married, data=students3)
-fit3
-
-library(rpart.plot)
-rpart.plot(fit3, main='Classification Tree')
-
-predict(fit3, newdata = data.frame(gender='Male', married='Married'))
-predict(fit3, newdata = data.frame(gender='Male', married='Single'))
-
-predict(fit3, newdata = data.frame(gender='Female', married='Married'))
-predict(fit3, newdata = data.frame(gender='Female', married='Single'))
-
-head(students3)
-printcp(fit3)
-plotcp(fit3)
-printcp(fit3, digits = getOption("digits") - 2)
-fit3$where
-students3
-
-
-#add another column
-set.seed(5)
-education = sample(x=c('school','graduate', 'pg'), size=100, replace=T, prob=c(0.3,0.4,.3) )
+#add column with 3 classes and numeric and logical
+set.seed(105)
+education = sample(x=c('school','graduate', 'pg'), size=30, replace=T, prob=c(0.3,0.4,.3) )
 education; table(education)
-students4 = data.frame(gender, married, education, play)
+set.seed(106)
+hostel = sample(x=c(TRUE, FALSE), size=30, replace=T, prob=c(.3,.7))
+table(hostel)
+set.seed(107)
+marks = floor(runif(30,50,100))
+mean(marks)
+students3 = data.frame(gender, married, education, hostel,marks,play)
+with(students3, ftable(education, hostel, gender, married,play))
 
-# Model4
-fit4 = rpart(play ~ ., data=students4)
-fit4
+# Model3
+fit3a = rpart(play ~ ., data=students3)
+fit3a
+rpart.plot::rpart.plot(fit3a, main='Classification Tree')
 
-rpart.plot::rpart.plot(fit4, main='Classification Tree')
-
-predict(fit4, newdata = data.frame(gender='Male', married='Yes', education='school'))
-predict(fit4, newdata = data.frame(gender='Male', married='No', education='pg'))
-
-head(students4)
-printcp(fit4)
-plotcp(fit4)
-printcp(fit4, digits = getOption("digits") - 2)
-fit4$where
-students4
-
-prp(fit4,box.col=c("Grey", "Orange")[fit4$frame$yval],varlen=0,
+#Model3b : change some parameters minbucket, minsplit
+fit3b = rpart(play ~ ., data=students3, minsplit=4, minbucket=2) #control= rpart.control(cp=0.00001))#use low cp
+fit3b
+rpart.plot::rpart.plot(fit3b, main='Classification Tree', cex=.6, type=3)
+rpart.plot::prp(fit3b)
+rattle::fancyRpartPlot(model = fit3b, main = "Final CART Regression Tree", cex = 0.6, sub = "Model3")
+prp(fit3b,box.col=c("Grey", "Orange")[fit3$frame$yval],varlen=0,
     faclen=0, type=1,extra=4,under=TRUE, tweak=1.2)
-?rpart.plot::prp
 
 
-fit4b <-rpart(play ~ ., method="class",
-                   data=students4,control=rpart.control(minsplit=4))
-fit4b
+#Lets see CP
+plotcp(fit3b)
+printcp(fit3b, digits = getOption("digits") - 5)
+(bestcp= fit3b$cptable[which.min(fit3b$cptable[,'xerror']),'CP'])
+#but this is at root node only, select next better 
+bestcp = 0.01
 
-printcp(fit4b)
-prp(fit4b,box.col=c("Grey", "Orange")[fit4b$frame$yval],varlen=0,
-    faclen=0, type=1,extra=4,under=TRUE)
+prp(fit3b)
+fit3b2 = rpart(play ~ ., data=students3, minsplit=4, minbucket=2, control= rpart.control(cp=0.001))
+fit3b2
+prp(fit3b2)
+fit3b.pruned = prune(fit3b, cp=bestcp)
+fit3b.pruned
+prp(fit3b.pruned)
 
-fit4c <-rpart(play ~ ., method="class", 
-        data=students4,control=rpart.control(minsplit=2, cp=0.001))
-fit4c
-printcp(fit4c)
-prp(fit4c,box.col=c("Grey", "Orange")[fit4c$frame$yval],varlen=0,
-    faclen=0, type=2,extra=4,under=TRUE)
+rpart.plot(fit3b.pruned,cex=.6, extra=101, type=1)
 
 
+#Predict Model3
+fit3b.pruned$where
+fit3b.pruned
+path.rpart(fit3b.pruned, nodes=c(1,4,10,43), pretty = 0, print.it = TRUE)
+testdata1= data.frame(gender='Male', married='Married', education='school', hostel=TRUE, marks=60)
+testdata1
+predict(fit3b.pruned, newdata = testdata1 )
+
+
+
+# Model 4
+salary = floorrnorm(30, 20000, 5000)

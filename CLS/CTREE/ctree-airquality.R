@@ -3,6 +3,7 @@
 
 #
 library(partykit)
+data(airquality)
 head(airquality)
 airq <- subset(airquality, !is.na(Ozone))
 summary(lm(Ozone ~., data=airq))
