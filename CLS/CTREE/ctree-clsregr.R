@@ -1,12 +1,13 @@
 #ctree - Classification and Regression
+library(partykit)
 
 ### regression----
 airq <- subset(airquality, !is.na(Ozone))
-airct <- ctree(Ozone ~ ., data = airq)
-airct
+airct <- partykit::ctree(Ozone ~ ., data = airq)
+airct  #chi sq statistic
 plot(airct)
 plot(airct, type='simple')
-plot(as.simpleparty(airct))
+plot(as.simpleparty(airct))   #same
 
 library("strucchange")
 strucchange::sctest(airct, node = 1)
@@ -24,11 +25,11 @@ nodeids(airct,1,5)
 
 
 #party
-party::ctree(Ozone ~ ., data = airq)
+#party::ctree(Ozone ~ ., data = airq)
 
 
 ### classification ---
-irisct <- ctree(Species ~ .,data = iris)
+irisct <- partykit::ctree(Species ~ .,data = iris)
 irisct
 plot(irisct, type='simple')
 strucchange::sctest(irisct, node = 1)

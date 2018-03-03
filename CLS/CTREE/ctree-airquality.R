@@ -1,13 +1,14 @@
 #ctree using Air Quality
-
+#https://www.r-bloggers.com/package-party-conditional-inference-trees/
 
 #
-library(partykit)
+library(party)
 data(airquality)
 head(airquality)
 airq <- subset(airquality, !is.na(Ozone))
 summary(lm(Ozone ~., data=airq))
-air.ct <- partykit::ctree(Ozone ~ ., data = airq)
+head(airq)
+air.ct <- party::ctree(Ozone ~ ., data = airq)
 air.ct
 plot(air.ct)
 nodes(air.ct, 1)

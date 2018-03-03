@@ -7,6 +7,7 @@ library(amap)
 cust_data<-read.csv("./data/Segmentation_Data v01.csv")
 ###Verify the data
 colnames(cust_data)
+apply(cust_data, 2, FUN= class)
 
 dim(cust_data)
 head(cust_data)

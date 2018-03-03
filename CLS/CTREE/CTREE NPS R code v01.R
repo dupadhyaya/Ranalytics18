@@ -1,7 +1,7 @@
 ###
 
 #install.packages("party")
-library(party)
+library(party)   #better than partykit
 #install.packages("partykit")
 library(partykit)
 
@@ -10,11 +10,9 @@ cust_data<-read.csv("./data/NPS Data Food Order v01.csv")
 str(cust_data)
 dim(cust_data)
 head(cust_data)
-oldnames=names(cust_data)
-oldnames
-df= cust_data
+
 # Conditional Inference Tree for Default_On_Payment
-fit <- ctree(  NPS_Category~
+fit <- party::ctree(  NPS_Category~
                Timely_delivery	+
                No_of_calls_in_an_Order	+
                Loyalty_Years	+
@@ -33,6 +31,7 @@ fit <- ctree(  NPS_Category~
              data=cust_data )
 fit
 plot(fit)
+length(fit)
 
 # Conditional Inference Tree for Default_On_Payment by specifying the limits
 fit <- ctree(  NPS_Category~
@@ -69,8 +68,10 @@ summary(fit)
 
 partykit:::.list.rules.party(fit)
 
-
-
+# Method2 ------
+oldnames=names(cust_data)
+oldnames
+df= cust_data
 # Changing Names
 newnames = c('custid', 'nps', 'npscat', 'dely', 'calls', 'years', 'married', 'city',
 'paymode', 'items', 'gender','mode', 'squality','sdely','smenu',
@@ -79,12 +80,18 @@ length(newnames)
 names(df) = newnames
 df
 table(df$npscat)
-fit <- ctree(npscat ~ .- custid - nps, data=df)
-plot(fit, main="Conditional Inference Tree for NPS ")
-plot(fit, gp = gpar(fontsize = 5), inner_panel=node_inner,
+fit2a <- partykit::ctree(npscat ~ .- custid - nps, data=df)
+#length(fit2a)  #length of tree for partykit only
+plot(fit2a, main="Conditional Inference Tree for NPS ")
+plot(fit2a, gp = gpar(fontsize = 5), inner_panel=node_inner,
      ip_args=list( abbreviate = FALSE,id = FALSE))
-summary(fit)
-partykit:::.list.rules.party(fit)
+summary(fit2a)
+fit2b <- ctree(npscat ~ .- custid - nps, data=df, control = ctree_control(maxdepth = 4))
+plot(fit2b, type = "simple")
+print(fit2b)
+
+#list.rules.party(fit2b)
 names(df)
-predict(fit, newdata=df[1:10,-c(1,2)])
+predict(fit2b, newdata=df[1:10,])
+
 df$npscat[1:10]

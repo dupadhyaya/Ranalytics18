@@ -1,4 +1,4 @@
-# CART Models
+# CART Models - HH Case Study
 
 library(rpart)
 library(rpart.plot)
@@ -11,7 +11,7 @@ library(rattle)
 
 # Set the working directory to folder where you have placed the Input Data
 
-Mer_Sales = read.csv(file = "./data/Predict Merchant_Sales v04.csv", header = T)
+Mer_Sales = read.csv(file = "./data/Predict Merchant_Sales v01.csv", header = T)
 
 # Summarize the dataset
 summary(object = Mer_Sales)
@@ -21,10 +21,10 @@ for(i in 2:ncol(Mer_Sales))
 {
   if(length(unique(Mer_Sales[,i])) <= 5)
   {
-    Annual_Sales = aggregate(x = Mer_Sales$Annual_Sales, by = list(Mer_Sales[,i]), FUN = mean)
+    Annual_Sales=aggregate(x=Mer_Sales$Annual_Sales,by=list(Mer_Sales[,i]),FUN=mean)
     print(colnames(Mer_Sales)[i])
     print(Annual_Sales)
-    print("************************************************************")
+    print("****************************************")
   }
 }
 
@@ -54,6 +54,7 @@ set.seed(123) # To ensure reproducibility of xerrors (cross validated errors whi
 CartFullModel = rpart(formula = Annual_Sales ~ . , data = Mer_SalesTrainUncapped[,-1], method = "anova")
 CartFullModel
 summary(object = CartFullModel)
+summary(Mer_SalesTestUncapped[,'Annual_Sales'])
 
 # Plot the Regression Tree
 rpart.plot(x = CartFullModel, type = 4,fallen.leaves = T, cex = 0.6)
@@ -77,11 +78,12 @@ fancyRpartPlot(model = CartFullModel, main = "CartFullModel", cex = 0.6)
  # sum((InsDataTrainUncapped$Losses-mean(InsDataTrainUncapped$Losses))^2
  
 printcp(x = CartFullModel)
+plotcp(CartFullModel)
 
 # This produces a plot which may help particpants to look for a model depending on R-Square values produced at various splits
 rsq.rpart(x = CartFullModel)
 
-########################### Using CP to expand / Prune the tree #################################################
+#### Using CP to expand / Prune the tree ####################
 # Lets change rpart.control() to specify certain attributes for tree building
 RpartControl = rpart.control(cp = 0.005)
 set.seed(123)
@@ -93,12 +95,13 @@ CartModel_1
 summary(CartModel_1)
 rpart.plot(x = CartModel_1, type = 4,fallen.leaves = T, cex = 0.6)
 printcp(x = CartModel_1)
+plotcp(CartModel_1)
 rsq.rpart(x = CartModel_1)
 
 
 
 
-####################### Some Extra pointers in R ###########################################
+####### Some Extra pointers in R #####################
 
 
 # Model Evaluation Measures on test dataset using the finalized (pruned model)
@@ -127,7 +130,7 @@ Act_vs_Pred_Abs_Percent_Mean
 
 # Validate RMSE and MAPE calculation with a function in R
 UncappedModelAccuarcy = accuracy(f = CartFullModelPredictTest, x = Mer_SalesTestUncapped$Annual_Sales)
-
+UncappedModelAccuarcy
 
 
 

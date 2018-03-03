@@ -13,7 +13,25 @@ names(termCrosssell)
 table(termCrosssell$housing)  #multiple classes
 summary(termCrosssell[,c('marital','education', 'y')])
 dim(termCrosssell)
-?chaid
+
+
+
+dt.chaid  <- chaid(y~ marital+education , 
+   control = chaid_control(minprob = 0.001,
+   minsplit = 500, minbucket = 200), data=termCrosssell)
+
+plot(dt.chaid)
+
+plot(dt.chaid, uniform = T, compress = T, margin = 0.2, branch = 0.3)
+# Label on Decision Tree
+text(dt.chaid)
+summary(dt.chaid)
+print(dt.chaid)
+
+
+
+
+# ?chaid
 head(termCrosssell[,c('y','marital', 'education')])
 ftable(termCrosssell[,c('y','education', 'marital')])
 
@@ -28,16 +46,3 @@ ftable(termCrosssell[,c('y','education', 'marital')])
 (cm2=chisq.test(t2))
 ce1$statistic;cm2$statistic
 ce1$p.value;cm2$p.value
-
-
-dt.chaid  <- chaid(y~ marital+education , 
-   control = chaid_control(minprob = 0.001,
-   minsplit = 500, minbucket = 200), data=termCrosssell)
-
-plot(dt.chaid)
-
-plot(dt.chaid, uniform = T, compress = T, margin = 0.2, branch = 0.3)
-# Label on Decision Tree
-text(dt.chaid)
-summary(dt.chaid)
-print(dt.chaid)

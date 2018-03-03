@@ -1,9 +1,6 @@
 ###
-
-#install.packages("party")
-library(party)
-#install.packages("partykit")
-library(partykit)
+library("CHAID")
+#convert data to factors
 
 ##Read the data in the file
 cust_data<-read.csv("./data/NPS Data Food Order v01.csv")
@@ -16,19 +13,23 @@ df= cust_data
 
 
 # Changing Names
-newnames = c('custid', 'nps', 'npscat', 'dely', 'calls', 'years', 'married', 'city',
-'paymode', 'items', 'gender','mode', 'squality','sdely','smenu',
-'srecom', 'sdperson')
+newnames = c('custid', 'nps', 'npscat', 'dely', 'calls', 'years', 'married', 'city', 'paymode', 'items', 'gender','mode', 'squality','sdely','smenu', 'srecom', 'sdperson')
 length(newnames)
 names(df) = newnames
-df
-table(df$npscat)
-fit <- ctree(npscat ~ .- custid - nps, data=df)
+apply(df,2, class)
+df2 =lapply(df[,c('npscat', 'dely', 'srecom', 'years','calls')], factor)
+df2= as.data.frame(df2)
+table(df2$npscat)
+fit <- chaid(npscat ~ dely + srecom + years + calls, data=df2)
 plot(fit, main="Conditional Inference Tree for NPS ")
 plot(fit, gp = gpar(fontsize = 5), inner_panel=node_inner,
      ip_args=list( abbreviate = FALSE,id = FALSE))
 summary(fit)
 partykit:::.list.rules.party(fit)
-names(df)
-predict(fit, newdata=df[1:10,-c(1,2)])
-df$npscat[1:10]
+names(df2)
+cbind(predict(fit, newdata=df2[1:10,]), df2$npscat[1:10])
+nodeids(fit,1)
+nodeids(fit, from=4, TERMINAL=TRUE)
+?nodeids
+
+print(fit)
