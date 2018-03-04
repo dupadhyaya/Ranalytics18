@@ -24,10 +24,8 @@ c2
 cbind(marks,c2$cluster)
 c2$centers
 aggregate(marks,by=list(c2$cluster),FUN=mean)
-aggregate(marks,by=list(c2$cluster),FUN=c(length,sum))
 library(dplyr)
-marks %>% group_by(c2$cluster) %>% 
-  summarise_all(funs(sum, mean, median, n()))
+marks %>% group_by(c2$cluster) %>% summarise_all(funs(sum, mean, median, n()))
 
 # Distances
 x1=marks[1,]; x2=marks[2,]
@@ -35,10 +33,10 @@ x1;x2
 sqrt(sum((x1-x2)^2))
 dist(rbind(x1,x2))
 euc.dist <- function(x1, x2) sqrt(sum((x1 - x2) ^ 2))
-for (i in range(1,7))
-  print(euc.dist(marks[i,], marks[1,]))
+for (i in 1:7)
+  print(paste(i, round(euc.dist(marks[i,], marks[1,]),2),sep='-'))
 
-ref1 = marks[1,];ref1
+ref1 = marks[1,]; ref1
 ref2 = marks[4,]; ref2
 
 (d1= apply(marks,1,function(x)sqrt(sum((x-ref1)^2))))

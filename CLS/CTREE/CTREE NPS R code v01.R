@@ -10,6 +10,8 @@ cust_data<-read.csv("./data/NPS Data Food Order v01.csv")
 str(cust_data)
 dim(cust_data)
 head(cust_data)
+cust_data$NPS_Category
+cust_data$NPS_Score
 
 # Conditional Inference Tree for Default_On_Payment
 fit <- party::ctree(  NPS_Category~

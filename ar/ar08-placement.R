@@ -2,7 +2,7 @@
 #http://tallman-world.tumblr.com/post/111511141517/rhow-to-make-association-rules-on-r-all-integer
 # About data set
 library(arules)
-datar2 <- read.csv("dar2.csv", header = TRUE, row.names=1)
+datar2 <- read.csv("./data/dar2.csv", header = TRUE, row.names=1)
 str(datar2)
 datar2 <- as.matrix(datar2)
 str(datar2)
@@ -23,31 +23,24 @@ itemFrequencyPlot(datar2.trans, ylim=c(0,1))
 options(digits=2)
 datar2.rule <- apriori(datar2.trans, parameter = list(maxlen=3, support=0.04, confidence=0.8, ext=TRUE))
 
-
-#apriori() is a function to make association rules.
-#maxlen means a number of rules (in this case, number of effects of an onsen) in a association rule.
-#support means how often it happens (or probability of an event). 0.04 is not so rare, not too often.
-#And confidence means how often it occurs under specific situations. If this is so small, it may be worth making association rules in the first place.
-#Now, I check summary of the association rules I’ve made, with summary().
-#check a number of rules and how many rules each association rule has.
 datar2.rule = sort(datar2.rule, by='confidence', decreasing=T)
 
 summary(datar2.rule)
 
-#In order to inspect the contents of association rules, I can do it as below;
+#inspect
 inspect(datar2.rule[1:5])
 
-#If I want to extract specific association rules, I use subset() as below.
-#In this case, I want the result to have “nerve_pain” as the rule body and more than 1 lift.
+#extract specific association rules, use subset
+#subset - commnskills  and lift > 1
 
 rule1 <- subset(datar2.rule, subset=(rhs %in% "comnskills") & (lift>1.0))
 rule1
-inspect(rule1)
+inspect(rule1[1:5])
 
-rule2 <- subset(datar2.rule, subset=(rhs %in% c('extraco','gender')) & (lift>1.7))
+rule2 <- subset(datar2.rule, subset=(rhs %in% c('extraco','gender'))  & (lift>1.7))
 rule2
-inspect(rule2)
+inspect(rule2[1:5])
 
-rule3 <- subset(datar2.rule, subset=(rhs %in% "select") & (lift>1.0))
+rule3 <- subset(datar2.rule, subset=(rhs %in% "select") & lhs %in% "relocwilling" & (lift>1.0))
 rule3
 inspect(rule3)

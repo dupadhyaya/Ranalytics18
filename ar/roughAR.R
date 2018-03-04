@@ -15,8 +15,3 @@ as(lst1, "transactions")
 # 7 transactions (rows) and 
 # 48842 items (columns) 
 
-library(package = "arules")
-v = read.csv(file = file('stdin'))
-transactions = read.transactions(file = file("stdin"), format = "basket", sep = ",")
-#a,b
-#a,b,c

@@ -15,7 +15,7 @@ students1 = data.frame(gender, play)
 rownames(students1) = rollno
 students1
 table(students1)
-
+prop.table(table(students1))
 #Model1
 library(rpart)
 ?rpart
@@ -25,8 +25,8 @@ fit1  #print(fit1)
 library(rpart.plot)
 rpart.plot(fit1, main='Classification Tree')
 
-predict(fit1, newdata = data.frame(gender=c('Male','Female','Male')))
 predict(fit1, newdata = data.frame(gender='Female'))
+predict(fit1, newdata = data.frame(gender=c('Male','Female','Male')))
 
 
 #---- Part -2 Add another column
@@ -45,7 +45,7 @@ students2 = data.frame(gender, married, play)
 rownames(students2) = rollno
 head(students2)
 str(students2)
-ftable(students2)
+prop.table(ftable(students2))
 
 # Model2
 library(rpart)
@@ -56,6 +56,7 @@ fit2
 #Plot----
 library(RColorBrewer)
 library(rattle)
+
 rpart.plot::rpart.plot(fit2, main='Classification Tree')
 rpart.plot::rpart.plot(fit2, extra=104, box.palette="GnBu", branch.lty=3, shadow.col="gray", nn=TRUE)
 
@@ -95,6 +96,7 @@ printcp(fit2, digits = getOption("digits") - 5)
 plotcp(fit2)
 
 fit2$where
+students2[1:2,]
 rownames(fit2$frame) [ fit2$where]
 #--------------------------------------------------------
 
@@ -155,4 +157,4 @@ predict(fit3b.pruned, newdata = testdata1 )
 
 
 # Model 4
-salary = floorrnorm(30, 20000, 5000)
+salary = floor(rnorm(30, 20000, 5000))

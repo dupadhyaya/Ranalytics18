@@ -24,12 +24,9 @@ predict(fit1, newdata=data.frame(gender=c('Male','Female','Male')),
   type='vector')
 predict(fit1, newdata=data.frame(gender=c('Male','Female','Male')),
         type='class')
-predict(fit1, newdata=data.frame(gender=c('Male','Female','Male')),
-        type='vector')
-predict(fit1, newdata=data.frame(gender=c('Male','Female','Male')),
-        type='prob')
-predict(fit1, newdata=data.frame(gender=c('Male','Female','Male')),
-        type='vector')
+predict(fit1, newdata=data.frame(gender=c('Male','Female','Male')),   type='vector')
+predict(fit1, newdata=data.frame(gender=c('Male','Female','Male')), type='prob')
+predict(fit1, newdata=data.frame(gender=c('Male','Female','Male')),  type='vector')
 predict(fit1, newdata=data.frame(gender=c('Male','Female','Male')),
         type='matrix')
 

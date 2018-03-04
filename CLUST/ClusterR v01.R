@@ -30,7 +30,7 @@ k1$withinss
 data_clus_2 <- cust_data[ k1$cluster == 2,]
 
 # Write CSV
-write.csv(data_clus_2[,1], file = "data_clus_2.csv")
+write.csv(data_clus_2[,1], file = "./data/data_clus_2.csv")
 
 
 

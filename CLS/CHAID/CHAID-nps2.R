@@ -33,3 +33,8 @@ nodeids(fit, from=4, TERMINAL=TRUE)
 ?nodeids
 
 print(fit)
+
+df2
+summary(df2$years)
+summary(df2)
+unique(df2$years)

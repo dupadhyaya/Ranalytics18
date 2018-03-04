@@ -6,3 +6,8 @@ data("BreastCancer", package = "mlbench")
 library("CHAID")
 b_chaid <- chaid(Class ~ Cl.thickness + Cell.size + Cell.shape + Marg.adhesion + Epith.c.size + Bare.nuclei + Bl.cromatin + Normal.nucleoli + Mitoses, data = BreastCancer)
 plot(b_chaid)
+
+attach(BreasCancer)
+table(BreastCancer$class, BreastCancer$Cell.size)
+table(table(BreastCancer$Cell.size), BreastCancer$class)
+table(BreastCancer$Cell.size, BreastCancer$class)

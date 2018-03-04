@@ -1,14 +1,4 @@
 # Association Rules Set 4 ####
-#http://www.listendata.com/2015/12/market-basket-analysis-with-r.html
-#In a retail shop 400 customers had visited in last month to buy products. It was observed that out of 400 customers, 
-# 200 of them bought Product A, 160 of them bought Product B and 
-# 100 of them buy both Product A and Product B; 
-# We can say 50% (200 out of 400) of the customer buy Product A, 40% 
-# (160 out of 400) customers buy Product B and 25% (100 out of 400) buy both Product A and B.
-
-#% increase of chance of buying other product(s) = (Lift - 1) * 100
-#Lift indicates the strength of an association rule over the random co-occurrence of Item A and Item B, given their individual support. Lift provides information about the change in probability of Item A in presence of Item B.
-#Confidence does not measure if the association between A and B is random or not. Whereas, Lift measures the strength of association between two items.
 
 df <- data.frame(
   age   = as.factor(c(6, 6, 8, 8, NA, 9, 16)),

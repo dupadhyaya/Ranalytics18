@@ -15,7 +15,7 @@ Mer_Sales = read.csv(file = "./data/Predict Merchant_Sales v01.csv", header = T)
 
 # Summarize the dataset
 summary(object = Mer_Sales)
-
+names(Mer_Sales)
 # Look at the average Annual_Sales()
 for(i in 2:ncol(Mer_Sales))
 {
@@ -35,6 +35,7 @@ Mer_SalesUncapped = Mer_Sales
 # Random Sampling
 set.seed(777) # To ensure reproducibility
 Index = sample(x = 1:nrow(Mer_SalesUncapped), size = 0.7*nrow(Mer_SalesUncapped))
+Index
 
 # Create Train dataset
 Mer_SalesTrainUncapped = Mer_SalesUncapped[Index, ]
@@ -49,6 +50,7 @@ summary(object = Mer_SalesTestUncapped)
 
 ########################### Modeling #################################
 
+head(Mer_SalesTrainUncapped)
 # Build a full model with default settings
 set.seed(123) # To ensure reproducibility of xerrors (cross validated errors while estimating complexity paramter for tree pruning)
 CartFullModel = rpart(formula = Annual_Sales ~ . , data = Mer_SalesTrainUncapped[,-1], method = "anova")
