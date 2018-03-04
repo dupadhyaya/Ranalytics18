@@ -2,7 +2,6 @@
 setwd("")
 #install.packages("amap")
 library(amap)
-
 ##Read the data in the file
 cust_data<-read.csv("./data/Segmentation_Data v01.csv")
 ###Verify the data
@@ -26,9 +25,9 @@ k1$size
 k1$withinss
 ###Fetch the cluster for each obs
 #k1$cluster
-
+k1$cluster
 data_clus_2 <- cust_data[ k1$cluster == 2,]
-
+data_clus_2$Cust_id
 # Write CSV
 write.csv(data_clus_2[,1], file = "./data/data_clus_2.csv")
 

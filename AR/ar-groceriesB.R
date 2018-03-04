@@ -1,7 +1,7 @@
 # Association Rule - Groceries
 #http://datascienceplus.com/implementing-apriori-algorithm-in-r/
 
-df_groceries <- read.csv("groceries.csv")
+df_groceries <- read.csv("./data/groceries.csv")
 str(df_groceries)
 #Implementing Market Basket Analysis using Apriori Algorithm
 dim(df_groceries)
@@ -39,15 +39,15 @@ str(df_itemList)
 head(df_itemList,n=20)
 df_itemList
 #write to csv format
-write.csv(df_itemList,"ItemList.csv", row.names = TRUE)
+write.csv(df_itemList,"./data/ItemList.csv", row.names = TRUE)
 
-#-------------------- association rule mining algorithm : apriori -------------------------#
+#-------------------- association rule mining algorithm : apriori ---#
 
 #load package required
 library(arules)
 
 #convert csv file to basket format - transactions
-txn = read.transactions(file="ItemList.csv", rm.duplicates= TRUE, format="basket",sep=",",cols=1);
+txn = read.transactions(file="./data/ItemList.csv", rm.duplicates= TRUE, format="basket",sep=",",cols=1);
 txn = read.transactions(file.choose(), rm.duplicates= TRUE, format="basket",sep=",",cols=1);
 txn
 inspect(txn)
