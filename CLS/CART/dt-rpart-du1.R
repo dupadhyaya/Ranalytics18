@@ -62,7 +62,7 @@ rpart.plot::rpart.plot(fit2, extra=104, box.palette="GnBu", branch.lty=3, shadow
 
 rpart.plot::prp(fit2,fallen.leaves = F)
 prp(fit2, type=2)
-
+?prp
 windows()
 rattle::fancyRpartPlot(model = fit2, main = "Final CART Regression Tree", cex = 0.6, sub = "Model2")
 

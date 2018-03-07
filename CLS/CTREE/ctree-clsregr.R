@@ -43,6 +43,8 @@ nodeapply(irisct, ids = nodeids(irisct), function(n) info_node(n)$p.value)
 table(predict(irisct), iris$Species)
 ### estimated class probabilities, a list
 (tr <- predict(irisct, newdata = iris[1:10,], type = "prob"))
+(tr <- predict(irisct, newdata = iris, type = "prob"))
+
 (tr2 <- predict(irisct, newdata = iris[1:10,], type = "response"))
 head(iris)
       

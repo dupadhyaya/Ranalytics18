@@ -39,7 +39,8 @@ inspect(rules[1:5])
 summary(rules)
 # 410 rules, Most rules are 4 items long
 # Sort Rules The first issue we see here is that the rules are not sorted. Often we will want the most relevant rules first. Lets say we wanted to have the most likely rules. We can easily sort by confidence by executing the following code.
-rules<-sort(rules, by="confidence", decreasing=TRUE)
+
+rules<-sort(rules, by="lift", decreasing=TRUE)
 inspect(head(rules))
 #Rule 4/ other is perhaps excessively long. Lets say you wanted more concise rules. That is also easy to do by adding a “maxlen” parameter to your apriori function:
 rules <- apriori(Groceries, parameter = list(supp = 0.001, conf = 0.8,maxlen=3))
@@ -67,10 +68,10 @@ inspect(rules[1:5])
 #Note the following:
 #  We set the confidence to 0.15 since we get no rules with 0.8
 #We set a minimum length of 2 to avoid empty left hand side items
-rules<-apriori(data=Groceries, parameter=list(supp=0.001,conf = 0.15,minlen=2),  appearance = list(default="rhs",lhs="whole milk"),
+rules<-apriori(data=Groceries, parameter=list(supp=0.001,conf = 0.15,minlen=2), appearance = list(default="rhs",lhs="whole milk"),
                control = list(verbose=F))
 rules<-sort(rules, decreasing=TRUE,by="confidence")
-inspect(rules[1:5])
+inspect(rules)
 
 # Visualisation ####
 #The last step is visualization. Lets say you wanted to map out the rules in a graph. We can do that with another library called “arulesViz”.

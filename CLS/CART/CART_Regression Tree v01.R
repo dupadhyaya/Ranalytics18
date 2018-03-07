@@ -57,7 +57,7 @@ CartFullModel = rpart(formula = Annual_Sales ~ . , data = Mer_SalesTrainUncapped
 CartFullModel
 summary(object = CartFullModel)
 summary(Mer_SalesTestUncapped[,'Annual_Sales'])
-
+names(Mer_SalesTrainUncapped)
 # Plot the Regression Tree
 rpart.plot(x = CartFullModel, type = 4,fallen.leaves = T, cex = 0.6)
 title("CartFullModel") # Enlarge the plot by clicking on Zoom button in Plots Tab on R Studio
@@ -87,7 +87,7 @@ rsq.rpart(x = CartFullModel)
 
 #### Using CP to expand / Prune the tree ####################
 # Lets change rpart.control() to specify certain attributes for tree building
-RpartControl = rpart.control(cp = 0.005)
+RpartControl = rpart.control(cp = 0.027)
 set.seed(123)
 CartModel_1 = rpart(formula = Annual_Sales ~ . , 
                     data = Mer_SalesTrainUncapped[,-1], 
@@ -135,6 +135,6 @@ UncappedModelAccuarcy = accuracy(f = CartFullModelPredictTest, x = Mer_SalesTest
 UncappedModelAccuarcy
 
 
-
+AIC(CartModel_1)
 windows()
 fancyRpartPlot(model = CartModel_1, main = "Final CART Regression Tree", cex = 0.6, sub = "Model 12")
