@@ -20,8 +20,10 @@ loc = sample(c('delhi','noida'), size=100, replace=T)
 set.seed(105)
 salesman = factor(sample(c(1,2,3), size=100, replace=T))
 
+set.seed(106)
+product = factor(sample(c('TV','Friz','Car'), size=100, replace=T))
 
-df1 = data.frame(coy,sales,adtv,adweb,loc,salesman)
+df1 = data.frame(coy,sales,adtv,adweb,loc,product,salesman)
 head(df1)
 str(df1)
 

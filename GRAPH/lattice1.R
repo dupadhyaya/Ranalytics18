@@ -1,5 +1,6 @@
 # Lattice Package - improves base graphs
 library(lattice)
+head(df1)
 names(df1)
 lattice::densityplot(~ df1$sales)
 lattice::densityplot(~ df1$sales | df1$coy)

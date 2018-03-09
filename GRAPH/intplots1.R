@@ -1,5 +1,5 @@
 # Interactive Plots
-load('./data/ba.Rdata')
+load('./data/badata.Rdata')
 
 head(df1)
 plot(x=df1$adtv, y=df1$sales)

@@ -1,63 +1,55 @@
 # Plot using Business Data
-
+#use df1 : load(file='./data/ba.Rdata')
 # Data
-set.seed(100)
-Asales1 = floor(rnorm(100, 80, 20))
-
-set.seed(101)
-Acoy1 = sample(c('coy1','coy2','coy3'), size=100, replace=T) 
-Acoy1
-Acoy1 = factor(Acoy1)
-
-set.seed(102)
-Aadv1 = ceiling(rnorm(100,10,5))
-
-set.seed(103)
-Aadv2 = ceiling(rnorm(100,7,2))
-
-set.seed(104)
-Aloc1 = sample(c('delhi','noida'), size=100, replace=T) 
-
-set.seed(105)
-Asalesman1 = factor(sample(c(1,2,3), size=100, replace=T))
-
-
-df1 = data.frame(Acoy1, Asales1, Aadv1, Aadv2, Aloc1, Asalesman1)
-head(df1)
 
 #scatter Plot
-plot(Aadv1, Asales1)
-plot(Aadv1, Asales1)
+plot(adtv, sales)
+plot(x=adtv, y=adweb, pch=10, type='p', col='green')
+abline(lm(adweb ~ adtv))
 
-abline(lm(Asales1 ~ Aadv1))
+car::scatterplot(sales ~ ., data=df1, legend.columns=T)
+car::scatterplot(sales ~ adtv, data=df1, legend.columns=T)
 
-car::scatterplot(Asales1 ~ Aadv1, legend.columns=T)
-?car::scatterplot
+car::scatterplotMatrix(~ sales + adtv + adweb, data=df1)
+
+pairs( ~ sales + adtv + adweb, data=df1)
 
 
-pairs( ~ Asales1 + Aadv1 + Aadv2, data=df1)
-
-
-car::scatterplotMatrix(~ Asales1 + Aadv1 + Aadv2, data=df1, spread=F)
 
 #Corrgrams
+library(corrgram)
 names(df1)
-cor(df1[c('Asales1','Aadv1','Aadv2')])
-corrgram::corrgram(df1[c('Asales1','Aadv1','Aadv2')])
+cor(df1[c('sales','adtv','adweb')])
+corrgram::corrgram(df1[c('sales','adtv','adweb')])
+nvars = c('sales', 'adtv', 'adweb')
+corrgram::corrgram(df1[nvars], order=T, lower.panel = panel.shade, upper.panel = panel.pie, diag.panel = panel.minmax, text.panel = panel.txt, main='Corrgram Plot')
+
+corrgram::corrgram(df1[nvars], order=T, panel = panel.ellipse, diag.panel = panel.minmax, text.panel = panel.txt, main='Corrgram Plot - Ellipse')
+#color - magnitude, direction = +/1, pie- value, min/ max values
+corrgram::corrgram(df1[nvars], order=T, lower.panel = panel.pts, upper.panel = panel.conf, diag.panel=panel.density, main='Corrgram Plot - Ellipse')
+
+corrgram::corrgram(df1[nvars], order=T, lower.panel = corrgram::panel.ellipse, upper.panel = panel.bar, diag.panel=panel.minmax, col.regions=colorRampPalette(c('red','blue','green')), main='Corrgram Plot')
+
+corrgram::corrgram(df1[nvars], order=T, upper.panel=panel.cor)
 
 
 #Mosaic Plot
 library(vcd)
 data(Titanic)
-Titanic
 vcd::mosaic(Titanic, shade=T, legend=T)
-vcd::mosaic( ~ Class + Sex + Age + Suvived, data = Titanic, shade=T, legend=T)
-names(Titanic)
+names(df1)
+XS= structable(~ coy + loc + product + salesman, data=df1)
+df3= as.table(XS) ; is.array(XS) 
+df3
+vcd::mosaic(df3,color='skyblue', shade=T, main="Main", sub='Sub Title', xlab='Product')
+vcd::assoc(df3)
 
-mean(Asales1)
-plot(Asales1, pch=18)
-plot(density(Asales1))
-hist(Asales1, bin=10)
+
+# Plots
+mean(sales)
+plot(sales, pch=18)
+plot(density(sales))
+hist(sales, bin=10)
 
 plot(x=Aadv1, y=Asales1)
 #ggplot(data=df1 + aes(x=df1$Aadv1, y=df1$Acoy1)) + geom_point()
