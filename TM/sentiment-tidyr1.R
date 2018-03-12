@@ -6,8 +6,8 @@ get_sentiments("afinn")
 get_sentiments("bing")
 get_sentiments("nrc")
 
-install.packages("janeaustenr")
+#install.packages("janeaustenr")
 library(dplyr)
 library(stringr)
 
-tidy_books <- austn_books() %>% group_by(book) %>% mutate(linenumber= row_number(), )
+tidy_books <- austn_books() %>% group_by(book) %>% mutate(linenumber= row_number() )

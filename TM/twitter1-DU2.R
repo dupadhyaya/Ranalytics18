@@ -14,7 +14,7 @@ ConsumerKey="uRDuync3BziwQnor1MZFBKp0x"
 ConsumerSecret="t8QPLr7RKpAg4qa7vth1SBsDvoPKawwwdEhNRjdpY0mfMMdRnV"
 
 load("twitter authentication.Rdata")
-registerTwitterOAuth(cred)
+#registerTwitterOAuth(cred)
 
 setup_twitter_oauth(ConsumerKey, ConsumerSecret, AccessToken, AccessTokenSecret)
 
