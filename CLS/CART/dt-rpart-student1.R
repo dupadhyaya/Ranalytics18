@@ -17,6 +17,7 @@ data1.validate= data1[-train, ]
 table(data1.train$class)
 table(data1.validate$class)
 
+#attribute selectio
 dtree = rpart(class ~ ., data=data1.train, method= 'class', parms =
                 list(split='information') )
 print(dtree)
