@@ -181,4 +181,23 @@ by_cyl %>% slice(1)
 
 # Returns all values
 by_cyl %>% slice()
-       
+
+
+
+
+df <- data.frame(x = c(10, 4, 1, 6, 3, 1, 1))
+df %>% top_n(2)
+
+# Negative values select bottom from group. Note that we get more
+# than 2 values here because there's a tie: top_n() either takes
+# all rows with a value, or none.
+df %>% top_n(-2)
+
+
+
+#Default dataset
+#
+Default %>% group_by(balance) %>% arrange(desc(balance)) %>% top_n(5, balance)
+Default %>% group_by(balance) %>% arrange(balance) %>% top_n(5, balance)
+
+Default %>% group_by(balance) %>% arrange(balance) %>% filter(row_number() %in% c(1:3,n()-5:n()))

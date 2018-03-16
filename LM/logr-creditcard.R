@@ -101,3 +101,29 @@ ndata %>% mutate(predict = ifelse(fitted.results < 0.5, 0,1))
 
 (ndata2 = data.frame(student=c('Yes','No'), balance=mean(Default$balance), income=mean(Default$income)))
 (fitted.results2 <- predict(logit, newdata=ndata2,type='response'))
+
+
+
+#Accuracy of Model
+library(caret)
+set.seed(3456)
+str(Default)
+trainIndex <- createDataPartition(Default$default, p = .67,
+        list = FALSE,   times = 1)
+
+Train <- Default[ trainIndex,]
+Test  <- Default[-trainIndex,]
+head(Train)
+head(Test)
+
+# Logistic Regression Model
+model = glm(default ~ student, data=Default, family='binomial')
+Test$model_prob <- predict(model, Test, type = "response")
+head(Test)
+Test <- Test  %>% mutate(default_pred = ifelse(model_prob > .5,'Yes','No'))
+head(Test)
+Test <- Test %>% mutate(accurate = 1*(default == default_pred))
+sum(Test$accurate)/nrow(Test)                         
+#96% Accuracy
+
+?createDataPartition

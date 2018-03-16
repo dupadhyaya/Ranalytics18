@@ -62,3 +62,4 @@ summary(fit)
 
 imp = mice::mice(sleep, seed=1234)
 ?mice
+

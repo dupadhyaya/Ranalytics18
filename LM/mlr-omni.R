@@ -60,8 +60,19 @@ summary(mlrmodel1)
 
 #Predicted Values
 names(omni)
-newdata1 = data.frame(price=c(60,70), promotion=c(300,400))
-predict()
+(ndata1 = data.frame(price=c(60,70), promotion=c(300,400)))
+predict(mlrmodel1, newdata=ndata1, predict='response')
+cbind(ndata1, Predict=predict(mlrmodel1, newdata=ndata1, predict='response'))
+
+#Diagnostics Test for Checking Assumptions 
+#Should be Linear relationship between Residuals Vs Ypi, X1i, X2i
+cbind(fitted(mlrmodel1), residuals(mlrmodel1))
+plot(cbind(fitted(mlrmodel1), residuals(mlrmodel1)))
+#not quadratic
+plot(cbind(omni$price, residuals(mlrmodel1)))
+plot(cbind(omni$promotion, residuals(mlrmodel1)))
+#May indicate quadratic term of IVs
+
 
 #Train and Test Data
 
