@@ -62,6 +62,10 @@ summary(mlrmodel1)
 names(omni)
 newdata1 = data.frame(price=c(60,70), promotion=c(300,400))
 predict()
+
+#Train and Test Data
+
+
 # RMSE
 
 
