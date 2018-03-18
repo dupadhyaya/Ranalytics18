@@ -4,7 +4,8 @@
 require(ISLR)
 # Load in the credit data
 attach(Default)
-
+Default
+write.csv(Default,'./data/cclogr.csv')
 #Data Structures
 #
 head(Default)
