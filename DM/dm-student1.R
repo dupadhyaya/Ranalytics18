@@ -34,13 +34,15 @@ sapply(df1[factorcols], table)
 
 str(df1)
 # Numeric Cols
-(numcol = sapply(df1, is.numeric))
+(numcols = sapply(df1, is.numeric))
 (numcols = names(df1[numcols]))
 #remove rollno
 (numcols = numcols[-1])
 df1[numcols]
 colSums(df1[numcols],dims=1)
 colMeans(df1[numcols],dims=1)
+
+
 
 names(df1)
 #Look for other summarisation and grouping
@@ -102,10 +104,11 @@ df1 %>% slice(1:n())
 df1 %>% slice(1:10)
 slice(df1, n()-10: n())  #different way
 
-
+names(df1)
 df1 %>% group_by(gender) %>% top_n(2)
 mtcars %>% top_n(-2)
-df1 %>% group_by(gender) %>% tally(java) %>% top_n(1, finalgrade)
+df1 %>% group_by(gender) %>% tally(java)
+df1 %>% select(finalgrade, btechmarks, sname) %>% top_n(1, btechmarks)
 
 #Selecting Columns
 df1 %>% select(1:5)
@@ -182,3 +185,5 @@ dplyr::bind_rows(y, z)
 dplyr::bind_cols(y, z)
 #Append z to y as new columns.
 #Caution: matches rows by position
+
+

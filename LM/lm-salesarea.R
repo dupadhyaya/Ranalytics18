@@ -1,12 +1,16 @@
 # Regression : Areas vs Sales
-#X -is area, Y- sqft; Find relationship betn X & Y
+#X -is area sqft Y-sales in 1000s units; Find relationship betn X & Y
 X = c(1.7,1.6,2.8,5.6,1.3,2.2, 1.3,1.1,3.2,1.5,5.2,4.6,5.8,3 )
 Y = c(3.7,3.9,6.7,9.5,3.4,5.6,3.7,2.7,5.5,2.9,10.7,7.6,11.8,4.1 )
 #import from ggsheet
+library(gsheet)
 area1 = "https://docs.google.com/spreadsheets/d/1qLHa5qFTyWacta8F-IGo6J3Zpf-BVR9OrlqONuJDqYc/edit#gid=2023826519"
 df2 = as.data.frame(gsheet::gsheet2tbl(area1))
 str(df2)
 head(df2)
+df3 = read.csv('./data/salesslr.csv')
+str(df3)
+df3 = read.csv(file.choose())
 
 # Use Vector Data for this example
 mean(X); mean(Y)
@@ -14,24 +18,30 @@ sum(X); sum(Y)
 cov(X,Y); cov(Y,X)
 cor(X,Y) ; cor(Y,X)
 cor.test(X,Y)
-plot(X,Y,xlab='Area in sqft', ylab='Sales Amount', type='p', main='Plot of Area Vs Sales')
-abline(lm(Y ~ X))
-abline(v=3,h=5.9742, col='red')
+?plot
+df1 = data.frame(X, Y)
 df1 = data.frame(X,Y)
 head(df1)
+
+plot(y=Y, x=X,xlab='Area in sqft', ylab='Sales Amount', type='p', main='Plot of Area Vs Sales')
+abline(lm(df1$Y ~ df1$X))
+abline(v=c(3,5),h=5.9742, col='red')
 #Model
 fit1 = lm(Y ~ X, data=df1)
 fit1
 summary(fit1)
 names(fit1)
 
-
+coef(fit1)[2]
 # Predictions
 (Y = 0.9645 + 1.6699 * 4)  # for X=4
-fitted(fit1)
+(Y = coef(fit1)[1] + coef(fit1)[2] * 4)  # for X=4
 
-range(X)
-new1 = data.frame(X=c(1,2,3,4,5))
+fitted(fit1)
+cbind(df1, fitted(fit1))
+range(df1$X)
+new1 = data.frame(X=c(1.5,2,3,4,5))
+new1
 predict(fit1, newdata= new1)
 
 #df1$predict = predict(fit1, newdata= new2)

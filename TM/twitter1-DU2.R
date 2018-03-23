@@ -6,7 +6,7 @@ library("twitteR")
 library("ROAuth")
 
 # Certificate not Required
-load("twitter authentication.Rdata")
+#load("twitter authentication.Rdata")
 
 AccessToken="14366551-Fga25zWM1YefkTb2TZYxsrx2LVVSsK0uSpF08sugW"
 AccessTokenSecret="3ap8BZNVoBhE2GaMGLfuvuPF2OrHzM3MhGuPm96p3k6Cz"

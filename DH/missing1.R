@@ -3,7 +3,9 @@
 v1 = c(1,2,NA,NA,5)
 is.na(v1)
 mean(v1, na.rm=T)
-na.omit(v1)
+v1a = na.omit(v1)
+sum(v1a)
+?na.omit
 anyNA(v1)
 #all
 v1[is.na(v1)] = mean(v1, na.rm=T)
@@ -11,14 +13,16 @@ v1
 
 
 #denoted by NA
+library(VIM)
 data(sleep, package='VIM')
 head(sleep)
+dim(sleep)
 complete.cases(sleep)
 sleep[complete.cases(sleep),]
 sleep[!complete.cases(sleep),]
 sum(is.na(sleep$Dream))
-sum(is.na(sleep$Dream))
 mean(is.na(sleep$Dream))
+12/62
 mean(!complete.cases(sleep))
 sum(is.na(sleep))
 colSums(is.na(sleep))

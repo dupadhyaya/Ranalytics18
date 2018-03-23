@@ -8,21 +8,29 @@ tbl_df(iris) %>% print(n = Inf)
 tbl_df(iris) %>% print(width = Inf)
 tbl_df(iris) %>% as.data.frame(iris)
 
-
+library(dplyr)
 # glimpse
 glimpse(iris)
+glimpse(mtcars)
 str(iris)
 View(iris)
+?mtcars
+data()
 mtcars['mpg']
+df = mtcars
+row.names(df) = NULL
+df %>% select(mpg)
+head(mtcars)
 select(mtcars, mpg, vs)
-mtcars %>% select(vs, mpg, wt)
+mtcars %>% dplyr::select(vs, mpg, wt)
 mtcars %>% group_by(cyl) %>% summarise(avgwt = mean(wt), meanhp = mean(hp)) %>% arrange( desc(meanhp), avgwt)
-
+mtcars
 
 names(mtcars)
 filter(mtcars, mpg > 23 | wt < 2)
+mtcars %>% filter(mpg > 23 & wt > 2)
 mtcars %>% select(mpg, wt) %>% filter(mpg > 23) 
-
+mtcars %>% 
 
 filter(iris, Sepal.Length > 7)
 filter(mtcars, cyl == 4)
@@ -32,11 +40,11 @@ df
 distinct(df)
 
 sample_frac(mtcars, 0.2, replace=T)
-sample_n(mtcars, 2, replace=T) %>% select(mpg)
-slice(mtcars,1:4)
-top_n(mtcars, -2, mpg)
+sample_n(mtcars, 60, replace=T) %>% select(mpg)
+slice(mtcars,10:14)
+top_n(mtcars,-2, mpg)
 
-select(mtcars, mpg) %>% arrange(mpg)
+select(mtcars, mpg) %>% arrange(desc(mpg))
 #Columns
 select(mtcars, mpg, wt)
 select(mtcars, contains('a'))

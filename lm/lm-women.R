@@ -10,6 +10,9 @@ names(women)  #x- IV, y -DV
 plot(women, xlim=c(0,75), ylim=c(0,180))
 df = women
 df
+fit1 = lm(height ~ weight, data=women)
+summary(fit1)
+
 set.seed(10)
 (df$age = floor(runif(15, 20,30)))
 set.seed(10)

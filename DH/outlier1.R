@@ -1,6 +1,19 @@
 # Outlier Analysis
 #outlier not predicted well in by fitted regression model
 
+marks = c(1:80,100, 1000)
+marks2 = c(1:80, 100)
+marks
+boxplot(marks2)
+summary(marks)
+boxplot(marks)
+
+
+
+
+
+
+
 fit2 = lm(weight ~ height + I(height^2), data=women)
 par(mfrow=c(2,2)) ;plot(fit2)
 par(mfrow=c(1,1)) ; plot(fit2, which=4)

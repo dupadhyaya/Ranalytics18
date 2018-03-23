@@ -4,6 +4,9 @@
 library(twitteR)
 # search for all the hilton tweets
 hilton.tweets=searchTwitter('@hilton',n=1500)
+hilton.tweets=searchTwitter('@narendramodi',n=15)
+
+hilton.tweets
 length(hilton.tweets)
 class(hilton.tweets)
 tweet=hilton.tweets[[1]]

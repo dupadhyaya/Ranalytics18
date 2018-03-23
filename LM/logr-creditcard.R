@@ -2,9 +2,13 @@
 
 # Load the textbook R package
 require(ISLR)
+?Default
 # Load in the credit data
+head(Default)
 attach(Default)
+str(Default)
 Default
+dim(Default)
 write.csv(Default,'./data/cclogr.csv')
 #Data Structures
 #
@@ -12,12 +16,14 @@ head(Default)
 str(Default)
 summary(Default)
 
-
+names(Default)
 # How many people actual default?
 tmp = table(default)
 tmp
-(tmp[[2]]/tmp[[1]])*100
+333/9667
 
+(tmp[[2]]/tmp[[1]])*100
+tmp[[2]]/dim(Default)[1] * 100
 
 #Plot
 library(ggplot2); library(gridExtra)
@@ -90,15 +96,23 @@ Default %>% group_by(student) %>% arrange(student, balance)
 
 
 # Predict
-(ndata <- (slice(Default, seq(0,n(),500))))
+(ndata = (slice(Default, seq(1,n(),500))))
+slice(Default, seq(1,n(),1000))
+head(ndata)
 addmargins(prop.table(table(Default$default,Default$student)))
 0.2817/0.9667; 0.0127/0.0333
-
+options(digits=10)
 
 fitted.results = predict(logit, newdata=ndata,type='response')
+
 fitted.results
 cbind(ndata, fitted.results)
+ndata
 ndata %>% mutate(predict = ifelse(fitted.results < 0.5, 0,1))
+
+fitted.results
+ifelse(fitted.results < 0.05, 0,1)
+
 
 (ndata2 = data.frame(student=c('Yes','No'), balance=mean(Default$balance), income=mean(Default$income)))
 (fitted.results2 <- predict(logit, newdata=ndata2,type='response'))

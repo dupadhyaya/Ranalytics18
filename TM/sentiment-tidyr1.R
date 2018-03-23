@@ -11,3 +11,4 @@ library(dplyr)
 library(stringr)
 
 tidy_books <- austn_books() %>% group_by(book) %>% mutate(linenumber= row_number() )
+

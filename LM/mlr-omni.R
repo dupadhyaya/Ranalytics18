@@ -6,14 +6,20 @@ sales= c(4141,3842,3056,3519,4226, 4630,3507,3754, 5000,5120,4011, 5015,1916,675
 price = c(59,59,59,59,59,59,59,59,59,59,59,59, 79,79,79,79,79,79,79,79,79, 79,79,79,99,99, 99,99,99,99,99,99,99,99)
 promotion= c(200,200,200,200,400,400,400,400, 600,600,600,600,200,200,200,200, 400,400,400,400,600,600,600,600, 200,200,200,200,400,400,400,400,600,600)
 
+df$x = NULL
+
 omni = data.frame(sales, price, promotion)
 head(omni)
 str(omni)
 
 #MLR
 mlrmodel1 = lm(formula = sales ~ price + promotion, data=omni)
-summary(mlrmodel1)
+mlrmodel2 = lm(formula = sales ~ price, data=omni)
 
+summary(mlrmodel1)
+summary(mlrmodel2)
+
+anova(mlrmodel1)
 #
 coef(mlrmodel1)
 
