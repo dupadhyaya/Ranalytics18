@@ -1,13 +1,13 @@
 #ctree - Classification and Regression
-library(partykit)
+library(partykit) # use this to model, can also use party but that will give different output
 
 ### regression----
 airq <- subset(airquality, !is.na(Ozone))
-airct <- partykit::ctree(Ozone ~ ., data = airq)
-airct  #chi sq statistic
+airct <- ctree(Ozone ~ ., data = airq)
+airct  
 plot(airct)
 plot(airct, type='simple')
-plot(as.simpleparty(airct))   #same
+plot(as.simpleparty(airct))   #when partykit is used to model
 
 library("strucchange")
 strucchange::sctest(airct, node = 1)

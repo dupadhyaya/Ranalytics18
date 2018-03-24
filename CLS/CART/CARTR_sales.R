@@ -31,7 +31,6 @@ for(i in 2:ncol(MerSales))
 }
 
 aggregate(MerSales$sales, by=list(MerSales$loc), FUN=sum)
-?aggregate
 # Make a copy of the Original Dataset
 MerSalesUncapped = MerSales
 
@@ -39,14 +38,13 @@ MerSalesUncapped = MerSales
 set.seed(777) # To ensure reproducibility
 Index = sample(x = 1:nrow(MerSalesUncapped), size = 0.7*nrow(MerSalesUncapped))
 Index
-?sample
 # Create Train dataset
 MerSalesTrainUncapped = MerSalesUncapped[Index, ]
 nrow(MerSalesTrainUncapped)
 summary(object = MerSalesTrainUncapped)
 
 # Create Test dataset
-MerSalesTestUncapped = Mer_SalesUncapped[-Index, ]
+MerSalesTestUncapped = MerSalesUncapped[-Index, ]
 nrow(MerSalesTestUncapped)
 summary(object = MerSalesTestUncapped)
 
@@ -91,8 +89,9 @@ rsq.rpart(x = CartFullModel)
 # Lets change rpart.control() to specify certain attributes for tree building
 RpartControl = rpart.control(cp = 0.005)
 set.seed(123)
-CartModel_1 = rpart(formula = Annual_Sales ~ . , 
-                    data = Mer_SalesTrainUncapped[,-1], 
+names(MerSales)
+CartModel_1 = rpart(formula = sales ~ . , 
+                    data = MerSalesTrainUncapped[,-1], 
                     method = "anova", control = RpartControl)
 
 CartModel_1
@@ -102,9 +101,7 @@ trainingnodes = rownames(CartModel_1$frame) [ CartModel_1$where]
 trainingnodes
 
 summary(CartModel_1)
-rpart.plot(x = CartModel_1, type = 4,fallen.leaves = T, cex = 0.6)
-rpart.plot(x = CartModel_1, type = 4,fallen.leaves = F, cex = 0.6)
-?
+rpart.plot(x = CartModel_1, type = 4,cex = 0.6)
 printcp(x = CartModel_1)
 rsq.rpart(x = CartModel_1)
 
@@ -119,28 +116,28 @@ rsq.rpart(x = CartModel_1)
 
 # Intermediate Model: Finalize CartFullModel (Based on Tree size i.e. Depth, Variables included as well as the R-Square produced)
 # Predict on testset
-CartFullModelPredictTest = predict(object = CartFullModel, newdata = Mer_SalesTestUncapped, type = "vector")
+CartFullModelPredictTest = predict(object = CartFullModel, newdata = MerSalesTestUncapped, type = "vector")
 
 # Calculate RMSE and MAPE manually
 # Participants can calculate RMSE and MAPE using various available functions in R, but that may not
 # communicate effectively the mathematical aspect behind the calculations
 
 # RMSE
-Act_vs_Pred = CartFullModelPredictTest - Mer_SalesTestUncapped$Annual_Sales # Differnce
+Act_vs_Pred = CartFullModelPredictTest - MerSalesTestUncapped$Annual_Sales # Differnce
 Act_vs_Pred_Square = Act_vs_Pred^2 # Square
 Act_vs_Pred_Square_Mean = mean(Act_vs_Pred_Square) # Mean
 Act_vs_Pred_Square_Mean_SqRoot = sqrt(Act_vs_Pred_Square_Mean) # Square Root
 Act_vs_Pred_Square_Mean_SqRoot
 
 # MAPE
-Act_vs_Pred_Abs = abs(CartFullModelPredictTest - Mer_SalesTestUncapped$Annual_Sales) # Absolute Differnce
-Act_vs_Pred_Abs_Percent = Act_vs_Pred_Abs/Mer_SalesTestUncapped$Annual_Sales # Percent Error
+Act_vs_Pred_Abs = abs(CartFullModelPredictTest - MerSalesTestUncapped$sales) # Absolute Differnce
+Act_vs_Pred_Abs_Percent = Act_vs_Pred_Abs/MerSalesTestUncapped$sales # Percent Error
 Act_vs_Pred_Abs_Percent_Mean = mean(Act_vs_Pred_Abs_Percent)*100 # Mean
 Act_vs_Pred_Abs_Percent_Mean
-
+library(forecast)
 # Validate RMSE and MAPE calculation with a function in R
-UncappedModelAccuarcy = accuracy(f = CartFullModelPredictTest, x = Mer_SalesTestUncapped$Annual_Sales)
-
+UncappedModelAccuarcy = forecast::accuracy(f = CartFullModelPredictTest, x = MerSalesTestUncapped$sales)
+UncappedModelAccuarcy
 
 
 

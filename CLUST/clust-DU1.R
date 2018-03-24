@@ -19,21 +19,21 @@ c1$iter
 #Specify Coordinates for Centers
 mcenters = marks[c(1,4),]
 mcenters
-(c2 <- kmeans(marks, centers=mcenters))
-c2
+(c2a <- kmeans(marks, centers=mcenters))
+c2a
 matrix(c(1,1,5,7), ncol=2)
 ?matrix
-(c2 <- kmeans(marks, centers=matrix(c(1,1,5,7), ncol=2)))
+(c2b <- kmeans(marks, centers=matrix(c(1,1,5,7), ncol=2)))
 
-c2
-cbind(marks,c2$cluster)
-c2$centers
-aggregate(marks,by=list(c2$cluster),FUN=mean)
-c2
-c2$iter
+c2a
+cbind(marks,c2a$cluster)
+c2a$centers
+aggregate(marks,by=list(c2a$cluster),FUN=mean)
+c2a
+c2a$iter
 
 library(dplyr)
-marks %>% group_by(c2$cluster) %>% summarise_all(funs(sum, mean, median, n()))
+marks %>% group_by(c2a$cluster) %>% summarise_all(funs(sum, mean, median, n()))
 
 
 # Distances
@@ -59,3 +59,4 @@ df
 apply(df[,c(3,4)],1, min)
 df3 <-transform(df, mind1d2=apply(df[,c(3,4)],1, min, na.rm = TRUE))
 df3
+

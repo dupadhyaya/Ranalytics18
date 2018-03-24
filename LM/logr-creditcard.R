@@ -1,9 +1,10 @@
 # Logistic Regression
 
 # Load the textbook R package
-require(ISLR)
+library(ISLR)
 ?Default
 # Load in the credit data
+str(Default)
 head(Default)
 attach(Default)
 str(Default)
@@ -88,7 +89,12 @@ predict(logits, newdata = data.frame(student=c('No')), type=c('response'))
 
 #Multiple Logistic Regression
 logit = glm(default ~ income + balance + student, family='binomial', data=Default)
+summary(logit2)
+exp(coef(logit2))
+
+logit2 = glm(default ~ balance + student, family='binomial', data=Default)
 summary(logit)
+exp(coef(logit))
 
 
 Default %>% group_by(student) %>% arrange(student, balance) 
@@ -96,7 +102,12 @@ Default %>% group_by(student) %>% arrange(student, balance)
 
 
 # Predict
+head(Default)
+ndata2 = data.frame(income=c(40000), balance=c(700), student=c('Yes'))
+predict(logit, newdata=ndata2, predict='response')
+
 (ndata = (slice(Default, seq(1,n(),500))))
+
 slice(Default, seq(1,n(),1000))
 head(ndata)
 addmargins(prop.table(table(Default$default,Default$student)))
