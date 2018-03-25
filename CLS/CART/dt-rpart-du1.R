@@ -23,10 +23,17 @@ fit1 = rpart(play ~ gender, data=students1)
 fit1  #print(fit1)
 
 library(rpart.plot)
-rpart.plot(fit1, main='Classification Tree')
+rpart.plot(fit1, main='Classification Tree', nn=T)
 
 predict(fit1, newdata = data.frame(gender='Female'))
 predict(fit1, newdata = data.frame(gender=c('Male','Female','Male')))
+
+#set.seed
+set.seed(101)
+x = runif(10, 1,10)
+x
+mean(x)
+
 
 
 #---- Part -2 Add another column
@@ -51,6 +58,7 @@ prop.table(ftable(students2))
 library(rpart)
 fit2 = rpart(play ~ gender + married, data=students2)
 summary(fit2)
+fit2
 rpart.plot(fit2,type=2,extra=104, tweak=1.2, under=T, shadow=c('brown', 'green','red'), nn=T)
 fit2
 prp(fit2)
@@ -109,7 +117,7 @@ printcp(fit2, digits = getOption("digits") - 5)
 plotcp(fit2)
 
 fit2$where
-students2[1:2,]
+students2[1:5,]
 rownames(fit2$frame) [ fit2$where]
 #--------------------------------------------------------
 

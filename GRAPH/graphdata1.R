@@ -6,7 +6,7 @@ sales = floor(rnorm(100, 80, 20))
 
 set.seed(101)
 coy = sample(c('coy1','coy2','coy3'), size=100, replace=T) 
-coy = factor(Acoy)
+coy = factor(coy)
 
 set.seed(102)
 adtv = ceiling(rnorm(100,10,5))
@@ -28,3 +28,4 @@ head(df1)
 str(df1)
 
 save(df1, file='./data/badata.Rdata')
+

@@ -1,8 +1,8 @@
 # Groceries Example 2 ####
 
-library(arules)  #install
-library(arulesViz) #install
-library(datasets)
+library(arules)  #install first
+library(arulesViz) #install first
+library(datasets)  # no need to install, just load it
 data('Groceries')
 str(Groceries)
 Groceries
@@ -11,7 +11,7 @@ LIST(Groceries[1:5])  #another view
 #Lets Apply Apriori Algorithm
 frequentItems <- eclat (Groceries, parameter = list(supp = 0.0095, minlen= 1, maxlen = 15)) 
 frequentItems
-inspect(frequentItems)
+inspect(frequentItems[1:5])
 
 ?eclat
 itemFrequencyPlot (Groceries,topN = 15,type="absolute")
@@ -37,7 +37,7 @@ rules <- apriori (Groceries, parameter = list (supp = 0.001, conf = 0.5, maxlen=
 #How To Remove Redundant Rules ?
 sum(is.redundant(rules))
 (redundant = which(is.redundant(rules)))
-colSums(is.subset(rules, rules))
+#colSums(is.subset(rules, rules))
 rulesNR <- rules[-redundant] 
 is.redundant(rulesNR)
 sum(is.redundant(rulesNR))  #ok now
@@ -57,7 +57,8 @@ rules <- apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.15,minlen=
 inspect(rules[1:5])
 #Visualizing The Rules -----
 
-plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
-plot (rules[1:10], measure=c("support", "lift"), shading="confidence")
 
+plot (rules[1:5], measure=c("support", "lift"), shading="confidence")
+
+plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
 

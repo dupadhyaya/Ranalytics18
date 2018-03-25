@@ -1,6 +1,7 @@
 #ctree - Classification and Regression
 library(partykit) # use this to model, can also use party but that will give different output
 
+head(airquality)
 ### regression----
 airq <- subset(airquality, !is.na(Ozone))
 airct <- ctree(Ozone ~ ., data = airq)
@@ -26,14 +27,14 @@ nodeids(airct,1,5)
 
 #party
 #party::ctree(Ozone ~ ., data = airq)
-
-
+head(iris)
+library(partykit)
 ### classification ---
 irisct <- partykit::ctree(Species ~ .,data = iris)
 irisct
 plot(irisct, type='simple')
 strucchange::sctest(irisct, node = 1)
-strucchange::sctest(irisct, node = c(3,4,7))
+strucchange::sctest(irisct, node = c(2,3,4))
 #7 not significant
 nodeapply(irisct, ids = nodeids(irisct), function(n) info_node(n)$p.value)
 

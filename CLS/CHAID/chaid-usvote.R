@@ -10,12 +10,12 @@ head(USvote)
 str(USvote)
 names(USvote)
 summary(USvote)
-
+dim(USvote)
 USvoteS = USvote[sample(1:nrow(USvote), 1000),]
 
-ctrl <- chaid_control(minsplit = 200, minprob = 0.1)
+ctrl <- chaid_control(minsplit = 20, minbucket = 5, minprob = 0)
 
-chaidUS <- chaid(vote3 ~ ., subset= sample(1:nrow(USvote), 1000), data = USvoteS, control = ctrl)
+chaidUS <- chaid(vote3 ~ ., data = USvoteS, control = ctrl)
 
 ?chaid
 summary(chaidUS)

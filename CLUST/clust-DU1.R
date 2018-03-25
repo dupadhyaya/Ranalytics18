@@ -17,10 +17,11 @@ c1$iter
 #C2- 3, 4, 5, 6, 7  : (3.9, 5.1)
 #
 #Specify Coordinates for Centers
-mcenters = marks[c(1,4),]
+mcenters = marks[c(1,2),]
 mcenters
 (c2a <- kmeans(marks, centers=mcenters))
 c2a
+cbind(marks, c2a$cluster)
 matrix(c(1,1,5,7), ncol=2)
 ?matrix
 (c2b <- kmeans(marks, centers=matrix(c(1,1,5,7), ncol=2)))

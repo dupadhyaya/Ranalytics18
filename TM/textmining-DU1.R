@@ -9,7 +9,7 @@ library(SnowballC)
 library(NLP)
 
 #Folder of text files
-(cname = file.path("D:","textdoc"))
+(cname = file.path("E:\\rwork\\rProjects\\analytics\\textdocs"))
 dir(cname)
 #Load texts into R
 docs = Corpus(DirSource(cname))
@@ -25,9 +25,9 @@ docs5 = tm_map(docs4, removeWords, stopwords('english'))
 docs6 = tm_map(docs5, removeWords, c('brothers','sisters'))
 docs7 = tm_map(docs6, stemDocument)
 docs8 = tm_map(docs7, stripWhitespace)
-docs8 <- Corpus(VectorSource(docs8))
+docs8 = Corpus(VectorSource(docs8))
 docs9 = tm_map(docs8, PlainTextDocument)# due to error
-docs9 <- Corpus(VectorSource(docs9))
+docs9 = Corpus(VectorSource(docs9))
 dtm = DocumentTermMatrix(docs9)
 dtm
 tdm = TermDocumentMatrix(docs9)
@@ -94,3 +94,4 @@ d = dist(t(dtmss), method='euclidean')
 kfit = kmeans(d, 2)
 kfit
 clusplot(as.matrix(d), kfit$cluster, color=T, shade=T, labels=2, lines=0)
+

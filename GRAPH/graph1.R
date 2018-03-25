@@ -50,7 +50,7 @@ mean(sales)
 plot(sales, pch=18)
 plot(density(sales))
 hist(sales, bin=10)
-
+library(ggplot2)
 plot(x=Aadv1, y=Asales1)
 #ggplot(data=df1 + aes(x=df1$Aadv1, y=df1$Acoy1)) + geom_point()
 ggplot(data=mtcars + aes(x=wt, y=mpg)) + geom_point()
@@ -78,6 +78,7 @@ str(df1)
 #box plots
 boxplot(Asales1)
 boxplot(df1$Asales1 ~ df1$Acoy1 + df1$Aloc1)
+
 boxplot(df1$Asales1 ~ df1$Acoy1, varwidth=T, col=1:3)
 
 
