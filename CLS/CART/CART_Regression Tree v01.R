@@ -8,13 +8,18 @@ library(RGtk2)
 #install.packages("rattle")
 library(rattle)
 
-
+library(gsheet)
+url='https://docs.google.com/spreadsheets/d/1PWWoMqE5o3ChwJbpexeeYkW6p4BHL9hubVb1fkKSBgA/edit#gid=1941519952'
+data = as.data.frame(gsheet2tbl(url))
+str(data)
 # Set the working directory to folder where you have placed the Input Data
 
 Mer_Sales = read.csv(file = "./data/Predict Merchant_Sales v01.csv", header = T)
 
+Mer_Sales
+
 # Summarize the dataset
-summary(object = Mer_Sales)
+summary(Mer_Sales)
 names(Mer_Sales)
 # Look at the average Annual_Sales()
 for(i in 2:ncol(Mer_Sales))
@@ -40,7 +45,7 @@ Index
 # Create Train dataset
 Mer_SalesTrainUncapped = Mer_SalesUncapped[Index, ]
 nrow(Mer_SalesTrainUncapped)
-summary(object = Mer_SalesTrainUncapped)
+summary(Mer_SalesTrainUncapped)
 
 # Create Test dataset
 Mer_SalesTestUncapped = Mer_SalesUncapped[-Index, ]
@@ -59,7 +64,7 @@ summary(object = CartFullModel)
 summary(Mer_SalesTestUncapped[,'Annual_Sales'])
 names(Mer_SalesTrainUncapped)
 # Plot the Regression Tree
-rpart.plot(x = CartFullModel, type = 4,fallen.leaves = T, cex = 0.6)
+rpart.plot(x = CartFullModel, type = 4,fallen.leaves = T, cex = 1.0)
 title("CartFullModel") # Enlarge the plot by clicking on Zoom button in Plots Tab on R Studio
 
 # fancyRpartPlot() function to plot the same model
@@ -112,7 +117,7 @@ rsq.rpart(x = CartModel_1)
 # Intermediate Model: Finalize CartFullModel (Based on Tree size i.e. Depth, Variables included as well as the R-Square produced)
 # Predict on testset
 CartFullModelPredictTest = predict(object = CartFullModel, newdata = Mer_SalesTestUncapped, type = "vector")
-
+CartFullModelPredictTest
 # Calculate RMSE and MAPE manually
 # Participants can calculate RMSE and MAPE using various available functions in R, but that may not
 # communicate effectively the mathematical aspect behind the calculations
@@ -130,6 +135,7 @@ Act_vs_Pred_Abs_Percent = Act_vs_Pred_Abs/Mer_SalesTestUncapped$Annual_Sales # P
 Act_vs_Pred_Abs_Percent_Mean = mean(Act_vs_Pred_Abs_Percent)*100 # Mean
 Act_vs_Pred_Abs_Percent_Mean
 
+library(forecast)
 # Validate RMSE and MAPE calculation with a function in R
 UncappedModelAccuarcy = accuracy(f = CartFullModelPredictTest, x = Mer_SalesTestUncapped$Annual_Sales)
 UncappedModelAccuarcy
