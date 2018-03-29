@@ -1,5 +1,5 @@
 # HH MA example 
-setwd("")
+#setwd("")
 #install.packages("amap")
 library(amap)
 ##Read the data in the file
@@ -7,11 +7,13 @@ url = 'https://docs.google.com/spreadsheets/d/1PWWoMqE5o3ChwJbpexeeYkW6p4BHL9hub
 library(gsheet)
 data = as.data.frame(gsheet2tbl(url))
 str(data)
+names(data)
+summary(data)
 ##
 ##
 ##
 ##
-cust_data<-read.csv("./data/Segmentation_Data v01.csv")
+#cust_data<-read.csv("./data/Segmentation_Data v01.csv")
 cust_data = data
 ###Verify the data
 colnames(cust_data)
@@ -24,8 +26,9 @@ summary(cust_data)
 str(cust_data)
 ###Run the kmeans algorithm to generate the clusters
 ?amap::Kmeans
+names(cust_data)
 k1<-amap::Kmeans(cust_data[,-c(1)],centers=3, 
-           iter.max = 200,   nstart = 1, 
+           iter.max = 200,nstart = 1, 
            method = c("euclidean"))
 
 k1$centers  # group means

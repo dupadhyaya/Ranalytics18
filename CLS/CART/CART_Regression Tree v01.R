@@ -4,9 +4,9 @@ library(rpart)
 library(rpart.plot)
 library(forecast)
 #install.packages("https://cran.r-project.org/bin/windows/contrib/3.3/RGtk2_2.20.31.zip", repos=NULL)
-library(RGtk2)
+#library(RGtk2)
 #install.packages("rattle")
-library(rattle)
+#library(rattle)
 
 library(gsheet)
 url='https://docs.google.com/spreadsheets/d/1PWWoMqE5o3ChwJbpexeeYkW6p4BHL9hubVb1fkKSBgA/edit#gid=1941519952'
@@ -14,9 +14,10 @@ data = as.data.frame(gsheet2tbl(url))
 str(data)
 # Set the working directory to folder where you have placed the Input Data
 
-Mer_Sales = read.csv(file = "./data/Predict Merchant_Sales v01.csv", header = T)
+#Mer_Sales = read.csv(file = "./data/Predict Merchant_Sales v01.csv", header = T)
 
-Mer_Sales
+
+Mer_Sales = data
 
 # Summarize the dataset
 summary(Mer_Sales)

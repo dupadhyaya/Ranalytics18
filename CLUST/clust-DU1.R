@@ -5,19 +5,21 @@ A=c(1,1.5,3,5,3.5,4.5,3.5)
 B=c(1,2,4,7,5,5,4.5)
 marks=data.frame(A,B)
 marks
+?kmeans
+(c1 = kmeans(marks, 2))  #??
 
-(c1 <- kmeans(marks, 2))
 cbind(marks, c1$cluster)
-plot(marks, col = c1$cluster)
+plot(marks, pch=10,col = c1$cluster)
+c1$centers
 points(c1$centers, col = 1:2, pch = 8, cex = 2)
 
-c1$iter
+c1$iter #?
 
 #C1- 1, 2 : (1.3, 1.5)
 #C2- 3, 4, 5, 6, 7  : (3.9, 5.1)
 #
 #Specify Coordinates for Centers
-mcenters = marks[c(1,2),]
+mcenters = marks[c(1,5),]
 mcenters
 (c2a <- kmeans(marks, centers=mcenters))
 c2a

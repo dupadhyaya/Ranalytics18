@@ -4,30 +4,31 @@ library(arules)  #install first
 library(arulesViz) #install first
 library(datasets)  # no need to install, just load it
 data('Groceries')
+
 str(Groceries)
 Groceries
 inspect(Groceries[1:5])  #view
 LIST(Groceries[1:5])  #another view
 #Lets Apply Apriori Algorithm
-frequentItems <- eclat (Groceries, parameter = list(supp = 0.0095, minlen= 1, maxlen = 15)) 
+frequentItems <- eclat (Groceries, parameter = list(supp = 0.005, minlen= 1, maxlen = 15)) 
 frequentItems
 inspect(frequentItems[1:5])
 
 ?eclat
 itemFrequencyPlot (Groceries,topN = 15,type="absolute")
-itemFrequencyPlot(Groceries, topN = 10)
+itemFrequencyPlot(Groceries, topN = 10, type='relative')
 abline(h=0.2)
 
-rules <- arules::apriori(Groceries, parameter = list(supp = 0.001, conf = 0.5))
+rules <- arules::apriori(Groceries, parameter = list(supp = 0.005, conf = 0.5))
 rules
-inspect(rules[1:15])
+inspect(rules[1:5])
 quality(rules) 
 head(quality(rules))
 options (digits=2)
 inspect (rules[1:5])
 
 rulesc <- sort (rules, by="confidence", decreasing=TRUE)
-inspect(rules[1:10])
+inspect(rulesc[1:5])
 rulesl <- sort (rules, by="lift", decreasing=TRUE)
 inspect (rulesl[1:5])
 
