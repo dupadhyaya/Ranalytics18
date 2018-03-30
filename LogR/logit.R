@@ -12,10 +12,14 @@ xtabs(~admit + rank, data = mydata)
 
 # Partition data - train (80%) & test (20%)
 set.seed(1234)
-ind <- sample(2, nrow(mydata), replace = T, prob = c(0.8, 0.2))
-train <- mydata[ind==1,]
-test <- mydata[ind==2,]
-
+dim(mydata)
+ind = sample(2, nrow(mydata), replace = T, prob = c(0.8, 0.2))
+ind
+?sample
+(train = mydata[ind==1,])
+(test = mydata[ind==2,])
+dim(train)
+dim(test)
 # Logistic regression model
 mymodel <- glm(admit ~ gpa + rank, data = train, family = 'binomial')
 summary(mymodel)

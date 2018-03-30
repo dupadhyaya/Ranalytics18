@@ -14,6 +14,7 @@ attr(df1, which='spec') = NULL
 str(df1)
 
 #class of each column
+class(df1$gender)
 sapply(df1, class)
 
 # convert character to factor
@@ -29,20 +30,36 @@ str(df1)
 names(df1)
 table(df1$gender)
 #combine it in single command 
-sapply(lapply(df1[factorcols],factor,ordered=TRUE), table)  #Method1
-sapply(df1[factorcols], table)   #Method2
+(l1= lapply(df1[factorcols],factor,ordered=TRUE))
+sapply(l1,table)
 
+table(df1$gender)
+table(df1$batchyr)
+sapply(df1[factorcols],table)
+
+
+sapply(lapply(df1[factorcols],factor,ordered=TRUE), table)  #Method1
+
+
+sapply(df1[factorcols], table)   #Method2
+sapply(df1[c('gender', 'cat', 'class12')], table)
+?lapply
 str(df1)
 # Numeric Cols
+sapply(df1, is.numeric)
 (numcols = sapply(df1, is.numeric))
+class(numcols)
 (numcols = names(df1[numcols]))
 #remove rollno
 (numcols = numcols[-1])
-df1[numcols]
+head(df1[numcols])
+colSums(df1[numcols])
 colSums(df1[numcols],dims=1)
 colMeans(df1[numcols],dims=1)
-
-
+numcols[c(1,3)]
+colMeans(df1[c('age','java', 'cpp')])
+names(df1)
+colMeans(df1[numcols[c(1:3)]])
 
 names(df1)
 #Look for other summarisation and grouping
