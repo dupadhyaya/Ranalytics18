@@ -1,4 +1,5 @@
 # Logistic Regression
+#https://www.youtube.com/watch?v=AVx7Wc1CQ7Y
 
 # Read data file
 mydata <- read.csv(file.choose(), header = T)
