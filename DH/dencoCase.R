@@ -55,7 +55,7 @@ filter(sales, margin > 1000000)
 sales %>% filter(region == '01-East' & revenue > 400000) %>% select(partnum, region, revenue)
 
 names(sales)
-sales %>% group_by(custname) %>% 
+sales %>% group_by(region) %>% 
   summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue))
 
 
@@ -74,7 +74,10 @@ head(df5)
 
 # Freqency --------
 names(sales)
-head(sort(table(sales$custname), decreasing=T))
+table(sales$custname)
+head(sort(table(sales$custname), decreasing=T), n=10)
+tail(sort(table(sales$custname), decreasing=T), n=10)
+
 
 #xtab
 #
@@ -111,3 +114,4 @@ sales %>% dplyr::group_by(partnum) %>% dplyr::summarise(n = n()) %>% dplyr::arra
 names(sales)
 df4a = aggregate(margin ~ partnum, data=sales, FUN=sum)
 head(df4a)
+
