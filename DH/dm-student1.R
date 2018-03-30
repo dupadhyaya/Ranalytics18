@@ -28,9 +28,9 @@ str(df1)
 #attach(df1)
 names(df1)
 table(df1$gender)
-
-sapply(lapply(df1[factorcols],factor,ordered=TRUE), table)
-sapply(df1[factorcols], table)
+#combine it in single command 
+sapply(lapply(df1[factorcols],factor,ordered=TRUE), table)  #Method1
+sapply(df1[factorcols], table)   #Method2
 
 str(df1)
 # Numeric Cols
@@ -47,7 +47,7 @@ colMeans(df1[numcols],dims=1)
 names(df1)
 #Look for other summarisation and grouping
 aggregate(df1[numcols], by=list(df1$br), FUN=mean)
-aggregate(java + cbnst ~ br, data=df1, FUN=mean)
+aggregate(java + cbnst ~ br, data=df1, FUN=mean)  #sum of java & cbnst wrt branch
 aggregate( cbnst ~ gender, data=df1, FUN=mean)
 aggregate( cbnst ~ gender + br, data=df1, FUN=mean)
 
@@ -79,11 +79,9 @@ df1 %>% sample_n(3, replace = F)  %>% select(rollno, sname)
 #few rows
 slice(df1, 10:15)
 
-library(tidyr)
-#Reshape
-df1 %>% tidyr::gather("java", "cbnst", 1:3)
+library(tidyr) #Reshape
 df1long <- df1 %>% select(sname, java, cbnst) %>% tidyr::gather(key = subject, value = marks, java, cbnst) 
-df1long
+head(df1long)
 distinct(df1long)
 
 tidyr::unite(df1, 'rollnoname', c(rollno, sname), sep="-") %>% select(1:5)%>% head
@@ -105,9 +103,13 @@ df1 %>% slice(1:10)
 slice(df1, n()-10: n())  #different way
 
 names(df1)
-df1 %>% group_by(gender) %>% top_n(2)
-mtcars %>% top_n(-2)
-df1 %>% group_by(gender) %>% tally(java)
+#defaults to the last variable in the tbl
+df1 %>% group_by(gender) %>% top_n(2)  #Rank not data
+# top_n(n = 5, wt = x)
+df1 %>% group_by(gender) %>% top_n(2,wt=class10)  #Rank not data wrt class10 marks
+
+df1 %>% top_n(-2, wt=class10) %>% select(rollno, sname, class10, cgpa) #bottom 2 ranks - see 3 values
+df1 %>% group_by(gender) %>% tally(java)  #total count
 df1 %>% select(finalgrade, btechmarks, sname) %>% top_n(1, btechmarks)
 
 #Selecting Columns
