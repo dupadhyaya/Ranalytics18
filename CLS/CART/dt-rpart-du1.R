@@ -16,25 +16,26 @@ rownames(students1) = rollno
 students1
 table(students1)
 prop.table(table(students1))
+
 #Model1
 library(rpart)
 ?rpart
 fit1 = rpart(play ~ gender, data=students1)
+#fit1 = rpart(play ~ gender, data=students1, minsplit=4, minbucket=2)
 fit1  #print(fit1)
-
+(t1= table(students1$gender, students1$play))
+addmargins(t1)
+prop.table(table(students1$gender, students1$play))
+addmargins(prop.table(table(students1$gender, students1$play))
+)
+.16/.43 ; .36/.56
+13/30   ; 17/30
+14/30
 library(rpart.plot)
 rpart.plot(fit1, main='Classification Tree', nn=T)
 
 predict(fit1, newdata = data.frame(gender='Female'))
 predict(fit1, newdata = data.frame(gender=c('Male','Female','Male')))
-
-#set.seed
-set.seed(101)
-x = runif(10, 1,10)
-x
-mean(x)
-
-
 
 #---- Part -2 Add another column
 set.seed(100)
@@ -53,10 +54,11 @@ rownames(students2) = rollno
 head(students2)
 str(students2)
 prop.table(ftable(students2))
+write.csv(students2, 'dtdata.csv')
 
 # Model2
-library(rpart)
-fit2 = rpart(play ~ gender + married, data=students2)
+#library(rpart)
+fit2 = rpart(play ~ gender + married, data=students2, minsplit=5)
 summary(fit2)
 fit2
 rpart.plot(fit2,type=2,extra=104, tweak=1.2, under=T, shadow=c('brown', 'green','red'), nn=T)
@@ -97,15 +99,16 @@ predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='vect
 predict(fit2, newdata = data.frame(gender='Male', married='Married'))
 ?predict
 
+
 testdata = data.frame(gender=c('Male','Male','Female','Female'), married=c('Married','Single','Married','Single'))
 testdata
                                
-(p1 = predict(fit2, newdata = testdata, type='vector'))  #node/level
+(p1 = predict(fit2, newdata = testdata, type='vector'))  #node/level 
+#play=2, notplay=1
 (p2 = predict(fit2, newdata = testdata, type='class')) #factor
 (p3 = predict(fit2, newdata = testdata, type='prob')) # prob
 
 cbind(testdata, p1, p2, p3)
-
 #level number, class frequencies, probabilities
 predict(fit2, newdata= testdata, type = "matrix")
 
@@ -115,10 +118,14 @@ head(students2)
 printcp(fit2)
 printcp(fit2, digits = getOption("digits") - 5)
 plotcp(fit2)
-
-fit2$where
+names(fit2)
+?
+fit2$where  #which row at which nodeno
+?fit2$where
 students2[1:5,]
-rownames(fit2$frame) [ fit2$where]
+cbind(students2, nodeno=rownames(fit2$frame) [ fit2$where])
+pfit=  prune(fit2, cp=0.1) # from cptable  
+pfit
 #--------------------------------------------------------
 
 #add column with 3 classes and numeric and logical
