@@ -37,3 +37,4 @@ df$predict = predict(fit1, newdata=data.frame(height=women$height))
 df
 abline(v=60)
 abline(h=119)
+

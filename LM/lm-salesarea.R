@@ -40,6 +40,7 @@ abline(v=c(3,5),h=c(6,10), col=c('red','blue'))
 #Model
 fit1 = lm(Y ~ X, data=df)
 ?lm
+?lm
 fit1
 coef(fit1)
 residuals(fit1)
@@ -90,11 +91,14 @@ qt(0.95+.025, 14-2)
 
 
 #Assumption : Graphical Analysis
-plot(x=X, y=residuals(fit1)) # Linearity
+plot(x=df$X, y=residuals(fit1)) # Linearity
+abline(h=0)
 plot(residuals(fit1))
 car::durbinWatsonTest(fit1)
 
 #Normality
+hist(residuals(fit1))
+
 hist(residuals(fit1), freq=F)
 lines(density(residuals(fit1)))
 
@@ -114,20 +118,24 @@ qqline(sales.stdres)
 stem(residuals(fit1))
 
 #Equal Variance
-plot(y=residuals(fit1), x=X)
+plot(y=residuals(fit1), x=df$X)
 
 
 #Outlier Analysis
-df1
-df1[14,]
-df1$Y
+df
+df[14,]
+df$Y
 residuals(fit1)
-boxplot( df1$Y, df1$predict, residuals(fit1), names=c('Y','predictY', 'Residuals'))
+boxplot( df$Y)
+boxplot( fitted(fit1))
+
+boxplot( df$Y, fitted(fit1), residuals(fit1), names=c('Y','predictY', 'Residuals'))
 abline(h=c(4.1, 5.97, -1.87))
+
 boxplot(residuals(fit1), names=c('Residuals'))
 identify(rep(1, length(residuals(fit1))), residuals(fit1), labels = seq_along(residuals(fit1)))
 
 car::outlierTest(fit1)
-df1[14,]
+df[14,]
 
-car::outlierTest(lm(Y ~ X, data=df1[-14,]))
+car::outlierTest(lm(Y ~ X, data=df[-c(14,12),]))

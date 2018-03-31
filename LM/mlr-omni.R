@@ -10,14 +10,19 @@ promotion= c(200,200,200,200,400,400,400,400, 600,600,600,600,200,200,200,200, 4
 omni = data.frame(sales, price, promotion)
 head(omni)
 str(omni)
-
+?lm
 #MLR
 mlrmodel1 = lm(formula = sales ~ price + promotion, data=omni)
-mlrmodel2 = lm(formula = sales ~ price, data=omni)
+mlrmodel1 = lm(sales ~ price + promotion, omni)
 
+mlrmodel1 = lm( data=omni, formula = sales ~ price + promotion)
+mlrmodel1a = lm( omni, sales ~ price + promotion)
+
+mlrmodel2 = lm(formula = sales ~ price, data=omni)
+range(omni$sales)
 summary(mlrmodel1)
 #summary(mlrmodel2)
-
+coef(mlrmodel1)
 anova(mlrmodel1)
 #
 coef(mlrmodel1)
@@ -64,9 +69,10 @@ summary(mlrmodel1)
 
 
 #Predicted Values
+fitted(mlrmodel1)
 names(omni)
 (ndata1 = data.frame(price=c(60,70), promotion=c(300,400)))
-predict(mlrmodel1, newdata=ndata1, predict='response')
+predict(mlrmodel1, newdata=ndata1)
 cbind(ndata1, Predict=predict(mlrmodel1, newdata=ndata1, predict='response'))
 
 #Diagnostics Test for Checking Assumptions 
