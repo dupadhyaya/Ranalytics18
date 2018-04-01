@@ -37,7 +37,7 @@ for(i in 2:ncol(Mer_Sales))
 
 # Make a copy of the Original Dataset
 Mer_SalesUncapped = Mer_Sales
-
+dim(Mer_SalesUncapped)
 # Random Sampling
 set.seed(777) # To ensure reproducibility
 Index = sample(x = 1:nrow(Mer_SalesUncapped), size = 0.7*nrow(Mer_SalesUncapped))
@@ -65,7 +65,7 @@ summary(object = CartFullModel)
 summary(Mer_SalesTestUncapped[,'Annual_Sales'])
 names(Mer_SalesTrainUncapped)
 # Plot the Regression Tree
-rpart.plot(x = CartFullModel, type = 4,fallen.leaves = T, cex = 1.0)
+rpart.plot(x = CartFullModel, type = 4,fallen.leaves = T, cex = 1.0, nn=T)
 title("CartFullModel") # Enlarge the plot by clicking on Zoom button in Plots Tab on R Studio
 
 # fancyRpartPlot() function to plot the same model
@@ -86,6 +86,8 @@ fancyRpartPlot(model = CartFullModel, main = "CartFullModel", cex = 0.6)
  # sum((InsDataTrainUncapped$Losses-mean(InsDataTrainUncapped$Losses))^2
  
 printcp(x = CartFullModel)
+ptree = prune(CartFullModel, cp=0.017)
+rpart.plot(ptree)
 plotcp(CartFullModel)
 
 # This produces a plot which may help particpants to look for a model depending on R-Square values produced at various splits
@@ -117,7 +119,7 @@ rsq.rpart(x = CartModel_1)
 
 # Intermediate Model: Finalize CartFullModel (Based on Tree size i.e. Depth, Variables included as well as the R-Square produced)
 # Predict on testset
-CartFullModelPredictTest = predict(object = CartFullModel, newdata = Mer_SalesTestUncapped, type = "vector")
+CartFullModelPredictTest = predict(CartFullModel, newdata = Mer_SalesTestUncapped, type = "vector")
 CartFullModelPredictTest
 # Calculate RMSE and MAPE manually
 # Participants can calculate RMSE and MAPE using various available functions in R, but that may not
@@ -142,6 +144,7 @@ UncappedModelAccuarcy = accuracy(f = CartFullModelPredictTest, x = Mer_SalesTest
 UncappedModelAccuarcy
 
 
-AIC(CartModel_1)
+Lift = 100/ 400 / ((200 /
+                      400) * (160/400))AIC(CartModel_1)
 windows()
 fancyRpartPlot(model = CartModel_1, main = "Final CART Regression Tree", cex = 0.6, sub = "Model 12")

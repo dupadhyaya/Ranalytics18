@@ -124,8 +124,9 @@ fit2$where  #which row at which nodeno
 ?fit2$where
 students2[1:5,]
 cbind(students2, nodeno=rownames(fit2$frame) [ fit2$where])
-pfit=  prune(fit2, cp=0.1) # from cptable  
+pfit=  prune(fit2, cp=0.077) # from cptable  
 pfit
+rpart.plot(pfit)
 #--------------------------------------------------------
 
 #add column with 3 classes and numeric and logical
@@ -151,9 +152,8 @@ fit3b = rpart(play ~ ., data=students3, minsplit=4, minbucket=2) #control= rpart
 fit3b
 rpart.plot::rpart.plot(fit3b, main='Classification Tree', cex=.6, type=3, extra=104, nn=T)
 rpart.plot::prp(fit3b)
-rattle::fancyRpartPlot(model = fit3b, main = "Final CART Regression Tree", cex = 0.6, sub = "Model3")
-prp(fit3b,box.col=c("Grey", "Orange")[fit3$frame$yval],varlen=0,
-    faclen=0, type=1,extra=4,under=TRUE, tweak=1.2)
+#rattle::fancyRpartPlot(model = fit3b, main = "Final CART Regression Tree", cex = 0.6, sub = "Model3")
+prp(fit3b,box.col=c("Grey", "Orange")[fit3$frame$yval],varlen=0,faclen=0, type=1,extra=4,under=TRUE, tweak=1.2)
 
 
 #Lets see CP
@@ -185,3 +185,4 @@ predict(fit3b.pruned, newdata = testdata1 )
 
 
 # now practise with Marketing Data
+

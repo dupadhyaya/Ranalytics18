@@ -1,17 +1,16 @@
 #Clustering - Simple dataset - Marks in 2 subjects
 
-
 A=c(1,1.5,3,5,3.5,4.5,3.5)
 B=c(1,2,4,7,5,5,4.5)
 marks=data.frame(A,B)
 marks
 ?kmeans
-(c1 = kmeans(marks, 2))  #??
-
+(c1 = kmeans(marks, 3))  #??
+c1$iter
 cbind(marks, c1$cluster)
 plot(marks, pch=10,col = c1$cluster)
 c1$centers
-points(c1$centers, col = 1:2, pch = 8, cex = 2)
+points(c1$centers, col = 1:3, pch = 8, cex = 5)
 
 c1$iter #?
 
@@ -36,6 +35,7 @@ c2a
 c2a$iter
 
 library(dplyr)
+marks
 marks %>% group_by(c2a$cluster) %>% summarise_all(funs(sum, mean, median, n()))
 
 

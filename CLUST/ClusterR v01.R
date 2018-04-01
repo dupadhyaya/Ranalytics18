@@ -39,10 +39,14 @@ k1$withinss
 ###Fetch the cluster for each obs
 #k1$cluster
 k1$cluster
+k1$cluster[9000:9800]
+table(k1$cluster)
+k1$size
 data_clus_2 <- cust_data[ k1$cluster == 2,]
 data_clus_2$Cust_id
 # Write CSV
 write.csv(data_clus_2[,1], file = "./data/data_clus_2.csv")
 
-
-
+names(mtcars)
+colnames(mtcars)
+rownames(mtcars)

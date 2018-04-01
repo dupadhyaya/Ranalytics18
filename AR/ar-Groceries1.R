@@ -22,10 +22,11 @@ library(arulesViz)
 library(datasets)
 
 # Load the data set : Items set structure - List Type; Cannot see properly
-data(Groceries)
-str(Groceries)
+Groceries
+#str(Groceries)
 head(Groceries)
 inspect(Groceries[1:5])
+
 # Create an item frequency plot for the top 20 items
 itemFrequencyPlot(Groceries,topN=20,type="absolute")
 #set the min support to 0.001 , minimum conf of 0.8 ; show top 5 rules

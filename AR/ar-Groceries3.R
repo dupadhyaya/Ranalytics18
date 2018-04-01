@@ -8,11 +8,17 @@ data('Groceries')
 str(Groceries)
 Groceries
 inspect(Groceries[1:5])  #view
-LIST(Groceries[1:5])  #another view
+
+LIST(Groceries[1:6])  #another view
+
 #Lets Apply Apriori Algorithm
-frequentItems <- eclat (Groceries, parameter = list(supp = 0.005, minlen= 1, maxlen = 15)) 
+frequentItems <- eclat (Groceries, parameter = list(supp = 0.005, minlen= 1, maxlen = 5)) 
+inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:5])
+#support(A&B) = n(A&B)/ N
+
 frequentItems
 inspect(frequentItems[1:5])
+inspect(frequentItems)
 
 ?eclat
 itemFrequencyPlot (Groceries,topN = 15,type="absolute")
@@ -21,12 +27,12 @@ abline(h=0.2)
 
 rules <- arules::apriori(Groceries, parameter = list(supp = 0.005, conf = 0.5))
 rules
+#write.csv(inspect(rules[1:5]), 'rules.csv')
 inspect(rules[1:5])
 quality(rules) 
 head(quality(rules))
 options (digits=2)
 inspect (rules[1:5])
-
 rulesc <- sort (rules, by="confidence", decreasing=TRUE)
 inspect(rulesc[1:5])
 rulesl <- sort (rules, by="lift", decreasing=TRUE)
@@ -45,7 +51,8 @@ sum(is.redundant(rulesNR))  #ok now
 
 #Another method
 #redundant <- which (colSums (is.subset (rules, rules)) > 1) 
-#redundant
+#redupndant
+
 
 
 #Find what factors influenced an event ‘X’
@@ -54,12 +61,10 @@ inspect(rules[1:15])
 
 #Find out what events were influenced by a given event
 
-rules <- apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.15,minlen=2), appearance = list (default="rhs",lhs="whole milk"), control = list (verbose=F)) 
-inspect(rules[1:5])
+rules <- apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.05,minlen=2), appearance = list (default="rhs",lhs="whole milk"), control = list (verbose=F)) 
+inspect(rules)
 #Visualizing The Rules -----
+plot (rules, measure=c("support", "lift"), shading="confidence")
 
-
-plot (rules[1:5], measure=c("support", "lift"), shading="confidence")
-
-plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
+#plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
 
