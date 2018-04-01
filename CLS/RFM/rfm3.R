@@ -1,6 +1,7 @@
 # RFM 2
 
 library(didrooRFM)
+?didrooRFM
 #part 1
 TransNo = c('10','11','12','13')
 CustomerID = c('Cust1','Cust2', 'Cust3','Cust2')
@@ -8,7 +9,7 @@ DateofPurch = as.Date(c('2010-11-1','2008-3-25','2017-3-25', '2016-3-25'))
 Amount = c(1000,500, 600, 700)
 customerData = data.frame(TransNo,CustomerID,DateofPurch,Amount)
 customerData
-
+?didrooRFM
 rfm1 = findRFM(customerData)
 rfm1$FinalScore
 rfm1[5:16]
@@ -32,10 +33,14 @@ head(customerdata)
 str(customerdata)
 #customerdat - "TransNo","CustomerID","DateofPurch","Amount"
 names(customerdata)
+data()
 customerdata = customerdata[,c('TransNo','custid', 'sales.dates', 'sales.value')]
-head(customerdata)
+dim(customerdata)
+head(customerdata,100)
 dim(customerdata)
 # Create Customer Data
-# 
+library(didrooRFM)
+
+
 findRFM(customerdata, recencyWeight = 4, frequencyWeight = 4,
         monetoryWeight = 4)

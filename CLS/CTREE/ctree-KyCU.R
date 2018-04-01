@@ -29,4 +29,5 @@ plot(fit2, main="Conditional Inference Tree for cu.summary - DV numeric")
 
 library("strucchange")
 strucchange::sctest(fit2, node = 1)
-strucchange::sctest(airct, node = c(2,7,4,9))
+strucchange::sctest(fit2, node = c(2,7,4,9))
+

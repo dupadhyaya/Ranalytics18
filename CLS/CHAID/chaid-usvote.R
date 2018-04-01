@@ -1,10 +1,12 @@
 #CHAID1
 
-### fit tree to subsample
-
+### fit tree to
+###  subsample
+USvote
 library(CHAID)
 set.seed(290875)
 data(USvote)
+attach(USvote)
 ?USvote
 head(USvote)
 str(USvote)

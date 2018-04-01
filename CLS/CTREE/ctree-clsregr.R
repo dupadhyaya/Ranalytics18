@@ -24,7 +24,7 @@ nodeids(airct, terminal=T)
 nodeids(airct, from=2, terminal=T)
 nodeids(airct,1,5)
 
-
+range(airq$Ozone)
 #party
 #party::ctree(Ozone ~ ., data = airq)
 head(iris)

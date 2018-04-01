@@ -1,5 +1,5 @@
 # World Cloud 2
-
+library(wordcloud)
 # Read the text file from internet
 filePath = "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
 text = readLines(filePath)
