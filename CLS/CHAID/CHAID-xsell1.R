@@ -4,6 +4,7 @@
 install.packages("CHAID", repos="http://R-Forge.R-project.org")
 library(CHAID)
 library(help=CHAID)
+#install.packages("CHAID",   repos="http://R-Forge.R-project.org")
 termCrosssell1 <- read.csv(file="http://dni-institute.in/blogs/wp-content/uploads/2016/07/termCrosssell.csv")
 
 termCrosssell = termCrosssell1

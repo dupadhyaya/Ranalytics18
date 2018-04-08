@@ -1,8 +1,6 @@
 # Logistic Regression
 # Import the dataset
 
-setwd("d:\\Users\\XPS\\Desktop\\Logistic Regression")
-
 dataset = read.csv('./regr/Social_Network_Ads.csv')
 #dataset = dataset[, 3:5]
 View(dataset)
@@ -10,6 +8,7 @@ View(dataset)
 
 #install.packages('caTools')
 library(caTools)
+?caTools
 set.seed(2000)
 split = sample.split(dataset$Purchased, SplitRatio = 0.75)
 training_set = subset(dataset, split == TRUE)

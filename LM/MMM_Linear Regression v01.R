@@ -1,5 +1,4 @@
 #Set Working Directory
-setwd("E:\\HHges - Mkt Anyts\\Marketing Analytics\\Linear Regression - Mkt Mix Modeling")
 
 #Read the data file
 DefaultData<-read.csv("./regr/MMM_raw_data_v02.csv")
