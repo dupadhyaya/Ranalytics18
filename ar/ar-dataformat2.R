@@ -24,6 +24,7 @@ a_df
 trans3 <- as(a_df, "transactions") 
 inspect(trans3)
 as(trans3, "data.frame")
+image(trans3)
 
 # M3 : format basket
 my_data = paste("1,2","1","2,3", sep="\n");
@@ -43,6 +44,7 @@ a_df3
 trans4 <- as(split(a_df3[,"item"], a_df3[,"TID"]), "transactions")
 trans4
 inspect(trans4)
+image(trans4)
 ## Note: This is very slow for large datasets. It is much faster to 
 ## read transactions in this format from disk using read.transactions() 
 ## with format = "single".
@@ -62,6 +64,7 @@ a_list
 
 ## coerce into transactions
 trans1 <- as(a_list, "transactions")
+inspect(trans1)
 
 ## analyze transactions
 summary(trans1)
@@ -83,3 +86,4 @@ a_matrix
 trans2 <- as(a_matrix, "transactions")
 trans2
 inspect(trans2)
+

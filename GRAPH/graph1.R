@@ -53,57 +53,57 @@ hist(sales, bin=10)
 library(ggplot2)
 plot(x=Aadv1, y=Asales1)
 #ggplot(data=df1 + aes(x=df1$Aadv1, y=df1$Acoy1)) + geom_point()
-ggplot(data=mtcars + aes(x=wt, y=mpg)) + geom_point()
-p1 <- ggplot(df1, aes(Asales1, Aadv1)) +
-  geom_point(data = df1[Acoy1 == 'coy1',]) 
+ggplot(data=mtcars) + aes(x=wt, y=mpg) + geom_point()
+names(df1)
+p1 <- ggplot(df1, aes(sales, adtv)) +
+  geom_point(data = df1[coy == 'coy1',]) 
 p1
 
 
 
-qplot(Asales1, geom="histogram", bins=12)
+qplot(df1$sales, geom="histogram", bins=12)
 ?qplot
-ggplot(data=df1) + aes(y=Asales1, x=Aadv1, + geom_point(binwidth=5, colour="black", fill="white") )
+names(df1)
+ggplot(data=df1) + aes(y=sales, x=adtv, + geom_point(binwidth=5, colour="black", fill="white") )  #not working
 df1
 
 
-               
-               
 #Histogram
-hist(Asales1)
-hist(Asales1, freq=F, col=1:12, breaks=12)
+hist(df1$sales)
+hist(df1$sales, freq=F, col=1:12, breaks=12)
 ?hist
-lines(density(Asales1), lwd=2, col='red')
+lines(density(df1$sales), lwd=2, col='red')
 
 str(df1)
 #box plots
-boxplot(Asales1)
-boxplot(df1$Asales1 ~ df1$Acoy1 + df1$Aloc1)
+boxplot(df1$sales)
+boxplot(df1$sales ~ df1$coy + df1$loc)
 
-boxplot(df1$Asales1 ~ df1$Acoy1, varwidth=T, col=1:3)
+boxplot(df1$sales ~ df1$coy, varwidth=T, col=1:3)
 
 
 
 #Dot Chart
-dotchart(df1$Asales1)  #not effective here
-dotchart(df1$Asales1, group=df1$Acoy1, color=df1$Acoy1, pch=10:13)  
+dotchart(df1$sales)  #not effective here
+dotchart(df1$sales, group=df1$coy, color=df1$coy, pch=10:13)  
 
 
 
 #add another column and convert to dataframe
 names(df1)
 head(df1)
-aggregate(df1$Asales1, by=list(Acoy1), FUN=mean)
-(adf1 = aggregate(formula = Asales1 ~ Acoy1, data=df1, FUN=mean))
+aggregate(df1$sales, by=list(coy), FUN=mean)
+(adf1 = aggregate(formula = sales ~ coy, data=df1, FUN=mean))
 
-pie(adf1$Asales1, label=adf1$Acoy1)
-barplot(adf1$Asales1,names.arg=adf1$Acoy1)
-abline(h=adf1[adf1$Acoy1=='coy1',]$Asales1)
+pie(adf1$sales, label=adf1$coy)
+barplot(adf1$sales,names.arg=adf1$coy)
+abline(h=adf1[adf1$coy=='coy1',]$sales)
 
-barplot(adf1$Asales1,names.arg=adf1$Acoy1, horiz = T)
-abline(v=adf1[adf1$Acoy1=='coy1',]$Asales1)
+barplot(adf1$sales,names.arg=adf1$coy, horiz = T)
+abline(v=adf1[adf1$coy=='coy1',]$sales)
 
-barplot(adf1$Asales1,names.arg=adf1$Acoy1, beside=T, legend=rownames(adf1), col=1:3)
-abline(v=adf1[adf1$Acoy1=='coy1',]$Asales1)
+barplot(adf1$sales,names.arg=adf1$coy, beside=T, legend=rownames(adf1), col=1:3)
+abline(v=adf1[adf1$coy=='coy1',]$sales)
 
 
 

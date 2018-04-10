@@ -1,0 +1,10 @@
+"","lhs","rhs","support","confidence","lift","count"
+"1","{Mutual Funds,NRI Banking,Savings Account}","{Stocks}",0.00704225352112676,1,6.76190476190476,3
+"2","{Mutual Funds,Savings Account,Stocks}","{NRI Banking}",0.00704225352112676,1,5.75675675675676,3
+"3","{NRI Banking,Savings Account,Stocks}","{Mutual Funds}",0.00704225352112676,1,5.325,3
+"4","{Mutual Funds,NRI Banking,Stocks}","{Savings Account}",0.00704225352112676,0.75,3.99375,3
+"5","{Car Insurance,PPF}","{NPS}",0.00938967136150235,0.666666666666667,3.46341463414634,4
+"6","{NRI Banking,PPF}","{General Insurance}",0.0117370892018779,0.5,3.08695652173913,5
+"7","{Debit Card,PPF}","{General Insurance}",0.00704225352112676,0.5,3.08695652173913,3
+"8","{Bonds,NPS}","{Mobile Banking}",0.0117370892018779,0.5,3,5
+"9","{Mobile Banking,Stocks}","{NPS}",0.0117370892018779,0.5,2.59756097560976,5

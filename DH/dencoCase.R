@@ -1,36 +1,53 @@
 # Case Study - Denco  
 
-#sales1 = read.csv("./data/denco.csv")
-#sales1 = read.csv(file.choose())
+sales1 = read.csv("./data/denco.csv")
+str(sales1)
+
+
+sales2 = read.csv(file.choose())
+str(sales2)
+
+#install.packages('gsheet')
+library(gsheet)
+url = "https://docs.google.com/spreadsheets/d/1h7HU0X_Q4T5h5D1Q36qoK40Tplz94x_HZYHOJJC_edU/edit#gid=216113907"
+sales3 = as.data.frame(gsheet2tbl(url))
+str(sales3)
+
 
 #using gsheet
 library(gsheet)
-url = 'https://docs.google.com/spreadsheets/d/1PWWoMqE5o3ChwJbpexeeYkW6p4BHL9hubVb1fkKSBgA/edit#gid=216113907'
 denco2 = as.data.frame(gsheet2tbl(url))
 str(denco2)
 
 #head(sales1,n=7)
 #names(sales1)
 
-sales = denco2  # keeping a backup
+sales = sales1  # keeping a backup
+str(sales)
 class(sales)
+str(sales)
 ?summary
 summary(sales)
 
 str(sales)
-dim(sales)
+dim(sales) #dimensios of DF rows & colnum
 unique(sales$custname)
 length(unique(sales$custname))
 length(unique(sales$region ))
 
-aggregate(sales$revenue , by=list(sales$custname), FUN=max)
+# aggregation
+aggregate(sales$revenue , by=list(sales$custname), FUN=sum)
 df1 = aggregate(sales$revenue , by=list(sales$custname), FUN=sum)
 head(df1)
 str(df1)
 
 df1=df1[order(df1$x, decreasing=TRUE),]
-head(df1,5)
+head(df1,10)
+
 head(df1[order(df1$x, decreasing=TRUE),], 5)
+
+aggregate(sales$cost, by=list(sales$region), FUN=mean)
+aggregate(margin ~ region, data=sales, FUN=mean)
 
 #Aggregate Formula
 (df2 = aggregate(revenue ~ custname + region, data=sales, FUN=sum))
@@ -49,7 +66,7 @@ names(sales)
 
 library(dplyr)
 
-sales %>% filter(margin > 1000000) %>% arrange(region, desc(revenue))
+sales %>% filter(margin > 10000) %>% arrange(region, desc(revenue))
 filter(sales, margin > 1000000)
 
 sales %>% filter(region == '01-East' & revenue > 400000) %>% select(partnum, region, revenue)
@@ -74,7 +91,10 @@ head(df5)
 
 # Freqency --------
 names(sales)
-table(sales$custname)
+t1=table(sales$custname)
+head(t1)
+t2= sort(t1,decreasing=T )
+head(t2)
 head(sort(table(sales$custname), decreasing=T), n=10)
 tail(sort(table(sales$custname), decreasing=T), n=10)
 
@@ -112,6 +132,8 @@ sales %>% dplyr::group_by(partnum) %>% dplyr::summarise(n = n()) %>% dplyr::arra
 
 # which parts have highest Profit : partno - sum(profit)
 names(sales)
-df4a = aggregate(margin ~ partnum, data=sales, FUN=sum)
+df4a = aggregate(margin ~ partnum, data=sales, FUN=first)
+aggregate(margin ~ partnum, data=sales, FUN=sum)
 head(df4a)
 
+sales %>% group_by (partnum) %>% select(partnum, margin) %>% arrange(desc(margin))

@@ -1,10 +1,11 @@
 # Graph 1
 library(ggplot2)
+sales
 salesg = sales
-ggplot(data = salesg, aes(x=sdate,y=pies)) +
-  geom_point() +
-  labs( title ='Sales data of Pies', x='Date', y='Sales')
-
+ggplot(data = salesg)+ aes(x=sdate,y=pies) +
+  geom_point() + labs( title ='Sales data of Pies', x='Date', y='Sales')
+# not working
+salesg
 #Stepwise
 g1= ggplot(data = salesg, aes(x=sdate,y=pies)) 
 g2= g1+ geom_point()

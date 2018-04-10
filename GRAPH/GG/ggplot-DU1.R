@@ -1,11 +1,11 @@
 #ggplot
 names(df1)
-range(df1$Asales1)
+range(df1$sales)
 
 #Histogram
-ggplot(df1, aes(x = df1$Asales1)) + geom_histogram()
+ggplot(df1, aes(x = df1$sales)) + geom_histogram()
 
-g1= ggplot(df1, aes(x = df1$Asales1))
+g1= ggplot(df1, aes(x = df1$sales))
 g2=geom_histogram()
 (g1+g2)
 g2=geom_bar(color='green')
