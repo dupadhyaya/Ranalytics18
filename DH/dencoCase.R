@@ -46,8 +46,10 @@ head(df1,10)
 
 head(df1[order(df1$x, decreasing=TRUE),], 5)
 
-aggregate(sales$cost, by=list(sales$region), FUN=mean)
-aggregate(margin ~ region, data=sales, FUN=mean)
+aggregate(sales$revenue, by=list(sales$region), FUN=mean)
+df2= aggregate(formula=revenue ~ region, data=sales, FUN=sum)
+df2[order(df2$revenue, decreasing=F),]
+
 
 #Aggregate Formula
 (df2 = aggregate(revenue ~ custname + region, data=sales, FUN=sum))
@@ -72,7 +74,7 @@ filter(sales, margin > 1000000)
 sales %>% filter(region == '01-East' & revenue > 400000) %>% select(partnum, region, revenue)
 
 names(sales)
-sales %>% group_by(region) %>% 
+sales %>% group_by(custname) %>% 
   summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue))
 
 
@@ -82,7 +84,7 @@ dt2 = dt1[, sum(revenue), by=custname]
 names(dt2)
 dt1[, dt1[, sum(revenue), by=custname]]
 
-dt1[, order(, decreasing = T)]
+#dt1[, order( decreasing = T)]
 
 # Select
 library(sqldf)
@@ -92,6 +94,8 @@ head(df5)
 # Freqency --------
 names(sales)
 t1=table(sales$custname)
+class(t1)
+length(t1)
 head(t1)
 t2= sort(t1,decreasing=T )
 head(t2)
@@ -121,7 +125,10 @@ head(df2a[order(-df2a$freq),])
 # Summarise by Part Num
 
 df3a= aggregate(sales$revenue, by=list(sales$partnum), FUN=sum)
-df3a[order(-df3a$x),][1:5,]
+head(df3a)
+str(df3a)
+df3a[order(-df3a$x),][1:6,]
+head(df3a[order(-df3a$x),])
 
 df3b = aggregate(revenue ~ partnum, data=sales, FUN=sum)
 head(df3b)
@@ -132,8 +139,9 @@ sales %>% dplyr::group_by(partnum) %>% dplyr::summarise(n = n()) %>% dplyr::arra
 
 # which parts have highest Profit : partno - sum(profit)
 names(sales)
-df4a = aggregate(margin ~ partnum, data=sales, FUN=first)
+df4a = aggregate(margin ~ partnum, data=sales, FUN=sum)
 aggregate(margin ~ partnum, data=sales, FUN=sum)
 head(df4a)
 
 sales %>% group_by (partnum) %>% select(partnum, margin) %>% arrange(desc(margin))
+

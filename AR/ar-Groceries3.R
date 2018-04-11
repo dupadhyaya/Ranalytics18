@@ -13,6 +13,8 @@ LIST(Groceries[1:6])  #another view
 
 #Lets Apply Apriori Algorithm
 frequentItems <- eclat (Groceries, parameter = list(supp = 0.005, minlen= 1, maxlen = 5)) 
+frequentItems
+inspect(frequentItems[1:5])
 inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:5])
 #support(A&B) = n(A&B)/ N
 
@@ -21,11 +23,11 @@ inspect(frequentItems[1:5])
 inspect(frequentItems)
 
 ?eclat
-itemFrequencyPlot (Groceries,topN = 15,type="absolute")
+itemFrequencyPlot(Groceries,topN = 15,type="absolute")
 itemFrequencyPlot(Groceries, topN = 10, type='relative')
 abline(h=0.2)
 
-rules <- arules::apriori(Groceries, parameter = list(supp = 0.005, conf = 0.5))
+rules <- apriori(Groceries, parameter = list(supp = 0.005, conf = 0.5))
 rules
 #write.csv(inspect(rules[1:5]), 'rules.csv')
 inspect(rules[1:5])

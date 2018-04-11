@@ -1,17 +1,23 @@
 # Plot using Business Data
+df1
 #use df1 : load(file='./data/ba.Rdata')
 # Data
-
+load(file='./data/badata.Rdata')
+df1
+attach(df1)
 #scatter Plot
 plot(adtv, sales)
-plot(x=adtv, y=adweb, pch=10, type='p', col='green')
+plot(x=adtv, y=adweb, pch=15, type='p', col='yellow')
+
 abline(lm(adweb ~ adtv))
 
-car::scatterplot(sales ~ ., data=df1, legend.columns=T)
+car::scatterplot(sales ~ coy, data=df1, legend.columns=T)
 car::scatterplot(sales ~ adtv, data=df1, legend.columns=T)
 
 car::scatterplotMatrix(~ sales + adtv + adweb, data=df1)
-
+plot(sales, adtv)
+plot(sales, adweb)
+plot(adtv, adweb)
 pairs( ~ sales + adtv + adweb, data=df1)
 
 
@@ -70,7 +76,8 @@ df1
 
 #Histogram
 hist(df1$sales)
-hist(df1$sales, freq=F, col=1:12, breaks=12)
+
+hist(df1$sales, freq=F, col=1:12, breaks=5)
 ?hist
 lines(density(df1$sales), lwd=2, col='red')
 

@@ -1,0 +1,19 @@
+Please find your assignment. Submission Deadline : ASAP 
+
+Assignment:
+
+Hope you are aware of Chit Funds available in market, where a group of people pool in some money and the person who win the lottery every month takes the lump some that particular month and pay back monthly a pre-fixed amount .
+
+So for the complex cash flows & returns, build a R program to get the IRR(Internal Rate of Return) for the investment.
+
+Sample chit to work on :
+
+Duration : 40 Months
+
+Instalment : 5000/- Per month till he lift the chit from group. After he lift - he start paying 7000/-
+
+Case 1: Customer lift the chit in 4th Month : He paid 3X5000 + 37X7000 = 274000/- But Customer offered an yield of 203000/-
+
+Case 2: Customer lift the chit in the 40th Month : He paid 39X5000 + 1X7000 = 202000/- Customer offered an yield of 239000/-
+
+Attaching the Chit Fund details for reference- Reach me @ 8800446604 for any queries

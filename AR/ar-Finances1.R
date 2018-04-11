@@ -7,31 +7,29 @@ transactionID = sample(1:500, 1000, replace=T)
 transactionID
 
 finproducts = c('Mutual Funds', 'NPS', 'Savings Account', 'PPF', 'FD', 'Bonds', 'Stocks', 'General Insurance', 'NRI Banking', 'Car Insurance', 'Debit Card', 'Credit Card', 'Mobile Banking')
+length(finproducts)
 item = sample(finproducts,1000, replace=T)
 item
-orders <- data.frame(transactionID, item)
+orders = data.frame(transactionID, item)
 head(orders)
 
 write.csv(orders, "./data/fintransactions.csv")
 
-
-
 ordertrans <- arules::read.transactions(
-  file = "./data/fintransactions.csv",
-  format = "single",
-  sep = ",",
-  cols=c("transactionID","item"),
-  rm.duplicates = T
+  file = "./data/fintransactions.csv",  format = "single",
+  sep = ",",  cols=c("transactionID","item"),  rm.duplicates = T
 )
 inspect(ordertrans[1:5])
+ordertrans
 summary(ordertrans)
 str(ordertrans)
 head(ordertrans)
 
 
 #find frequent item set
-frequentItems <- eclat (ordertrans, parameter = list(supp = 0.005, minlen= 1, maxlen = 5)) 
-inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:5])
+frequentItems <- eclat (ordertrans, parameter = list(supp = 0.005, minlen= 2, maxlen = 5)) 
+inspect(frequentItems[1:10])
+inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:15])
 #support(A&B) = n(A&B)/ N
 
 frequentItems
@@ -44,7 +42,7 @@ abline(h=0.15)
 
 rules1 <- arules::apriori(ordertrans, parameter = list(supp = 0.005, conf = 0.5))
 rules1
-#write.csv(inspect(rules[1:5]), 'rules.csv')
+write.csv(inspect(rules1, 'rules.csv'))
 inspect(rules1[1:5])
 quality(rules1) 
 head(quality(rules1))
@@ -73,6 +71,7 @@ rules3 = apriori(ordertrans, parameter=list(support=0.002))  #use default values
 is.redundant(rules3)
 sum(is.redundant(rules3))
 (redundant = which(is.redundant(rules3)))
+inspect(rules3[redundant])
 length(redundant)
 inspect(rules3[redundant][1:10])
 rulesNR = rules3[-redundant] 
@@ -129,7 +128,7 @@ inspect(rules1)
 plot(rules2, shading="order", control=list(main = "Two-key plot"), col=1:4)
 inspect(rules2)
 
-sel = plot(rules1, measure=c("support", "lift"), shading="confidence", engine='interactive') #use mouse to do selection
+sel = plot(rules1, measure=c("support", "confidence"), shading="lift", engine='interactive') #use mouse to do selection
 #https://cran.r-project.org/web/packages/arulesViz/vignettes/arulesViz.pdf
 
 
