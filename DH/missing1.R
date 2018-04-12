@@ -2,14 +2,23 @@
 
 
 v1 = c(1,2,NA,NA,5)
+v1=NULL
+v1
 is.na(v1)
+sum(is.na(v1))
 mean(v1)
 mean(v1, na.rm=T)
 v1a = na.omit(v1)
+v1a
 sum(v1a)
 ?na.omit
 anyNA(v1)
 #all
+v1
+mean(v1, na.rm=T)
+v1[c(3,4)]
+v1[is.na(v1)]
+
 v1[is.na(v1)] = mean(v1, na.rm=T)
 v1
 
@@ -17,11 +26,14 @@ v1
 #denoted by NA
 library(VIM)
 data(sleep, package='VIM')
+
 head(sleep)
 dim(sleep)
-complete.cases(sleep)
+complete.cases(sleep) #all complete rows without any missing values
+sum(!complete.cases(sleep))
 sleep[complete.cases(sleep),]
 sleep[!complete.cases(sleep),]
+
 is.na(sleep$Dream)
 sum(is.na(sleep$Dream))
 mean(is.na(sleep$Dream))
@@ -29,9 +41,12 @@ mean(is.na(sleep$Dream))
 sum(complete.cases(sleep))
 mean(complete.cases(sleep))
 42/62
+
 sum(is.na(sleep))
+names(sleep)
 colSums(is.na(sleep))
 rowSums(is.na(sleep))
+head(sleep)
 is.na(sleep[1:3,])
 head(sleep)
 #Tabulate
@@ -73,4 +88,4 @@ summary(fit)
 
 imp = mice::mice(sleep, seed=1234)
 ?mice
-
+ 

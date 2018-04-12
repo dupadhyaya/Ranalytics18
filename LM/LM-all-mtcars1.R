@@ -4,7 +4,6 @@ library(olsrr)
 model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
 k <- ols_step_all_possible(model)
 plot(k)
-plot(k, which=1:2) # not working
-
 k
-?plot
+summary(lm(mpg ~ wt, data=mtcars))
+summary(lm(mpg ~ wt+ hp, data=mtcars))

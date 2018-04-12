@@ -1,6 +1,7 @@
 # Logistic Regression
 
 subscribe = read.csv('./data/subscribe.csv')
+
 summary(subscribe)
 table(subscribe$subyn)
 fitlr = glm(subyn ~ age, data=subscribe, family= binomial())

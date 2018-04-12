@@ -78,3 +78,50 @@ allstocks %>% group_by(Stock) %>%   sample_n(2)
 
 allstocks %>% group_by(Stock) %>% tally(Qty) %>%  top_n(1)
 allstocks %>% group_by(Stock, format(Date,'%Y')) %>% top_n(2, Turnover)
+
+
+# Linear Modeling
+names(ICICI)
+df= cbind(ICICI[2],SBI[2] )
+names(df) = c('icici','sbi')
+head(df)
+plot(df)
+fit = lm(icici ~ sbi, data=df)
+summary(fit)
+new1 = data.frame(sbi=200)
+(p1=predict(fit,new=new1, interval='confidence' ))
+cbind(new1, p1)
+plot(x=df$sbi, y=residuals(fit))  #Linearity
+qqnorm(residuals(fit))
+qqline(residuals(fit))
+
+library(car)
+#Multiple LM
+df1 = cbind(ICICI[2],SBI[2],PNB[2] )
+names(df1) = c('icici','sbi','pnb')
+head(df1)
+#No Plots
+pairs(df1)
+fit1 = lm(icici ~ sbi + pnb, data=df1)
+summary(fit1)
+summary(fit1)$r.squared
+summary(fit1)$adj.r.squared
+new2= data.frame(sbi=c(200,300), pnb=c(250,350))
+p2=predict(fit1, new=new2, interval='confidence')
+cbind(new2, p2)
+
+crPlots(fit1)
+vif(fit1)# variance inflation factors 
+sqrt(vif(fit1)) > 2 # problem? Use only 1 variable
+durbinWatsonTest(fit1)
+car::outlierTest(fit1) # Bonferonni p-value for most extreme obs
+car::qqPlot(fit1, main="QQ Plot")
+library(gvlma)
+gvmodel <- gvlma(fit1) 
+summary(gvmodel)
+
+av.Plots(fit1)
+?car::av.Plots
+car::influencePlot(fit1,	id.method="identify", main="Influence Plot", sub="Circle size is proportial to Cook's Distance" )
+car::ncvTest(fit1)
+car::spreadLevelPlot(fit1)

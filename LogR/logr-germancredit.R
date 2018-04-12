@@ -3,23 +3,25 @@
 #
 library(caret)
 data(GermanCredit)
+?GermanCredit
 str(GermanCredit)
 Train <- createDataPartition(GermanCredit$Class, p=0.6, list=FALSE)
 training <- GermanCredit[ Train, ]
 testing <- GermanCredit[ -Train, ]
 
+#Model
+mod_fit <- train(Class ~ Age + ForeignWorker + Property.RealEstate + Housing.Own + CreditHistory.Critical,  data=training, method="glm", family="binomial")
+
 exp(coef(mod_fit$finalModel))
-##            (Intercept)                    Age          ForeignWorker 
-##              1.1606762              1.0140593              0.5714748 
-##    Property.RealEstate            Housing.Own CreditHistory.Critical 
-##              1.8214566              1.6586940              2.5943711
+
 predict(mod_fit, newdata=testing)
 predict(mod_fit, newdata=testing, type="prob")
 
-mod_fit_one <- glm(Class ~ Age + ForeignWorker + Property.RealEstate + Housing.Own + 
-                     CreditHistory.Critical, data=training, family="binomial")
+mod_fit_one <- glm(Class ~ Age + ForeignWorker + Property.RealEstate + Housing.Own +   CreditHistory.Critical, data=training, family="binomial")
+predict(mod_fit_one, newdata=testing)
 
 mod_fit_two <- glm(Class ~ Age + ForeignWorker, data=training, family="binomial")
+
 
 anova(mod_fit_one, mod_fit_two, test ="Chisq")
 
@@ -46,8 +48,7 @@ regTermTest(mod_fit_one, "CreditHistory.Critical")
 ##     Housing.Own + CreditHistory.Critical, family = "binomial", 
 ##     data = training)
 ## F =  16.67828  on  1  and  594  df: p= 5.0357e-05
-Variable Importance
-To assess the relative importance of individual predictors in the model, we can also look at the absolute value of the t-statistic for each model parameter. This technique is utilized by the varImp function in the caret package for general and generalized linear models.
+#Variable ImportanceTo assess the relative importance of individual predictors in the model, we can also look at the absolute value of the t-statistic for each model parameter. This technique is utilized by the varImp function in the caret package for general and generalized linear models.
 
 varImp(mod_fit)
 ## glm variable importance

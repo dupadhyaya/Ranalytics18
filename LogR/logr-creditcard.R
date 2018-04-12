@@ -10,9 +10,9 @@ attach(Default)
 str(Default)
 Default
 dim(Default)
-write.csv(Default,'./data/cclogr.csv')
+#write.csv(Default,'./data/cclogr.csv')
 #Data Structures
-#
+
 head(Default)
 str(Default)
 summary(Default)

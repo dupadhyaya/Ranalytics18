@@ -59,7 +59,7 @@ mlrmodel1 = lm( data=omni, formula = sales ~ price + promotion)
 
 #Plots of the Modle
 plot(mlrmodel1,1)  # no pattern, equal variance
-plot(mlrmodel1,2)  # Residues are normally distributed
+plot(mlrmodel1,2)  # Residuals are normally distributed
 plot(mlrmodel1,3)
 plot(mlrmodel1,4)  # tells outliers which affect model
 

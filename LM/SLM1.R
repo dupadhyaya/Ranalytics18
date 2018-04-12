@@ -61,6 +61,8 @@ range(df$X)  #min to max value of X: area
 
 # Create a Data Frame with sample values of X
 
+
+
 #sample data for X for prediction, should be between the range of X values
 #prediction data should be in the form of Data Frame
 

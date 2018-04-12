@@ -29,6 +29,7 @@ df = df3
 
 mean(df$X); mean(df$Y)
 sum(df$X); sum(df$Y)
+sd(df$X) ; var(df$Y)
 cov(df$X,df$Y); cov(df$Y,df$X)
 cor(df$X,df$Y) ; cor(df$Y,df$X)
 #cor.test(df$X,df$Y)
@@ -51,6 +52,7 @@ names(fit1)  #output variables names of LM
 coef(fit1)
 #terms(fit1)
 coef(fit1)[2]  # slope or beta
+fitted(fit1)
 #combine the data with Ypredicted, errors
 cbind(df, fitted(fit1), fitted(fit1)- df$Y, residuals(fit1))
 
@@ -61,18 +63,21 @@ cbind(df, fitted(fit1), fitted(fit1)- df$Y, residuals(fit1))
 fitted(fit1)
 cbind(df, fitted(fit1))  # combine data with predicted values
 range(df$X)  #min to max value of X: area
+
+
 new1 = data.frame(X=c(1.5,2,3,4,5)) #sample data for X for prediction, should be between the range of X values
 new1 #prediction data should be inform of Data Frame
 
 predict(fit1, newdata= new1) # Predict Function for 4 values of X
+
+
 #fitted(fit1) is equal to predict function using original X values
-df$X
-predictX = predict(fit1, newdata= data.frame(X=df$X))
-cbind(df, predictX, fitted(fit1))
+cbind(new1, predictedY = predict(fit1, newdata= new1) )
+
+
 
 library(forecast)
 accuracy(fit1)
-
 
 
 #Variation  # Errors in the model 
@@ -93,8 +98,11 @@ summary(fit1)$sigma  #Residual Std Error SD along the LM Line
 
 
 #Assumption : Graphical Analysis : IMP STEP
-plot(df$X, df$Y) # plot of Y & X
-plot(x=df$X, y=residuals(fit1)) # Linearity plot of residuals & X # No pattern for assumption that there is linearity betw X & Y
+plot(fit1, which=1)
+plot(fit1)
+
+# Linearity plot of residuals & X # No pattern for assumption that there is linearity betw X & Y
+
 abline(h=0)
 plot(residuals(fit1))
 
