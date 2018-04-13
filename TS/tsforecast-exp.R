@@ -1,51 +1,13 @@
-# Time Series
-#dataset
-AirPassengers
-class(AirPassengers)
-JohnsonJohnson
-nhtemp
-Nile
-sunspots
-ds = list(AirPassengers,JohnsonJohnson,nhtemp,Nile,sunspots)
-sapply(ds, class)
+# TS Forecasting with Exponential Smoothening
 
-
-
-# Sales TS Data
-sales = c(18, 33, 41, 7, 34, 35, 24, 25, 24, 21, 25, 20,
-           22, 31, 40, 29, 25, 21, 22, 54, 31, 25, 26, 35)
-tsales = ts(sales, start=c(2003, 1), frequency=12)
-tsales
-plot(tsales)
-start(tsales)
-end(tsales)
-frequency(tsales)
-(tsales.subset = window(tsales, start=c(2003, 5), end=c(2004, 6)))
-tsales.subset
-
-
-
-#SMA
-Nile
-
+# Simple exponential smoothing
 library(forecast)
-opar = par(no.readonly = T)
-par(mfrow=c(2,2))
-(ylim = range(Nile))
-plot(Nile, main='Original TS')
-head(Nile)
-head(ma(Nile,3))
-mean(Nile[1:3])
-(1120+1160+963)/3
-
-plot(ma(Nile,3), main='SMA k=3', ylim=ylim)
-plot(ma(Nile,7), main='SMA k=7', ylim=ylim)
-plot(ma(Nile,15),main='SMA k=15', ylim=ylim)
-par(opar)
-
-# Listing 15.4 - Simple exponential smoothing
-library(forecast)
-nhtemp
+?nhtemp
+#Mean annual Temp in Degree F from 1912 to 1917 : 60 observations
+# Types of Smoothening : (level, trend, seasoanal) : A- Additive, None, Z-automatice
+# Simple - Level  : model- ANN
+# double - level, slope (trend) : model : AAN
+# triple - level, slope(trend), seasonal : model - AAA
 par(mfrow=c(1,1))
 plot(nhtemp)
 (fitse = ets(nhtemp, model='ANN'))

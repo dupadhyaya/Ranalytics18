@@ -1,3 +1,6 @@
+#functions which allow you to specify the order in which year, month and day components appear in date
+
+
 library(lubridate)
 ymd("20170601")
 mdy("06-01-2017")
@@ -5,36 +8,33 @@ dmy("01/06/2017")
 dmy("01-06-2017")
 
 Sys.timezone(location=T)
-Sys.timezone(location=F)
-OlsonNames('Asia/Kolkatta')
+#282- Asia/Kolkata
+('Asia/Kolkatta')
 
-str(OlsonNames()) 
-
-arrive <- ymd_hms("2017-06-01 12:00:00", tz = "Asia/Calcutta")
-arrive
-
-leave <- ymd_hms("2017-06-05 14:00:00", tz = "Asia/Calcutta")
-leave
-
-arrive - leave
-leave- arrive
-
+(arrive <- ymd_hms("2018-04-09 14:00:00", tz = "Asia/Calcutta"))
+(leave <- ymd_hms("2018-04-14 13:00:00", tz = "Asia/Calcutta"))
+(leave2 <- ymd_hms("2018-04-14 13:00:00", tz = "GMT"))
+leave - arrive
+leave2- arrive
+#Check the seconds for arrival
 second(arrive)
-## 0
+#change seconds in arrival data
 second(arrive) <- 25
 arrive
-## "2011-06-04 12:00:25 NZST"
-second(arrive) <- 0
-wday(arrive)
-## 7
-wday(arrive, label = TRUE)
-## Sat
+
+#Check which date/day/month I arrived
+mday(arrive) # arrived on 9 of the month
+wday(arrive) ##  in no start from Sun-1, Mon-2 ..
+wday(arrive, label = TRUE)  # arrived on Mon
 month(arrive)
-mday(arrive)
-year(arrive)
-?month
 month(arrive, label=T, abbr=T)
-month(arrive, label=T)
+month(arrive, label=T, abbr=F)
+year(arrive)
+
+
+#practise upto here for IITG 
+#Students to look up other practise exercises for Data below
+
 
 meeting <- ymd_hms("2011-07-01 09:00:00", tz = "Pacific/Auckland")
 ## "2011-07-01 09:00:00 NZST"
@@ -101,6 +101,7 @@ wday(arrive)
 ## 5
 wday(arrive, label = TRUE)
 ## Thurs
+
 
 
 meeting <- ymd_hms("2017-07-01 09:00:00", tz = "Asia/Calcutta")

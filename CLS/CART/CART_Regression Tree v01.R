@@ -16,7 +16,6 @@ str(data)
 
 #Mer_Sales = read.csv(file = "./data/Predict Merchant_Sales v01.csv", header = T)
 
-
 Mer_Sales = data
 
 # Summarize the dataset
@@ -59,8 +58,10 @@ summary(object = Mer_SalesTestUncapped)
 head(Mer_SalesTrainUncapped)
 # Build a full model with default settings
 set.seed(123) # To ensure reproducibility of xerrors (cross validated errors while estimating complexity paramter for tree pruning)
-CartFullModel = rpart(formula = Annual_Sales ~ . , data = Mer_SalesTrainUncapped[,-1], method = "anova")
+summary(Mer_SalesTestUncapped)
+CartFullModel = rpart(Annual_Sales ~ . , data = Mer_SalesTrainUncapped[,-1], method = "anova")
 CartFullModel
+mean(Mer_SalesTrainUncapped$Annual_Sales)
 summary(object = CartFullModel)
 summary(Mer_SalesTestUncapped[,'Annual_Sales'])
 names(Mer_SalesTrainUncapped)
@@ -86,7 +87,7 @@ fancyRpartPlot(model = CartFullModel, main = "CartFullModel", cex = 0.6)
  # sum((InsDataTrainUncapped$Losses-mean(InsDataTrainUncapped$Losses))^2
  
 printcp(x = CartFullModel)
-ptree = prune(CartFullModel, cp=0.017)
+ptree = prune(CartFullModel, cp=0.01)
 rpart.plot(ptree)
 plotcp(CartFullModel)
 
