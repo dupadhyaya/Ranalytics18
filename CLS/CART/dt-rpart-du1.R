@@ -18,7 +18,7 @@ table(gender)
 
 #Variable- Buy : Decision
 set.seed(3000)
-buy = sample(x=c('Buy','NotBuy'), size=1000, replace=T, prob=c(.5,.5) )
+buy = sample(x=c('Buy','NotBuy'), size=1000, replace=T, prob=c(.49,.51) )
 head(buy)
 table(buy)
 prop.table(table(buy))
@@ -42,14 +42,13 @@ fit1 = rpart(buy ~ gender, data=students1,minsplit=4, minbucket=2)
 #'minsplit' is 20 and determines the minimal number of observations per leaf ('minbucket') 
 fit1  #print(fit1)
 
-
-
 library(rpart.plot)
 rpart.plot(fit1, main='Classification Tree', nn=T, type=4, extra=104)
+
 fit1
 predict(fit1, newdata = data.frame(gender='Female'))
 predict(fit1, newdata = data.frame(gender='Female'), type='class')
-predict(fit1, newdata = data.frame(gender=c('Male','Female','Male')))
+predict(fit1, newdata = data.frame(gender=c('Male','Female','Male')), type='class')
 
 #---- Part -2 Add another column
 set.seed(5000)
@@ -60,11 +59,12 @@ rownames(students2) = rollno
 head(students2)
 str(students2)
 prop.table(ftable(students2))
+#addmargins(prop.table(ftable(students2)))
 #write.csv(students2, 'dtdata.csv')
 
 # Model2
 #library(rpart)
-fit2 = rpart(buy ~ gender + married, data=students2, minsplit=2)
+fit2 = rpart(buy ~ gender + married, data=students2, minsplit=12)
 summary(fit2)
 fit2
 rpart.plot(fit2,type=2,extra=104, tweak=1.2, under=T, shadow=c('brown', 'green','red'), nn=T)
@@ -97,8 +97,6 @@ prp(fit2, type=2)
 predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='prob')
 predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='class')
 predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='vector')
-
-
 
 predict(fit2, newdata = data.frame(gender='Male', married='Married'))
 ?predict

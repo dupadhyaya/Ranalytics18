@@ -10,7 +10,7 @@ c1$iter
 cbind(marks, c1$cluster)
 plot(marks, pch=10,col = c1$cluster)
 c1$centers
-points(c1$centers, col = 1:3, pch = 8, cex = 5)
+points(c1$centers, col = 1:3, pch = 8, cex = 3)
 
 c1$iter #?
 
@@ -62,4 +62,24 @@ df
 apply(df[,c(3,4)],1, min)
 df3 <-transform(df, mind1d2=apply(df[,c(3,4)],1, min, na.rm = TRUE))
 df3
+
+
+
+
+gender = c('M','F','M')
+gender
+genderF = factor(gender)
+genderF
+grades = c('A','B','C')
+grades
+gradesF = factor(grades)
+gradesF
+gradesF1 = factor(grades, ordered=T)
+gradesF1
+gradesF2 = factor(grades, ordered=T, levels=c('C','B','A'))
+gradesF2
+marks = rnorm(3, 50,10)
+df = data.frame(genderF, gradesF, marks)
+df
+str(df)
 

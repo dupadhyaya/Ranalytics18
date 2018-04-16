@@ -24,20 +24,26 @@ length(sales)
 
 # Daily Sales Data
 sales2 = ceiling(runif(365, 50,100))
+sales2
 (dailyTSdata <- ts(sales2, start=c(2017,1), frequency=365))
 plot(dailyTSdata)
 start(dailyTSdata)
-
+end(dailyTSdata)
 #Weekly Sales Data  52 weeks in a year
 sales3 = ceiling(runif(52, 50,100))
 (weeklyTSdata <- ts(sales3, start=c(2017,3), frequency=52))
+weeklyTSdata
 plot(weeklyTSdata)
 start(weeklyTSdata); end(weeklyTSdata) ;frequency(weeklyTSdata)
 
-
+?ts
 #Yearly Sales Data : 2000 to 2017 
+seq(1,10,2)
+?seq
 seq(1,20, along.with = c(1:5))
-values= trunc(seq(1,20, along.with = c(2000:2017)))
+seq(1,20, along.with = sales)
+
+(values= trunc(seq(1,20, along.with = c(2000:2017))))
 (sales4 = floor(rnorm(values, mean=50, sd=10)) ) #pick up length from values
 (yearlyTSdata <- ts(sales4, start=c(2000), end=c(2017)))
 plot(yearlyTSdata)
@@ -53,6 +59,7 @@ diff(tsales,lag=1)
 diff(tsales,lag=2)
 cycle(tsales)
 
+tsales
 #subset Time Series with range of dates
 (tsales.subset = window(tsales, start=c(2003, 5), end=c(2004, 6))) #error due to range period incorrect
 tsales
@@ -65,6 +72,7 @@ tsales
 #dataset---- 
 #available for TS Analysis - understand them, they are used for TS analysis
 AirPassengers  #passengers travel data - seasonal data
+plot(AirPassengers)
 class(AirPassengers)
 JohnsonJohnson  #stock price prediction
 nhtemp  # temp variations

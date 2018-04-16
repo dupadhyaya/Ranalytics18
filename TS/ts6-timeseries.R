@@ -1,5 +1,6 @@
 #TS using Library Time Series
 #https://www.statmethods.net/advstats/timeseries.html read this
+
 library(timeSeries)
 
 # Create Time Series data of Finance Sales
@@ -9,9 +10,9 @@ length(sales)
 
 #base package of ts
 (tsales = ts(sales, start=c(2016,4), end=c(2018,4), frequency=24)) # period diveded into 24 equal intervals
-
-is.timeSeries(tsales)
-tsales2 = as.timeSeries(tsales)
-
+class(tsales)
+#is.timeSeries(tsales)
+#tsales2 = as.timeSeries(tsales)
+#tsales2
 # Read the pdf and perform functions in the package
 

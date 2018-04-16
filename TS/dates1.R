@@ -11,11 +11,12 @@ class(dates1b)
 dates1b
 
 #default format
-dates2a = c('2018-4-9')
+dates2a = c('2018-4-19')
 class(dates2a)
 (dates2b = as.Date(dates2a))
 class(dates2b)
-print(dates2b, format=('%d-%m-%Y'))
+format(dates2b, format=('%d-%m-%Y'))
+
 #%Y: 4-digit year (1982),%y: 2-digit year (82)
 #%m: 2-digit month (01), %d: 2-digit day of the month (13)
 #%A: weekday (Wednesday), %a: abbreviated weekday (Wed)
@@ -29,7 +30,7 @@ format(Sys.Date(), format="%A: %d %B")
 
 #increment/ decrement dates 
 dates2b
-cfap = dates2b + 0:5
+cfap = dates2b + 0:6
 cfap
 cat(format(cfap, format="%B-%d"))
 months(cfap)
@@ -51,9 +52,10 @@ max(cfap)
 range(cfap)
 mean(cfap)
 median(cfap)
+cfap
 cfap[c(1,5)]
-(duration = cfap[5] - cfap[1])
-(duration = max(cfap[5]) - min(cfap[1]))
+(duration = cfap[7] - cfap[1])
+(duration = max(cfap) - min(cfap))
 
 #Sequence of Dates
 
@@ -61,11 +63,12 @@ cfap[c(1,5)]
 
 seq(as.Date("2016/1/1"), as.Date("2018/1/1"), "years")
 ## by month
-seq(as.Date("2017/1/1"), by = "month", length.out = 12)
+seq(as.Date("2017/1/1"), by = "month", length.out = 6)
 ## quarters
 seq(as.Date("2017/1/1"), as.Date("2018/1/1"), by = "quarter")
 #Find 7th of all months between two dates
 dateseq = seq(as.Date("2018/1/7"), as.Date("2017/1/7"), by = "-1 month")
+dateseq
 rev(dateseq)
 format(rev(dateseq), "%A : %d-%b")
 

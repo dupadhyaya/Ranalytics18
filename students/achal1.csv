@@ -1,0 +1,4 @@
+User,Group
+A,"CN=Cat_Svc_Users,OU=Groups,DC=comp,DC=com|CN=Cat_UXSu_Users,OU=Groups,,DC=comp,DC=com"
+B,"CN=Cat_27_Users,OU=Groups,,DC=comp,DC=com|CN=Cat_29_Users,OU=Groups,,DC=comp,DC=com|CN=Cat_58_Replay,OU=Groups,,DC=comp,DC=com|CN=Cat_58_Users,OU=Groups,,DC=comp,DC=com|CN=Cat_UXS_Users,OU=Groups,,DC=comp,DC=com"
+C,"CN=Cat_27_Users,OU=Groups,,DC=comp,DC=com|CN=Cat_29_Users,OU=Groups,,DC=comp,DC=com|CN=Cat_58_Replay,OU=Groups,,DC=comp,DC=com|CN=Cat_58_Users,OU=Groups,,DC=comp,DC=com|CN=Cat_UXS_Users,OU=Groups,,DC=comp,DC=com"

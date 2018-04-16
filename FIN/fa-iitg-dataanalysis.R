@@ -8,6 +8,9 @@ Quandl.api_key("4D8hkYAV4WEkcTmD9LMW")
 
 ## Download the data Set
 ICICI = Quandl("NSE/ICICIBANK",collapse="daily",start_date="2017-09-01",type="raw")
+ICICI
+HDFC = Quandl("NSE/HDFCBANK",collapse="daily",start_date="2017-09-01",type="raw")
+HDFC
 PNB= Quandl("NSE/PNB",collapse="daily",start_date="2017-09-01",type="raw")
 SBI=Quandl("NSE/SBIN",collapse="daily",start_date="2017-09-01",type="raw")
 
@@ -31,6 +34,7 @@ names(allstocks)
 
 #Using Aggregations
 names(allstocks)
+dim(allstocks)
 aggregate(allstocks$Close, by=list(allstocks$Stock), mean)
 aggregate(cbind(Close,  Open) ~ Stock , data= allstocks, mean)
 #https://www.statmethods.net/input/dates.html

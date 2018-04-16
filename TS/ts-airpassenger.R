@@ -2,9 +2,13 @@
 #https://rpubs.com/emb90/137525
 # Data Set - AirPassengers
 options(digits=2)
+?AirPassengers
+head(AirPassengers)
 # TS data components : Level + Irregular + Seasonal
 #stl(x, s.window, t.window = ) # command to do decomp
 stl(AirPassengers, s.window = 'periodic')
+stl1 = stl(AirPassengers, s.window = 'periodic')
+plot(stl1)
 #no cyclic here - only seasonal, trend, irregual
 #s.window - specifies seasonal effects to be identical across years
 #can handle on additive models
@@ -67,3 +71,4 @@ head(f2b)$mean
 
 #fit2c = hw(AirPassengers, seasonal='multiplicative')
 #head(f2c)$mean
+

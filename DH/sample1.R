@@ -39,3 +39,14 @@ library(dplyr)
 dim(mtcars)
 sample_frac(mtcars, 0.2)
 sample_n(mtcars,5)
+
+
+
+
+library(caTools)
+set.seed(1000)
+split = sample.split(mtcars$mpg, SplitRatio = 0.80)
+train = subset(mtcars, split==TRUE)
+test = subset(mtcars, split==FALSE)
+head(train)
+head(test)

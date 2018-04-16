@@ -20,8 +20,8 @@ points(wc2$center,col=1:2,pch=8,cex=1)
 fpc::plotcluster(df, wc2$cluster)
 
 #plot(df, wc2)
-cluster::clusplot(df, wc2$cluster, color=TRUE, shade=TRUE, 
-         labels=3, lines=1)
+cluster::clusplot(df, wc2$cluster, color=TRUE, shade=TRUE,        labels=3, lines=1)
 points(wc2$centers, col = 1:2, pch = 15, cex = 5)
 
 with(df, pairs(df, col=c(1:3)[wc2$cluster])) 
+

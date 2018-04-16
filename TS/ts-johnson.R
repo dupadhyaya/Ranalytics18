@@ -89,8 +89,11 @@ Box.test(fit3$residuals, type='Ljung-Box')
 #Forecast
 forecast(fit3,4)
 
-
+Nile
 #Auto ARIMA
+library(forecast)
 #forecast::auto.arima()
 fit4 = auto.arima(Nile)
 fit4
+forecast(fit4,5)
+plot(forecast(fit4,5))
