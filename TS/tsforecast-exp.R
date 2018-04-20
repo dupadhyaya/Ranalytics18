@@ -74,3 +74,7 @@ ndiffs(Nile)
 dNile <- diff(Nile)
 plot(dNile)
 adf.test(dNile)
+
+library(forecast)
+?auto.arima
+?arima

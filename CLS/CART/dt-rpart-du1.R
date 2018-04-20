@@ -41,7 +41,8 @@ addmargins(prop.table(table(students1$gender, students1$buy))
 fit1 = rpart(buy ~ gender, data=students1,minsplit=4, minbucket=2)
 #'minsplit' is 20 and determines the minimal number of observations per leaf ('minbucket') 
 fit1  #print(fit1)
-
+table(students1$gender, students1$buy)
+students1
 library(rpart.plot)
 rpart.plot(fit1, main='Classification Tree', nn=T, type=4, extra=104)
 

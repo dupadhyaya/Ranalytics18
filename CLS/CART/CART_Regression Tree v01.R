@@ -64,6 +64,8 @@ CartFullModel
 mean(Mer_SalesTrainUncapped$Annual_Sales)
 summary(object = CartFullModel)
 summary(Mer_SalesTestUncapped[,'Annual_Sales'])
+
+
 names(Mer_SalesTrainUncapped)
 # Plot the Regression Tree
 rpart.plot(x = CartFullModel, type = 4,fallen.leaves = T, cex = 1.0, nn=T)
@@ -74,8 +76,8 @@ title("CartFullModel") # Enlarge the plot by clicking on Zoom button in Plots Ta
 fancyRpartPlot(model = CartFullModel, main = "CartFullModel", cex = 0.6) 
 
 # The following code also produces the same output, but in a windowed form
-windows()
-fancyRpartPlot(model = CartFullModel, main = "CartFullModel", cex = 0.6)
+#windows()
+#fancyRpartPlot(model = CartFullModel, main = "CartFullModel", cex = 0.6)
 
 
 # The CP table also shows us valueable information in terms of pruning the tree (which is explained later in the code)
@@ -87,7 +89,7 @@ fancyRpartPlot(model = CartFullModel, main = "CartFullModel", cex = 0.6)
  # sum((InsDataTrainUncapped$Losses-mean(InsDataTrainUncapped$Losses))^2
  
 printcp(x = CartFullModel)
-ptree = prune(CartFullModel, cp=0.01)
+ptree = prune(CartFullModel, cp=0.027)
 rpart.plot(ptree)
 plotcp(CartFullModel)
 
@@ -147,5 +149,6 @@ UncappedModelAccuarcy
 
 Lift = 100/ 400 / ((200 /
                       400) * (160/400))AIC(CartModel_1)
+#Needs library rtk
 windows()
 fancyRpartPlot(model = CartModel_1, main = "Final CART Regression Tree", cex = 0.6, sub = "Model 12")
