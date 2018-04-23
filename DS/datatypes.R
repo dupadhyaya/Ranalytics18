@@ -2,6 +2,17 @@
 ?mean
 x <- c(0:10, 50)
 x
+x[c(seq(1,12,2))]
+?c
+
+
+
+
+
+
+seq(2,100,2)
+
+?seq
 xm <- mean(x)
 xm
 mean(x, trim = 0.10)

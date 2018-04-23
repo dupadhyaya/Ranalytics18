@@ -1,12 +1,14 @@
 # Case Study - Denco  
 
+#read file : Method1
 sales1 = read.csv("./data/denco.csv")
 str(sales1)
 
-
+#read file : Method2
 sales2 = read.csv(file.choose())
 str(sales2)
 
+#read file: Method3
 #install.packages('gsheet')
 library(gsheet)
 url = "https://docs.google.com/spreadsheets/d/1h7HU0X_Q4T5h5D1Q36qoK40Tplz94x_HZYHOJJC_edU/edit#gid=216113907"
@@ -22,6 +24,7 @@ str(denco2)
 #head(sales1,n=7)
 #names(sales1)
 
+# whichever you read the data, store it in sales object
 sales = sales1  # keeping a backup
 str(sales)
 class(sales)
@@ -83,7 +86,6 @@ dt1 = as.data.table(sales)
 dt2 = dt1[, sum(revenue), by=custname]
 names(dt2)
 dt1[, dt1[, sum(revenue), by=custname]]
-
 #dt1[, order( decreasing = T)]
 
 # Select
@@ -91,7 +93,7 @@ library(sqldf)
 df5 =sqldf("Select custname, sum(revenue) from sales Group By custname order by sum(revenue) desc ")
 head(df5)
 
-# Freqency --------
+# Frequency --------
 names(sales)
 t1=table(sales$custname)
 class(t1)
@@ -102,11 +104,9 @@ head(t2)
 head(sort(table(sales$custname), decreasing=T), n=10)
 tail(sort(table(sales$custname), decreasing=T), n=10)
 
-
 #xtab
-#
 head(sort(xtabs(~ custname, sales), decreasing=T))
-#
+
 #
 library(dplyr)
 sales %>% dplyr::count(custname, sort=TRUE)
@@ -119,8 +119,6 @@ sales %>% dplyr::group_by(custname) %>% dplyr::summarise(n = n()) %>% dplyr::arr
 df2a= plyr::count(sales, c('custname'))
 str(df2a); names(df2a)
 head(df2a[order(-df2a$freq),])
-
-
 
 # Summarise by Part Num
 
@@ -141,7 +139,7 @@ sales %>% dplyr::group_by(partnum) %>% dplyr::summarise(n = n()) %>% dplyr::arra
 names(sales)
 df4a = aggregate(margin ~ partnum, data=sales, FUN=sum)
 aggregate(margin ~ partnum, data=sales, FUN=sum)
-head(df4a)
+head(df4a[order(df4a$margin, decreasing = T),])
 
-sales %>% group_by (partnum) %>% select(partnum, margin) %>% arrange(desc(margin))
+sales %>% group_by (partnum) %>% summarise(TotalMargin= sum(margin)) %>% arrange(desc(TotalMargin)) %>% head()
 

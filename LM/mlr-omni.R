@@ -21,6 +21,7 @@ omni3 = as.data.frame(gsheet::gsheet2tbl(url))
 
 #Make one of data frames active
 omni = omni1
+head(omni)
 
 ?lm  #see help of LM
 #Simple Linear Model would look like this
@@ -32,7 +33,9 @@ summary(slr2)
 
 #MLR  Create Multiple Linear Regression
 # we want to see how Sales Qty depend on Price and Promotion Values
-mlrmodel1 = lm(formula = sales ~ price + promotion, data=omni)
+mlrmodel1 = lm(sales ~ price + promotion, omni)
+#mlrmodel1 = lm(omni, sales ~ price + promotion)
+?lm
 #how to give parameter values in different sequence, use arguments names if in different order
 mlrmodel1 = lm( data=omni, formula = sales ~ price + promotion)
 
@@ -43,12 +46,20 @@ summary(mlrmodel1)  # summary statistics IMP STEP
 coef(mlrmodel1) #coefficients b1, b2
 #anova(mlrmodel1) #seeing from anova model
 
+head(omni)
+
+plot(y=omni$sales, x=omni$promotion)
 
 #Predicted Values----
+dim(omni)
 fitted(mlrmodel1)
+cbind(omni, fitted(mlrmodel1), residuals(mlrmodel1))
+summary(mlrmodel1)
+
 names(omni)
 #create a dataframe of new sample values
 (ndata1 = data.frame(price=c(60,70), promotion=c(300,400)))
+range(omni$price); range(omni$promotion)
 predict(mlrmodel1, newdata=ndata1)
 cbind(ndata1, Predict=predict(mlrmodel1, newdata=ndata1, predict='response'))
 
@@ -121,5 +132,15 @@ plot(cbind(omni$promotion, residuals(mlrmodel1)))
 # RMSE
 
 
+
+
+
+omni
+names(omni)
+mlr2 = lm(sales ~ price + promotion, data= omni)
+summary(mlr2)
+new1=data.frame(price=60:70, promotion=400)
+predict(mlr2, newdata = new1)
+cbind(new1,predict(mlr2, newdata = new1) )
 
 

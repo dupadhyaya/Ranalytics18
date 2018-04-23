@@ -1,8 +1,16 @@
 # Data Manipulation : Academic Data
 
+#Method1 : gsheet
 library(gsheet)
-student1= "https://docs.google.com/spreadsheets/d/1qLHa5qFTyWacta8F-IGo6J3Zpf-BVR9OrlqONuJDqYc/edit#gid=2051155174"
-student = as.data.frame(gsheet2tbl(student1))
+url= "https://docs.google.com/spreadsheets/d/1qLHa5qFTyWacta8F-IGo6J3Zpf-BVR9OrlqONuJDqYc/edit#gid=2051155174"
+student1 = as.data.frame(gsheet2tbl(url))
+
+#Method2 : read.csv
+student2 = read.csv('./data/student1.csv')
+names(student2)
+
+#save the imported data object into a new object
+student=student1  # or student2
 str(student)
 df1= student
 (colnames = names(df1))

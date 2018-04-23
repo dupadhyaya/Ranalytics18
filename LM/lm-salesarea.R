@@ -25,7 +25,7 @@ str(df4)
 
 # Use Vector Data or method used to import data
 #make one of the DF active
-df = df3
+df = df1
 
 mean(df$X); mean(df$Y)
 sum(df$X); sum(df$Y)
@@ -35,16 +35,21 @@ cor(df$X,df$Y) ; cor(df$Y,df$X)
 #cor.test(df$X,df$Y)
 
 plot(df$X, df$Y)  #simple command to plot : Next with features
-plot(y=df$Y, x=df$X,xlab='Area in sqft', ylab='Sales Amount', type='p', ylim=c(0, max(df$Y)), main='Plot of Area Vs Sales', xlim=c(0,max(df$X)), col='red',pch=15)
+plot(y=df$Y, x=df$X,xlab='Area in sqft', ylab='Sales Amount', type='p', ylim=c(0, max(df$Y)), main='Plot of Area Vs Sales', xlim=c(0,max(df$X)), col='red',pch=10)
 
 abline(lm(df$Y ~ df$X), lty=3, lwd=4, col='green') # with regression line
 abline(v=c(3,5),h=c(6,10), col=c('red','blue')) # few straight lines at x & y axis
 #Model
 fit1 = lm(Y ~ X, data=df) # create Simple Linear Model Y wrt X
 fit1
+fitted(fit1)
+
+names(fit1)
+system.time(lm(Y ~ X, data=df))
 coef(fit1)  # Coefficients of Equation Y = mX + C
 residuals(fit1)  # Diff of Y actual - Y predicted
 #abline(h=coef(fit1)[1])
+
 summary(fit1)  # summary statistics of Linear Model(LM)
 #understand the model values - R2, AdjR2, FStats, Residuals, Coeff p values - IMP STEP
 
@@ -56,9 +61,15 @@ fitted(fit1)
 #combine the data with Ypredicted, errors
 cbind(df, fitted(fit1), fitted(fit1)- df$Y, residuals(fit1))
 
-# Predictions
+# Predictions----
 (Y = 0.9645 + 1.6699 * 4)  # Predict Y for X=4
 (Y = coef(fit1)[1] + coef(fit1)[2] * 4)  # for X=4 using values from output of LM 
+new1 = data.frame(X=c(4))
+predict(fit1, newdata= new1)
+
+
+
+
 
 fitted(fit1)
 cbind(df, fitted(fit1))  # combine data with predicted values
@@ -74,11 +85,8 @@ predict(fit1, newdata= new1) # Predict Function for 4 values of X
 #fitted(fit1) is equal to predict function using original X values
 cbind(new1, predictedY = predict(fit1, newdata= new1) )
 
-
-
 library(forecast)
 accuracy(fit1)
-
 
 #Variation  # Errors in the model 
 #Calculating R2 manually
@@ -159,3 +167,4 @@ df[14,]
 
 car::outlierTest(lm(Y ~ X, data=df[-c(14,12),]))
 
+fit1

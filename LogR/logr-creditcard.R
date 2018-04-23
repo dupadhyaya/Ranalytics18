@@ -1,12 +1,18 @@
 # Logistic Regression
+data()  # datasets available for use in R
 
 # Load the textbook R package
 library(ISLR)
-?Default
+?Default   # data set
 # Load in the credit data
+data("Default")
 str(Default)
+class(Default)
 head(Default)
+names(Default)
+balance
 attach(Default)
+balance
 str(Default)
 Default
 dim(Default)
@@ -86,15 +92,15 @@ predict(logits, newdata = data.frame(student=c('Yes')), type=c('response'))
 predict(logits, newdata = data.frame(student=c('No')), type=c('response'))
 
 
-
+class(Default)
 #Multiple Logistic Regression
-logit = glm(default ~ income + balance + student, family='binomial', data=Default)
-summary(logit2)
-exp(coef(logit2))
+logit1 = glm(default ~ income + balance + student, family='binomial', data=Default)
+summary(logit1)
+exp(coef(logit1))
 
 logit2 = glm(default ~ balance + student, family='binomial', data=Default)
-summary(logit)
-exp(coef(logit))
+summary(logit2)
+exp(coef(logit2))
 
 
 Default %>% group_by(student) %>% arrange(student, balance) 
@@ -103,23 +109,29 @@ Default %>% group_by(student) %>% arrange(student, balance)
 
 # Predict
 head(Default)
-ndata2 = data.frame(income=c(40000), balance=c(700), student=c('Yes'))
-predict(logit, newdata=ndata2, predict='response')
+#ndata2 = data.frame(balance=c(700), student=c('Yes'))
+#ndata2
+#predict(logit2, newdata=ndata2, predict='response')
+seq(1, 10000,500)
+Default[c(1,501),]
+Default[seq(1, 10000,500),]
 
+library(dplyr)
 (ndata = (slice(Default, seq(1,n(),500))))
-
+ndata
 slice(Default, seq(1,n(),1000))
 head(ndata)
 addmargins(prop.table(table(Default$default,Default$student)))
 0.2817/0.9667; 0.0127/0.0333
 options(digits=10)
 
-fitted.results = predict(logit, newdata=ndata,type='response')
-
+fitted.results = predict(logit2, newdata=ndata,type='response')
+fitted.results
+head(fitted.results)
 fitted.results
 cbind(ndata, fitted.results)
 ndata
-ndata %>% mutate(predict = ifelse(fitted.results < 0.5, 0,1))
+ndata %>% mutate(predict = ifelse(fitted.results < 0.5, 'No','Yes'))
 
 fitted.results
 ifelse(fitted.results < 0.05, 0,1)
@@ -153,3 +165,17 @@ sum(Test$accurate)/nrow(Test)
 #96% Accuracy
 
 ?createDataPartition
+
+
+
+
+Default
+head(Default)
+logr1 = glm(default ~ student + balance + income, data=Default, family='binomial')
+summary(logr1)
+logr2 = glm(default ~ student + balance , data=Default, family='binomial')
+summary(logr2)
+ndata3 = Default[seq(1,nrow(Default), 1000), ]
+ndata3
+(p1 = predict(logr2, newdata = ndata3, type='response'))
+cbind(ndata3, p1, p2= ifelse(p1 < 0.5, 'No', 'Yes'))
