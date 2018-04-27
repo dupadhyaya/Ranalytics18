@@ -3,7 +3,7 @@
 library(gsheet)
 url = "https://docs.google.com/spreadsheets/d/1JkMVHbbWlxofMy27X-TdBPfy5R6YvrPw_EExARA8Bno"
 sales1 = as.data.frame(gsheet2tbl(url))
-
+sales1
 sales= sales1 # save a copy of original data
 
 head(sales1)

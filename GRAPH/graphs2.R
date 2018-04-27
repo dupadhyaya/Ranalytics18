@@ -37,3 +37,6 @@ options(digits=4)
 plot(women)
 abline(lm(women$weight ~ women$height), col='red', lty=2, lwd=4)
 
+
+
+mosaic::qdist("norm", p = 0.95, mean = 0, sd = 1)

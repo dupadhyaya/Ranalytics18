@@ -69,3 +69,8 @@ system.time(tapply(baseball$year, baseball$id,function(x) length(x)))
 library(data.table)
 dt <- data.table(baseball, key = "id")
 system.time(dt[, length(year), by = list(id)])
+
+
+#http://philogrammer.com/2016-12-03/aggregte/
+library(plyr)
+aggregate(price ~ cut, diamonds, each(mean, median))

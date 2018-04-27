@@ -3,6 +3,10 @@
 #List avl packages
 library()
 
+
+#Total Avl Packages
+nrow(available.packages())
+
 #Install Package amap
 install.packages('amap')
 

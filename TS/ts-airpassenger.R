@@ -4,11 +4,22 @@
 options(digits=2)
 ?AirPassengers
 head(AirPassengers)
+AirPassengers
+str(AirPassengers)
+class(AirPassengers)
+
 # TS data components : Level + Irregular + Seasonal
 #stl(x, s.window, t.window = ) # command to do decomp
 stl(AirPassengers, s.window = 'periodic')
 stl1 = stl(AirPassengers, s.window = 'periodic')
 plot(stl1)
+class(stl1)
+stl1$time.series
+df = stl1$time.series
+df = as.data.frame(df)
+str(df)
+write.csv(df, './data/airpsng.csv')
+
 #no cyclic here - only seasonal, trend, irregual
 #s.window - specifies seasonal effects to be identical across years
 #can handle on additive models
