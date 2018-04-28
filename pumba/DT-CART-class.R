@@ -1,9 +1,10 @@
+#Decision Tree
 # # Finding how people take decisions to buy products
 # Creating Decision Tree
 
-library(rpart)
-library(rplart.plot)
-library(RColorBrewer)
+library(rpart)  # for Decision Trees CART
+library(rpart.plot) # for drawing plots for DT
+library(RColorBrewer)  # enhancing colors of plots
 
 
 #Students : Gender - (Male & Female) buy a product
@@ -38,11 +39,14 @@ addmargins(prop.table(t1))
 dtree1 = rpart(buy ~ gender, data=students1, minsplit=4, minbucket=2)
 #'minsplit' is 20 and determines the minimal number of observations per leaf ('minbucket') 
 dtree1  #print(fit1)
+(t1= table(students1$gender, students1$buy))
 addmargins(t1)
 
 #plot the decision Tree
 library(rpart.plot)
+rpart.plot(dtree1)
 rpart.plot(dtree1, main='Classification Tree', nn=T, type=4, extra=104)
+?rpart.plot
 #Interpret the tree
 dtree1
 
@@ -70,7 +74,7 @@ dtree2 = rpart(buy ~ gender + married, data=students2, minsplit=12)
 summary(dtree2)
 dtree2
 rpart.plot(dtree2,type=2,extra=104, tweak=1.2, under=T, shadow=c('brown', 'green','red'), nn=T)
-
+  
 dtree2 # interpret the tree and output
 
 #other methods of plot
@@ -114,6 +118,8 @@ cbind(testdata, p1, p2, p3)
 predict(dtree2, newdata= testdata, type = "matrix")
 
 head(students2)
+t1= prune(dtree2, cp=.025)
+rpart.plot(t1)
 
 #Parameters Setting : CP
 printcp(dtree2)

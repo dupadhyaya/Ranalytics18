@@ -17,8 +17,10 @@ Mer_Sales = data1
 summary(Mer_Sales)
 names(Mer_Sales)
 # Look at the average Annual_Sales() wrt to  few columns
+dim(Mer_Sales)
 names(Mer_Sales)
 aggregate(x=Mer_Sales$Annual_Sales,by=list(Mer_Sales[,4]),FUN=mean)  # mean sales per zone
+aggregate(x=Mer_Sales$Annual_Sales,by=list(Mer_Sales[,12]),FUN=mean)  # mean sales per zone
 
 
 # Make a copy of the Original Dataset
@@ -28,7 +30,7 @@ dim(df)
 set.seed(777) # To ensure reproducibility
 Index = sample(x = 1:nrow(df), size = 0.7*nrow(df))
 Index  # row nos of sampled index
-
+df[1,]
 # Create Train dataset
 dfTrain = df[Index, ]
 nrow(dfTrain)
@@ -99,4 +101,4 @@ ModelAccuarcy
 #Method - class, anova
 #split data into Train & Test
 #select tree with cp
-#Predict & Check accuracy
+#Predict on Test Set & Check accuracy
