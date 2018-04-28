@@ -3,132 +3,127 @@
 
 library(rpart)
 library(rplart.plot)
+library(RColorBrewer)
+
 
 #Students : Gender - (Male & Female) buy a product
-#Rownames
-rollno = paste('S',1:1000, sep='')
-rollno
 
 #Variable Gender
 set.seed(100)
 gender = sample(x=c('Male','Female'), size=1000, replace=T, prob=c(0.5,0.5) )
-head(gender)
 table(gender)
 
 #Variable- Buy : Decision
 set.seed(3000)
 buy = sample(x=c('Buy','NotBuy'), size=1000, replace=T, prob=c(.49,.51) )
-head(buy)
 table(buy)
 prop.table(table(buy))
 
 #create Data Frame
 students1 = data.frame(gender, buy)
-rownames(students1) = rollno
 head(students1)
 
 #Table
 table(students1)
 prop.table(table(students1))
-addmargins(prop.table(table(students1)))
+addmargins(prop.table(table(students1)))  # read the summarisation
 (t1= table(students1$gender, students1$buy))
 addmargins(t1)
-prop.table(table(students1$gender, students1$buy))
-addmargins(prop.table(table(students1$gender, students1$buy))
-)
-#Model1
-fit1 = rpart(buy ~ gender, data=students1,minsplit=4, minbucket=2)
+prop.table(t1)
+addmargins(prop.table(t1))
+
+
+#Model1 : Create a Decision Tree
+
+dtree1 = rpart(buy ~ gender, data=students1, minsplit=4, minbucket=2)
 #'minsplit' is 20 and determines the minimal number of observations per leaf ('minbucket') 
-fit1  #print(fit1)
-table(students1$gender, students1$buy)
-students1
+dtree1  #print(fit1)
+addmargins(t1)
+
+#plot the decision Tree
 library(rpart.plot)
-rpart.plot(fit1, main='Classification Tree', nn=T, type=4, extra=104)
+rpart.plot(dtree1, main='Classification Tree', nn=T, type=4, extra=104)
+#Interpret the tree
+dtree1
 
-fit1
-predict(fit1, newdata = data.frame(gender='Female'))
-predict(fit1, newdata = data.frame(gender='Female'), type=c('class'))
-predict(fit1, newdata = data.frame(gender=c('Male','Female','Male')), type='class')
+#Predict decision for new input values of gender
+predict(dtree1, newdata = data.frame(gender='Female'))  # prob
+predict(dtree1, newdata = data.frame(gender='Female'), type=c('class'))  # class - buy or not 
+predict(dtree1, newdata = data.frame(gender=c('Male','Female','Male')), type='class')  # for 3 values
 
-#---- Part -2 Add another column
+
+#---- Part -2 Add another column and see how DT chanes
 set.seed(5000)
 married = sample(x=c('Married','Single'), size=1000, replace=T, prob=c(0.5,0.5) )
 table(married)
 students2 = data.frame(gender, married, buy)
-rownames(students2) = rollno
 head(students2)
 str(students2)
 prop.table(ftable(students2))
 table(students2$buy)  # Majority - Don't Buy
-addmargins(prop.table(table(students2)))
+
 #write.csv(students2, 'dtdata.csv')
 
-# Model2
+# Model2  : create a decision Tree
 #library(rpart)
-fit2 = rpart(buy ~ gender + married, data=students2, minsplit=12)
-summary(fit2)
-fit2
-rpart.plot(fit2,type=2,extra=104, tweak=1.2, under=T, shadow=c('brown', 'green','red'), nn=T)
-fit2
-prp(fit2)
-prp(fit2, main="An Example",
+dtree2 = rpart(buy ~ gender + married, data=students2, minsplit=12)
+summary(dtree2)
+dtree2
+rpart.plot(dtree2,type=2,extra=104, tweak=1.2, under=T, shadow=c('brown', 'green','red'), nn=T)
+
+dtree2 # interpret the tree and output
+
+#other methods of plot
+prp(dtree2)
+prp(dtree2, main="An Example",
     type=4, fallen=T, branch=.3, round=0, leaf.round=9,
     clip.right.labs=F, under.cex=1,
     box.palette="GnYlRd",
     prefix="Student\n", branch.col="gray", branch.lwd=2,
     extra=101, under=T, lt=" < ", ge=" >= ", cex.main=1.5)
 
-prp(fit2, branch.type=5)
-labels(fit2)
-new.tree <- prp(fit2, snip=TRUE)$obj # interactively trim the tree
-prp(new.tree) # display the new tree
+prp(dtree2, branch.type=5)
+labels(dtree2)
 
 #Plot----
-library(RColorBrewer)
 #library(rattle)
 
-rpart.plot::rpart.plot(fit2, main='Classification Tree')
-rpart.plot::rpart.plot(fit2, extra=104, box.palette="GnBu", branch.lty=3, shadow.col="gray", nn=TRUE)
+rpart.plot::rpart.plot(dtree2, main='Classification Tree')
+rpart.plot::rpart.plot(dtree2, extra=104, box.palette="GnBu", branch.lty=3, shadow.col="gray", nn=TRUE)
 
-rpart.plot::prp(fit2,fallen.leaves = F)
-prp(fit2, type=2)
-
-
-#Predict
-#
-predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='prob')
-predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='class')
-predict(fit2, newdata = data.frame(gender='Male', married='Married'), type='vector')
-
-predict(fit2, newdata = data.frame(gender='Male', married='Married'))
-?predict
+#rpart.plot::prp(dtree2,fallen.leaves = F)
+#prp(dtree2, type=2)
 
 
+#Predict for new values of Married and Gender
+
+predict(dtree2, newdata = data.frame(gender='Male', married='Married'), type='prob')
+predict(dtree2, newdata = data.frame(gender='Male', married='Married'), type='class')
+predict(dtree2, newdata = data.frame(gender='Male', married='Married'), type='vector') # class in number
+
+# create a test data frame
 testdata = data.frame(gender=c('Male','Male','Female','Female'), married=c('Married','Single','Married','Single'))
 testdata
                                
-(p1 = predict(fit2, newdata = testdata, type='vector'))  #node/level 
-#play=2, notplay=1
-(p2 = predict(fit2, newdata = testdata, type='class')) #factor
-(p3 = predict(fit2, newdata = testdata, type='prob')) # prob
+(p1 = predict(dtree2, newdata = testdata, type='vector'))  #node/level Class in number 2 -not buy, 1 - buy
+(p2 = predict(dtree2, newdata = testdata, type='class')) #factor
+(p3 = predict(dtree2, newdata = testdata, type='prob')) # prob
 
 cbind(testdata, p1, p2, p3)
 #level number, class frequencies, probabilities
-predict(fit2, newdata= testdata, type = "matrix")
+predict(dtree2, newdata= testdata, type = "matrix")
 
 head(students2)
 
 #Parameters Setting : CP
-printcp(fit2)
-printcp(fit2, digits = getOption("digits") - 5)
-plotcp(fit2)
-names(fit2)
+printcp(dtree2)
+printcp(dtree2, digits = 2)
+plotcp(dtree2)
+names(dtree2)
 ?
-fit2$where  #which row at which nodeno
-?fit2$where
-students2[1:5,]
-cbind(students2, nodeno=rownames(fit2$frame) [ fit2$where])
-pfit=  prune(fit2, cp=0.077) # from cptable  
+#dtree2$frame[dtree2$where]  #which row at which nodeno
+cbind(students2, nodeno=rownames(dtree2$frame) [ dtree2$where])
+pfit=  prune(dtree2, cp=0.077) # from cptable  
 pfit
 rpart.plot(pfit)
 
@@ -165,15 +160,15 @@ prp(fit3b,box.col=c("Grey", "Orange")[fit3b$frame$yval],varlen=0,faclen=0, type=
 
 #Lets see CP
 plotcp(fit3b)
-printcp(fit3b, digits = getOption("digits") - 5)
+printcp(fit3b, digits = 3)
 (bestcp= fit3b$cptable[which.min(fit3b$cptable[,'xerror']),'CP'])
 #but this is at root node only, select next better 
-bestcp = 0.01
+bestcp = 0.0146
 
 prp(fit3b)
-fit3b2 = rpart(buy ~ ., data=students3, minsplit=4, minbucket=2, control= rpart.control(cp=0.001))
-fit3b2
-prp(fit3b2)
+#fit3b2 = rpart(buy ~ ., data=students3, minsplit=4, minbucket=2, control= rpart.control(cp=bestcp))
+#fit3b2
+#prp(fit3b2)
 fit3b.pruned = prune(fit3b, cp=bestcp)
 fit3b.pruned
 prp(fit3b.pruned)
@@ -191,5 +186,5 @@ predict(fit3b.pruned, newdata = testdata1 )
 
 
 
-# now practise with Marketing Data
+# now practise with Sales Data
 

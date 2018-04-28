@@ -82,13 +82,14 @@ na.omit(sleep)
 cor(na.omit(sleep))
 cor(sleep, use="complete.obs")
 
+#remove missing values in Linear Regression
+fitmissing = lm(Dream ~ Span + Gest, data= sleep)
+summary(fitmissing)
+
 fit = lm(Dream ~ Span + Gest, data= na.omit(sleep))
 summary(fit)
 
 
-#imputations Packages - mice, Amelia, mi : mice, with, pool
 
-imp = mice::mice(sleep, seed=1234)
-?mice
  
 # explore more
