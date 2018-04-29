@@ -8,7 +8,7 @@
 #Steps - Plot, Describe, Decompose, Forecast - Simple MA, Exp, ARIMA
 
 JohnsonJohnson
-
+?JohnsonJohnson
 library(forecast)
 
 #ets auto select best predicton model
@@ -27,6 +27,7 @@ tail(JohnsonJohnson)
 
 (f1= forecast(fit1,h=10))  # 
 ?forecast.ets
+par(mfrow=c(1,1))
 plot(f1, main='Johnson Shares', ylab='Quartery Earnings', xlab='Time', flty = 3)  # linetype for forecast area
 #shaded portion is confidence intervals area
 

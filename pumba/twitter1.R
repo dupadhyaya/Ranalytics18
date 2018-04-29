@@ -17,7 +17,7 @@ AccessTokenSecret="3ap8BZNVoBhE2GaMGLfuvuPF2OrHzM3MhGuPm96p3k6Cz"
 
 cred <- OAuthFactory$new(consumerKey=consumerKey, consumerSecret=consumerSecret, requestURL='https://api.twitter.com/oauth/request_token', accessURL='https://api.twitter.com/oauth/access_token', authURL='https://api.twitter.com/oauth/authorize')
 
-
+#Very Imp Step
 cred$handshake(cainfo="cacert.pem") # it will take you to browser: authorise, copy key
 save(cred, file="twitter authentication.Rdata") # store this to avoid asking again
 
@@ -33,3 +33,4 @@ no.of.tweets <- 100
 
 tweets <- searchTwitter(search.string, n=no.of.tweets,lang="en")
 tweets
+
