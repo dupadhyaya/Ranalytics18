@@ -34,3 +34,7 @@ no.of.tweets <- 100
 tweets <- searchTwitter(search.string, n=no.of.tweets,lang="en")
 tweets
 
+
+homeTimeline(n=15)  #my tweets
+mentions(n=15)   # my tags
+
