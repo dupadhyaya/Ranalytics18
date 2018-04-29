@@ -1,3 +1,5 @@
+#Package Lubridate
+
 #functions which allow you to specify the order in which year, month and day components appear in date
 
 
@@ -32,7 +34,7 @@ month(arrive, label=T, abbr=F)
 year(arrive)
 
 
-#practise upto here for IITG 
+#practise upto here  
 #Students to look up other practise exercises for Data below
 
 

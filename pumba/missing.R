@@ -6,6 +6,7 @@ is.na(v1)
 v1=NULL
 v1  # remove all values
 (v1 = c(1,2,NA,NA,5))
+which(is.na(v1))
 sum(is.na(v1))  # sum TRUE values ie missing values
 mean(v1)  # cannot calculate if NA values in vector
 mean(v1, na.rm=T)  # remove and calc
@@ -17,11 +18,11 @@ anyNA(v1) # is there any NA value
 ?anyNA
 #impute missing values of vector with mean value of non NA values
 v1
+
 mean(v1, na.rm=T)  # this value to be used
 v1[is.na(v1)]
 v1[is.na(v1)] = mean(v1, na.rm=T)
 v1
-
 
 #Use VIM package to load sleep dataset with NA values in rows & col
 library(VIM)
@@ -36,7 +37,7 @@ mean(complete.cases(sleep))  #42/62
 # total cases = 62, complete=42  
 sleep[complete.cases(sleep),] # list rows which are complete
 sleep[!complete.cases(sleep),] # list rows which have NA values
-
+?sleep
 # Particular Column
 is.na(sleep$Dream)
 sum(is.na(sleep$Dream))
@@ -59,6 +60,7 @@ mice::md.pattern(sleep)
 
 #Visualisation
 VIM::aggr(sleep, prop=F, numbers=T)
+
 #NonD max NA values 
 VIM::aggr(sleep, prop=T)  # Proportion
 VIM::matrixplot(sleep) # rowno and missing values in red

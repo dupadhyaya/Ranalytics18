@@ -13,9 +13,10 @@ LIST(Groceries[1:6])  #another view
 
 #Lets Apply Apriori Algorithm
 frequentItems <- eclat (Groceries, parameter = list(supp = 0.005, minlen= 1, maxlen = 5)) 
+
 frequentItems
 inspect(frequentItems[1:5])
-inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:5])
+inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:115])
 #support(A&B) = n(A&B)/ N
 
 frequentItems
@@ -37,6 +38,7 @@ options (digits=2)
 inspect (rules[1:5])
 rulesc <- sort (rules, by="confidence", decreasing=TRUE)
 inspect(rulesc[1:5])
+inspect(rulesc)
 rulesl <- sort (rules, by="lift", decreasing=TRUE)
 inspect (rulesl[1:5])
 
@@ -66,7 +68,7 @@ inspect(rules[1:15])
 rules <- apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.05,minlen=2), appearance = list (default="rhs",lhs="whole milk"), control = list (verbose=F)) 
 inspect(rules)
 #Visualizing The Rules -----
-plot (rules, measure=c("support", "lift"), shading="confidence")
+plot(rules, measure=c("support", "lift"), shading="confidence")
 
-#plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
+plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
 

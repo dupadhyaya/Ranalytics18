@@ -4,7 +4,7 @@
 library(forecast)
 ?nhtemp
 #Mean annual Temp in Degree F from 1912 to 1917 : 60 observations
-# Types of Smoothening : (level, trend, seasoanal) : A- Additive, None, Z-automatice
+# Types of Smoothening : (level, trend, seasoanal) : A- Additive, None, Z-automatic
 # Simple - Level  : model- ANN
 # double - level, slope (trend) : model : AAN
 # triple - level, slope(trend), seasonal : model - AAA

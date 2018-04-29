@@ -2,6 +2,12 @@
 
 A=c(1,1.5,3,5,3.5,4.5,3.5)
 B=c(1,2,4,7,5,5,4.5)
+m = data.frame(A)
+m
+c = kmeans(m, 4 )
+c$cluster
+plot(m$A)
+
 marks=data.frame(A,B)
 marks
 ?kmeans
@@ -11,7 +17,7 @@ cbind(marks, c1$cluster)
 plot(marks, pch=10,col = c1$cluster)
 c1$centers
 points(c1$centers, col = 1:3, pch = 8, cex = 3)
-
+?kmeans
 c1$iter #?
 
 #C1- 1, 2 : (1.3, 1.5)
