@@ -1,7 +1,6 @@
 # Use Existing Twitter Authentication Stored
 # Marketing Analytics
 
-
 library("twitteR")
 library("ROAuth")
 
