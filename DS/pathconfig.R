@@ -8,3 +8,4 @@ file.edit("~/.Rprofile")
 # .Last = function() cat("\n Thanks for working in R")
 # R_LIBS="E:/rWork/rLibrary"
 # .libPaths()
+file.edit("~/.Renviron")
