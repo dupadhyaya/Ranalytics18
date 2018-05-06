@@ -1,7 +1,11 @@
 # R Programming
 
 #chapter-1----
-
+women
+mean(women$height)
+str(women)
+x=1:50
+str(x)
 
 #chapter-2----
 
