@@ -77,3 +77,6 @@ apply(a1, c(1,3), mean)
 #explain this output
 
 #DataFrame----
+
+df1 = data.frame(rollno=c(1,2,3,4,5), name=c('Abhishek', 'Sreyan', 'Shubhara', 'Kaustubh', 'Anagha'))
+df1
