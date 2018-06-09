@@ -1,5 +1,6 @@
 # Association Rules Set 4 ####
 
+library(arules)
 df <- data.frame(
   age   = as.factor(c(6, 6, 8, 8, NA, 9, 16)),
   grade = as.factor(c("A", "C", "C", "C", "F", NA, "C")),
@@ -11,7 +12,7 @@ summary(trans3)
 inspect(trans3)
 
 # MBA Example
-mydata = read.csv("MBA.csv")
+mydata = read.csv("./data/MBA.csv")
 mydata
 # See first 10 observations
 head(mydata, n=10)

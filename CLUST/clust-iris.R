@@ -26,3 +26,4 @@ clusplot(scaleiris, irisKM$cluster, color= T, lines=0)
 irisKM2 = kmeans(scaleiris, 3, iter.max= 5)
 irisKM2
 clusplot(scaleiris, irisKM2$cluster, color=T, lines=0)  
+

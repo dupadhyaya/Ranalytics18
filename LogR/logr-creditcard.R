@@ -166,9 +166,6 @@ sum(Test$accurate)/nrow(Test)
 
 ?createDataPartition
 
-
-
-
 Default
 head(Default)
 logr1 = glm(default ~ student + balance + income, data=Default, family='binomial')

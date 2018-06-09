@@ -11,7 +11,7 @@ item = paste("item", sample(1:50, 1000, replace=T),sep = "")
 item
 orders <- data.frame(transactionID, item)
 head(orders)
-
+orders [ order(orders$transactionID),]
 write.csv(orders, "./data/talltransactions.csv")
 
 
@@ -23,6 +23,7 @@ ordertrans <- arules::read.transactions(
   cols=c("transactionID","item"),
   rm.duplicates = T
 )
+ordertrans
 inspect(ordertrans[1:5])
 ?read.transactions
 summary(ordertrans)
@@ -33,7 +34,7 @@ head(ordertrans)
 itemFrequencyPlot(ordertrans,topN=20,type="absolute")
 
 #minsupport to 0.001 , min conf of 0.8 ; show top 5 rules
-rules <- apriori(ordertrans, parameter = list(supp = 0.001, conf = 0.8))
+rules <- apriori(ordertrans, parameter = list(supp = 0.003, conf = 0.8))
 
 # Show the top 5 rules, but only 2 digits
 options(digits=2)

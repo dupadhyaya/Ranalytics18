@@ -13,7 +13,7 @@ summary(data)
 ##
 ##
 ##
-#cust_data<-read.csv("./data/Segmentation_Data v01.csv")
+cust_data<-read.csv("./data/Segmentation_Data v01.csv")
 cust_data = data
 ###Verify the data
 colnames(cust_data)
@@ -28,9 +28,10 @@ str(cust_data)
 ?amap::Kmeans
 names(cust_data)
 
-k1<-amap::Kmeans(cust_data[,-c(1)],centers=3, 
-           iter.max = 200,nstart = 1, 
+k1<-amap::Kmeans(cust_data[,-c(1)],centers=3, iter.max = 200,nstart = 1, 
            method = c("euclidean"))
+k1<-amap::Kmeans(cust_data[,-c(1)],3)
+
 
 k1$centers  # group means
 ###Fetch size/n of obs for the groups
@@ -45,7 +46,10 @@ k1$cluster[9000:9800]
 table(k1$cluster)
 k1$size
 data_clus_2 <- cust_data[ k1$cluster == 2,]
+(data_clus_2)
+mean(data_clus_2$Age)
 data_clus_2$Cust_id
+
 # Write CSV
 write.csv(data_clus_2[,1], file = "./data/data_clus_2.csv")
 

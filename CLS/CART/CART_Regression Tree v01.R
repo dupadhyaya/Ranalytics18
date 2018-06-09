@@ -12,9 +12,8 @@ library(gsheet)
 url='https://docs.google.com/spreadsheets/d/1PWWoMqE5o3ChwJbpexeeYkW6p4BHL9hubVb1fkKSBgA/edit#gid=1941519952'
 data = as.data.frame(gsheet2tbl(url))
 str(data)
-# Set the working directory to folder where you have placed the Input Data
-
-#Mer_Sales = read.csv(file = "./data/Predict Merchant_Sales v01.csv", header = T)
+# or Load from CSV File
+Mer_Sales = read.csv(file = "./data/Predict Merchant_Sales v01.csv", header = T)
 
 Mer_Sales = data
 

@@ -132,9 +132,6 @@ plot(cbind(omni$promotion, residuals(mlrmodel1)))
 # RMSE
 
 
-
-
-
 omni
 names(omni)
 mlr2 = lm(sales ~ price + promotion, data= omni)

@@ -41,7 +41,7 @@ fit1 = rpart(buy ~ gender, data=students1,minsplit=4, minbucket=2)
 #'minsplit' is 20 and determines the minimal number of observations per leaf ('minbucket') 
 fit1  #print(fit1)
 table(students1$gender, students1$buy)
-students1
+head(students1)
 library(rpart.plot)
 rpart.plot(fit1, main='Classification Tree', nn=T, type=4, extra=104)
 
@@ -80,6 +80,8 @@ prp(fit2, main="An Example",
 
 prp(fit2, branch.type=5)
 labels(fit2)
+#Interactive
+
 new.tree <- prp(fit2, snip=TRUE)$obj # interactively trim the tree
 prp(new.tree) # display the new tree
 
@@ -120,12 +122,12 @@ head(students2)
 
 #Parameters Setting : CP
 printcp(fit2)
-printcp(fit2, digits = getOption("digits") - 5)
+getOption('digits')
 plotcp(fit2)
 names(fit2)
-?
+
 fit2$where  #which row at which nodeno
-?fit2$where
+
 students2[1:5,]
 cbind(students2, nodeno=rownames(fit2$frame) [ fit2$where])
 pfit=  prune(fit2, cp=0.077) # from cptable  

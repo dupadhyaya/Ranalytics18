@@ -4,9 +4,9 @@ library(rpart)
 library(rpart.plot)
 library(forecast)
 #install.packages("https://cran.r-project.org/bin/windows/contrib/3.3/RGtk2_2.20.31.zip", repos=NULL)
-library(RGtk2)
+#library(RGtk2)
 #install.packages("rattle")
-library(rattle)
+#library(rattle)
 
 
 # Set the working directory to folder where you have placed the Input Data
@@ -14,8 +14,8 @@ library(rattle)
 
 MerSales2 = read.csv(file = "./data/msales.csv", skip=1, header = T)
 MerSales= MerSales2
+dim(MerSales)
 # Summarize the dataset
-summary(object = MerSales)
 summary(MerSales)
 str(MerSales)
 # Look at the average Annual_Sales()
@@ -38,6 +38,7 @@ MerSalesUncapped = MerSales
 set.seed(777) # To ensure reproducibility
 Index = sample(x = 1:nrow(MerSalesUncapped), size = 0.7*nrow(MerSalesUncapped))
 Index
+length(Index)
 # Create Train dataset
 MerSalesTrainUncapped = MerSalesUncapped[Index, ]
 nrow(MerSalesTrainUncapped)
@@ -53,13 +54,16 @@ summary(object = MerSalesTestUncapped)
 
 # Build a full model with default settings
 set.seed(123) # To ensure reproducibility of xerrors (cross validated errors while estimating complexity paramter for tree pruning)
-CartFullModel = rpart(formula = sales ~ . , data = MerSalesTrainUncapped[,-1], method = "anova")
+
+CartFullModel = rpart(sales ~ . , data = MerSalesTrainUncapped[,-1], method = "anova")
 CartFullModel
 summary(object = CartFullModel)
 
 
 # Plot the Regression Tree
-rpart.plot(x = CartFullModel, type = 4,fallen.leaves = T, cex = 0.6)
+rpart.plot(CartFullModel, type = 4,fallen.leaves = T,nn=T, cex = 1)
+
+mean(MerSalesTrainUncapped$sales)
 
 title("CartFullModel") # Enlarge the plot by clicking on Zoom button in Plots Tab on R Studio
 
@@ -80,10 +84,14 @@ fancyRpartPlot(model = CartFullModel, main = "CartFullModel", cex = 0.6)
  # => Root Node Error is given by sum((Dependent - Mean(Dependent))^2), i.e.
  # sum((InsDataTrainUncapped$Losses-mean(InsDataTrainUncapped$Losses))^2
  
-printcp(x = CartFullModel)
+printcp(CartFullModel)
 
 # This produces a plot which may help particpants to look for a model depending on R-Square values produced at various splits
 rsq.rpart(x = CartFullModel)
+
+fit4 = prune(CartFullModel, cp=.014)
+fit4
+rpart.plot(fit4, nn=T, cex=1)
 
 ########################### Using CP to expand / Prune the tree #################################################
 # Lets change rpart.control() to specify certain attributes for tree building

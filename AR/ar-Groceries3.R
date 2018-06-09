@@ -4,18 +4,20 @@ library(arules)  #install first
 library(arulesViz) #install first
 library(datasets)  # no need to install, just load it
 data('Groceries')
-
+?Groceries
 str(Groceries)
 Groceries
+
 inspect(Groceries[1:5])  #view
 
 LIST(Groceries[1:6])  #another view
-
+.005 * 9835
 #Lets Apply Apriori Algorithm
 frequentItems <- eclat (Groceries, parameter = list(supp = 0.005, minlen= 1, maxlen = 5)) 
+inspect(frequentItems)
 frequentItems
-inspect(frequentItems[1:5])
-inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:5])
+inspect(frequentItems[900:1000])
+inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:25])
 #support(A&B) = n(A&B)/ N
 
 frequentItems
@@ -35,6 +37,7 @@ quality(rules)
 head(quality(rules))
 options (digits=2)
 inspect (rules[1:5])
+
 rulesc <- sort (rules, by="confidence", decreasing=TRUE)
 inspect(rulesc[1:5])
 rulesl <- sort (rules, by="lift", decreasing=TRUE)
@@ -58,15 +61,18 @@ sum(is.redundant(rulesNR))  #ok now
 
 
 #Find what factors influenced an event ‘X’
-rules <- apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.08), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F))
+rules <- apriori (data=Groceries, parameter=list (supp=0.002,conf = 0.8), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F))
 inspect(rules[1:15])
+inspect(rules)
+
 
 #Find out what events were influenced by a given event
 
 rules <- apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.05,minlen=2), appearance = list (default="rhs",lhs="whole milk"), control = list (verbose=F)) 
 inspect(rules)
+
 #Visualizing The Rules -----
 plot (rules, measure=c("support", "lift"), shading="confidence")
 
-#plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
+plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
 

@@ -101,6 +101,17 @@ library(lubripack)
 lubripack("plyr", "psych", "tm", "quantmod")
 
 
+
+pack <- available.packages()
+pack["ggplot2","Depends"]
+pack["ggplot2","Imports"]
+pack["data.table","Depends"]
+
+packrat:::recursivePackageDependencies("ggplot2",lib.loc = .libPaths()[1])
+tools::dependsOnPkgs('ggplot2')
+tools::dependsOnPkgs('dplyr')
+tools::dependsOnPkgs("ggplot2",installed=available.packages())
+library(rusk)
 #Remove Package
 remove.packages('quantmod')
 library(quantmod)
