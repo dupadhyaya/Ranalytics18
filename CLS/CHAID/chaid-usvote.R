@@ -13,22 +13,60 @@ str(USvote)
 names(USvote)
 summary(USvote)
 dim(USvote)
-USvoteS = USvote[sample(1:nrow(USvote), 1000),]
+sample1 = USvote[sample(1:nrow(USvote), 1000),]
+chaidModel <- chaid(vote3 ~ ., data = sample1, control=chaid_control(minbucket = 20, minsplit=7, minprob=0))
+print(chaidModel)
+plot(chaidModel)
 
-ctrl <- chaid_control(minsplit = 20, minbucket = 5, minprob = 0)
 
-chaidUS <- chaid(vote3 ~ ., data = USvoteS, control = ctrl)
+#Train and Test Set
+require(caTools)
+set.seed(101) 
+sample = sample.split(USvote$vote3, SplitRatio = .75)
+train = subset(USvote, sample == TRUE)
+test  = subset(USvote, sample == FALSE)
+dim(train); dim(test)
 
-?chaid
-summary(chaidUS)
-print(chaidUS)
-plot(chaidUS)
+#control Parameters
+ctrl1 <- chaid_control(minsplit = 100, minbucket = 10, minprob = 0.001)
+ctrl2 <- chaid_control(minprob=.002,maxheight = 4, minsplit=2000, minbucket=700)
+#parameters - minsplit, minbucket, minprob,  
+ctrl2  #see the control values
+chaidModel_1 <- chaid(vote3 ~ ., data = train, control = ctrl2)
 
-chaidUS2 <- chaid(vote3 ~ ., data = USvoteS, control = ctrl)
+#summary(chaidModel_1)
+print(chaidModel_1)
+plot(chaidModel_1)
+plot(chaidUS1, type='simple')
+chisq.test(train$vote3, train$marstat)  #least
+#this is why 1st split happens on marstat
+chisq.test(train$vote3, train$ager)
+chisq.test(train$vote3, train$empstat)
 
-summary(chaidUS2)
-print(chaidUS2)
-plot(chaidUS2)
+
+#Plots
+plot(chaidModel_1,main = "Testing Graphical Options",
+  gp = gpar(fontsize = 8),  type = "simple")
+
+plot(chaidModel_1,  main = "Testing More Graphical Options",
+  gp = gpar(col = "blue",  lty = "solid",   lwd = 3,  fontsize = 10
+  )
+)
+
+
+#Predict
+p1 = predict(chaidModel_1)
+head(p1)
+sum(complete.cases(train))# there are some missing values
+sum(!complete.cases(train))# there are some missing values
+
+length(p1); length(train$vote3)
+
+
+#Confusion Matrix
+library(caret)
+confusionMatrix(p1, train[complete.cases(train),]$vote3)
+
 
 # aggregation
 unique(USvote$vote3)
@@ -36,10 +74,16 @@ plyr::count(USvote, c('gender','vote3'))
 plyr::count(USvote, c('marstat','vote3'))
 (t1=ftable(USvote$vote3, USvote$gender))
 (t2=ftable(USvote$vote3, USvote$marstat))
-(t3=ftable(USvote$vote3, USvote$educr))
 prop.table(t2)
+(t3=ftable(USvote$vote3, USvote$educr))
 prop.table(t3)
-?chisq.test
+(t4=ftable(USvote$vote3, USvote$ager))
+
+chisq.test(t1)
+chisq.test(t2)
+chisq.test(t3)
+chisq.test(t4)
+
 
 chisq.test(t3)
 
