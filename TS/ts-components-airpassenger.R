@@ -2,7 +2,11 @@
 
 #https://rpubs.com/emb90/137525
 # Data Set - AirPassengers
+x=c(9.23221232,5.3430000)
+x
 options(digits=2)
+x
+
 ?AirPassengers
 head(AirPassengers)
 AirPassengers
@@ -59,6 +63,7 @@ plot(LogAirPassengers)  #stabilises variation due to multiplication
 (m1 = matrix(1:2, nrow=1, byrow = F))
 layout(m1)
 plot(AirPassengers); plot(LogAirPassengers)  # see again the change
+
 
 #STL
 fit = stl(LogAirPassengers, s.window = 'periodic' )

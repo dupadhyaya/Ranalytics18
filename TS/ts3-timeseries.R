@@ -30,7 +30,12 @@ sales ; class(sales)  # vector of sales values
 #Specify data periods in start and end
 #specify only start dates & freq
 (tsales3a = ts(sales, start=c(2017, 1), frequency=12)) # years 2017 to 2018, 24 values, monthwise 24 observations spread to 2 years
+ts(sales, start=c(2017, 4), end=c(2018,3), frequency=12)
 ts(sales, start=c(2017, 2), frequency=12)  # different start month
+ts(sales, start=c(2017, 2), frequency=4)  # different start month
+plot(ts(sales, start=c(2017,1), frequency=1))  # different start month
+
+
 
 ?ts
 #Specify start and end date periods
@@ -81,14 +86,17 @@ range(tsales)
 diff(tsales)
 diff(tsales,lag=1)
 diff(tsales,lag=2)
+diff(tsales,lag=6)
+
 cycle(tsales)
 
+tsales
 tsales
 #subset Time Series with range of dates
 (tsales.subset = window(tsales, start=c(2003, 5), end=c(2004, 6))) #error due to range period incorrect
 
 tsales
-(tsales.subset = window(tsales, start=c(2016, 5), end=c(2016, 8))) 
+(tsales.subset = window(tsales, start=c(2016, 5), end=c(2017, 8))) 
 #5th month of 2016 to 8th month of 2016
 
 #Another TS with different freq
@@ -97,6 +105,7 @@ tsales
 #dataset---- 
 #available for TS Analysis - understand them, they are used for TS analysis
 AirPassengers  #passengers travel data - seasonal data
+?AirPassengers
 plot(AirPassengers)
 class(AirPassengers)
 JohnsonJohnson  #stock price prediction

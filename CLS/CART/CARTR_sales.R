@@ -48,7 +48,7 @@ summary(object = MerSalesTrainUncapped)
 MerSalesTestUncapped = MerSalesUncapped[-Index, ]
 nrow(MerSalesTestUncapped)
 summary(object = MerSalesTestUncapped)
-
+#divide data into 2 parts - Train (70%), Test(30%)
 
 ########################### Modeling ############################
 
@@ -124,8 +124,9 @@ rsq.rpart(x = CartModel_1)
 
 # Intermediate Model: Finalize CartFullModel (Based on Tree size i.e. Depth, Variables included as well as the R-Square produced)
 # Predict on testset
-CartFullModelPredictTest = predict(object = CartFullModel, newdata = MerSalesTestUncapped, type = "vector")
-
+CartFullModelPredictTest = predict(CartFullModel, newdata = MerSalesTestUncapped, type = "vector")
+CartFullModelPredictTest[1]
+MerSales[2,'sales']
 # Calculate RMSE and MAPE manually
 # Participants can calculate RMSE and MAPE using various available functions in R, but that may not
 # communicate effectively the mathematical aspect behind the calculations

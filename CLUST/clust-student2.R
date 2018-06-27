@@ -1,7 +1,7 @@
-# Clustering
+# Clustering- 
 
-data <- read.csv("E:/rWork/Projects/edm/studentdata.csv")
-str(data1)
+data <- read.csv("./data/studentdata.csv")
+str(data)
 data1 = data[-(1:6)]
 sdata1 = data.frame(scale(data[-(1:6)]))
 str(sdata1)
