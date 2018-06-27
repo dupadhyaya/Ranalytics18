@@ -1,4 +1,5 @@
 #Classification - Decision Trees - Distances
+#ctree
 
 play = read.csv('./data/clsplay.csv', row.names=1)
 credit = read.csv('./data/clscredit.csv')

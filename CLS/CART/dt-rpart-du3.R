@@ -6,8 +6,9 @@ train1
 
 library(rpart)
 ?rpart
-mytree1 = rpart (play ~ gender, data=train1, method='class')
+mytree1 = rpart (play ~ gender, data=train1, method='class', minsplit=2, cp=-1)
 mytree1
+rpart.plot(mytree1)
 
 #more data
 train2 = data.frame(rollno=c(1,2,3,4), gender=c('M','M','F','F'), play=c('Play','NoPlay','Play','Play'))

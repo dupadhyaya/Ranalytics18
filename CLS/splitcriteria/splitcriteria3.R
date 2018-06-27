@@ -27,7 +27,9 @@ rpart.plot(fit2)
 printcp(fit2)
 
 
-
+fit2$where  #which row at which node no
+data[1:5,]
+cbind(data, nodeno=rownames(fit2$frame) [ fit2$where])
 
 
 
