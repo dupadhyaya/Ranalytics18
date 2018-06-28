@@ -1,4 +1,6 @@
 # Decision Tree - DU Example
+library(rpart)
+library(rpart.plot)
 
 #Student Data  Create Data
 (rollno = paste('S',1:30, sep=''))
@@ -53,7 +55,7 @@ head(students2)
 
 ftable(students2)
 
-#Model2
+#Model2----
 set.seed(1234)
 fit2 = rpart(play ~ gender +   married, data=students2, minsplit=5, cp=-1)
 fit2
@@ -78,6 +80,12 @@ testdata
 cbind(testdata, p1, p2, p3)
 predict(fit2, newdata= testdata, type = "matrix")
 
+# Accuracy rate
+(pdata = predict(fit2, newdata=students2, type='class'))
+table(students2$play, pdata)
+sum(students2$play==pdata)/length(pdata)
+caret::confusionMatrix(factor(students2$play), pdata)
+
 #Location of each data point
 fit2$where
 rownames(fit2$frame) [fit2$where]
@@ -94,6 +102,47 @@ plotcp(fit2)
 fit2a = prune(fit2, cp=0)
 fit2a
 rpart.plot(fit2a)
+
+#Case-3----
+#Create Dataset
+set.seed(1234)
+gender = sample(x= c('Male','Female'), size=30, replace=T, prob=c(0.7,0.3) )
+table(gender)
+set.seed(1234)
+married = sample(x= c('Married','Single'), size=30, replace=T, prob=c(0.2,0.8) )
+table(married)
+
+set.seed(1111)
+play = sample(x= c('Play','NotPlay'), size=30, replace=T, prob=c(20/30,10/30) )
+table(play)
+set.seed(1234)
+education = sample(x=c('school','graduate', 'pg'), size=30, replace=T, prob=c(0.3,0.4,.3) )
+table(education)
+set.seed(1234)
+hostel = sample(x=c(TRUE, FALSE), size=30, replace=T, prob=c(.3,.7))
+table(hostel)
+
+set.seed(1234)
+marks = floor(rnorm(30,70,20))
+mean(marks)
+
+students3 = data.frame(gender, married, education, hostel, marks,play)
+with(students3, ftable(education, hostel, gender, married,play))
+set.seed(1234)
+fit3 = rpart(play ~ . , data=students3, minsplit=5, cp=-1)
+fit3
+
+printcp(fit3)
+(bestcp= fit3$cptable[which.min(fit3$cptable[,'xerror']),'CP'])
+fit3b = prune(fit3, cp=0)
+fit3b
+#fit3b.pruned =  prune(fit3, cp=bestcp)
+rpart.plot(fit3b, nn=T, cex=.8)
+fit3b$where
+path.rpart(fit3b, nodes=c(1,2,7,13), pretty =0, print.it = TRUE)
+testdata1= data.frame(gender='Male', married='Married',
+     education='school', hostel=TRUE, marks=60)
+predict(fit3b, newdata = testdata1 )
 
 
 #Case-4 : DV is numeric CV
