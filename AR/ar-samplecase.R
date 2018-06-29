@@ -4,6 +4,28 @@
 library(arules)
 library(arulesViz)
 
+#Create Data
+#Method1: format basket
+itemlist1 = paste('I1,I2,I5','I2,I4', 'I2,I3','I1,I2,I4','I1,I3','I2,I3','I1,I3','I1,I2','I3,I5','I1,I2,I3', sep="\n");
+itemlist1
+write(itemlist1, file = "./data/itemlist1");
+tdata1 = read.transactions("./data/itemlist1", format = "basket", sep=",");
+summary(tdata1)
+inspect(tdata1);
+
+#Method2
+itemlist2 <- data.frame(
+  TID = c(1,1,1,2,2,3,3,4,4,4,5,5,6,6,7,7,8,8,8,8,9,9,9), 
+  item=c('I1','I2','I5', 'I2','I4', 'I2','I3','I1','I2','I4','I1','I3','I2','I3','I1','I3','I1','I2','I3','I5','I1','I2','I3')
+)
+itemlist2
+tdata2 <- as(split(itemlist2[,"item"], itemlist2[,"TID"]), "transactions")
+tdata2
+inspect(tdata2)
+summary(tdata2)
+image(tdata2)
+
+#Method3 : will be used here
 #Data in the form of list
 itemlist = list(c('I1','I2','I5'), c('I2','I4'), c('I2','I3'),c('I1','I2','I4'),c('I1','I3'),c('I2','I3'),c('I1','I3'),c('I1','I2','I3','I5'),c('I1','I2','I3'))
 length(itemlist)
@@ -16,6 +38,7 @@ itemlist
 tdata <- as(itemlist, "transactions")
 inspect(tdata)
 
+#Data ready - Perform AR ----
 ## analyze transactions
 summary(tdata)
 image(tdata)
@@ -24,8 +47,6 @@ image(tdata)
 library(arules)
 freqitems = eclat(tdata)
 freqitems
-(df=inspect(freqitems))
-
 
 itemFrequencyPlot(tdata,topN = 5,type="absolute")
 itemFrequencyPlot(tdata,topN = 5,type="relative", horiz=T)
@@ -79,6 +100,9 @@ inspect(rules2.rhs1)
 rules2.lhsrhs1 = subset(rules2, lhs %in% c("I1") & rhs %in% c("I3"))
 inspect(rules2.lhsrhs1)
 
+rules2.lhsrhs2 = subset(rules2, lhs %in% c("I1") | rhs %in% c("I3"))
+inspect(rules2.lhsrhs2)
+
 # Rules as DF: original rules
 rules_DF <- as(rules,"data.frame")
 rules_DF
@@ -101,7 +125,7 @@ plot(rules, measure = c("support", "lift"), shading = "confidence")
 
 #Matrix Plots
 subrules <- rules[quality(rules)$confidence > 0.8]
-subrules
+inspect(subrules)
 plot(subrules, method = "matrix", measure = "lift")
 plot(subrules, method = "matrix", engine='3d', measure = "lift")
 
@@ -114,6 +138,5 @@ plot(subrules, method = "paracoord", control = list(reorder = TRUE))
 
 inspect(rules[14])
 plot(rules[14], method = "doubledecker", data = tdata)
-# The area of blocks gives the support and the height of the “yes” blocks is proportional to the confidence for the rules consisting of the antecedent.items marked as “yes.” Items that show a significant jump in confidence when changed from “no” to “yes” are interesting. 
 
 #https://cran.r-project.org/web/packages/arulesViz/vignettes/arulesViz.pdf
