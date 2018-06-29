@@ -46,3 +46,4 @@ itemFrequencyPlot(data3t,topN=10,type='absolute')
 rules3 = apriori(data3t, parameter=list(minlen=2))
 rules3.sorted = sort(rules3, by='lift')
 inspect(rules3.sorted)
+

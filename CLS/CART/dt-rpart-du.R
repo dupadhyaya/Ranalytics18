@@ -2,6 +2,7 @@
 library(rpart)
 library(rpart.plot)
 
+#Case-1----
 #Student Data  Create Data
 (rollno = paste('S',1:30, sep=''))
 set.seed(1234)
@@ -46,22 +47,21 @@ married = sample(x= c('Married','Single'), size=30, replace=T, prob=c(0.3,0.7) )
 table(married)
 
 set.seed(1234)
-play = sample(x= c('Play','NotPlay'), size=30, replace=T, prob=c(15/30,15/30) )
+play = sample(x= c('Play','NotPlay'), size=30, replace=T, prob=c(10/30,20/30) )
 table(play)
 
 students2 = data.frame(gender, married, play)
-rownames(students2) = rollno
+#rownames(students2) = rollno
 head(students2)
-
 ftable(students2)
 
-#Model2----
+#Model2
 set.seed(1234)
-fit2 = rpart(play ~ gender +   married, data=students2, minsplit=5, cp=-1)
+fit2 = rpart(play ~ gender + married, data=students2, minsplit=5, cp=-1)
 fit2
 summary(fit2)
 #Plot
-rpart.plot::rpart.plot(fit2, main='Classification Tree')
+rpart.plot::rpart.plot(fit2, nn=T, main='Model2 : Classification Tree')
 
 rpart.plot::rpart.plot(fit2, extra=104, box.palette="GnBu", branch.lty=3, shadow.col="gray", nn=TRUE)
 
@@ -145,8 +145,8 @@ testdata1= data.frame(gender='Male', married='Married',
 predict(fit3b, newdata = testdata1 )
 
 
-#Case-4 : DV is numeric CV
-#Create Dataset
+#Case-4----
+#Create Dataset V is numeric CV
 set.seed(1234)
 gender = sample(x= c('Male','Female'), size=30, replace=T, prob=c(0.4,0.6) )
 table(gender)
@@ -184,4 +184,26 @@ students4b = cbind(head(students4), predicted=predict(fit4, newdata=head(student
 diff = round(students4b$income - students4b$predicted,2)
 cbind(rownames(students4b), diff)
 
-      
+#Case-5 ----
+#: Divide and conquer
+
+head(students2)
+fit2
+rpart.plot(fit2, nn=T)
+node1= students2
+write.csv(node1, "./data/node1.csv")
+table(node1$play)
+prop.table(table(node1$play))
+node1[,1:3] = lapply(node1[,c(1:3)], factor)
+node1
+str(node1)
+(node123=split(node0, node0$married))
+
+(node2= node123$Single)
+table(node2$play)
+prop.table(table(node2$play))
+
+(node3= node123$Married)
+(node4 = split(node2, node2$gender)$Female)
+(node5 = split(node2, node2$gender)$Male)
+nrow(node1); nrow(node2); nrow(node3);nrow(node4);nrow(node5)

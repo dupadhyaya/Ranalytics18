@@ -1,0 +1,119 @@
+# Association Rule - Simple Example Case
+
+#libraries
+library(arules)
+library(arulesViz)
+
+#Data in the form of list
+itemlist = list(c('I1','I2','I5'), c('I2','I4'), c('I2','I3'),c('I1','I2','I4'),c('I1','I3'),c('I2','I3'),c('I1','I3'),c('I1','I2','I3','I5'),c('I1','I2','I3'))
+length(itemlist)
+
+## set transaction names
+names(itemlist) <- paste("Tr",c(1:9), sep = "")
+itemlist
+
+## coerce into transactions
+tdata <- as(itemlist, "transactions")
+inspect(tdata)
+
+## analyze transactions
+summary(tdata)
+image(tdata)
+
+#Analysis
+library(arules)
+freqitems = eclat(tdata)
+freqitems
+(df=inspect(freqitems))
+
+
+itemFrequencyPlot(tdata,topN = 5,type="absolute")
+itemFrequencyPlot(tdata,topN = 5,type="relative", horiz=T)
+
+#Construct the Rules
+rules = apriori(tdata, parameter = list(supp = 0.1, conf = 0.6, minlen=2))
+itemFrequencyPlot(items(rules))
+
+inspect(rules)
+
+#sort rules by support
+rules_s = sort(rules, by="support", decreasing=TRUE )
+inspect(rules_s)
+inspect(rules_s[1:5])  #itemsset having high confidence
+
+#sort rules by confidence
+rules_c = sort(rules, by="confidence", decreasing=TRUE )
+inspect(rules_c)
+inspect(rules_c[1:5])  #itemsset having high confidence
+
+#sort rules by lift
+inspect(head(rules, n = 3, by ="lift"))
+rules_l = sort(rules, by="lift", decreasing=TRUE )
+inspect(rules_l)
+inspect(rules_l[1:5])  #itemsset having high confidence
+
+#Quality Data of Rules
+quality(rules_c) 
+
+#Redundant Rules
+inspect(rules)
+(redundant = which(is.redundant(rules)))
+inspect(rules[c(8,9,10,11,12,14,14)])
+inspect(rules[redundant])
+inspect(rules)
+
+#Remove Redundant Rules
+rulesNR <- rules[-redundant] 
+is.redundant(rulesNR)
+sum(is.redundant(rulesNR))  #ok now
+inspect(rulesNR)
+
+#Rules with LHS and RHS: single or combination
+rules2= rulesNR
+rules2.lhs1 <- subset(rules2, lhs %in% c("I1", "I5"))
+inspect(rules2.lhs1)
+
+rules2.rhs1 <- subset(rules2, lhs %in% c("I4"))
+inspect(rules2.rhs1)
+
+rules2.lhsrhs1 = subset(rules2, lhs %in% c("I1") & rhs %in% c("I3"))
+inspect(rules2.lhsrhs1)
+
+# Rules as DF: original rules
+rules_DF <- as(rules,"data.frame")
+rules_DF
+str(rules_DF)
+
+
+#Visualisation
+plot(rules)
+
+#This interactve plot will open in another window
+#use menu options to check 
+plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
+
+#plot with unified interface, the no of items contained in the rule
+plot(rules, method = "two-key plot")
+
+#plot with lift on the y-axis. identify all rules with high
+lift. 
+plot(rules, measure = c("support", "lift"), shading = "confidence")
+
+#Matrix Plots
+subrules <- rules[quality(rules)$confidence > 0.8]
+subrules
+plot(subrules, method = "matrix", measure = "lift")
+plot(subrules, method = "matrix", engine='3d', measure = "lift")
+
+#Grouped
+plot(rules, method = "grouped")
+#The group of most interesting rules according to lift (the default measure) are shown in the top-left corner of the plot.
+plot(subrules, method = "graph")
+
+plot(subrules, method = "paracoord", control = list(reorder = TRUE))
+
+inspect(rules[14])
+plot(rules[14], method = "doubledecker", data = tdata)
+# The area of blocks gives the support and the height of the “yes” blocks is proportional to the confidence for the rules consisting of the antecedent.items marked as “yes.” Items that show a significant jump in confidence when changed from “no” to “yes” are interesting. 
+
+#https://cran.r-project.org/web/packages/arulesViz/vignettes/arulesViz.pdf
