@@ -2,6 +2,17 @@
 #http://stat.ethz.ch/R-manual/R-devel/library/base/html/strsplit.html
 #https://stackoverflow.com/questions/4350440/split-a-column-of-a-data-frame-to-multiple-columns
 
+library(stringr)
+library(wordcloud)
+library(RColorBrewer)
+library(tm)
+library(SnowballC)
+library(RCurl)
+library(XML)
+
+
+
+#How to use strsplit
 strsplit('IIT-Gawahati', "-")
 strsplit('IIT Gawahati', " ")
 
@@ -42,29 +53,29 @@ head(df)
 library(wordcloud)
 wc1 = wordcloud(df$word, df$freq, random.order=T)
 wc2 = wordcloud(df$word, df$freq, random.order=F, colors = topo.colors(10))
-?wordcloud
 wc3 = wordcloud(df$word, df$freq, scale=c(4,.1), min.freq=2, max.words=50,  random.order=F)
 wc4 = wordcloud(df$word, df$freq, scale=c(4,.1), random.order=F)
 
 
+#------
 
 library(RColorBrewer)
 library(tm)
-pal <-brewer.pal(8,"Dark2")
+pal <- brewer.pal(8,"Dark2")
 wc5 = wordcloud(df$word, df$freq, scale=c(4,.1), random.order=F, colors=pal)
 
-res<-rquery.wordcloud(filePath, type ="file", lang = "english",
-                      min.freq = 1,  max.words = 200)
+
+#load the function rquery.wordcloud
+source('http://www.sthda.com/upload/rquery_wordcloud.r')
+
+res <- rquery.wordcloud(filePath, type ="file", lang = "english",min.freq = 1,  max.words = 200)
 
 # Reds color palette
-res<-rquery.wordcloud(filePath, type ="file", lang = "english",
-                      colorPalette = "Reds")
+res <- rquery.wordcloud(filePath, type ="file", lang = "english",colorPalette = "Reds")
 # RdBu color palette
-res<-rquery.wordcloud(filePath, type ="file", lang = "english",
-                      colorPalette = "RdBu")
+res <- rquery.wordcloud(filePath, type ="file", lang = "english", colorPalette = "RdBu")
 # use unique color
-res<-rquery.wordcloud(filePath, type ="file", lang = "english",
-                      colorPalette = "black")
+res<-rquery.wordcloud(filePath, type ="file", lang = "english",  colorPalette = "black")
 
 
 tdm <- res$tdm

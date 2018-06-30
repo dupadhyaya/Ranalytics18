@@ -6,7 +6,7 @@ library(arulesViz)
 
 #Create Data
 #Method1: format basket
-itemlist1 = paste('I1,I2,I5','I2,I4', 'I2,I3','I1,I2,I4','I1,I3','I2,I3','I1,I3','I1,I2','I3,I5','I1,I2,I3', sep="\n");
+itemlist1 = paste('I1,I2,I5','I2,I4', 'I2,I3','I1,I2,I4','I1,I3','I2,I3','I1,I3','I1,I2,I3,I5','I1,I2,I3', sep="\n");
 itemlist1
 write(itemlist1, file = "./data/itemlist1");
 tdata1 = read.transactions("./data/itemlist1", format = "basket", sep=",");
@@ -25,19 +25,29 @@ inspect(tdata2)
 summary(tdata2)
 image(tdata2)
 
-#Method3 : will be used here
+#Method3 Use: ----
 #Data in the form of list
 itemlist = list(c('I1','I2','I5'), c('I2','I4'), c('I2','I3'),c('I1','I2','I4'),c('I1','I3'),c('I2','I3'),c('I1','I3'),c('I1','I2','I3','I5'),c('I1','I2','I3'))
 length(itemlist)
-
 ## set transaction names
 names(itemlist) <- paste("Tr",c(1:9), sep = "")
 itemlist
-
 ## coerce into transactions
-tdata <- as(itemlist, "transactions")
-inspect(tdata)
+tdata3 <- as(itemlist, "transactions")
+inspect(tdata3)
 
+#Method4 : DF ----
+T1 = c(T,T,F,F,T); T2 = c(T,F,F,T,F); T3 = c(F,T,T,F,T)
+T4 = c(T,T,F,T,F); T5 = c(T,F,T,F,T); T6 = c(F,T,T,F,T)
+T7 = c(T,F,T,F,T); T8 = c(T,T,T,F,T); T9 = c(T,T,T,F,T)
+df = data.frame(rbind(T1,T2,T3,T4,T5,T6,T7,T8,T9))
+colnames(df)=c('I1','I2','I3','I4','I5')
+df
+tdata4 = as(df, "transactions")
+inspect(tdata4)
+
+tdata=tdata3
+itemMatrix(tdata)
 #Data ready - Perform AR ----
 ## analyze transactions
 summary(tdata)

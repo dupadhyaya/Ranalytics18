@@ -1,5 +1,5 @@
 # Use Existing Twitter Authentication Stored
-# Marketing Analytics
+# Marketing/ Business Analytics
 
 library("twitteR")
 library("ROAuth")
@@ -23,6 +23,6 @@ no.of.tweets <- 100
 tweets <- searchTwitter(search.string, n=no.of.tweets,lang="en")
 tweets
 
-
+#My Tweets : will change if you use your own account
 homeTimeline(n=15)  #my tweets
 mentions(n=15)   # my tags

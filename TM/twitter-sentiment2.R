@@ -21,9 +21,7 @@ load('twitter authentication.Rdata') #Once you launch the code first time, you c
 setup_twitter_oauth(ConsumerKey, ConsumerSecret, AccessToken, AccessTokenSecret)
 
 tweets <- userTimeline("realDonaldTrump", n=200)
-#tweets <- userTimeline(user="rahulgandhi", n=200 )
 #english
-?userTimeline
 tweets[2]
 n.tweet <- length(tweets)
 n.tweet
