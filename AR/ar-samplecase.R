@@ -46,8 +46,8 @@ df
 tdata4 = as(df, "transactions")
 inspect(tdata4)
 
-tdata=tdata3
-itemMatrix(tdata)
+tdata=tdata1
+
 #Data ready - Perform AR ----
 ## analyze transactions
 summary(tdata)
@@ -104,7 +104,7 @@ rules2= rulesNR
 rules2.lhs1 <- subset(rules2, lhs %in% c("I1", "I5"))
 inspect(rules2.lhs1)
 
-rules2.rhs1 <- subset(rules2, lhs %in% c("I4"))
+rules2.rhs1 <- subset(rules2, rhs %in% c("I3"))
 inspect(rules2.rhs1)
 
 rules2.lhsrhs1 = subset(rules2, lhs %in% c("I1") & rhs %in% c("I3"))
@@ -117,7 +117,7 @@ inspect(rules2.lhsrhs2)
 rules_DF <- as(rules,"data.frame")
 rules_DF
 str(rules_DF)
-
+write.csv(rules_DF, './data/myrules1.csv')
 
 #Visualisation
 plot(rules)

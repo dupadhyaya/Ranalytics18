@@ -134,7 +134,23 @@ itemFrequencyPlot(trans,topN = 5,type="absolute")
 itemFrequencyPlot(trans,topN = 5,type="relative", horiz=T)
 
 #Construct the Rules
-rules8 = apriori(trans, parameter = list(supp = 0.1, conf = 0.5, minlen=2))
-itemFrequencyPlot(items(rules))
+rules8 = apriori(trans, parameter = list(supp = 0.02, conf = 0.7, minlen=2))
+itemFrequencyPlot(items(rules8))
 
 inspect(rules8)
+
+
+
+#
+AR in R : simple steps
+#eclat
+library(arules)
+library(arulesViz)
+library(igraph)
+Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_144')
+library(iplots)
+data <- read.transactions('file', sep=',')
+tdata1
+itemsets <- eclat(tdata, parameter = list(supp = 0.1, minlen=2, maxlen = 3))
+inspect(itemsets)
+plot(itemsets, method="graph", control=list(type="items"))

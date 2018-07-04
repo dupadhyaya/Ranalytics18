@@ -13,9 +13,11 @@ inspect(Groceries[1:5])  #view
 LIST(Groceries[1:6])  #another view
 .005 * 9835
 #Lets Apply Apriori Algorithm
-frequentItems <- eclat (Groceries, parameter = list(supp = 0.005, minlen= 1, maxlen = 5)) 
+frequentItems <- eclat (Groceries, parameter = list(supp = 0.02, minlen= 1, maxlen = 5)) 
 inspect(frequentItems)
 frequentItems
+inspect(frequentItems[10:100])
+
 inspect(frequentItems[900:1000])
 inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:25])
 #support(A&B) = n(A&B)/ N
@@ -44,8 +46,8 @@ rulesl <- sort (rules, by="lift", decreasing=TRUE)
 inspect (rulesl[1:5])
 
 #How To Control The Number Of Rules in Output ?
-rules <- apriori (Groceries, parameter = list (supp = 0.001, conf = 0.5, maxlen=3)) # maxlen = 3 limits the elements in a rule to 3
-
+rules <- apriori (Groceries, parameter = list (supp = 0.01, conf = 0.5, minlen=2, maxlen=3)) # maxlen = 3 limits the elements in a rule to 3
+inspect(rules)
 #How To Remove Redundant Rules ?
 sum(is.redundant(rules))
 (redundant = which(is.redundant(rules)))
@@ -56,13 +58,13 @@ sum(is.redundant(rulesNR))  #ok now
 
 #Another method
 #redundant <- which (colSums (is.subset (rules, rules)) > 1) 
-#redupndant
+#redundant
 
 
 
 #Find what factors influenced an event ‘X’
 rules <- apriori (data=Groceries, parameter=list (supp=0.002,conf = 0.8), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F))
-inspect(rules[1:15])
+inspect(rules[1:5])
 inspect(rules)
 
 
