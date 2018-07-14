@@ -1,6 +1,7 @@
 # Decision Tree - DU Example
 library(rpart)
 library(rpart.plot)
+library(caret) # variable imp
 
 #Case-1----
 #Student Data  Create Data
@@ -22,6 +23,7 @@ table(students1)
 set.seed(1234)
 fit1 = rpart(play ~ gender, data=students1, minsplit=5, cp=-1)
 print(fit1)
+varImp(fit1)
 options(digits=4)
 rpart.plot(fit1, nn=T)
 (t1=table(students1$play))
@@ -60,6 +62,8 @@ set.seed(1234)
 fit2 = rpart(play ~ gender + married, data=students2, minsplit=5, cp=-1)
 fit2
 summary(fit2)
+varImp(fit2)
+
 #Plot
 rpart.plot::rpart.plot(fit2, nn=T, main='Model2 : Classification Tree')
 
@@ -131,6 +135,7 @@ with(students3, ftable(education, hostel, gender, married,play))
 set.seed(1234)
 fit3 = rpart(play ~ . , data=students3, minsplit=5, cp=-1)
 fit3
+varImp(fit3) #at root level 
 
 printcp(fit3)
 (bestcp= fit3$cptable[which.min(fit3$cptable[,'xerror']),'CP'])

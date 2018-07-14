@@ -38,10 +38,13 @@ rpart.plot(fit3)
 
 #Split DF - daply & split, subset
 library(plyr)
-x <- daply(df, .(splitting_variable), function(x)return(x))
-
-(split1 = split(students3, marks >=76.5))
+x=daply(students3, .(gender), function(x) return(x))
+x
+(split1 = split(students3, marks >=76))
 split1$'FALSE'
+split(students3, marks >=76)$'FALSE'
+split(students3, marks >=76)[['TRUE']]
+
 s3Left = as.data.frame(split1$'FALSE')
 s3Right = as.data.frame(split1$'TRUE')
 #left node
@@ -55,6 +58,20 @@ fitL2b = rpart(play ~ ., data = s3Left, minsplit=5, cp=.1)
 fitL2b
 varImp(fitL2b) # other variable are not important
 rpart.plot(fitL2b)
+
+#right side
+s3Right = as.data.frame(split1$'TRUE')
+fitR2 = rpart(play ~ ., data = s3Right, minsplit=5, cp=-1)
+fitR2
+rpart.plot(fitR2)
+varImp(fitR2) # other variable are not important
+printcp(fitR2)
+
+fitL2b = rpart(play ~ ., data = s3Left, minsplit=5, cp=.1)
+fitL2b
+varImp(fitL2b) # other variable are not important
+rpart.plot(fitL2b)
+
 
 
 
