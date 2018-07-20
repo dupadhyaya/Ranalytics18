@@ -1,4 +1,5 @@
 #Package fBasics
+#http://math.furman.edu/~dcs/courses/math47/R/library/fBasics/html/015A-BasicStatistics.html
 
 library(fBasics)
 #skewness	returns value of skewness,
@@ -17,16 +18,26 @@ rowStats(mtcars,FUN=mean)
 colStats(mtcars, FUN=median)
 
 #rowAvgs	calculates row means,
-rowAv
+rowAvgs(mtcars)
 
-colAvgs	calculates column means,
-rowVars	calculates row variances,
-colVars	calculates column variances,
-rowStdevs	calculates row standard deviations,
-colStdevs	calculates column standard deviations,
-rowSkewness	calculates row skewness,
-colSkewness	calculates column skewness,
-rowKurtosis	calculates row kurtosis,
-colKurtosis	calculates column kurtosis,
+#colAvgs	calculates column means,
+colAvgs(mtcars)
+
+#rowVars	calculates row variances,
+rowVars(mtcars)
+
+#colVars	calculates column variances,
+
+#rowStdevs	calculates row standard deviations,
+
+#colStdevs	calculates column standard deviations,
+
+#rowSkewness	calculates row skewness,
+
+#colSkewness	calculates column skewness,
+
+#rowKurtosis	calculates row kurtosis,
+
+#colKurtosis	calculates column kurtosis,
 rowCumsums	calculates row cumulated Sums,
 colCumsums	calculates column cumulated Sums.
