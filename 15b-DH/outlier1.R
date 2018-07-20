@@ -61,9 +61,25 @@ car::outlierTest(lm(prestige~income+education, data=Duncan))
 
 #car::avPlots(mtcarslm, ask=F, id.method='identify')
 
+library(outliers)
+#https://cran.r-project.org/web/packages/outliers/outliers.pdf
+set.seed(1234)
+y=rnorm(100)
+outlier(y)
+outlier(y,opposite=TRUE)
+y=rm.outlier(y, fill = FALSE, median = FALSE, opposite = FALSE)
+rm.outlier(y, fill = FALSE, median = FALSE, opposite = FALSE)
+#scores(y, type = c("z"), prob = NA, lim = NA)
 
-
-
+set.seed(1234)
+y=rnorm(100)
+dim(y) <- c(20,5) # convert to matrix
+y
+outlier(y) #in each column
+outlier(y,opposite=TRUE)
+apply(y, c(2), range)
+boxplot(y)
+scores(y, type = c("z", "t", "chisq", "iqr", "mad"), prob = NA, lim = NA)
 
 
 
