@@ -2,24 +2,24 @@
 
 #read file : Method1
 sales1 = read.csv("./data/denco.csv")
-head(sales1)
 str(sales1)
 
 #read file : Method2
 sales2 = read.csv(file.choose())
 str(sales2)
-head(sales2)
 
 #read file: Method3
 #install.packages('gsheet')
 library(gsheet)
-url = "https://docs.google.com/spreadsheets/d/1Md_ro2t3M7nA9JMH1DsE12jfeX7qq-UPw6p8WQd6A2Y/edit#gid=216113907"
+url = "https://docs.google.com/spreadsheets/d/1h7HU0X_Q4T5h5D1Q36qoK40Tplz94x_HZYHOJJC_edU/edit#gid=216113907"
 sales3 = as.data.frame(gsheet2tbl(url))
 str(sales3)
-head(sales3)
-head(sales2)
-head(sales1)
 
+
+#using gsheet
+library(gsheet)
+denco2 = as.data.frame(gsheet2tbl(url))
+str(denco2)
 
 #head(sales1,n=7)
 #names(sales1)
@@ -28,41 +28,31 @@ head(sales1)
 sales = sales1  # keeping a backup
 str(sales)
 class(sales)
-summary(sales)
-
-sales$region = factor(sales$region)
+str(sales)
+?summary
 summary(sales)
 
 str(sales)
 dim(sales) #dimensios of DF rows & colnum
 unique(sales$custname)
-length(unique(sales$custname)) #1268
+length(unique(sales$custname))
 length(unique(sales$region ))
-#custname #revenue(sum)
-
-t1= table(sales$custname)
-
-
-
-options(digits=7)
 
 # aggregation
-aggregate(sales$revenue , by=list(sales$custname), FUN=sum)  #1268 rows
-head(aggregate(revenue ~ custname, data=sales, FUN=sum))  #1268 rows
-df1= aggregate(sales$revenue , by=list(sales$custname), FUN=sum)
+aggregate(sales$revenue , by=list(sales$custname), FUN=sum)
+df1 = aggregate(sales$revenue , by=list(sales$custname), FUN=sum)
 head(df1)
 str(df1)
 
-#head(df1[order(df1$x, decreasing=TRUE),], 5)
-df1=df1[ order(df1$x, decreasing=TRUE), ] # order and save as original DF
-head(df1,n=10)
-#Triumph insulation - max revenue
+df1=df1[order(df1$x, decreasing=TRUE),]
+head(df1,10)
 
-#Region wise revenue
-df2= aggregate(formula=revenue ~ region, data=sales, FUN=mean)
-head(df2)
-head(df2[order(df2$revenue, decreasing=FALSE),], 6)
-#China region gave least mean revenue
+head(df1[order(df1$x, decreasing=TRUE),], 5)
+
+aggregate(sales$revenue, by=list(sales$region), FUN=mean)
+df2= aggregate(formula=revenue ~ region, data=sales, FUN=sum)
+df2[order(df2$revenue, decreasing=F),]
+
 
 #Aggregate Formula
 (df2 = aggregate(revenue ~ custname + region, data=sales, FUN=sum))
@@ -76,30 +66,19 @@ head(sort(list1, decreasing=T))
 summary(df3)
 str(df3)
 
-#dplyr----
-names(sales)  #names of variables or columns
-library(dplyr)
-sales[sales$margin > 1000000, ]  #base functionality
-filter(sales, margin > 1000000)
-sales %>% filter(margin > 1000000)
-sales %>% filter(margin > 1000000) %>% filter(revenue > 2000000) 
+#dplyr
+names(sales)
 
-sales %>% filter(margin > 100000) %>% arrange(region, desc(revenue))
-#custname - region(asc) - revenue(desc) for margins > 100000
+library(dplyr)
+
+sales %>% filter(margin > 10000) %>% arrange(region, desc(revenue))
 filter(sales, margin > 1000000)
 
 sales %>% filter(region == '01-East' & revenue > 400000) %>% select(partnum, region, revenue)
 
-sales %>% select(custname, region, margin) %>% arrange(desc(margin)) %>% head(n=10)
-
 names(sales)
-df5 = (sales %>% group_by(custname) %>% summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue)))
-sales %>% group_by(custname) %>% summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue))  %>% head(n=5)
-str(df5)
-as.data.frame(df5)
-
-sales %>% group_by(region) %>% summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue))
-
+sales %>% group_by(custname) %>% 
+  summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue))
 
 
 library(data.table)
@@ -130,9 +109,10 @@ head(sort(xtabs(~ custname, sales), decreasing=T))
 
 #
 library(dplyr)
-sales %>% count(custname, sort=TRUE)
-sales %>% group_by(custname) %>% summarise(n = n()) %>% arrange(desc(n))
-# chiz bros have been most loyal
+sales %>% dplyr::count(custname, sort=TRUE)
+
+sales %>% dplyr::group_by(custname) %>% dplyr::summarise(n = n()) %>% dplyr::arrange(desc(n))
+
 
 
 #plyr
@@ -155,19 +135,11 @@ head(df3b[order(df3b$revenue, decreasing=T),])
 sales %>% dplyr::group_by(partnum) %>% dplyr::summarise(n = n()) %>% dplyr::arrange(desc(n))
 
 
-# which parts gave highest Profit margin : partno - sum(profit)
+# which parts have highest Profit : partno - sum(profit)
 names(sales)
 df4a = aggregate(margin ~ partnum, data=sales, FUN=sum)
 aggregate(margin ~ partnum, data=sales, FUN=sum)
 head(df4a[order(df4a$margin, decreasing = T),])
 
-sales %>% group_by(partnum) %>% summarise(TotalMargin= sum(margin)) %>% arrange(desc(TotalMargin)) %>% head()
+sales %>% group_by (partnum) %>% summarise(TotalMargin= sum(margin)) %>% arrange(desc(TotalMargin)) %>% head()
 
-
-# Graphs
-boxplot(sales$revenue)
-df6 <- sales %>% group_by(region) %>% summarise(Revenue = sum(revenue))
-df6 = as.data.frame(df6)
-df6
-pie(df6$Revenue, labels = df6$region)
-barplot(df6$Revenue, col=1:6, names.arg = df6$region)

@@ -12,10 +12,7 @@ names(student2)
 #save the imported data object into a new object
 student=student1  # or student2
 str(student)
-names(student)
 df1= student
-lm(df1$btechmarks ~ df1$attnd, data=df1)
-
 (colnames = names(df1))
 #attributes(df1) = NULL
 #df1 = as.data.frame(df1)
@@ -23,6 +20,7 @@ attributes(df1)
 attr(df1, which='spec') = NULL
 #names(df1) = colnames
 str(df1)
+
 #class of each column
 class(df1$gender)
 sapply(df1, class)
@@ -40,7 +38,7 @@ str(df1)
 names(df1)
 table(df1$gender)
 #combine it in single command 
-(l1= lapply(df1[factorcols],factor,ordered=TRUE)) #ordering is not necessary for all
+(l1= lapply(df1[factorcols],factor,ordered=TRUE))
 sapply(l1,table)
 
 table(df1$gender)
@@ -74,8 +72,6 @@ colMeans(df1[numcols[c(1:3)]])
 names(df1)
 #Look for other summarisation and grouping
 aggregate(df1[numcols], by=list(df1$br), FUN=mean)
-aggregate(cbind(sem1, sem2) ~ br + gender, data=student, FUN=mean)
-
 aggregate(java + cbnst ~ br, data=df1, FUN=mean)  #sum of java & cbnst wrt branch
 aggregate( cbnst ~ gender, data=df1, FUN=mean)
 aggregate( cbnst ~ gender + br, data=df1, FUN=mean)
@@ -85,34 +81,31 @@ aggregate( cbnst ~ gender + br, data=df1, FUN=mean)
 #using dplyr package
 library(dplyr)
 
-#Top 2 students from each Branch---- 
+#Top 2 students from each Branch 
 df1 %>% select(br, sname, btechmarks) %>% group_by(br) %>% arrange(desc(btechmarks)) %>% top_n(n=2)
 
-# Average Fees Paid by Batch Yr----
+# Average Fees Paid by Batch Yr
 df1 %>% group_by(batchyr) %>% select(batchyr, feepaid) %>% summarize(mean_fees = mean(feepaid, na.rm = TRUE))
 
 names(df1)
-# Avg BTech Marks and Min Marks in Java : Group by Gender, Granch and Final Grade ----
 df1 %>% filter(finalgrade == 'A') %>% group_by(gender, br, finalgrade) %>% summarize(btechmks = mean(btechmarks, na.rm = TRUE), javamin = min(java, na.rm = TRUE))
 
-#Count by Gender ----
+#Count
 df1 %>%   group_by(gender) %>%  tally()
 
-#Filter by Final Grade = B : select only few columns ----
+#Filter
 df1 %>% filter(finalgrade == 'B') %>% select(rollno, sname, finalgrade)
 
-#sample : select few rows on randowm basis ----
-df1 %>% sample_frac(0.2, replace = TRUE)  %>% select(rollno, sname)  # % of Total
-df1 %>% sample_frac(0.2, replace = F)  %>% select(rollno, sname) # % of total : replace should be False to have non repeated rows
-df1 %>% sample_n(3, replace = F)  %>% select(rollno, sname) # select only 3 rows
+#sample
+df1 %>% sample_frac(0.2, replace = TRUE)  %>% select(rollno, sname)
+df1 %>% sample_frac(0.2, replace = F)  %>% select(rollno, sname)
+df1 %>% sample_n(3, replace = F)  %>% select(rollno, sname)
 
-#few rows : 10 to 15
+#few rows
 slice(df1, 10:15)
 
 library(tidyr) #Reshape
-df1long <- df1 %>% select(sname, java, cbnst)
 df1long <- df1 %>% select(sname, java, cbnst) %>% tidyr::gather(key = subject, value = marks, java, cbnst) 
-
 head(df1long)
 distinct(df1long)
 
@@ -136,7 +129,7 @@ slice(df1, n()-10: n())  #different way
 
 names(df1)
 #defaults to the last variable in the tbl
-df1 %>% group_by(gender) %>% top_n(2)  #Rank not data on last column
+df1 %>% group_by(gender) %>% top_n(2)  #Rank not data
 # top_n(n = 5, wt = x)
 df1 %>% group_by(gender) %>% top_n(2,wt=class10)  #Rank not data wrt class10 marks
 
