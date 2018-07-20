@@ -18,4 +18,5 @@ x= 1/0
 y = x + 2
 is.nan(x)
 is.nan(y)
-z = 
+ 
+  
