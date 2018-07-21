@@ -1,12 +1,13 @@
 # Aggregate
 
-student1 <- readRDS("student1.rds")
+student1 <- readRDS("./0-Rdata/student1.rds")
 str(student1)
 dim(student1)
 names(student1)
 summary(student1)
 student1$br
 student1submarks = student1[c("java","dbms", "dwm","vlsi","cpp","cbnst")]
+
 str(student1submarks)
 
 # for each gp of btechmarks, average other columns
