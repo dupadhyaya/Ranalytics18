@@ -1,8 +1,9 @@
-# Data Manipulation  through dplyr
+# Data Manipulation  through dplyr package
+# understand iris, mtcars, women datasets and dplyr package
 
 library(dplyr)
 dplyr::tbl_df(iris)
-print(dplyr::tbl_df(mtcars), n=15)
+print(dplyr::tbl_df(mtcars), n=15)  #display more columns and rows
 #print(dplyr::tbl_df(mtcars), width=5)
 tbl_df(iris) %>% print(n = Inf)
 tbl_df(iris) %>% print(width = Inf)
