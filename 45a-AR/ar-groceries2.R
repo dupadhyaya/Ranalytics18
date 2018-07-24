@@ -3,6 +3,7 @@
 
 df_groceries <- read.csv("./data/groceries.csv")
 str(df_groceries)
+head(df_groceries)
 #Implementing Market Basket Analysis using Apriori Algorithm
 dim(df_groceries)
 #read transactions

@@ -9,8 +9,8 @@ str(iris)
 head(iris)
 
 # Classification Tree
-
-#set.seed(1234)
+summary(iris)
+set.seed(1234)
 ctree = rpart(Species ~ ., method='class', data=iris)
 ctree
 rpart.plot(ctree, main='Classification Tree', nn=T, type=4, extra=104)

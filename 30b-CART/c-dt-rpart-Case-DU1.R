@@ -83,6 +83,8 @@ addmargins(prop.table(table(students2)))
 #library(rpart)
 names(students2)
 fit2 = rpart(buy ~ gender + married, data=students2, minsplit=10, cp=-1)
+fit2 = rpart(buy ~ gender + married, data=students2, minsplit=10)
+
 summary(fit2)
 fit2
 rpart.plot(fit2,type=2,extra=104, tweak=1.2, under=T, shadow=c('brown', 'green','red'), nn=T)
@@ -150,3 +152,4 @@ rpart.plot(pfit)
 new.tree <- prp(fit2, snip=TRUE)$obj # interactively trim the tree
 prp(new.tree) # display the new tree
 #click on quit 
+

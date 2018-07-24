@@ -33,7 +33,7 @@ coef(fit1)
 #pvalue : 1.09e-14  < 0.05 : Model exists
 #There is at least 1 IV which explains variation in Y (DV)
 
-
+range(women$height)
 #Prediction : for height = 65, 66
 (new1 = data.frame(height=c(65,66)))
 predict(fit1, newdata = new1, type='response')

@@ -31,8 +31,9 @@ for(i in 2:ncol(Mer_Sales))
     print("****************************************")
   }
 }
-
-
+head(Mer_Sales)
+summary(Mer_Sales)
+str(Mer_Sales)
 # Make a copy of the Original Dataset
 Mer_SalesUncapped = Mer_Sales
 dim(Mer_SalesUncapped)

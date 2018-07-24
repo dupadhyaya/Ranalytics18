@@ -16,6 +16,7 @@ iriskm1 = kmeans(irisFeatures,3)
 
 iriskm1$size # no of rows in in each cluster
 iriskm1$cluster # row no to clusters
+
 plot(irisFeatures$Sepal.Length, col=iriskm1$cluster)
 plot(irisFeatures$Sepal.Width, col=iriskm1$cluster)
 
