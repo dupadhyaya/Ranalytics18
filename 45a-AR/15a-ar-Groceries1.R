@@ -2,19 +2,6 @@
 #http://www.salemmarafi.com/code/market-basket-analysis-with-r/
 #if this, then that”.
 # The Groceries Dataset
-#Imagine 10000 receipts sitting on your table. Each receipt represents a transaction with items that were purchased. The receipt is a representation of stuff that went into a customer’s basket – and therefore ‘Market Basket Analysis’.
-#That is exactly what the Groceries Data Set contains: a collection of receipts
-#with each line representing 1 receipt and the items purchased. 
-#Each line is called a transaction and each column in a row represents an item. 
-#You can download the Groceries data set to take a look at it, but this is not a necessary step.
-
-#{ i1,i2} => { ik} : “if a user buys an item in the item set on the left hand side, then the user will likely buy the item on the right hand side too”. 
-# {coffee,sugar} => {milk} If a customer buys coffee and sugar, then they are also likely to buy milk.
-#three important ratios; the support, confidence and lift.
-#Support: The fraction of which our item set occurs in our dataset.
-#Confidence: probability that a rule is correct for a new transaction with items on the left.
-#Lift: The ratio by which by the confidence of a rule exceeds the expected confidence. 
-#Note: if the lift is 1 it indicates that the items on the left and right are independent.
 
 # Load the libraries
 library(arules)

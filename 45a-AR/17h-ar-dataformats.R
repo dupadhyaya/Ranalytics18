@@ -11,7 +11,7 @@ summary(trans)
 inspect(trans)
 
 
-
+#DF---
 #creating transactions from data.frame
 a_df <- data.frame(
   age   = as.factor(c(6, 8, NA, 9, 16)), 
@@ -47,26 +47,7 @@ inspect(trans4)
 image(trans4)
 ## Note: This is very slow for large datasets. It is much faster to read transactions in this format from disk using read.transactions() with format = "single".
 
-a_list <- list(
-  c("a","b","c"),
-  c("a","b"),
-  c("a","b","d"),
-  c("c","e"),
-  c("a","b","d","e")
-)
 
-## set transaction names
-names(a_list) <- paste("Tr",c(1:5), sep = "")
-a_list
-
-## coerce into transactions
-trans1 <- as(a_list, "transactions")
-inspect(trans1)
-
-## analyze transactions
-summary(trans1)
-image(trans1)
-inspect(trans1)
 
 
 
