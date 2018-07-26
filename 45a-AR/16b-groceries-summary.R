@@ -8,7 +8,7 @@ summary(Groceries)
 #there were 9,835 transactions altogether
 #169 different items were bought during the month
 #the most frequently bought item was “whole milk”: 2’513 purchases
-#there were 2159 single item baskets, the biggest basket included 32 items 
+#there were 2159 single item baskets, the biggest basket included 32 items
 #median basket included 3 items; mean had 4.4 items.
 
 inspect(Groceries[1:5])

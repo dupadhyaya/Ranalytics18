@@ -40,8 +40,10 @@ km1$size
 km1$totss
 
 #Plot the Clusters
+#dim of plot should > 2
 fviz_cluster(km1, data = df1, geom = "point", stand = FALSE, ellipse.type = "norm") #Less than 2 Not work
 plot(df1$marks1, col=km1$cluster)
+
 library(cluster)
 clusplot(df1, km1$cluster, color=TRUE, shade=TRUE, labels=2, lines=0)
 #optimal number of clusters
@@ -57,3 +59,4 @@ kmc1$tot.withinss; kmc5$tot.withinss
 (wss = sapply(1:5, function(k){kmeans(df1, k )$tot.withinss}))
 plot(1:5, wss, type="b")
 abline(v = 3, lty =2)
+

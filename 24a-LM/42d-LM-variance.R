@@ -25,3 +25,73 @@ plot(fit3)
 
 fit4 = lm(dist ~ speed, data=cars[1:20, ])  #  linear model
 plot(fit4) #homoscedascity present
+
+#M3
+library(car)
+data(cars)
+lmMod <- lm(dist ~ speed, data=cars) # initial model
+lmtest::bptest(lmMod)
+car::ncvTest(lmMod) 
+
+#Box Transformation
+
+distBCMod <- caret::BoxCoxTrans(cars$dist)
+print(distBCMod)
+cars <- cbind(cars, dist_new=predict(distBCMod, cars$dist)) # append the transformed variable to cars
+head(cars) # view the top 6 rows
+lmMod_bc <- lm(dist_new ~ speed, data=cars)
+lmtest::bptest(lmMod_bc)
+#With a p-value of 0.91, we fail to reject the null hypothesis (that variance of residuals is constant) and therefore infer that ther residuals are homoscedastic. Lets check this graphically as well.
+
+plot(lmMod_bc)
+
+#much flatter line and an evenly distributed residuals in the top-left plot. So the problem of heteroscedsticity is solved and the case is closed. If you have any question post a comment below.
+
+
+# M4----
+#https://cran.r-project.org/web/packages/olsrr/vignettes/heteroskedasticity.html
+
+library(olsrr)
+model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
+ols_test_score(model)
+
+
+#Holm’s p value Adjustment
+model <- lm(mpg ~ disp + hp + wt + drat, data = mtcars)
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE, p.adj = 'holm')
+
+#Bonferroni p value Adjustment
+model <- lm(mpg ~ disp + hp + wt + drat, data = mtcars)
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE, p.adj = 'bonferroni')
+
+#Use independent variables of the model and perform multiple tests
+model <- lm(mpg ~ disp + hp + wt + drat, data = mtcars)
+ols_test_breusch_pagan(model, rhs = TRUE, multiple = TRUE)
+
+#Use independent variables of the model
+model <- lm(mpg ~ disp + hp + wt + drat, data = mtcars)
+ols_test_breusch_pagan(model, rhs = TRUE)
+
+#Use fitted values of the model
+model <- lm(mpg ~ disp + hp + wt + drat, data = mtcars)
+ols_test_breusch_pagan(model)
+
+#Use independent variables of the model
+model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
+ols_test_score(model, rhs = TRUE)
+
+#Specify variables
+model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
+ols_test_score(model, vars = c('disp', 'hp'))
+
+#F Test Use fitted values of the model
+model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
+ols_test_f(model)
+
+#Use independent variables of the model
+model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
+ols_test_f(model, rhs = TRUE)
+
+#Specify variables
+model <- lm(mpg ~ disp + hp + wt + qsec, data = mtcars)
+ols_test_f(model, vars = c('disp', 'hp'))

@@ -1,85 +1,79 @@
-# Groceries Example 2 ####
+# Association Rules - Groceries data set ####
 
 library(arules)  #install first
 library(arulesViz) #install first
-library(datasets)  # no need to install, just load it
+library(datasets)  # no need to install, just load it reqd for Groceries
 data('Groceries')
-?Groceries
+
+#Structure of Groceries
 str(Groceries)
 Groceries
-
 inspect(Groceries[1:5])  #view
-
 LIST(Groceries[1:6])  #another view
-.005 * 9835
-#Lets Apply Apriori Algorithm
-frequentItems <- eclat (Groceries, parameter = list(supp = 0.02, minlen= 1, maxlen = 5)) 
+
+#Find Frequent Itemset
+frequentItems = eclat (Groceries, parameter = list(supp = 0.02, minlen= 1, maxlen = 5)) 
 inspect(frequentItems)
 frequentItems
 inspect(frequentItems[10:100])
-
 inspect(frequentItems[900:1000])
+
+#Descending Sort frequent items by count : 1 to 25 itemsets
 inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:25])
-#support(A&B) = n(A&B)/ N
 
-frequentItems
-inspect(frequentItems[1:5])
-inspect(frequentItems)
+#Support is : support(A&B) = n(A&B)/ N
 
-?eclat
+#Plot the Frequency Plot
 itemFrequencyPlot(Groceries,topN = 15,type="absolute")
 itemFrequencyPlot(Groceries, topN = 10, type='relative')
 abline(h=0.2)
 
-rules <- apriori(Groceries, parameter = list(supp = 0.005, conf = 0.5))
+# Create rules and the relationship between items
+#parameters are min filter conditions 
+rules = apriori(Groceries, parameter = list(supp = 0.005, conf = 0.5))
 rules
-#write.csv(inspect(rules[1:5]), 'rules.csv')
-inspect(rules[1:5])
-quality(rules) 
-head(quality(rules))
 options (digits=2)
 inspect (rules[1:5])
 
+#Sort Rules by confidence, lift and see the data
 rulesc <- sort (rules, by="confidence", decreasing=TRUE)
 inspect(rulesc[1:5])
 rulesl <- sort (rules, by="lift", decreasing=TRUE)
 inspect (rulesl[1:5])
+#which items have strong confidence and lift 
 
 #How To Control The Number Of Rules in Output ?
-rules <- apriori (Groceries, parameter = list (supp = 0.01, conf = 0.5, minlen=2, maxlen=3)) # maxlen = 3 limits the elements in a rule to 3
-inspect(rules)
-#How To Remove Redundant Rules ?
-sum(is.redundant(rules))
-(redundant = which(is.redundant(rules)))
-#colSums(is.subset(rules, rules))
-rulesNR <- rules[-redundant] 
+#maxlen, minlen, supp, conf
+rules2 = apriori (Groceries, parameter = list (supp = 0.001, conf = 0.5, minlen=2, maxlen=3)) 
+inspect(rules2[1:5])
+
+# Are there any duplicate/ Redundant Rules ?
+sum(is.redundant(rules2))
+(redundant = which(is.redundant(rules2)))
+#remove it
+rulesNR = rules2[-redundant] 
 is.redundant(rulesNR)
 sum(is.redundant(rulesNR))  #ok now
 
-#Another method
-#redundant <- which (colSums (is.subset (rules, rules)) > 1) 
-#redundant
-
-
 
 #Find what factors influenced an event ‘X’
-rules <- apriori (data=Groceries, parameter=list (supp=0.002,conf = 0.8), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F))
-inspect(rules[1:5])
-inspect(rules)
-
+rules3 = apriori (data=Groceries, parameter=list (supp=0.002,conf = 0.8), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F))
+inspect(rules3[1:5])
+inspect(rules3)
 
 #Find out what events were influenced by a given event
-
-rules <- apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.05,minlen=2), appearance = list (default="rhs",lhs="whole milk"), control = list (verbose=F)) 
-inspect(rules)
-
-rules <- apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.05,minlen=2), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F)) 
-inspect(rules)
-
-
+subset1 = subset(rules2, appearance = list (default="lhs",rhs="whole milk"))
+subset1 = subset(rules2, subset=rhs %in% 'bottled beer' )
+inspect(subset1)
+subset2 = subset(rules2, subset=lhs %in% 'bottled beer' )
+inspect(subset2)
+subset3 = subset(rules2, subset=rhs %in% 'bottled beer' & confidence > .7, by = 'lift', decreasing = T)
+inspect(subset3)
+subset4 = subset(rules2, subset=lhs %in% 'bottled beer' & rhs %in% 'whole milk' )
+inspect(subset4)
 
 #Visualizing The Rules -----
-plot (rules, measure=c("support", "lift"), shading="confidence")
+plot(subset1[1:10]) 
+plot(subset1[1:10], measure=c("support", "lift"), shading="confidence")
 
-plot(rules[1:5],method="graph",engine='interactive', shading="confidence") 
-
+#
