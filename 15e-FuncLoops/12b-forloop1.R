@@ -1,8 +1,7 @@
 # For Loop
 
 for ( i in 1:10)
-{
-  print(i)
+{  print(i)
 }
 
 print(1:10)
@@ -41,6 +40,21 @@ for (v in c(4:6))
   print(c(x, v))
 }
 x
+
+#create vector elements
+x <- NULL
+for(i in 1:5){
+  x[i] <- i * 2
+}
+x
+#substitute 2 and 3 position with zero values
+for(i in 2:3){
+  x[i] <- 0
+}
+x
+
+
+
 
 x = c(1,2,3)
 for (v in c(4:6))

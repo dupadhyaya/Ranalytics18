@@ -12,9 +12,6 @@ table(gender)
 prop.table(table(gender))
 
 (marks = rnorm(60, mean=60, sd=15))
-x = c(23.3, 34.742)
-floor(x); ceiling(x); trunc(x); round(x,1)
-floor(marks)
 (grades= sample(c('Excellent','Good','Poor'), size=60, replace = T, prob=c(.2, .3, .5)))
 table(grades)
 grades = factor(grades, levels=c('Poor','Good','Excellent'), ordered=T)
@@ -48,3 +45,5 @@ df
 df[ df$gender=='M',]
 df[ df$gender=='M', c(1,2,4)]
 df[ df$gender=='M', c('rollno', 'gender')]
+
+

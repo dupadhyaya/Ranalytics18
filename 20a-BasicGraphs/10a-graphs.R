@@ -62,6 +62,7 @@ pairs(women)
 cor(women$height,women$weight)
 
 head(mtcars)
+cor(mtcars)
 pairs(mtcars)
 options(digits=4)
 

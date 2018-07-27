@@ -1,7 +1,7 @@
 # Sort Order Rank
-set.seed(1123)
-marks = ceiling(runif(11,5,10))
-marks
+
+set.seed(123)
+(marks = ceiling(runif(11,5,10)))
 
 # sort
 sort(marks)
@@ -18,21 +18,19 @@ marks
 marks[c(6,7,10)]
 marks[order(marks)]  # similar to sort(x)
 order(marks, decreasing = T)
-order(-marks)  # decreasing
+order(-marks)  # decreasing, this works
 
 length(marks)
 marks2 = marks
+#insert missing value
 marks2[5] = NA  # check with NA Value  : display, position
 marks2
 order(marks2)  # NA is last
-?order
 order(marks2, na.last = NA)  # removed
 length(marks)  # length is same
 is.na(marks2)  # logical vector if NA
 anyNA(marks2)  # is there is any NA
 
-mean(marks2)  # does not work with NA values
-mean(marks2, na.rm=T)  # add na.rm=T
 order(marks2, na.last = NA)  # 5 removed
 order(marks2, na.last = FALSE)   # 5 is first
 order(marks2, na.last = TRUE)   # 5 is last
@@ -86,3 +84,6 @@ length(rank(marks2, na.last=TRUE))  # No effect
 rank(marks2, na.last=FALSE)  # No effect - Avg; NA - smallest 1
 rank(marks2, na.last='keep')  # NA shown as NA
 
+
+mean(marks2)  # does not work with NA values
+mean(marks2, na.rm=T)  # add na.rm=T

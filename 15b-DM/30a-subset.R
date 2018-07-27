@@ -1,7 +1,5 @@
 # Subset
-#subset( ) function is the easiest way to select variables 
-#and observations. In the following example, we select all rows that have a value of age greater than or equal to 20 or age less then 10.
-# We keep the ID and Weight columns.
+#subset( ) function is the easiest way to select variables and observations.
 
 mtcars
 # using subset function 
@@ -14,9 +12,11 @@ newdata
 # using subset function (part 2)
 names(mtcars)
 head(mtcars)
-newdata <- subset(mtcars, cyl == 6 & disp > 150,
-                  select=mpg:wt)
+newdata <- subset(mtcars, cyl == 6 & disp > 150,select=mpg:wt)
 newdata
+
+
+
 
 subset(airquality, select = Ozone:Wind)
 subset(airquality, Temp > 80, select = c(Ozone, Temp))

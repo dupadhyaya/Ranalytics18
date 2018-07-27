@@ -33,8 +33,7 @@ barplot(table(nc$Best.n[1,]), xlab="Numer of Clusters", ylab="Number of Criteria
 
 #Method2
 wss <- (nrow(data)-1)*sum(apply(data,2,var))
-for (i in 2:15) wss[i] <- sum(kmeans(data,
-   centers=i)$withinss)
+for (i in 2:15) wss[i] <- sum(kmeans(data, centers=i)$withinss)
 plot(1:15, wss, type="b", xlab="Number of Clusters",
      ylab="Within groups sum of squares")
 

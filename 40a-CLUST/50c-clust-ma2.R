@@ -1,10 +1,33 @@
 # Clustering For Customer Segmentation
 
-(age = ceiling(runif(50, 30, 50)))
-(income = ceiling(rnorm(50, 1000, 50)))
-(gender = sample(c(1,2), size=50, replace=T))
-customers = data.frame(age, income, gender)
+set.seed(1234); (age = ceiling(rnorm(50, 45, 10)))
+set.seed(1234);(income = ceiling(rnorm(50, 100000, 10000)))
+set.seed(1234);(children = sample(c(1,2,3), size=50, replace=T, prob=c(.4,.3,.2)))
+customers = data.frame(age, income, children)
 head(customers)
+
+# No of Clusters
+library(NbClust)
+nc = NbClust(customers, distance="euclidean", 
+             min.nc=2, max.nc=15, method="average")
+#without scaling
+km1 = kmeans(customers, centers=3)
+km1$centers
+
+#----
+#------------------------------------------------------------------------
+#plots
+library(cluster)
+cluster::clusplot(customers, km1$cluster, color=TRUE, shade=TRUE, 
+         labels=2, lines=0)
+
+
+library(clusplus)
+plot_clus_coord(km1, customers)
+
+
+
+
 
 #case1 : only age
 age1 = data.frame(age)

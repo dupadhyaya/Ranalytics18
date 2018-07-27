@@ -9,7 +9,7 @@ boxplot(mpg~cyl,data=mtcars, main="Car Milage Data",
 boxplot(len~supp*dose, data=ToothGrowth, notch=TRUE, 
         col=(c("gold","darkgreen")),
         main="Tooth Growth", xlab="Suppliment and Dose")
-#In the notched boxplot, if two boxes' notches do not overlap this is ‘strong evidence’ their medians differ (
+#In the notched boxplot, if two boxes' notches do not overlap this is ‘strong evidence’ their medians differ 
 
 # Notched Boxplot of Tooth Growth Against 2 Crossed Factors
 # boxes colored for ease of interpretation 
@@ -54,11 +54,18 @@ abline(h = quantile(data, c(0.25, 0.75)), col = "Red")
 text(x=1.5, y=quantile(data, c(0.25, 0.75)), 
      labels= c('1QR','3QR'), col='Red')
 
+
+data    <- c(0.4, 0.7, 0.75, 0.82, 0.9)
 boxplot(data)
 axis(4, at=summary(data), labels = names(summary(data)), 
-     las=2, line = -3, cex.lab=.5,col="blue")
+las=2, line = -3, cex.lab=.5,col="blue")
 text(x=1.25, y=summary(data), labels = summary(data), col='red', cex=.5)
 
-text(x=1, y=c(min(data)-.01, max(data)+.01), 
-     labels = c('Outliers - Low', 'Outliers - High'), col='red', cex=.5)
+text(x=1, y=c(min(data)-.01, max(data)+.01),  labels = c('Outliers - Low', 'Outliers - High'), col='red', cex=.5)
 
+boxplot(mtcars$mpg)
+axis(4, at=summary(mtcars$mpg), labels = names(summary(mtcars$mpg)), las=2, line = -3, cex.lab=.5,col="blue")
+text(x=1.25, y=summary(mtcars$mpg), labels = summary(mtcars$mpg), col='red', cex=.5)
+text(x=1, y=c(min(mtcars$mpg)-.01, max(mtcars$mpg)+.01),  labels = c('Outliers - Low', 'Outliers - High'), col='red', cex=.5)
+     
+     
