@@ -1,8 +1,12 @@
 # Data Structures in Slides
 
-
+#control+enter when you are in the line to execute
+#
 # Vectors-----
-
+(x=1:10)
+(x=c(1,2,3,4,5))
+(x=letters[1:10])
+(x=c(T,F,T,T))
 
 #access elements
 (x = seq(0,10,by=2))
