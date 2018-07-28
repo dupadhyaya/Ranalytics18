@@ -1,5 +1,6 @@
 # Data Structures in Slides
 
+?seq
 #control+enter when you are in the line to execute
 #
 # Vectors-----
