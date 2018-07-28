@@ -29,3 +29,4 @@ lp("max", ex.obj, ex.con, ex.sign, ex.rhs, int.vec=ex.int)$solution
 lp("max", ex.obj, ex.con, ex.sign, ex.rhs, int.vec=c(1, 3))$solution
 #[1] 33.00 1.25 0.00 0.00 0.00 0.00 0.00
 
+

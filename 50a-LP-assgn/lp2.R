@@ -3,9 +3,8 @@
 #
 library(lpSolve)
 assign.costs <- matrix (c(2, 7, 7, 2, 7, 7, 3, 2, 7, 2, 8, 10, 1, 9, 8, 2), 4, 4)
-## Not run:
 assign.costs
-## End(Not run)
+
 lp.assign(assign.costs)
 ## Not run: Success: the objective function is 8
 lp.assign (assign.costs)$solution

@@ -1,14 +1,39 @@
 # Simple Linear Regression : Built in Data Set Women
 # Check for assumptions of Regression in the data Set
-
+women
+?women
 str(women)
 fit = lm(weight ~ height, data=women)
-
+?plot
 #Initial Checks
 cor(women$height, women$weight)
 #there is Strong and Positive Relationship between height and weight
 plot(women$height, women$weight)
-plot(fit)
+par(mfrow=c(1,1))
+plot(fit, which=2)
+plot(women)
+
+str(women)
+head(women)
+women[,2]
+fitted(fit)
+cbind(women, fitted(fit), predicted=3.45 * women$height - 87)
+cbind(women, fitted(fit), residue=fitted(fit)-women$weight, resid(fit))
+y = 3.4 * height - 87
+plot(residuals(fit))
+hist(women$height, breaks=4)
+hist(residuals(fit))
+
+hist(residuals(fit), freq=F)
+lines(density(residuals(fit)))
+
+plot(fit, which=2)
+
+
+x=rnorm(100, mean=0,sd=1)
+x
+hist(x,freq=F)
+lines(density(x))
 
 #Assumptions Regression
 #Linearity----
