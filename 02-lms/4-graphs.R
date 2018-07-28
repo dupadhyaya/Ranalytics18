@@ -5,7 +5,10 @@
 
 #plot
 women
+?women
+str(women)
 plot(women)
+?plot
 plot(women, type='p', pch=17)
 plot(women, type='l')
 plot(women, type='b', pch=18, lty=2, col=2)
@@ -65,4 +68,4 @@ head(mtcars)
 cor(mtcars)
 pairs(mtcars)
 options(digits=4)
-
+pairs(mtcars[1:4])

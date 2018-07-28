@@ -8,20 +8,22 @@ library(rpart.plot)
 str(iris)
 head(iris)
 
+table(iris$Species)
+
+library(dplyr)
+sample_n(iris, 3)
+sample_frac(iris, .1)
 # Classification Tree
 summary(iris)
 set.seed(1234)
 #Predict Species
 ctree = rpart(Species ~ ., method='class', data=iris)
 ctree
-rpart.plot(ctree, main='Classification Tree', nn=T, type=4, extra=104)
-
+rpart.plot(ctree, main='Classification Tree', nn=T, type=4, cex=1,extra=104)
 printcp(ctree)
-
 ctreeprune = prune(ctree, cp=0.44)
 ctreeprune
 rpart.plot(ctreeprune, main='Classification Tree', nn=T, type=4, extra=104)
-
 # Regression Tree - Predict Continuous Value Length
 #Predict Sepal.Length
 rtree = rpart(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Species, method="anova", data=iris )
