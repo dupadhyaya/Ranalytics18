@@ -1,7 +1,7 @@
 #CART Regression Tree
 
 #Load Libraries
-library(rpart)
+library(rpart)  #does only binary splits; CART
 library(rpart.plot)
 
 #DataSet
@@ -11,6 +11,7 @@ head(iris)
 # Classification Tree
 summary(iris)
 set.seed(1234)
+#Predict Species
 ctree = rpart(Species ~ ., method='class', data=iris)
 ctree
 rpart.plot(ctree, main='Classification Tree', nn=T, type=4, extra=104)
@@ -22,7 +23,7 @@ ctreeprune
 rpart.plot(ctreeprune, main='Classification Tree', nn=T, type=4, extra=104)
 
 # Regression Tree - Predict Continuous Value Length
-
+#Predict Sepal.Length
 rtree = rpart(Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width + Species, method="anova", data=iris )
 rtree
 rpart.plot(rtree, main='Regression Tree', nn=T, type=2, cex=1)
