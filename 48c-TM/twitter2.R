@@ -43,8 +43,8 @@ setup_twitter_oauth(consumerKey, consumerSecret)
 
 cred <- ROAuth::OAuthFactory$new(consumerKey=consumerKey, consumerSecret=consumerSecret, requestURL=reqURL, accessURL=accessURL, authURL=authURL)  #ok
 
-install.packages("openssl")
-install.packages("httpuv")
+#install.packages("openssl")
+#install.packages("httpuv")
 
 
 setup_twitter_oauth(consumerKey, consumerSecret)

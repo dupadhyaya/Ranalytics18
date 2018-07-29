@@ -1,14 +1,23 @@
 # Clustering - IRIS data set
 
 head(iris)
-irisFeatures = iris[-5]
-iriskm1 = kmeans(irisFeatures,3)
+irisFeatures = iris[,-5]
+head(irisFeatures)
+iriskm1 = kmeans(irisFeatures,centers=3)
+iriskm1
+iriskm1$centers
+colMeans(irisFeatures[iriskm1$cluster==1,])
+
+(iris[iriskm1$cluster==1,])
+
 iriskm1$size # no of rows in in each cluster
 iriskm1$cluster # row no to clusters
 plot(irisFeatures$Sepal.Length, col=iriskm1$cluster)
 plot(irisFeatures$Sepal.Length, col=1:3)
-
-km  # understand the output
+x= cbind(irisFeatures, cl=iriskm1$cluster, cat=iris$Species)
+head(x)
+x
+iriskm1  # understand the output
 
 #Method2 - Scaling 
 irisFeatures2 = irisFeatures
