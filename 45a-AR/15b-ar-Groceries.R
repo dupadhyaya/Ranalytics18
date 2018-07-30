@@ -4,6 +4,7 @@ library(arules)  #install first
 library(arulesViz) #install first
 library(datasets)  # no need to install, just load it reqd for Groceries
 data('Groceries')
+Groceries
 
 #Structure of Groceries
 str(Groceries)
@@ -12,17 +13,16 @@ inspect(Groceries[1:5])  #view
 LIST(Groceries[1:6])  #another view
 
 #Find Frequent Itemset
-frequentItems = eclat (Groceries, parameter = list(supp = 0.02, minlen= 1, maxlen = 5)) 
+frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 5)) 
 inspect(frequentItems)
 frequentItems
 inspect(frequentItems[10:100])
-inspect(frequentItems[900:1000])
-
+#inspect(frequentItems[100:122])
 #Descending Sort frequent items by count : 1 to 25 itemsets
 inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:25])
+inspect(sort (frequentItems, by="count", decreasing=F)[1:25])
 
 #Support is : support(A&B) = n(A&B)/ N
-
 #Plot the Frequency Plot
 itemFrequencyPlot(Groceries,topN = 15,type="absolute")
 itemFrequencyPlot(Groceries, topN = 10, type='relative')
@@ -47,13 +47,18 @@ inspect (rulesl[1:5])
 rules2 = apriori (Groceries, parameter = list (supp = 0.001, conf = 0.5, minlen=2, maxlen=3)) 
 inspect(rules2[1:5])
 
-# Are there any duplicate/ Redundant Rules ?
+# Are there any duplicate/ Redundant Rules 
+#https://rdrr.io/cran/arules/man/is.redundant.html
+
 sum(is.redundant(rules2))
 (redundant = which(is.redundant(rules2)))
+inspect(rules2[redundant])
+#inspect(subset(rules2, subset=lhs %ain% c('citrus fruit','rice') & rhs %in% 'whole milk' ))
 #remove it
 rulesNR = rules2[-redundant] 
 is.redundant(rulesNR)
 sum(is.redundant(rulesNR))  #ok now
+
 
 
 #Find what factors influenced an event ‘X’
@@ -65,8 +70,15 @@ inspect(rules3)
 subset1 = subset(rules2, appearance = list (default="lhs",rhs="whole milk"))
 subset1 = subset(rules2, subset=rhs %in% 'bottled beer' )
 inspect(subset1)
-subset2 = subset(rules2, subset=lhs %in% 'bottled beer' )
+inspect(rules2)
+subset2 = subset(rules2, subset=lhs %ain% c('baking powder','soda') )
 inspect(subset2)
+subset2a = subset(rules2, subset=lhs %in% c('baking powder','soda') )
+inspect(subset2a)
+
+
+
+
 subset3 = subset(rules2, subset=rhs %in% 'bottled beer' & confidence > .7, by = 'lift', decreasing = T)
 inspect(subset3)
 subset4 = subset(rules2, subset=lhs %in% 'bottled beer' & rhs %in% 'whole milk' )
@@ -77,3 +89,8 @@ plot(subset1[1:10])
 plot(subset1[1:10], measure=c("support", "lift"), shading="confidence")
 
 #
+
+
+rules4 = apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.4), appearance = list (default="rhs",lhs=c('tropical fruit','herbs')), control = list (verbose=F))
+inspect(rules4[1:5])
+inspect(rules4)

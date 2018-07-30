@@ -49,3 +49,5 @@ sum1a %>% top_n(1)
 sum2a <- df %>% mutate(TotalSale = qty * price) %>% group_by(coy) %>% summarise(TotalRevenue= sum(TotalSale)) %>% arrange(desc(TotalRevenue)) 
 sum2a %>% top_n(-1)
 sum2a
+
+

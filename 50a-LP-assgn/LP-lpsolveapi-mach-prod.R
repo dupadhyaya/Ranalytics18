@@ -1,5 +1,4 @@
 #LP Cases - Machine A & B, Products X & Y
-
 #Equations
 #50x + 24y <= 2400
 #30x + 33y <= 2100
@@ -7,15 +6,13 @@
 #y >= 5
 #max: x + y - 50
 #50 >= x + y
-
+library(lpSolve)
 f.obj <- c(1, 1)
 f.con <- matrix (c(50, 24, 30, 33, 1, 0, 0, 1, 1, 1), ncol=2, byrow=TRUE)
 f.con
 f.dir <- c("<=", "<=", ">=", ">=", ">=")
 f.rhs <- c(2400, 2100, 45, 5,50)
 cbind(f.con, f.dir, f.rhs)
-
-
 #
 lp ("max", f.obj, f.con, f.dir, f.rhs)
 lp ("max", f.obj, f.con, f.dir, f.rhs)$solution

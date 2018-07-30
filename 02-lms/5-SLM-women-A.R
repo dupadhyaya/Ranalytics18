@@ -27,13 +27,10 @@ hist(residuals(fit))
 hist(residuals(fit), freq=F)
 lines(density(residuals(fit)))
 
-plot(fit, which=2)
+#Prediction
+ndata = data.frame(height=52.5)
+predict(fit, newdata=ndata, type='response')
 
-
-x=rnorm(100, mean=0,sd=1)
-x
-hist(x,freq=F)
-lines(density(x))
 
 #Assumptions Regression
 #Linearity----

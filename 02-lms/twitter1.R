@@ -20,7 +20,7 @@ cred <- OAuthFactory$new(consumerKey=consumerKey, consumerSecret=consumerSecret,
 
 cred$handshake(cainfo="cacert.pem") # it will take you to browser: authorise, copy key
 save(cred, file="twitter authentication.Rdata") # store this to avoid asking again
-
+#u  di
 #Load saved authentication cert
 load("twitter authentication.Rdata")
 #registerTwitterOAuth(cred)
@@ -46,10 +46,10 @@ mentions(n=15)   # my tags
 
 
 #------------------------------------
-
-tweets <- userTimeline("realDonaldTrump", n=200)
+?userTimeline
+tweets <- userTimeline("realDonaldTrump", n=100)
 #english
-tweets[2]
+tweets[1:5]
 n.tweet <- length(tweets)
 n.tweet
 tweets.df <- twListToDF(tweets) 
