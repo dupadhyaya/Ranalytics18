@@ -1,7 +1,6 @@
 # Data Summarisation : Sales Data
 
-# Create a DataFrame of 50 rows with following columns and properties
-
+# Create a DF of 50 rows with following columns and properties
 #product company qtysold priceitem
 
 #this will create all combination of product and coys
@@ -49,3 +48,4 @@ sum1a %>% top_n(1)
 sum2a <- df %>% mutate(TotalSale = qty * price) %>% group_by(coy) %>% summarise(TotalRevenue= sum(TotalSale)) %>% arrange(desc(TotalRevenue)) 
 sum2a %>% top_n(-1)
 sum2a
+
