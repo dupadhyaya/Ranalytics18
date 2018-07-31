@@ -1,6 +1,8 @@
 #logistic Regression
 #https://www.guru99.com/r-generalized-linear-model.html
 
+
+
 library(dplyr)
 data_adult <-
   read.csv("https://raw.githubusercontent.com/thomaspernet/data_csv_r/master/data/data_adult.csv")
