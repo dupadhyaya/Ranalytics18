@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://xbrl.sec.gov/currency/2014-01-31" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:currency="http://xbrl.sec.gov/currency/2014-01-31" xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrli="http://www.xbrl.org/2003/instance">
+<xs:annotation>
+<xs:appinfo>
+<link:roleType roleURI="http://xbrl.sec.gov/role/document/Currency" id="currency">
+<link:definition>995430 - Document - Currency</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/currency/role/deprecated/currency" id="dep-currency">
+<link:definition>999030 - Document - Deprecated Currency Concepts</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+</xs:appinfo>
+</xs:annotation>
+<xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+<xs:import namespace="http://www.xbrl.org/dtr/type/non-numeric" schemaLocation="http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd"/>
+<xs:element name="AED" id="currency_AED" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="AFN" id="currency_AFN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ALL" id="currency_ALL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="AMD" id="currency_AMD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ANG" id="currency_ANG" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="AOA" id="currency_AOA" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ARS" id="currency_ARS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="AUD" id="currency_AUD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="AWG" id="currency_AWG" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="AZN" id="currency_AZN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BAM" id="currency_BAM" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BBD" id="currency_BBD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BDT" id="currency_BDT" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BGN" id="currency_BGN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BHD" id="currency_BHD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BIF" id="currency_BIF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BMD" id="currency_BMD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BND" id="currency_BND" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BOB" id="currency_BOB" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BRL" id="currency_BRL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BSD" id="currency_BSD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BTN" id="currency_BTN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BWP" id="currency_BWP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BYR" id="currency_BYR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BZD" id="currency_BZD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CAD" id="currency_CAD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CDF" id="currency_CDF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CHF" id="currency_CHF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CLP" id="currency_CLP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CNY" id="currency_CNY" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="COP" id="currency_COP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CRC" id="currency_CRC" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CYP" id="currency_CYP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CUP" id="currency_CUP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CVE" id="currency_CVE" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CZK" id="currency_CZK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="DJF" id="currency_DJF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="DKK" id="currency_DKK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="DOP" id="currency_DOP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="DZD" id="currency_DZD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="EEK" id="currency_EEK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="EGP" id="currency_EGP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ERN" id="currency_ERN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ETB" id="currency_ETB" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="EUR" id="currency_EUR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="FJD" id="currency_FJD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="FKP" id="currency_FKP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GBP" id="currency_GBP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GEL" id="currency_GEL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GGP" id="currency_GGP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GHC" id="currency_GHC" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GIP" id="currency_GIP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GMD" id="currency_GMD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GNF" id="currency_GNF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GTQ" id="currency_GTQ" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GYD" id="currency_GYD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="HKD" id="currency_HKD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="HNL" id="currency_HNL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="HRK" id="currency_HRK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="HTG" id="currency_HTG" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="HUF" id="currency_HUF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="IDR" id="currency_IDR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ILS" id="currency_ILS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="IMP" id="currency_IMP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="INR" id="currency_INR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="IQD" id="currency_IQD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="IRR" id="currency_IRR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ISK" id="currency_ISK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="JEP" id="currency_JEP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="JMD" id="currency_JMD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="JOD" id="currency_JOD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="JPY" id="currency_JPY" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="KES" id="currency_KES" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="KGS" id="currency_KGS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="KHR" id="currency_KHR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="KMF" id="currency_KMF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="KPW" id="currency_KPW" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="KRW" id="currency_KRW" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="KWD" id="currency_KWD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="KYD" id="currency_KYD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="KZT" id="currency_KZT" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="LAK" id="currency_LAK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="LBP" id="currency_LBP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="LKR" id="currency_LKR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="LRD" id="currency_LRD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="LSL" id="currency_LSL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="LTL" id="currency_LTL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="LVL" id="currency_LVL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="LYD" id="currency_LYD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MAD" id="currency_MAD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MDL" id="currency_MDL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MGA" id="currency_MGA" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MKD" id="currency_MKD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MMK" id="currency_MMK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MNT" id="currency_MNT" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MOP" id="currency_MOP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MRO" id="currency_MRO" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MTL" id="currency_MTL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MUR" id="currency_MUR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MVR" id="currency_MVR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MWK" id="currency_MWK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MXN" id="currency_MXN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MYR" id="currency_MYR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MZN" id="currency_MZN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="NAD" id="currency_NAD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="NGN" id="currency_NGN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="NIO" id="currency_NIO" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="NOK" id="currency_NOK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="NPR" id="currency_NPR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="NZD" id="currency_NZD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="OMR" id="currency_OMR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="PAB" id="currency_PAB" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="PEN" id="currency_PEN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="PGK" id="currency_PGK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="PHP" id="currency_PHP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="PKR" id="currency_PKR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="PLN" id="currency_PLN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="PYG" id="currency_PYG" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="QAR" id="currency_QAR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="RON" id="currency_RON" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="RSD" id="currency_RSD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="RUB" id="currency_RUB" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="RWF" id="currency_RWF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SAR" id="currency_SAR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SBD" id="currency_SBD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SCR" id="currency_SCR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SDG" id="currency_SDG" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SEK" id="currency_SEK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SGD" id="currency_SGD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SHP" id="currency_SHP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SKK" id="currency_SKK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SLL" id="currency_SLL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SOS" id="currency_SOS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SPL" id="currency_SPL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SRD" id="currency_SRD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="STD" id="currency_STD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SVC" id="currency_SVC" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SYP" id="currency_SYP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SZL" id="currency_SZL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="THB" id="currency_THB" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TJS" id="currency_TJS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TMM" id="currency_TMM" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TND" id="currency_TND" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TOP" id="currency_TOP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TRY" id="currency_TRY" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TTD" id="currency_TTD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TVD" id="currency_TVD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TWD" id="currency_TWD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TZS" id="currency_TZS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="UAH" id="currency_UAH" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="UGX" id="currency_UGX" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="USD" id="currency_USD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="UYU" id="currency_UYU" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="UZS" id="currency_UZS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="VEB" id="currency_VEB" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="VND" id="currency_VND" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="VUV" id="currency_VUV" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="WST" id="currency_WST" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XAF" id="currency_XAF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XAG" id="currency_XAG" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XAU" id="currency_XAU" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XCD" id="currency_XCD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XDR" id="currency_XDR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XOF" id="currency_XOF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XPD" id="currency_XPD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XPF" id="currency_XPF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XPT" id="currency_XPT" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="YER" id="currency_YER" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ZAR" id="currency_ZAR" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ZMK" id="currency_ZMK" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ZMW" id="currency_ZMW" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ZWD" id="currency_ZWD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="AllCurrenciesDomain" id="currency_AllCurrenciesDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="BOV" id="currency_BOV" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CHE" id="currency_CHE" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CHW" id="currency_CHW" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CLF" id="currency_CLF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="COU" id="currency_COU" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="CUC" id="currency_CUC" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="GHS" id="currency_GHS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="MXV" id="currency_MXV" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="TMT" id="currency_TMT" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="USN" id="currency_USN" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="USS" id="currency_USS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="VEF" id="currency_VEF" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XBA" id="currency_XBA" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XBB" id="currency_XBB" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XBC" id="currency_XBC" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XBD" id="currency_XBD" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XFU" id="currency_XFU" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XTS" id="currency_XTS" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="XXX" id="currency_XXX" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="ZWL" id="currency_ZWL" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="SSP" id="currency_SSP" type="nonnum:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+<xs:element name="DeprecatedItemsForCurrency" id="currency_DeprecatedItemsForCurrency" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" abstract="true"/>
+</xs:schema>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--
+This file is the schema file for Investment (invest).
+The DTS starting with this schema file will not contain any linkbases.
+-->
+<xs:schema targetNamespace="http://xbrl.sec.gov/invest/2013-01-31" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:invest="http://xbrl.sec.gov/invest/2013-01-31" xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:num="http://www.xbrl.org/dtr/type/numeric" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+<xs:annotation>
+<xs:appinfo>
+<link:roleType roleURI="http://xbrl.sec.gov/role/document/Investment" id="invest">
+<link:definition>995471 - Document - Investment (Details)</link:definition>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:presentationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/role/document/InvestmentInvestmentIdentifierTable" id="InvestmentInvestmentIdentifierTable">
+<link:definition>995472 - Document - Investment, Investment Identifier (Details)</link:definition>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:presentationLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/role/document/InvestDeprecatedConcepts" id="investDeprecatedConcepts">
+<link:definition>995474 - Document - Investment, Deprecated Concepts</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/role/document/InvestmentDefaults" id="InvestmentDefaults">
+<link:definition>995473 - Document - Investment, Defaults</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/role/document/InvestmentTextBlocks" id="InvestmentTable">
+<link:definition>995470 - Document - Investment (Tables)</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+</xs:appinfo>
+</xs:annotation>
+<xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+<xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+<xs:import namespace="http://www.xbrl.org/dtr/type/non-numeric" schemaLocation="http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd"/>
+<xs:import namespace="http://www.xbrl.org/dtr/type/numeric" schemaLocation="http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd"/>
+<xs:element name="InvestmentsScheduleAbstract" id="invest_InvestmentsScheduleAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentTextBlock" id="invest_InvestmentTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentTableTextBlock" id="invest_InvestmentTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentEmbeddedTableTextBlock" id="invest_InvestmentEmbeddedTableTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentTableLegendTextBlock" id="invest_InvestmentTableLegendTextBlock" type="nonnum:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentTable" id="invest_InvestmentTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentGeographicRegionAxis" id="invest_InvestmentGeographicRegionAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentGeographicRegionDomain" id="invest_InvestmentGeographicRegionDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentSectorAxis" id="invest_InvestmentSectorAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentSectorDomain" id="invest_InvestmentSectorDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentIssuerAxis" id="invest_InvestmentIssuerAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentIssuerDomain" id="invest_InvestmentIssuerDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentContractCounterpartyAxis" id="invest_InvestmentContractCounterpartyAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentContractCounterpartyDomain" id="invest_InvestmentContractCounterpartyDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentAxis" id="invest_InvestmentAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentDomain" id="invest_InvestmentDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentHoldingAxis" id="invest_InvestmentHoldingAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentHoldingDomain" id="invest_InvestmentHoldingDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="CreditRatingSourceAxis" id="invest_CreditRatingSourceAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="CreditRatingSourceDomain" id="invest_CreditRatingSourceDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentSecuritiesSeriesAxis" id="invest_InvestmentSecuritiesSeriesAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentSecuritiesSeriesDomain" id="invest_InvestmentSecuritiesSeriesDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentSecuritiesClassAxis" id="invest_InvestmentSecuritiesClassAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentSecuritiesClassDomain" id="invest_InvestmentSecuritiesClassDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentLineItems" id="invest_InvestmentLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentTitle" id="invest_InvestmentTitle" type="xbrli:normalizedStringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentCFICode" id="invest_InvestmentCFICode" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentInterestRateType" id="invest_InvestmentInterestRateType" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentInterestRate" id="invest_InvestmentInterestRate" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentInterestRateRangeAbstract" id="invest_InvestmentInterestRateRangeAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentInterestRateRangeStart" id="invest_InvestmentInterestRateRangeStart" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentInterestRateRangeEnd" id="invest_InvestmentInterestRateRangeEnd" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentMaturityDate1" id="invest_InvestmentMaturityDate1" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentMaturityDateRangeAbstract" id="invest_InvestmentMaturityDateRangeAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentMaturityDateRangeStart1" id="invest_InvestmentMaturityDateRangeStart1" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentMaturityDateRangeEnd1" id="invest_InvestmentMaturityDateRangeEnd1" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentRepurchaseAgreementAbstract" id="invest_InvestmentRepurchaseAgreementAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentRepurchaseAgreementNameOfParty" id="invest_InvestmentRepurchaseAgreementNameOfParty" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentRepurchaseAgreementDateOfAgreement" id="invest_InvestmentRepurchaseAgreementDateOfAgreement" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentRepurchaseAgreementAmountToBeReceived" id="invest_InvestmentRepurchaseAgreementAmountToBeReceived" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:balance="credit" xbrli:periodType="duration"/>
+<xs:element name="InvestmentRepurchaseAgreementRepurchaseDate" id="invest_InvestmentRepurchaseAgreementRepurchaseDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentRepurchaseAgreementDescriptionOfInvestmentsSubjectToAgreement" id="invest_InvestmentRepurchaseAgreementDescriptionOfInvestmentsSubjectToAgreement" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="DerivativeCounterparty" id="invest_DerivativeCounterparty" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="DerivativeTypeOfInterestRatePaidOnSwap" id="invest_DerivativeTypeOfInterestRatePaidOnSwap" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentDerivativeNotionalAmountAbstract" id="invest_InvestmentDerivativeNotionalAmountAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="DerivativeNotionalAmount" id="invest_DerivativeNotionalAmount" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<xs:element name="DerivativeNonmonetaryNotionalAmount" id="invest_DerivativeNonmonetaryNotionalAmount" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<xs:element name="InvestmentOptionsAbstract" id="invest_InvestmentOptionsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentOptionsExpirationDate" id="invest_InvestmentOptionsExpirationDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentOptionsExercisePrice" id="invest_InvestmentOptionsExercisePrice" type="num:perShareItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentUnderlyingInvestmentIdentifier" id="invest_InvestmentUnderlyingInvestmentIdentifier" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentWarrantsExercisePrice" id="invest_InvestmentWarrantsExercisePrice" type="num:perShareItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentWarrantsExpirationDate" id="invest_InvestmentWarrantsExpirationDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentWarrantsExpirationDateRangeAbstract" id="invest_InvestmentWarrantsExpirationDateRangeAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentWarrantsExpirationDateRangeStart" id="invest_InvestmentWarrantsExpirationDateRangeStart" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentWarrantsExpirationDateRangeEnd" id="invest_InvestmentWarrantsExpirationDateRangeEnd" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentForeignCurrencyContractAbstract" id="invest_InvestmentForeignCurrencyContractAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentForeignCurrencyContractCurrency" id="invest_InvestmentForeignCurrencyContractCurrency" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentForeignCurrencyContractTransactionTypeFlag" id="invest_InvestmentForeignCurrencyContractTransactionTypeFlag" type="invest:foreignCurrencyContractTransactionItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentForeignCurrencyContractForeignCurrencyAmount" id="invest_InvestmentForeignCurrencyContractForeignCurrencyAmount" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<xs:element name="InvestmentForeignCurrencyContractReportingCurrencyAmountAtDateOfOrigin" id="invest_InvestmentForeignCurrencyContractReportingCurrencyAmountAtDateOfOrigin" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<xs:element name="InvestmentForeignCurrencyContractAmountPurchased" id="invest_InvestmentForeignCurrencyContractAmountPurchased" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<xs:element name="InvestmentForeignCurrencyContractAmountSold" id="invest_InvestmentForeignCurrencyContractAmountSold" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<xs:element name="InvestmentContractAbstract" id="invest_InvestmentContractAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentContractCurrency" id="invest_InvestmentContractCurrency" type="xbrli:normalizedStringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentContractCountry" id="invest_InvestmentContractCountry" type="xbrli:normalizedStringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentContractWeight" id="invest_InvestmentContractWeight" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<xs:element name="InvestmentContractVolume" id="invest_InvestmentContractVolume" type="num:volumeItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<xs:element name="InvestmentContractSettlementDate" id="invest_InvestmentContractSettlementDate" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentContractSettlementDateRangeAbstract" id="invest_InvestmentContractSettlementDateRangeAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentContractSettlementDateRangeStart" id="invest_InvestmentContractSettlementDateRangeStart" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentContractSettlementDateRangeEnd" id="invest_InvestmentContractSettlementDateRangeEnd" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentSupplementalFlagsAbstract" id="invest_InvestmentSupplementalFlagsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentNonIncomeProducingFlag" id="invest_InvestmentNonIncomeProducingFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentRestrictedCashFlag" id="invest_InvestmentRestrictedCashFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentInterestOnlyFlag" id="invest_InvestmentInterestOnlyFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentPrincipalOnlyFlag" id="invest_InvestmentPrincipalOnlyFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentStepupBondInterestRateIsForFutureDateFlag" id="invest_InvestmentStepupBondInterestRateIsForFutureDateFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentInterestRateIsCurrentRateForVariableRateInvestmentFlag" id="invest_InvestmentInterestRateIsCurrentRateForVariableRateInvestmentFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentInterestRateIsDiscountRateAtPurchaseFlag" id="invest_InvestmentInterestRateIsDiscountRateAtPurchaseFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentInterestRateReflectsCurrentYieldFlag" id="invest_InvestmentInterestRateReflectsCurrentYieldFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentDefaultedSecurityFlag" id="invest_InvestmentDefaultedSecurityFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentADRFlag" id="invest_InvestmentADRFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentGDRFlag" id="invest_InvestmentGDRFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentWhenIssuedFlag" id="invest_InvestmentWhenIssuedFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentAdditionalInformation" id="invest_InvestmentAdditionalInformation" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentIdentifierTable" id="invest_InvestmentIdentifierTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentIdentifierSchemeAxis" id="invest_InvestmentIdentifierSchemeAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentIdentifierSchemeDomain" id="invest_InvestmentIdentifierSchemeDomain" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="CUSIPMember" id="invest_CUSIPMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="SEDOLMember" id="invest_SEDOLMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="DUNSMember" id="invest_DUNSMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="ISINMember" id="invest_ISINMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InternalIdentifierSchemeMember" id="invest_InternalIdentifierSchemeMember" type="nonnum:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentIdentifierLineItems" id="invest_InvestmentIdentifierLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="InvestmentIdentifier" id="invest_InvestmentIdentifier" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<xs:element name="DeprecatedItemsAbstract" id="invest_DeprecatedItemsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<xs:complexType name="dateStringItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:normalizedStringItemType">
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="foreignCurrencyContractTransactionItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:tokenItemType">
+<xs:enumeration value="Buy"/>
+<xs:enumeration value="Sell"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+</xs:schema>

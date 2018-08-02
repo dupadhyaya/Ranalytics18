@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+This file is the schema file for NAICS (naics).
+The DTS starting with this schema file will not contain any linkbases.
+-->
+<xs:schema elementFormDefault="qualified" targetNamespace="http://xbrl.sec.gov/naics/2011-01-31" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:naics="http://xbrl.sec.gov/naics/2011-01-31" xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:annotation>
+<xs:documentation>
+This file is the schema file for NAICS (naics).
+The DTS starting with this schema file will not contain any linkbases.
+</xs:documentation>
+<xs:appinfo>
+<link:roleType id="naics" roleURI="http://xbrl.sec.gov/naics/role/document/NAICS">
+<link:definition>995460 - Document - NAICS</link:definition>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+<link:usedOn>link:presentationLink</link:usedOn>
+</link:roleType>
+</xs:appinfo>
+</xs:annotation>
+<xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+<xs:import namespace="http://www.xbrl.org/dtr/type/non-numeric" schemaLocation="http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd"/>
+<xs:element id="naics_AllIndustriesDomain" name="AllIndustriesDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111110" name="ZZ111110" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111120" name="ZZ111120" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111130" name="ZZ111130" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111140" name="ZZ111140" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111150" name="ZZ111150" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111160" name="ZZ111160" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111191" name="ZZ111191" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111199" name="ZZ111199" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111211" name="ZZ111211" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111219" name="ZZ111219" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111310" name="ZZ111310" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111320" name="ZZ111320" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111331" name="ZZ111331" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111332" name="ZZ111332" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111333" name="ZZ111333" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111334" name="ZZ111334" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111335" name="ZZ111335" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111336" name="ZZ111336" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111339" name="ZZ111339" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111411" name="ZZ111411" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111419" name="ZZ111419" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111421" name="ZZ111421" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111422" name="ZZ111422" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111910" name="ZZ111910" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111920" name="ZZ111920" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111930" name="ZZ111930" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111940" name="ZZ111940" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111991" name="ZZ111991" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111992" name="ZZ111992" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ111998" name="ZZ111998" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ112111" name="ZZ112111" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ112112" name="ZZ112112" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ112120" name="ZZ112120" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ112130" name="ZZ112130" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ112210" name="ZZ112210" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ112310" name="ZZ112310" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ112320" name="ZZ112320" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ112330" name="ZZ112330" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="naics_ZZ112340" name="ZZ112340" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:eleme

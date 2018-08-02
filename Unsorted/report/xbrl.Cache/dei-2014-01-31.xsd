@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--
+This file is the schema file for Document and Entity Information (dei).
+The DTS starting with this schema file will not contain any linkbases.
+-->
+<xs:schema elementFormDefault="qualified" targetNamespace="http://xbrl.sec.gov/dei/2014-01-31" xmlns:dei="http://xbrl.sec.gov/dei/2014-01-31" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric" xmlns:num="http://www.xbrl.org/dtr/type/numeric" xmlns:utr="http://www.xbrl.org/2009/utr">
+<xs:annotation>
+<xs:documentation>This file is the schema file for Document and Entity Information (dei).
+The DTS starting with this schema file will not contain any linkbases.</xs:documentation>
+<xs:appinfo>
+<link:roleType id="di" roleURI="http://xbrl.sec.gov/dei/role/document/DocumentInformation">
+<link:definition>995200 - Document - Document Information</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="ent" roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformation">
+<link:definition>995400 - Document - Entity Information</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="EntityInformationEntitiesTable" roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntitiesTable">
+<link:definition>995400 - Document - Entity Information, Entities [Table]</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="EntityInformationEntityAddressesTable" roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityAddressesTable">
+<link:definition>995400 - Document - Entity Information, Entity Addresses [Table]</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="EntityInformationEntityContactPersonnelTable" roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityContactPersonnelTable">
+<link:definition>995400 - Document - Entity Information, Entity Contact Personnel [Table]</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="EntityInformationEntityListingsTable" roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityListingsTable">
+<link:definition>995400 - Document - Entity Information, Entity Listings [Table]</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="EntityInformationEntityPhoneFaxNumbersTable" roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityPhoneFaxNumbersTable">
+<link:definition>995400 - Document - Entity Information, Entity Phone Fax Numbers [Table]</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="EntityInformationEntitySectorIndustryClassificationsTable" roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntitySectorIndustryClassificationsTable">
+<link:definition>995400 - Document - Entity Information, Entity Sector Industry Classifications [Table]</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="EntityInformationEntityNorthAmericanIndustryClassificationsTable" roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityNorthAmericanIndustryClassificationsTable">
+<link:definition>995400 - Document - Entity Information, Entity North American Industry Classifications [Table]</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="EntityInformationEntityLocationTable" roleURI="http://xbrl.sec.gov/dei/role/document/EntityInformationEntityLocationTable">
+<link:definition>995400 - Document - Entity Information, Entity Location [Table]</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType id="dep-dei" roleURI="http://xbrl.sec.gov/dei/role/deprecated/dei">
+<link:definition>999100 - Document - Deprecated Document Entity Concepts</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:calculationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+</xs:appinfo>
+</xs:annotation>
+<xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+<xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+<xs:import namespace="http://www.xbrl.org/dtr/type/non-numeric" schemaLocation="http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd"/>
+<xs:import namespace="http://www.xbrl.org/dtr/type/numeric" schemaLocation="http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd"/>
+<xs:complexType name="yesNoItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:tokenItemType">
+<xs:enumeration value="Yes"/>
+<xs:enumeration value="No"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="filerCategoryItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:stringItemType">
+<xs:enumeration value="Large Accelerated Filer"/>
+<xs:enumeration value="Accelerated Filer"/>
+<xs:enumeration value="Non-accelerated Filer"/>
+<xs:enumeration value="Smaller Reporting Company"/>
+<xs:enumeration value="Smaller Reporting Accelerated Filer"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="currencyItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:tokenItemType">
+<xs:pattern value="[A-Z][A-Z][A-Z]"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="countryItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:tokenItemType">
+<xs:pattern value="[A-Z][A-Z0-9]"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="nineDigitItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:tokenItemType">
+<xs:pattern value="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="centralIndexKeyItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:tokenItemType">
+<xs:pattern value="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="legalEntityIdentifierItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:stringItemType">
+<xs:pattern value="[A-Z0-9]{20}"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="fiscalPeriodItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:tokenItemType">
+<xs:enumeration value="FY"/>
+<xs:enumeration value="Q1"/>
+<xs:enumeration value="Q2"/>
+<xs:enumeration value="Q3"/>
+<xs:enumeration value="Q4"/>
+<xs:enumeration value="H1"/>
+<xs:enumeration value="H2"/>
+<xs:enumeration value="M9"/>
+<xs:enumeration value="T1"/>
+<xs:enumeration value="T2"/>
+<xs:enumeration value="T3"/>
+<xs:enumeration value="M8"/>
+<xs:enumeration value="CY"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="submissionTypeItemType">
+<xs:simpleContent>
+<xs:restriction base="xbrli:stringItemType">
+<xs:pattern value="((Other)|([A-Z0-9]+([/A-Z0-9 \-]*[A-Z0-9])?))"/>
+<xs:attributeGroup ref="xbrli:nonNumericItemAttrs"/>
+</xs:restriction>
+</xs:simpleContent>
+</xs:complexType>
+<xs:element id="dei_AccountingAddressMember" name="AccountingAddressMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_AccountingContactMember" name="AccountingContactMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_AccountingFaxMember" name="AccountingFaxMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_AccountingPhoneMember" name="AccountingPhoneMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityAddressAddressDescription" name="EntityAddressAddressDescription" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityAddressAddressLine1" name="EntityAddressAddressLine1" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityAddressAddressLine2" name="EntityAddressAddressLine2" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityAddressAddressLine3" name="EntityAddressAddressLine3" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityAddressesAddressTypeAxis" name="EntityAddressesAddressTypeAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_AddressTypeDomain" name="AddressTypeDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_AmendmentDescription" name="AmendmentDescription" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_AmendmentFlag" name="AmendmentFlag" nillable="true" substitutionGroup="xbrli:item" type="xbrli:booleanItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_BusinessContactMember" name="BusinessContactMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_CityAreaCode" name="CityAreaCode" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityAddressCityOrTown" name="EntityAddressCityOrTown" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_ContactAddressMember" name="ContactAddressMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_ContactFaxMember" name="ContactFaxMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityContactPersonnelContactPersonTypeAxis" name="EntityContactPersonnelContactPersonTypeAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_ContactPersonnelEmailAddress" name="ContactPersonnelEmailAddress" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_ContactPersonnelName" name="ContactPersonnelName" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_ContactPersonnelUniformResourceLocatorURL" name="ContactPersonnelUniformResourceLocatorURL" nillable="true" substitutionGroup="xbrli:item" type="xbrli:anyURIItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_ContactPhoneMember" name="ContactPhoneMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_ContainedFileInformationFileDescription" name="ContainedFileInformationFileDescription" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_ContainedFileInformationFileName" name="ContainedFileInformationFileName" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_ContainedFileInformationFileType" name="ContainedFileInformationFileType" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityAddressCountry" name="EntityAddressCountry" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_CountryRegion" name="CountryRegion" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_CurrentFiscalYearEndDate" name="CurrentFiscalYearEndDate" nillable="true" substitutionGroup="xbrli:item" type="xbrli:gMonthDayItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentContactMember" name="DocumentContactMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_DocumentCreationDate" name="DocumentCreationDate" nillable="true" substitutionGroup="xbrli:item" type="xbrli:dateItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentDescription" name="DocumentDescription" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentEffectiveDate" name="DocumentEffectiveDate" nillable="true" substitutionGroup="xbrli:item" type="xbrli:dateItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentInformationDocumentAxis" name="DocumentInformationDocumentAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_DocumentDomain" name="DocumentDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_DocumentInformationLineItems" name="DocumentInformationLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_DocumentInformationTable" name="DocumentInformationTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_DocumentInformationTextBlock" name="DocumentInformationTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentName" name="DocumentName" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentPeriodEndDate" name="DocumentPeriodEndDate" nillable="true" substitutionGroup="xbrli:item" type="xbrli:dateItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentPeriodStartDate" name="DocumentPeriodStartDate" nillable="true" substitutionGroup="xbrli:item" type="xbrli:dateItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntitiesTable" name="EntitiesTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityTextBlock" name="EntityTextBlock" nillable="true" substitutionGroup="xbrli:item" type="nonnum:textBlockItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityAddressesLineItems" name="EntityAddressesLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityAddressesTable" name="EntityAddressesTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_ContactPersonTypeDomain" name="ContactPersonTypeDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityContactPersonnelLineItems" name="EntityContactPersonnelLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityContactPersonnelTable" name="EntityContactPersonnelTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityDomain" name="EntityDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityOtherIdentificationValue" name="EntityOtherIdentificationValue" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityIncorporationDateOfIncorporation" name="EntityIncorporationDateOfIncorporation" nillable="true" substitutionGroup="xbrli:item" type="xbrli:dateItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityIncorporationStateCountryName" name="EntityIncorporationStateCountryName" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityInformationDateToChangeFormerLegalOrRegisteredName" name="EntityInformationDateToChangeFormerLegalOrRegisteredName" nillable="true" substitutionGroup="xbrli:item" type="xbrli:dateItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityInformationFormerLegalOrRegisteredName" name="EntityInformationFormerLegalOrRegisteredName" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityInformationLineItems" name="EntityInformationLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityListingsTable" name="EntityListingsTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityPhoneFaxNumbersTable" name="EntityPhoneFaxNumbersTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntitySectorIndustryClassificationsTable" name="EntitySectorIndustryClassificationsTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_Extension" name="Extension" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_FormerFiscalYearEndDate" name="FormerFiscalYearEndDate" nillable="true" substitutionGroup="xbrli:item" type="xbrli:gMonthDayItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_GeneralFaxMember" name="GeneralFaxMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_GeneralPhoneMember" name="GeneralPhoneMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_HumanResourcesContactMember" name="HumanResourcesContactMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_InvestorRelationsContactMember" name="InvestorRelationsContactMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_InvestorRelationsFaxMember" name="InvestorRelationsFaxMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_InvestorRelationsPhoneMember" name="InvestorRelationsPhoneMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_LegalAddressMember" name="LegalAddressMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_LegalContactMember" name="LegalContactMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_LegalFaxMember" name="LegalFaxMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_LegalPhoneMember" name="LegalPhoneMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityListingsExchangeAxis" name="EntityListingsExchangeAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_LocalPhoneNumber" name="LocalPhoneNumber" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_MailingAddressMember" name="MailingAddressMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_OtherAddressMember" name="OtherAddressMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_PhoneFaxNumberDescription" name="PhoneFaxNumberDescription" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_PhoneFaxNumberTypeDomain" name="PhoneFaxNumberTypeDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityAddressPostalZipCode" name="EntityAddressPostalZipCode" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_PrincipalAddressMember" name="PrincipalAddressMember" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityAddressRegion" name="EntityAddressRegion" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityAddressStateOrProvince" name="EntityAddressStateOrProvince" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_TradingSymbol" name="TradingSymbol" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityPhoneFaxNumbersLineItems" name="EntityPhoneFaxNumbersLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityListingsLineItems" name="EntityListingsLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntitySectorIndustryClassificationsLineItems" name="EntitySectorIndustryClassificationsLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntitySectorIndustryClassificationsSectorAxis" name="EntitySectorIndustryClassificationsSectorAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" name="EntityPhoneFaxNumbersPhoneFaxNumberTypeAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntitySectorIndustryClassificationPrimary" name="EntitySectorIndustryClassificationPrimary" nillable="true" substitutionGroup="xbrli:item" type="dei:yesNoItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityNorthAmericanIndustryClassificationsTable" name="EntityNorthAmericanIndustryClassificationsTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityNorthAmericanIndustryClassificationsIndustryAxis" name="EntityNorthAmericanIndustryClassificationsIndustryAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityNorthAmericanIndustryClassificationsLineItems" name="EntityNorthAmericanIndustryClassificationsLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityNorthAmericanIndustryClassificationPrimary" name="EntityNorthAmericanIndustryClassificationPrimary" nillable="true" substitutionGroup="xbrli:item" type="dei:yesNoItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_ContainedFileInformationFileNumber" name="ContainedFileInformationFileNumber" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityWellKnownSeasonedIssuer" name="EntityWellKnownSeasonedIssuer" nillable="true" substitutionGroup="xbrli:item" type="dei:yesNoItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityVoluntaryFilers" name="EntityVoluntaryFilers" nillable="true" substitutionGroup="xbrli:item" type="dei:yesNoItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityCurrentReportingStatus" name="EntityCurrentReportingStatus" nillable="true" substitutionGroup="xbrli:item" type="dei:yesNoItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityFilerCategory" name="EntityFilerCategory" nillable="true" substitutionGroup="xbrli:item" type="dei:filerCategoryItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityPublicFloat" name="EntityPublicFloat" nillable="true" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType" xbrli:periodType="instant" xbrli:balance="credit"/>
+<xs:element id="dei_EntityRegistrantName" name="EntityRegistrantName" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityCentralIndexKey" name="EntityCentralIndexKey" nillable="true" substitutionGroup="xbrli:item" type="dei:centralIndexKeyItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityTaxIdentificationNumber" name="EntityTaxIdentificationNumber" nillable="true" substitutionGroup="xbrli:item" type="dei:nineDigitItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityDataUniversalNumberingSystemNumber" name="EntityDataUniversalNumberingSystemNumber" nillable="true" substitutionGroup="xbrli:item" type="dei:nineDigitItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityOtherIdentificationType" name="EntityOtherIdentificationType" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityCommonStockSharesOutstanding" name="EntityCommonStockSharesOutstanding" nillable="true" substitutionGroup="xbrli:item" type="xbrli:sharesItemType" xbrli:periodType="instant"/>
+<xs:element id="dei_EntityListingPrimary" name="EntityListingPrimary" nillable="true" substitutionGroup="xbrli:item" type="dei:yesNoItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityListingDescription" name="EntityListingDescription" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityListingsInstrumentAxis" name="EntityListingsInstrumentAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_InstrumentDomain" name="InstrumentDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityLegalForm" name="EntityLegalForm" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_ParentEntityLegalName" name="ParentEntityLegalName" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityAccountingStandard" name="EntityAccountingStandard" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityHomeCountryISOCode" name="EntityHomeCountryISOCode" nillable="true" substitutionGroup="xbrli:item" type="dei:countryItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityReportingCurrencyISOCode" name="EntityReportingCurrencyISOCode" nillable="true" substitutionGroup="xbrli:item" type="dei:currencyItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityListingSecurityTradingCurrency" name="EntityListingSecurityTradingCurrency" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityListingParValuePerShare" name="EntityListingParValuePerShare" nillable="true" substitutionGroup="xbrli:item" type="num:perShareItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityListingForeign" name="EntityListingForeign" nillable="true" substitutionGroup="xbrli:item" type="dei:yesNoItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityListingDepositoryReceiptRatio" name="EntityListingDepositoryReceiptRatio" nillable="true" substitutionGroup="xbrli:item" type="xbrli:pureItemType" xbrli:periodType="instant"/>
+<xs:element id="dei_DocumentTitle" name="DocumentTitle" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentSubtitle" name="DocumentSubtitle" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentSynopsis" name="DocumentSynopsis" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentFiscalYearFocus" name="DocumentFiscalYearFocus" nillable="true" substitutionGroup="xbrli:item" type="xbrli:gYearItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentFiscalPeriodFocus" name="DocumentFiscalPeriodFocus" nillable="true" substitutionGroup="xbrli:item" type="dei:fiscalPeriodItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentVersion" name="DocumentVersion" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DocumentCopyrightInformation" name="DocumentCopyrightInformation" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityLocationTable" name="EntityLocationTable" nillable="true" substitutionGroup="xbrldt:hypercubeItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityByLocationAxis" name="EntityByLocationAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_LocationDomain" name="LocationDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityLocationPrimary" name="EntityLocationPrimary" nillable="true" substitutionGroup="xbrli:item" type="dei:yesNoItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_EntityLocationLineItems" name="EntityLocationLineItems" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_SectorDomain" name="SectorDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_NAICSDomain" name="NAICSDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_ExchangeDomain" name="ExchangeDomain" nillable="true" substitutionGroup="xbrli:item" type="nonnum:domainItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_LegalEntityAxis" name="LegalEntityAxis" nillable="true" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_DocumentType" name="DocumentType" nillable="true" substitutionGroup="xbrli:item" type="dei:submissionTypeItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_DeprecatedItemsForDEI" name="DeprecatedItemsForDEI" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_EntityNumberOfEmployees" name="EntityNumberOfEmployees" nillable="true" substitutionGroup="xbrli:item" type="xbrli:decimalItemType" xbrli:periodType="instant"/>
+<xs:element id="dei_ApproximateDateOfCommencementOfProposedSaleToThePublic" name="ApproximateDateOfCommencementOfProposedSaleToThePublic" nillable="true" substitutionGroup="xbrli:item" type="xbrli:dateItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_PostEffectiveAmendmentNumber" name="PostEffectiveAmendmentNumber" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_PreEffectiveAmendmentNumber" name="PreEffectiveAmendmentNumber" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_RegistrationStatementAmendmentNumber" name="RegistrationStatementAmendmentNumber" nillable="true" substitutionGroup="xbrli:item" type="xbrli:normalizedStringItemType" xbrli:periodType="duration"/>
+<xs:element id="dei_UTR" name="UTR" nillable="true" substitutionGroup="xbrli:item" type="xbrli:stringItemType" xbrli:periodType="duration" abstract="true"/>
+<xs:element id="dei_LegalEntityIdentifier" name="LegalEntityIdentifier" nillable="true" substitutionGroup="xbrli:item" type="dei:legalEntityIdentifierItemType" xbrli:periodType="duration"/>
+</xs:schema>

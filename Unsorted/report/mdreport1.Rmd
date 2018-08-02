@@ -1,0 +1,62 @@
+---
+title: "report1"
+author: "dhiraj"
+date: "April 3, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+
+```{r pressure, echo=FALSE}
+#no code printed
+plot(pressure)
+```
+
+```{r}
+#with code
+A <- c("Bob", "Tom", "Bill", "Joe")
+B <- c(1.78, 1.86, 1.85, 1.70)
+dataframe <- data.frame(A, B)
+head(dataframe)
+```
+Creating DF without display of code
+```{r,echo=FALSE}
+#without code
+A <- c("Bob", "Tom", "Bill", "Joe")
+B <- c(1.78, 1.86, 1.85, 1.70)
+dataframe <- data.frame(A, B)
+head(dataframe)
+```
+
+```{r,fig.width=5, fig.height=5,echo=FALSE}
+#insert figures manually
+plot(cars)
+```
+```{r,fig.width=5, fig.height=5,echo=FALSE,dev="svg"}
+#change file type from png to svg
+plot(cars)
+```
+```{r,echo=FALSE}
+# Inserting Table
+library(knitr)
+kable(dataframe,digits=1)
+```
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

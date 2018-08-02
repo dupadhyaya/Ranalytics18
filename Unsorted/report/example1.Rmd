@@ -1,0 +1,20 @@
+#Report
+Here is some data
+
+```{r mtcars}
+summary(mtcars)
+aggregate(mtcars$mpg, by=list(mtcars$cyl), mean)
+```
+
+Here is the plot
+```{r,fig.width=5, fig.height=5,echo=FALSE}
+#insert figures manually
+plot(women)
+```
+
+```{r cars}
+summary(cars)
+```
+```{r iris}
+head(iris)
+```

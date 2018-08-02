@@ -1,0 +1,6 @@
+library('rmarkdown')
+rmarkdown::render('.\\report\\sample1.R')
+
+library(knitr)
+library(tinytex)
+knitr::knit2pdf('.\\report\\sample1.R')

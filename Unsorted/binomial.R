@@ -1,0 +1,17 @@
+# Binomial
+choose(5,2)
+choose(5, 0:5)
+for (n in 0:10) print(choose(n, 0:n))
+dbinom(2, size=5, prob=1/6) 
+choose(5,2) * (1/6)^2 * (5/6)^3 
+probs = dbinom(0:5, size=5, prob=1/6) 
+data.frame(0:5, probs)
+sum(probs) 
+plot(0:5, probs, type="h", xlim=c(0,5), ylim=c(0,.5))
+points(0:5, probs, pch=16, cex=2) 
+probs2 = dbinom(0:100, size=100, prob=1/2) 
+data.frame(0:100, probs2) 
+round(data.frame(0:100, probs2), digits=5) 
+plot(0:100, probs2, type="h", xlim=c(0,100), ylim=c(0,.1))
+points(0:100, probs2, pch=16, cex=.5) 
+sum(dbinom(59:100, size=100, prob=1/2)) 
