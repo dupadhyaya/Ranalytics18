@@ -7,7 +7,6 @@ vars2 = c('gear','cyl', 'vs', 'am','gear','carb')
 
 paste('mtcars','mpg',sep='$')
 noquote(paste('mtcars','mpg',sep='$'))
-noquote(paste('mtcars','mpg',sep='$'))
 
 length(mtcars)
 

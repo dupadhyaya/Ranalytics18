@@ -22,3 +22,7 @@ NROW(mtcars)
 length(mtcars)
 length(mtcars$mpg)
 summary(mtcars)
+ncol(mtcars) #matrix
+nrow(mtcars)
+
+View(mtcars)
