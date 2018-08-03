@@ -18,7 +18,7 @@ AccessTokenSecret="3ap8BZNVoBhE2GaMGLfuvuPF2OrHzM3MhGuPm96p3k6Cz"
 
 cred <- OAuthFactory$new(consumerKey=consumerKey, consumerSecret=consumerSecret, requestURL='https://api.twitter.com/oauth/request_token', accessURL='https://api.twitter.com/oauth/access_token', authURL='https://api.twitter.com/oauth/authorize')
 
-cred$handshake(cainfo="cacert.pem") # it will take you to browser: authorise, copy key
+cred$handshake(cainfo="cacert.pem") # it will take you to browser: authorise, copy key and paste in R Studio at Console. Once it stores, it move to R prompt
 save(cred, file="twitter authentication.Rdata") # store this to avoid asking again
 #u  di
 #Load saved authentication cert
