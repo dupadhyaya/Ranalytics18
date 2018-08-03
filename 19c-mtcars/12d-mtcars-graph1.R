@@ -15,6 +15,7 @@ cars_auto = subset(mtcars, am == 0)
 cars_manu = subset(mtcars, am == 1)
 par(mfrow = c(2, 1)) #2 row,1 col
 hist(cars_auto$mpg, main = "Distribution mpg - automatic transmission", xlab = "mpg")
+
 abline(v = mean(cars_auto$mpg), col = "red")
 hist(cars_manu$mpg, main = "Distribution mpg - manual transmission", xlab = "mpg")
 abline(v = mean(cars_manu$mpg), col = "red")

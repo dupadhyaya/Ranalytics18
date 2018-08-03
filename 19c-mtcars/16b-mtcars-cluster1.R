@@ -1,23 +1,24 @@
 #Clustering on mtcars
 
+head(mtcars)
+
 #kmeans - select only few column to group them
 df = mtcars[, c('mpg', 'cyl', 'wt')]
-km1 <- kmeans(df, centers=3)
-km1
-km1$centers  #average of each cluster
-km1$size  #how many into each cluster
-
-
+head(df)
+km3 = kmeans(df, centers=3)
+km3
+km3$centers  #average of each cluster
+km3$size  #how many into each cluster
 
 
 #Plotting Clusters
 library(cluster)
 library(fpc)
 
-plotcluster(df, km1$cluster)
+plotcluster(df, km3$cluster)
 
 #Plot2
-clusplot(df, km1$cluster, color=TRUE, shade=TRUE, 
+clusplot(df, km3$cluster, color=TRUE, shade=TRUE, 
          labels=2, lines=0)
 
 
