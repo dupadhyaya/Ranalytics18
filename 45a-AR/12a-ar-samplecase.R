@@ -154,3 +154,43 @@ inspect(rules[14])
 plot(rules[14], method = "doubledecker", data = tdata)
 
 #https://cran.r-project.org/web/packages/arulesViz/vignettes/arulesViz.pdf
+
+
+#extra
+# freq items
+
+freqitems = eclat(tdata, parameter = list(supp = 0.001))
+freqitems
+inspect(freqitems)
+
+freqitems1 = eclat(tdata, parameter = list(supp = 0.1))
+freqitems1
+inspect(freqitems1)
+
+freqitems2 = eclat(tdata, parameter = list(supp = 0.2))
+freqitems2
+inspect(freqitems2)
+
+freqitems3 = eclat(tdata, parameter = list(supp = 0.3))
+freqitems3
+inspect(freqitems3)
+
+## Create rules from the itemsets
+rules3b <- ruleInduction(freqitems3, tdata, confidence = .6)
+rules3b
+inspect(rules3b)
+
+
+#calculate confidence and lift manually
+inspect(head(rules, n = 1, by ="lift"))
+itemsets <- unique(generatingItemsets(rules))
+itemsets
+inspect(itemsets)
+(itemsets.df <- as(itemsets, "data.frame"))
+
+frequentItemsets <- itemsets.df[with(itemsets.df, order(-support,items)),]
+names(frequentItemsets)[1] <- "itemset"
+itemsets.df
+itemFrequency(items(rules))
+freqitems = eclat(tdata)
+inspect(freqitems)
