@@ -61,7 +61,7 @@ image(tdata)
 #Analysis
 freqitems = eclat(tdata)
 freqitems
-
+inspect(freqitems)
 itemFrequencyPlot(tdata,topN = 5,type="absolute")
 itemFrequencyPlot(tdata,topN = 5,type="relative", horiz=T)
 

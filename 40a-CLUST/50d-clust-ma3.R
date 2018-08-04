@@ -25,7 +25,7 @@ head(cust_data)
 summary(cust_data)
 str(cust_data)
 ###Run the kmeans algorithm to generate the clusters
-?amap::Kmeans
+#?amap::Kmeans
 names(cust_data)
 
 k1<-amap::Kmeans(cust_data[,-c(1)],centers=3, iter.max = 200,nstart = 1, 
@@ -41,6 +41,7 @@ k1$withinss
 ###Fetch the cluster for each obs
 #k1$cluster
 k1$cluster
+k1$centers
 dim(cust_data)
 k1$cluster[9000:9800]
 table(k1$cluster)

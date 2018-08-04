@@ -1,6 +1,8 @@
 # Clustering - IRIS data set
 
 head(iris)
+str(iris$Species)
+table(iris$Species)
 irisFeatures = iris[,-5]
 head(irisFeatures)
 iriskm1 = kmeans(irisFeatures,centers=3)

@@ -20,30 +20,31 @@ cred <- OAuthFactory$new(consumerKey=consumerKey, consumerSecret=consumerSecret,
 
 cred$handshake(cainfo="cacert.pem") # it will take you to browser: authorise, copy key and paste in R Studio at Console. Once it stores, it move to R prompt
 save(cred, file="twitter authentication.Rdata") # store this to avoid asking again
-#u  di
 #Load saved authentication cert
 load("twitter authentication.Rdata")
 #registerTwitterOAuth(cred)
 
 setup_twitter_oauth(consumerKey, consumerSecret, AccessToken, AccessTokenSecret)
 
-search.string <- "#FifaWorldCup2018"
+search.string <- "#marketinganalytics"
 no.of.tweets <- 100
 
 tweets <- searchTwitter(search.string, n=no.of.tweets,lang="en")
 tweets
-
+tweets[1:10]
 #Another Topics
-search.string <- "#businessanalytics"
+search.string <- "#indvseng"
 no.of.tweets <- 100
 
 tweets <- searchTwitter(search.string, n=no.of.tweets,lang="en")
-tweets
+tweets[1:5]
 
 #My Tweets : will change if you use your own account
 homeTimeline(n=15)  #my tweets
 mentions(n=15)   # my tags
 
+tweets <- userTimeline("javedn14", n=10)
+tweets
 
 #------------------------------------
 ?userTimeline
@@ -64,7 +65,7 @@ tweets.df2 <- gsub("@.*","",tweets.df2)
 
 head(tweets.df2)
 #-----
-library("syuzhet")
+library("syuzhet") #library for sentiment analysis - comparison
 word.df <- as.vector(tweets.df2)
 emotion.df <- get_nrc_sentiment(word.df)
 emotion.df2 <- cbind(tweets.df2, emotion.df) 
@@ -94,3 +95,4 @@ head(category_senti2)
 
 #----
 table(category_senti)
+
