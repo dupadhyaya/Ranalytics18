@@ -1,27 +1,118 @@
-# Data Manipulation  through dplyr package
-# understand iris, mtcars, women datasets and dplyr package
-
+#dplyr - mtcars
 library(dplyr)
+
+#Filter----
+
+filter(mtcars, cyl == 8)
+filter(mtcars, cyl < 6)
+
+# Multiple criteria
+filter(mtcars, cyl < 6 & vs == 1)
+filter(mtcars, cyl < 6 | vs == 1)
+
+# Multiple arguments are equivalent to and
+filter(mtcars, cyl < 6, vs == 1)
+
+
+filter(mtcars, row_number() == 1L)
+filter(mtcars, row_number() == n())
+filter(mtcars, between(row_number(), 5, n()))
+
+
+
+#mutate----
+mutate(mtcars, displ_l = disp / 61.0237) #keeps other col
+transmute(mtcars, displ_l = disp / 61.0237) #removes other cols
+mutate(mtcars, cyl = NULL) #do not display cyl
+
+
+#slice-----
+slice(mtcars, 1L)
+slice(mtcars, n())
+slice(mtcars, 5:n())
+slice(mtcars, c(2,4,5,10))
+
+(by_cyl <- group_by(mtcars, cyl)) # ???
+slice(by_cyl, 1:2)
+
+#structure----
+tbl_df(mtcars) # convert to tbl class
+glimpse(mtcars)  # dense summary of tbl data
+View(mtcars) # spreasheet like form base pacakge
+
+
+
+#rownames----
+df = tibble::rownames_to_column(df, var='cars')
+df2 = mtcars
+names(df)
+
+#has
+tibble::has_rownames(mtcars)
+tibble::has_rownames(df)
+
+#remove rownames  
+#see without rownames
+head(df2[1:5])
+tibble::remove_rownames(df2)
+
+#rowid as column
+tibble::rowid_to_column(df, var = "rowid")
+
+#column to rownames
+head(df[1:5])
+tibble::column_to_rownames(df, var = "cars")
+
+mtcars %>% group_by(am) 
+#nothing - just separation
+
+mtcars %>% group_by(am) %>% summarise(mean(mpg), max(wt))
+
+
+#summarise----
+summarise(mtcars, mean(disp))  
+summarise(group_by(mtcars, cyl), mean(disp)) 
+summarise(group_by(mtcars, cyl), m = mean(disp), sd = sd(disp))
+
+
+#summarise_all
+mtcars %>% group_by(am, gear) %>% summarise_all(mean)
+mtcars %>% group_by(am, gear)%>% summarise_all(c("min", "max"))
+mtcars %>% group_by(am, gear)%>% summarise_all(funs(med = median))
+
+
+
+#without Group
+mtcars %>% summarise(mean(mpg), max(wt))
+mtcars %>% summarise_all(mean)
+mtcars %>% select(wt, gear)%>% summarise_all(c("min", "max"))
+mtcars %>% summarise_all(funs(med = median))
+
+
+
+
+
+mtcars %>% summarise_if(is.numeric, mean, na.rm = TRUE)
+iris %>% summarise_if(is.numeric, mean, na.rm = TRUE)
+
+#specific columns
+mtcars %>% summarise_at(c("mpg", "wt"), mean, na.rm = TRUE)
+
+
+#------------------------------------
+#unsortd----
 dplyr::tbl_df(iris)
-print(dplyr::tbl_df(mtcars), n=15)  #display more columns and rows
-#print(dplyr::tbl_df(mtcars), width=5)
-tbl_df(iris) %>% print(n = Inf)
-tbl_df(iris) %>% print(width = Inf)
-tbl_df(iris) %>% as.data.frame(iris)
+print(dplyr::tbl_df(mtcars), n=20)  #display more columns and rows
+#print(dplyr::tbl_df(mtcars), width=11)
+tbl_df(mtcars) %>% print(n = Inf)
+tbl_df(mtcars) %>% print(width = Inf)
+tbl_df(mtcars) %>% as.data.frame(mtcars)
 
-library(dplyr)
-# glimpse
-glimpse(iris)
 glimpse(mtcars)
-str(iris)
-View(iris)
-?mtcars
-data()
-mtcars['mpg']
 df = mtcars
 row.names(df) = NULL
 df %>% select(mpg)
-head(mtcars)
+#head(mtcars)
 select(mtcars, mpg, vs)
 mtcars %>% dplyr::select(vs, mpg, wt)
 mtcars %>% group_by(cyl) %>% summarise(avgwt = mean(wt), meanhp = mean(hp)) %>% arrange( desc(meanhp), avgwt)
@@ -33,7 +124,7 @@ mtcars %>% filter(mpg > 23 & wt > 2)
 mtcars %>% select(mpg, wt) %>% filter(mpg > 23) 
 mtcars %>% 
   
-filter(iris, Sepal.Length > 7)
+  filter(iris, Sepal.Length > 7)
 filter(mtcars, cyl == 4)
 distinct(mtcars)
 df  = data.frame(a=c(2,2),b=c(2,2))
@@ -204,9 +295,3 @@ df %>% top_n(-2)
 
 
 
-#Default dataset
-#
-Default %>% group_by(balance) %>% arrange(desc(balance)) %>% top_n(5, balance)
-Default %>% group_by(balance) %>% arrange(balance) %>% top_n(5, balance)
-
-Default %>% group_by(balance) %>% arrange(balance) %>% filter(row_number() %in% c(1:3,n()-5:n()))

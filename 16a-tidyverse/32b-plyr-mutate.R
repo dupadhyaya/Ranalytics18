@@ -1,5 +1,6 @@
 #Mutate
 
+library(plyr)
 df=mtcars
 
 #Case-ddply?----

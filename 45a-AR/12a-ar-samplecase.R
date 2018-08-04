@@ -11,7 +11,8 @@ itemlist1
 write(itemlist1, file = "./data/itemlist1");
 tdata1 = read.transactions("./data/itemlist1", format = "basket", sep=",");
 summary(tdata1)
-inspect(tdata1);
+tdata1
+inspect(tdata1)
 
 #Method2
 itemlist2 <- data.frame(
@@ -34,6 +35,8 @@ names(itemlist) <- paste("Tr",c(1:9), sep = "")
 itemlist
 ## coerce into transactions
 tdata3 <- as(itemlist, "transactions")
+tdata3
+summary(tdata3)
 inspect(tdata3)
 
 #Method4 : DF ----
@@ -44,6 +47,8 @@ df = data.frame(rbind(T1,T2,T3,T4,T5,T6,T7,T8,T9))
 colnames(df)=c('I1','I2','I3','I4','I5')
 df
 tdata4 = as(df, "transactions")
+summary(tdata4)
+tdata4
 inspect(tdata4)
 
 tdata=tdata1
@@ -54,7 +59,6 @@ summary(tdata)
 image(tdata)
 
 #Analysis
-library(arules)
 freqitems = eclat(tdata)
 freqitems
 
@@ -70,7 +74,7 @@ inspect(rules)
 #sort rules by support
 rules_s = sort(rules, by="support", decreasing=TRUE )
 inspect(rules_s)
-inspect(rules_s[1:5])  #itemsset having high confidence
+inspect(rules_s[1:5])  #itemsset having high support
 
 #sort rules by confidence
 rules_c = sort(rules, by="confidence", decreasing=TRUE )
@@ -92,6 +96,7 @@ inspect(rules)
 inspect(rules[c(8,9,10,11,12,14,14)])
 inspect(rules[redundant])
 inspect(rules)
+write.csv(as(rules,"data.frame"), file='./data/rulesR.csv')
 
 #Remove Redundant Rules
 rulesNR <- rules[-redundant] 
@@ -129,8 +134,7 @@ plot(rules[1:5],method="graph",engine='interactive', shading="confidence")
 #plot with unified interface, the no of items contained in the rule
 plot(rules, method = "two-key plot")
 
-#plot with lift on the y-axis. identify all rules with high
-lift. 
+#plot with lift on the y-axis. identify all rules with high lift. 
 plot(rules, measure = c("support", "lift"), shading = "confidence")
 
 #Matrix Plots

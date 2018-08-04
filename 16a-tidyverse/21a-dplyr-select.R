@@ -17,3 +17,7 @@ df <- tbl_df(df[c(3, 4, 7, 1, 9, 8, 5, 2, 6, 10)])
 df
 select(df, V4:V6)
 select(df, num_range("V", 4:6))
+
+
+#select-----
+
