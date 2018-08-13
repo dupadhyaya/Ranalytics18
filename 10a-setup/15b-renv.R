@@ -7,6 +7,8 @@ names(s <- Sys.getenv()) # all settings (the values could be very long)
 head(s, 12)# using the Dlist print() method
 
 ## Language and Locale settings -- but rather use Sys.getlocale()
-s[grep("^L(C|ANG)", names(s))]
+Sys.getlocale()
 
-getwd()
+#version of R
+version
+

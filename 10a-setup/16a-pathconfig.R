@@ -1,6 +1,7 @@
 # Lib paths
 
 .libPaths()
+
 file.exists("~/.Rprofile")
 file.edit("~/.Rprofile")
 # Add these lines to Rprofile
