@@ -3,7 +3,7 @@
 
 
 rollno = paste('S',1:30,sep='-')
-name = paste0('Student',1:30, '- xyz')
+name = paste0('Student',1:30, ' - surname')
 name
 gender = sample(c('M','F'), size=30, replace=T, prob=c(.7,.3))
 course = sample(c('BTech','MTech','Phd'), size=30, prob=c(.5,.3,.2), replace=T)
@@ -17,12 +17,14 @@ df
 #subset the data
 sample(nrow(df),3)
 df1= df[sample(nrow(df), 3), ]
+df1
 (df2 = subset(df, age >= 20 & age < 27, select=c(rollno, name)))
 (df2b = subset(df, marks >= 55 & marks < 70, select=c(name, marks)))
 
 #dplyr
-(df3= sample_n(df, 10))
-(df4 = sample_frac(df, .5))
+library(dplyr)
+(df3= sample_n(df, 10))  # in numbers
+(df4 = sample_frac(df, .5))  #in %
 
 df5= df[ which(gender=='F' | age > 25),]
 
@@ -32,9 +34,15 @@ write.csv(df, './data/students3.csv')
 library(xlsx)  #rJava also to be installed at this stage
 
 Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_144")
+Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_181') # for 64-bit
+
+
+library(rJava)
 library(xlsx) #needs rJava
-write.xlsx(df, './data/student3.xlsx', sheetName = "IITG1", row.names = F, append=T)
-write.xlsx(df2, './data/student3.xlsx', sheetName = "IITG2", row.names = F, append=T)
+
+write.xlsx(df, './data/student3a.xlsx', sheetName = "IITG1", row.names = F, append=T)
+write.xlsx(df2, './data/student3a.xlsx', sheetName = "IITG2", row.names = F, append=T)
 
 
 #Open the xls file in Excel
+
