@@ -3,8 +3,14 @@
 #sequence of data elements of the same basic type
 
 #Scalar
+x1 = 1
+x2 <- 2
+x1
+x2
+(x3 = 3) #assign and print
 
 #Vector----
+# Combining vectors with c()----
 x = c(1, 5, 4, 9, 0)
 typeof(x)  #[1] "double"
 length(x)   #[1] 5
@@ -21,23 +27,21 @@ seq(1, 5, length.out=4)    # specify length of the vector 4parts from 5
 
 
 #Character/ String ----
-
+(x3=c('S1','S2','S3'))
+class(x3)
 #Numeric ----
-
-
+(x4=1:10)
+class(x4)
 #Logical----
-
-
-
-
-
-
-# Combining vectors with c()----
-
+(x5=c(TRUE, FALSE, TRUE))
+class(x4)
+(x5b=c(F, T, T, F))
+class(x5b)
 
 
 
 #Vector Coercian ----
+#if even 1 character, whole vector converted to character
 x = c(1, 5.4, TRUE, "hello")
 x  #[1] "1"     "5.4"   "TRUE"  "hello"
 typeof(x)  #[1] "character"
@@ -100,8 +104,6 @@ v[c("Last", "First")]
 (x = 1:10)
 x = NULL  #delete
 x
-
-
 
 #Vector ARITHMETIC----
 # Create two vectors.

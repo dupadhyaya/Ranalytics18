@@ -1,4 +1,5 @@
 # Packages installation
+#https://www.rstudio.com/products/rpackages/
 
 #List avl packages
 library()
@@ -89,16 +90,6 @@ libraries("plyr", "psych", "tm")
 
 
 
-#lubripack
-install.packages('lubripack')  #NA for some versions
-#install older version of R packages
-#https://support.rstudio.com/hc/en-us/articles/219949047-Installing-older-versions-of-packages
-#https://rdrr.io/github/Espanta/lubripack/
-
-require(devtools)
-install_github("Espanta/lubripack")
-library(lubripack)
-lubripack("plyr", "psych", "tm", "quantmod")
 
 
 
