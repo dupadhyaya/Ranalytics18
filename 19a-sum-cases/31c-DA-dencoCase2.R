@@ -40,9 +40,14 @@ t1=table(sales$custname)
 t1
 class(t1); length(t1) ;head(t1)
 t2= sort(t1,decreasing=T )
+head(t2)
+
 
 library(dplyr)
+sales %>% count(custname, sort=TRUE)
 sales %>% count(custname, sort=TRUE) %>% head(n=5)
+
+
 sales %>% dplyr::group_by(custname) %>% dplyr::summarise(n = n()) %>% dplyr::arrange(desc(n)) %>% head(n=5)
 # Summarise by Part Num
 sales %>% dplyr::group_by(partnum) %>% dplyr::summarise(n = n()) %>% dplyr::arrange(desc(n))  %>% head(n=5)

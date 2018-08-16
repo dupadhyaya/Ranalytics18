@@ -5,15 +5,17 @@
 is.na(v1)
 v1=NULL
 v1  # remove all values
-(v1 = c(1,2,NA,NA,5))
+(v1 = c(1,2,NA,NA,5,6,7,NA))
 sum(is.na(v1))  # sum TRUE values ie missing values
 mean(v1)  # cannot calculate if NA values in vector
 mean(v1, na.rm=T)  # remove and calc
 (v1a = na.omit(v1))  # omit missing values and put in new vector
+mean(v1a)
 sum(v1a) # now you can sum on non NA values
 ?na.omit
 
 anyNA(v1) # is there any NA value
+anyNA(v1a)
 ?anyNA
 #impute missing values of vector with mean value of non NA values
 v1
@@ -21,7 +23,6 @@ mean(v1, na.rm=T)  # this value to be used
 v1[is.na(v1)]
 v1[is.na(v1)] = mean(v1, na.rm=T)
 v1
-
 
 #Use VIM package to load sleep dataset with NA values in rows & col
 library(VIM)

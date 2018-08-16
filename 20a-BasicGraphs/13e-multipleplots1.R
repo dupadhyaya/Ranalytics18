@@ -14,6 +14,7 @@ attach(mtcars)
 par(mfrow=c(3,1)) 
 hist(wt)
 hist(mpg)
+
 hist(disp)
 
 
@@ -46,3 +47,4 @@ boxplot(mtcars$wt, horizontal=TRUE, axes=FALSE)
 par(fig=c(0.65,1,0,0.8),new=TRUE)
 boxplot(mtcars$mpg, axes=FALSE)
 mtext("Enhanced Scatterplot", side=3, outer=TRUE, line=-3)
+

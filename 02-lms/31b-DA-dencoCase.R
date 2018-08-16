@@ -3,10 +3,12 @@
 #read file : Method1
 sales1 = read.csv("./data/denco.csv")
 str(sales1)
+head(sales1)
 
 #read file : Method2
 sales2 = read.csv(file.choose())
 str(sales2)
+head(sales2)
 
 #read file: Method3
 #install.packages('gsheet')
@@ -37,6 +39,14 @@ dim(sales) #dimensios of DF rows & colnum
 unique(sales$custname)
 length(unique(sales$custname))
 length(unique(sales$region ))
+
+
+
+t1=table(sales$custname)
+head(t1)
+colnames(t1)
+#
+
 
 # aggregation
 aggregate(sales$revenue , by=list(sales$custname), FUN=sum)

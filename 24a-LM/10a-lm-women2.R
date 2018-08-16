@@ -56,7 +56,7 @@ df = df[-4]
 df
 
 #y = mx + c
-fit1= lm(formula= weight ~ height + age +var2 , data= df)
+#fit1= lm(formula= weight ~ height + age +var2 , data= df)
 summary(fit1)
 abline(fit1)
 df
