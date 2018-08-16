@@ -44,10 +44,12 @@ seq_len(x[1])  #no in seq upto first position of vector
 #An error, if x is a frame.
 
 
-
-
 #sample
 
 #months
+month.abb[1:5]
+month.name[1:5]
 
 #alphabets
+LETTERS[1:10]
+letters[5:15]

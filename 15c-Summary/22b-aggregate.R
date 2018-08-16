@@ -17,7 +17,7 @@ aggregate(student1submarks, list(student1$btechmarks), mean, na.rm=T)
 # Grouping variables of java and dbms
 aggregate(. ~ java + dbms, student1submarks, mean)
 
-# Find the means of the numeric variables in airquality, with the grouping variable of Month
+# Find the means of the numeric variables with the grouping var
 head(aggregate(. ~ student1$btechmarks, student1submarks, mean))
 
 # aggregate(formula, data, FUN) # use aggregate.formula for a one-to-one aggregation of “airquality” by the mean of “Ozone” to the grouping variable “Day“.

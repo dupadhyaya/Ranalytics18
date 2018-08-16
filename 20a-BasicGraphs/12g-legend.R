@@ -38,3 +38,6 @@ legend(x= 2, y=15,legend = rownames(counts), fill=palette(),
        title='No of Gears')
 # When plot with lines/ points , col=par('col'); pch= plotting symbol
 #bty = border n,o, # 
+
+#links
+#(http://www.sthda.com/english/wiki/add-legends-to-plots-in-r-software-the-easiest-way)

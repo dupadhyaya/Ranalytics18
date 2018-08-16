@@ -23,20 +23,22 @@ pie(x2a)
 set.seed(1234)
 x3 = runif(100,0,150)  # 0 to 150 marks range, 100 values 
 x3
-x3 = ceiling(x3)
+x3 = ceiling(x3)  #round to higher value
 x3
 range(x3)
 # Divide range into step of 15 ie 10 levels
 breaks = seq(0,150,by=15)
 breaks
-x3[1] = 60
-x3[2] = 75
-x3.cut = cut(x3, breaks)
-x3.cut = cut(x3, breaks, labels=letters[1:10])
-x3.cut = cut(x3, breaks, labels=letters[1:length(breaks)])
-
 length(breaks)
+x3
+#x3[1] = 60; x3[2] = 75
+x3.cut = cut(x3, breaks)
 x3.cut
+x3.cut = cut(x3, breaks, labels=letters[1:10])
+x3.cut
+x3.cut = cut(x3, breaks, labels=letters[1:length(breaks)-1])
+x3.cut
+
 ?cut
 x3a = table(x3.cut)
 x3a
@@ -52,60 +54,6 @@ plot(x3b)
 # Frequency 2
 # Relative Frequency
 #http://www.r-tutor.com/elementary-statistics/qualitative-data/relative-frequency-distribution-qualitative-data
-
-#Eg1
-library(MASS)                 # load the MASS package 
-school = painters$School      # the painter schools 
-school.freq = table(school)   # apply the table function
-school
-school.freq
-head(painters)
-nrow(painters) # no of rows/ records
-school.relfreq = school.freq / nrow(painters)
-school.relfreq
-cbind(school.relfreq) 
-round(cbind(school.relfreq),2)
-school2 = data.frame(round(cbind(school.relfreq),2))
-hist(school2$school.relfreq)
-
-#Cumulative Relative Frequency
-school2$cum = cumsum(as.numeric(school2$school.relfreq))
-school2
-plot(school2$cum, type='l')
-
-
-
-#Eg2 https://cnx.org/contents/yTlmgmzh@4/Frequency-Relative-Frequency-a
-# Entering the data : 20 records
-hours.worked = c(5, 6, 3, 3, 2, 4, 7, 5, 2, 3, 5, 6, 
-                 5, 4, 4, 3, 5, 2, 5, 3)
-
-# A general frequency table
-table(hours.worked)
-## hours.worked
-## 2 3 4 5 6 7 
-## 3 5 3 6 2 1
-
-# Relative frequency table
-length(hours.worked)
-table(hours.worked)/length(hours.worked)
-## hours.worked
-##    2    3    4    5    6    7 
-## 0.15 0.25 0.15 0.30 0.10 0.05
-
-# To get cumulative frequencies, we need to put
-# the hours into different intervals
-x = table(cut(hours.worked, breaks = c(1:7)))
-x
-# Cumulative frequencies
-cumsum(x)
-## (1,2] (2,3] (3,4] (4,5] (5,6] (6,7] 
-##     3     8    11    17    19    20
-
-# Cumulative relative frequencies
-cumsum(x)/length(hours.worked)
-## (1,2] (2,3] (3,4] (4,5] (5,6] (6,7] 
-##  0.15  0.40  0.55  0.85  0.95  1.00
 
 
 #3----

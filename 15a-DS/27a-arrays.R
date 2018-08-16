@@ -7,8 +7,8 @@ pincode = 101:124
 citylist = array(pincode, c(4,3,2) , dimnames = list(city, district ,state))
 citylist
 
-state1  district1 city1 101
-state1  district1 city2 102
+#state1  district1 city1 101
+#state1  district1 city2 102
 state = paste('state',1:4,sep='')
 state2= rep(state,6)
 

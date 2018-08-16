@@ -25,9 +25,17 @@ seq(1, 3, by=0.2)          # specify step size
 seq(1, 5, length.out=4)    # specify length of the vector 4parts from 5
 #[1] 1.00 2.33 3.667 5.00
 
+seq(1,5, along.with = c(1,2,13,15,6,7,8,20))
+x=c(1,2,13,15,6,7,8,20,30,60); length(x)
+x1=110:150
+length(x1)
+seq(0,1, length.out = length(x1))
+seq(0,1, along.with = x1)
+
+seq(0,1, length.out = 60)
 
 #Character/ String ----
-(x3=c('S1','S2','S3'))
+(x3=c('S1','S2',"S3"))
 class(x3)
 #Numeric ----
 (x4=1:10)

@@ -38,9 +38,7 @@ nr.of.appearances
 #Eg2
 dates <- data.frame(date = as.Date("2016-01-01", format = "%Y-%m-%d") + 0:729)
 dates
-last.day <- aggregate(x = dates["date"], 
-                      by = list(month = substr(dates$date, 1, 7)), 
-                      FUN = max)
+last.day <- aggregate(x = dates["date"],by = list(month = substr(dates$date, 1, 7)), FUN = max)
 last.day 
 
 

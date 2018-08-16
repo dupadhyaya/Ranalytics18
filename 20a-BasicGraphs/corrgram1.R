@@ -1,3 +1,4 @@
+#correloggram
 
 # First Correlogram Example
 
@@ -8,6 +9,11 @@ corrgram(mtcars, order=TRUE, lower.panel=panel.shade,
 cor(mtcars[1:5])
 corrgram(mtcars[1:5], order=TRUE, lower.panel=panel.shade,
          upper.panel=panel.pie, text.panel=panel.txt)
+
+
+
+#https://www.statmethods.net/advgraphs/correlograms.html
+
 
 # Second Correlogram Example
 library(corrgram)

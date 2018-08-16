@@ -1,4 +1,5 @@
 #Line Charts
+
 x <- c(1:5); y <- x # create some data 
 par(pch=22, col="red") # plotting symbol and color 
 par(mfrow=c(2,4)) # all plots on one page 

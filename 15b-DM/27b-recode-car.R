@@ -8,7 +8,9 @@
 (markscode <- car::recode(marks, "lo:70=1; 71:80=2;else = 3"))
 
 
-markscode = car::recode(markscode, "1=6")
+#now code 1 to 6
+(markscode = car::recode(markscode, "1=6"))
+
 # straight method
 markscode[markscode==6] = 5
 markscode
