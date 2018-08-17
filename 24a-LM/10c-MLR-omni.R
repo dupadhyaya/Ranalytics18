@@ -72,6 +72,7 @@ cbind(ndata1, Predict=predict(mlrmodel1, newdata=ndata1, predict='response'))
 names(mlrmodel1)
 summary(mlrmodel1)
 summary(mlrmodel1)$r.squared
+summary(mlrmodel1)$adj.r.squared
 
 #Manual Calculation of Adjs R2
 (r2 = summary(mlrmodel1)$r.squared)
