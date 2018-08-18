@@ -17,13 +17,13 @@ itemlist
 tdata3 <- as(itemlist, "transactions")
 tdata3
 summary(tdata3)
-inspect(tdata3)
 
 tdata=tdata3
 
 #Data ready - Perform AR ----
 ## analyze transactions
 summary(tdata)
+itemlist
 image(tdata)
 
 #Analysis
@@ -37,6 +37,7 @@ itemFrequencyPlot(tdata,topN = 5,type="relative", horiz=T)
 rules = apriori(tdata, parameter = list(supp = 0.1, conf = 0.6, minlen=2))
 itemFrequencyPlot(items(rules))
 
+inspect(rules[1:5])
 inspect(rules)
 
 #sort rules by support

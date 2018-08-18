@@ -94,3 +94,4 @@ plot(subset1[1:10], measure=c("support", "lift"), shading="confidence")
 rules4 = apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.4), appearance = list (default="rhs",lhs=c('tropical fruit','herbs')), control = list (verbose=F))
 inspect(rules4[1:5])
 inspect(rules4)
+
