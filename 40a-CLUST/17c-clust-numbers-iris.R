@@ -25,8 +25,9 @@ km5$tot.withinss
 library(NbClust)
 nc = NbClust(data, distance="euclidean",min.nc=2, max.nc=15, method="average")
 
-
-nc = NbClust(mtcars, distance="euclidean",min.nc=2, max.nc=15, method="average")
+names(mtcars)
+data2 = mtcars[c('mpg','disp','hp','wt')]
+nc = NbClust(data2, distance="euclidean",min.nc=2, max.nc=15, method="average")
 det(as.matrix(mtcars))
 ?na.action
 km3= kmeans(data,centers=3)

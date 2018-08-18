@@ -25,8 +25,8 @@ load("twitter authentication.Rdata")
 #registerTwitterOAuth(cred)
 
 setup_twitter_oauth(consumerKey, consumerSecret, AccessToken, AccessTokenSecret)
-
-search.string <- "#marketinganalytics"
+#type 1 : Yes 
+search.string <- "#businessanalytics"
 no.of.tweets <- 100
 
 tweets <- searchTwitter(search.string, n=no.of.tweets,lang="en")
@@ -43,7 +43,7 @@ tweets[1:5]
 homeTimeline(n=15)  #my tweets
 mentions(n=15)   # my tags
 
-tweets <- userTimeline("javedn14", n=10)
+tweets <- userTimeline("MehulShah333", n=10)
 tweets
 
 #------------------------------------

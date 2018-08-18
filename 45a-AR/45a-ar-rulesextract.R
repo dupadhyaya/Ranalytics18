@@ -44,7 +44,7 @@ inspect(sub_trans[1:5])
 
 
 item <- "whole milk"
-arules::subset(rules, rhs %in% "whhole milk")
+arules::subset(rules, rhs %in% "whole milk")
 rules.sub <- subset(rules, lhs %in% item & size(lhs)==1)
 inspect(rules.sub)
 

@@ -18,8 +18,8 @@ source('http://www.sthda.com/upload/rquery_wordcloud.r')
 #or
 #source('./TM/rquery_wordcloud.R')
 filePath <- "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"
-filePath2 <- "./data/martin-luther-king-i-have-a-dream-speech.txt"
+#filePath2 <- "./data/martin-luther-king-i-have-a-dream-speech.txt"
 
 res<-rquery.wordcloud(filePath, type ="file", lang = "english")
-res<-rquery.wordcloud(filePath2, type ="file", lang = "english")
+#res<-rquery.wordcloud(filePath2, type ="file", lang = "english")
 

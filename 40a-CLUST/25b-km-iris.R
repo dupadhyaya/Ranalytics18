@@ -9,7 +9,7 @@ iriskm1 = kmeans(irisFeatures,centers=3)
 iriskm1
 iriskm1$centers
 colMeans(irisFeatures[iriskm1$cluster==1,])
-
+iriskm1$iter
 (iris[iriskm1$cluster==1,])
 
 iriskm1$size # no of rows in in each cluster

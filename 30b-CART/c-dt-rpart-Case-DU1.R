@@ -44,7 +44,7 @@ addmargins(prop.table(table(students1$gender, students1$buy))
 head(students1)
 fit = rpart(buy ~ gender, data= students1)
 fit
-
+table(students1$buy)
 rpart.plot(fit,nn=T)
 
 fit1 = rpart(buy ~ gender, data=students1, minsplit=4, minbucket=2)
@@ -82,8 +82,9 @@ addmargins(prop.table(table(students2)))
 # Model2
 #library(rpart)
 names(students2)
+head(students2)
 fit2 = rpart(buy ~ gender + married, data=students2, minsplit=10, cp=-1)
-fit2 = rpart(buy ~ gender + married, data=students2, minsplit=10)
+#fit2 = rpart(buy ~ gender + married, data=students2, minsplit=10)
 
 summary(fit2)
 fit2

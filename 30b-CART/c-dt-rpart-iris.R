@@ -7,14 +7,16 @@ library(rpart.plot)
 #DataSet
 str(iris)
 head(iris)
-
+summary(iris)
+names(iris)
 # Classification Tree
 summary(iris)
 set.seed(1234)
 #Predict Species
 ctree = rpart(Species ~ ., method='class', data=iris)
 ctree
-rpart.plot(ctree, main='Classification Tree', nn=T, type=4, extra=104)
+rpart.plot(ctree)
+rpart.plot(ctree, main='Classification Tree', nn=T, type=4, extra=104, cex=1.2)
 
 printcp(ctree)
 
