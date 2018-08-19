@@ -1,4 +1,5 @@
 # Australian Beer
+library(ts)
 
 library(gsheet)
 df1 = gsheet2tbl('https://docs.google.com/spreadsheets/d/1RCj6uvsu242xDf1l5Qb720DSnOmjnTUG8ety3iYBG90')
@@ -13,3 +14,4 @@ plot.ts(beer.ts.qtr[,2], main = "Quarterly Beer Production in Australia", xlab =
 
 
 seasonplot(beer.ts[,2], year.labels = TRUE, year.labels.left=TRUE, col=1:40, pch=19, main = "Monthly Beer Production in Australia - seasonplot", xlab = "Month", ylab = "ML")
+
