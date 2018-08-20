@@ -1,8 +1,7 @@
-#Multiple Linear Regression
-
-#Multiple Linear Regression 
-#Linear Modeling : DV vs more than 1 IVs
+#Multiple Linear Regression : DV vs more than 1 IVs
 #sales Qty vs price & promotion
+#Predict Sales Qty from Price and Promotion of the Product
+
 
 #Omni Store
 #creating data using Vector
@@ -10,15 +9,13 @@ sales= c(4141,3842,3056,3519,4226, 4630,3507,3754, 5000,5120,4011, 5015,1916,675
 price = c(59,59,59,59,59,59,59,59,59,59,59,59, 79,79,79,79,79,79,79,79,79, 79,79,79,99,99, 99,99,99,99,99,99,99,99)
 promotion= c(200,200,200,200,400,400,400,400, 600,600,600,600,200,200,200,200, 400,400,400,400,600,600,600,600, 200,200,200,200,400,400,400,400,600,600)
 #Create a DF from 3 variables
-#omni1 = data.frame(   ,    ,   )
+omni1 = data.frame(sales,price,promotion)
+head(omni1)
 
-#Check if it has been created
-
-
-#2nd Method : CSV file
+#2nd Method : from CSV file
 #omni2 = read.csv(file.choose())
 
-#3rd Method : gsheet 
+#3rd Method : from gsheet 
 library(gsheet)
 url = "https://docs.google.com/spreadsheets/d/1h7HU0X_Q4T5h5D1Q36qoK40Tplz94x_HZYHOJJC_edU/edit#gid=1595306231"
 omni3 = as.data.frame(gsheet::gsheet2tbl(url))
@@ -26,46 +23,52 @@ omni3 = as.data.frame(gsheet::gsheet2tbl(url))
 #Make one of data frames active
 omni = omni1
 
-?lm  #see help of LM
-#Simple Linear Model would look like this
-slr1 = lm(formula = sales ~ price, data=omni) # sales depend on price of item
-slr2 = lm(formula = sales ~ promotion, data=omni) # sales depend on promotion exp
-summary(slr1)
-summary(slr2)
-
 
 #MLR  Create Multiple Linear Regression
 # we want to see how Sales Qty depend on Price and Promotion Values
-mlrmodel1 = lm(formula = sales ~ price + promotion, data=omni)
-#how to give parameter values in different sequence, use arguments names if in different order
-mlrmodel1 = lm( data=omni, formula = sales ~ price + promotion)
+fit2 = lm(formula = sales ~ price + promotion, data=omni)
 
 # summary statistics of model IMP STEP
-
+summary(fit2)
 #understand values : R2, AdjR2, Fstats pvalue, Coeff, ***, Residuals
+#F Stats pvalue = 2.86e-10 < 0.05 : Model Exists
+#At least 1 IV can be used to predict sales
+names(summary(fit2))
+summary(fit2)$adj.r.squared  # Adjt R2 here > .6 
+#60% of variation in sales is explained by price and promotion
 
 #coefficients b1, b2
+coef(fit2)
+summary(fit2)
+#price  : -53 , pvalue = 9.2e-09 < 0.05 *** : Significant
+#keeping promotion constant, if price is increased by 1 unit, salesqty decreases by 53 units
+#promotion  : +3.6 , pvalue = 9.82e-06 < 0.05 ***: Significant
+#keeping price constant, if promotion is increased by 1 unit, salesqty increases by 53 units
 
 
-
-#Predicted Values----
+#Predict SalesQty for new combination of Values----
 
 #create a dataframe of new sample values
-(ndata1 = data.frame(price=c(60,70), promotion=c(300,400)))
+(ndata2 = data.frame(price=c(60,70), promotion=c(300,400)))
+p2sales = predict(fit2, newdata=ndata2, type='response')
+cbind(ndata2, p2sales)
 
-#cbind the values
-
-
-
-
-
-#Plots of the Modle
-plot(mlrmodel1,1)  # no pattern, equal variance
-plot(mlrmodel1,2)  # Residuals are normally distributed
-plot(mlrmodel1,3)
-plot(mlrmodel1,4)  # tells outliers which affect model
+#Assumptions
+plot(fit2,1)  # no pattern, equal variance
+plot(fit2,2)  # Residuals are normally distributed
+plot(fit2,3)  # No hetero-scedascity
+plot(fit2,4)  # tells outliers which affect model
 
 
+
+#End of Multiple Linear Regression
+
+#when variables are large, select only significant variables
+#Model with higher R2 to be selected
+#other measures of model selection : AIC, BIC, RMSE
+#Dataset can be divided into train(70%) and test(30%) set to check the accuracy
+
+#create model with t
 
 
 
