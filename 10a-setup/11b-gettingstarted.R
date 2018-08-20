@@ -7,4 +7,9 @@
 ?mean
 
 
+sessionInfo()
+library(dplyr)
+detach("package:dplyr", unload=TRUE)
+library(arules)
 
+apriori()

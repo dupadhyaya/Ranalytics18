@@ -21,7 +21,7 @@ str(sales3)
 #names(sales1)
 
 # whichever you read the data, store it in sales object
-sales = sales3  # keeping a backup
+sales = sales1  # keeping a backup
 str(sales)
 class(sales)
 str(sales)
@@ -36,7 +36,7 @@ length(unique(sales$region ))
 #Rqmt-1 : Loyal Customers -----
 #method-1a
 #using table for counting custname occurance
-t1=table(sales$custname)
+(t1=table(sales$custname))
 head(t1)  #unsorted
 t2= sort(t1,decreasing=T )
 head(t2)
@@ -80,3 +80,6 @@ sales %>% filter(region == '01-East' & revenue > 400000) %>% select(partnum, reg
 
 #Reqmt-8 : create another column with 10% increase in column margin
 sales %>% mutate(newmargin=margin * .90) %>% select(partnum, margin, newmargin)
+
+
+sales %>% filter(region=='9x-Export') %>% group_by(custname) %>% summarise(max(revenue))

@@ -30,7 +30,7 @@ str(df4)
 # Use Vector Data or method used to import data
 #make one of the DF active
 df = df1
-
+df
 #simple stats
 mean(df$X); mean(df$Y)
 sum(df$X); sum(df$Y)
@@ -58,6 +58,7 @@ system.time(lm(Y ~ X, data=df)) #time taken to compute linear regression
 coef(fit1)  # Coefficients of Equation Y = mX + C
 fitted(fit1) # predicted values for all X in orginal data
 residuals(fit1) # diff between actual and predicted values - residuals
+(R= df$Y - fitted(fit1))
 #residuals should be less :Diff of Y actual - Y predicted
 #abline(h=coef(fit1)[1])
 
@@ -103,6 +104,11 @@ summary(fit1)$sigma  #Residual Std Error SD along the LM Line
 
 #---------------------------------------#Assumptions--------
 #Assumption : Graphical Analysis : IMP STEP
+plot(fit1)
+par(mfrow=c(2,2))
+plot(fit1)
+par(mfrow=c(1,1))
+
 plot(fit1, which=1)
 
 # Linearity plot of residuals & X # No pattern for assumption that there is linearity betw X & Y
@@ -143,3 +149,14 @@ summary(fit1)
 #End of Simple Linear Regression
 #Do different SLR on different data sets
 #Learn what to do if there are violations of assumptions
+
+
+
+
+df # dataset being used for LM
+fit= lm(Y ~ X, data=df) #model creation
+summary(fit)  #summary of linear model
+plot(fit)  #diagnostic plots
+predict(fit, newdata=data.frame(X=mean(df$X)))
+#Multiple R2 explains the variation, model fitness
+

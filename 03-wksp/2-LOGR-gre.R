@@ -19,6 +19,7 @@ data$admit = factor(data$admit)
 ## to make sure there are not 0 cells
 xtabs(~admit + rank, data = data)
 
+#create Logistic Model
 mylogit <- glm(admit ~ gre + gpa + rank, data = data, family = "binomial")
 
 summary(mylogit)
@@ -46,12 +47,12 @@ confusionMatrix(data$admit, prob, threshold = .2)
 
 
 ## view data frame
+library(dplyr)
 sample_n(data,size=1)
 (newdata1 = data.frame(gre=450, gpa=3.7, rank=factor(3) ))
 (newdata1$admitPredicted <- predict(mylogit, newdata = newdata1, type = "response"))
 (newdata1$admitClass = ifelse(newdata1$admitPredicted > .46,1,0))
 newdata1  #b=not admitted to institute
-
 
 #End of Logistic Regression
 #also check for assumptions of residues, VIF, Multi-collinearity
