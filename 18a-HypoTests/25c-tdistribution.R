@@ -43,3 +43,4 @@ dt(t.val,dfs)  # point where t.val line touches the plot
 mtext(1,at=t.val,text=round(t.val,2))
 points(t.val,dt(t.val,dfs),lwd=3,col='red')
 text(t.val,dt(t.val,dfs), labels= ' Intersect')
+

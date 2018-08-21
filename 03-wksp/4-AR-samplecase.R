@@ -1,4 +1,6 @@
 # Association Rule - Simple Example Case
+# read this pdf for help
+#https://cran.r-project.org/web/packages/arules/arules.pdf
 
 #libraries
 library(arules)
@@ -27,19 +29,29 @@ itemlist
 image(tdata)
 
 #Analysis
-freqitems = eclat(tdata)
+freqitems = eclat(tdata) #default support=.1
+#freqitems = eclat(tdata, parameter = list(minlen=1, supp=.01 ))
+
 freqitems
 inspect(freqitems)
+
+support(items(freqitems[1]), transactions=tdata)
+inspect(freqitems[1])
+inspect(items(freqitems[1]))
+
+
 itemFrequencyPlot(tdata,topN = 5,type="absolute")
 itemFrequencyPlot(tdata,topN = 5,type="relative", horiz=T)
+write.csv(as.data.frame(inspect(freqitems)),'freqitems1.csv')
+
 
 #Construct the Rules
-rules = apriori(tdata, parameter = list(supp = 0.1, conf = 0.6, minlen=2))
+rules = apriori(tdata, parameter = list(supp = 0.01, conf = 0.1, minlen=1))
 itemFrequencyPlot(items(rules))
 
 inspect(rules[1:5])
 inspect(rules)
-
+write.csv(as.data.frame(inspect(rules)),'rules1.csv')
 #sort rules by support
 rules_s = sort(rules, by="support", decreasing=TRUE )
 inspect(rules_s)

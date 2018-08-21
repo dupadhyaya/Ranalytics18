@@ -21,38 +21,41 @@
 
 #Hypothesis
 #H0: μ1 = μ2 Ha: μ1 ≠ μ2
-class1 = sample(60:100,25)
-class2 = sample(60:100,30)
+(class1 = sample(60:100,25))
+(class2 = sample(60:100,30))
 
 #determine whether the difference between means found in the sample is significantly 
-#different from the hypothesized difference between means
-?t.test
-t.test(x, y ,  alternative = c("two.sided", "less", "greater"),
-       mu = 0, paired = FALSE, var.equal = FALSE,
-       conf.level = 0.95, ...)
+#different from the hypothesized difference between means ?t.test
+#t.test(x, y ,  alternative = c("two.sided", "less", "greater"),  mu = 0, paired = FALSE, var.equal = FALSE, conf.level = 0.95, ...)
+
 (ttest2s1 = t.test(x=class1, y=class2))
+
 ttest2s1$statistic ; ttest2s1$p.value
-n1 = length(class1); n2=length(class2)
+
+(n1 = length(class1)); (n2=length(class2))
 qt(1-.05/2,df=min(n1,n2))
+
 #Equal Variance
 (ttest2s1 = t.test(x=class1, y=class2, var.equal = T))
+
+#Unequal Variance
 (ttest2s1 = t.test(x=class1, y=class2, var.equal = F))
-
-
-
 
 
 # Smokers
 nonsmokers = c(18,22,21,17,20,17,23,20,22,21)
 smokers = c(16,20,14,21,20,18,13,15,17,21)
-t.test(nonsmokers,smokers)
-t.test(nonsmokers, mu=20)
+
+#sample size < 30
+t.test(nonsmokers,smokers) # 2 sample
+t.test(nonsmokers, mu=20)  #1 sample
 (n1 = length(nonsmokers))
 (n2 = length(smokers))
 dfs = n1 + n2 -2 
 qt(1-.05/2,df=dfs)
 qt(.05/2,df=dfs)
 t.test(nonsmokers,smokers)
+#2.5 > absolute(2.1)
 # t calc > t-table : pval < 0.03 : Reject Ho
 # Diff in means != 0
 
