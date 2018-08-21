@@ -18,9 +18,7 @@
 #   The sample size is greater than 40, without outliers.
 
 #http://stattrek.com/hypothesis-test/difference-in-means.aspx?Tutorial=AP
-
-#Hypothesis
-#H0: μ1 = μ2 Ha: μ1 ≠ μ2
+#Hypothesis #H0: μ1 = μ2 Ha: μ1 ≠ μ2
 (class1 = sample(60:100,25))
 (class2 = sample(60:100,30))
 
@@ -30,7 +28,8 @@
 
 (ttest2s1 = t.test(x=class1, y=class2))
 
-ttest2s1$statistic ; ttest2s1$p.value
+ttest2s1$statistic ; ttest2s1$p.value ;ttest2s1$conf.int
+names(ttest2s1)
 
 (n1 = length(class1)); (n2=length(class2))
 qt(1-.05/2,df=min(n1,n2))

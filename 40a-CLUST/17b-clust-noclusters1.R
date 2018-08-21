@@ -1,4 +1,5 @@
 # Clustering - Number of Clusters
+library(NbClust)
 
 income = ceiling(runif(100,60,100))
 age = ceiling(rnorm(100, 35,5))

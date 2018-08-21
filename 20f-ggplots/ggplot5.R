@@ -12,3 +12,4 @@ p + geom_rug(sides = "b", aes(y = 0), position = "jitter", colour = "blue")
   
 dat <- c(rep(1, 50), rep(2, 50))
 dat <- data.frame(dat)
+

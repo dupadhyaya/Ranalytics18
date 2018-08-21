@@ -6,7 +6,7 @@
 #plot
 women
 plot(women)
-plot(women, type='p', pch=17)
+plot(women, type='p', pch=18)
 plot(women, type='l')
 plot(women, type='b', pch=18, lty=2, col=2)
 plot(women, xlim=c(30,100), ylim=c(min(women$weight)-10, 200), pch=10)
@@ -29,7 +29,7 @@ summary(women)
 quantile(women$height)
 boxplot(women$height, col='green')
 abline(h=quantile(women$height))
-
+text(1+.2, quantile(women$height), labels=c('min','1Q','median','3Q','max'))
 
 #histogram
 hist(women$height)
@@ -45,7 +45,6 @@ lines(density(x))
 
 #density plot : shape of data
 plot(density(x), col='red')
-
 
 #pie
 x = c(10,20,40,50)
@@ -63,6 +62,6 @@ cor(women$height,women$weight)
 
 head(mtcars)
 cor(mtcars)
-pairs(mtcars)
+pairs(mtcars[1:4])
 options(digits=4)
 

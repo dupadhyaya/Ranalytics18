@@ -1,5 +1,6 @@
 # Missing Values
 # Create, Detect, Replace, Remove, Impute, Visualise
+library(VIM)
 
 (v1 = c(1,2,NA,NA,5))
 is.na(v1)
@@ -10,6 +11,7 @@ sum(is.na(v1))  # sum TRUE values ie missing values
 mean(v1)  # cannot calculate if NA values in vector
 mean(v1, na.rm=T)  # remove and calc
 (v1a = na.omit(v1))  # omit missing values and put in new vector
+v1a
 mean(v1a)
 sum(v1a) # now you can sum on non NA values
 ?na.omit

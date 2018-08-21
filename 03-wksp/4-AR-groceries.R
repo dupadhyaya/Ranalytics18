@@ -30,11 +30,9 @@ abline(h=0.2)
 
 # Create rules and the relationship between items
 #parameters are min filter conditions 
-rules = apriori(Groceries, parameter = list(supp = 0.005, conf = 0.5))
+rules = apriori(Groceries, parameter = list(supp = 0.005, conf = 0.5, minlen=2))
 rules
-options (digits=2)
 inspect (rules[1:5])
-
 #Sort Rules by confidence, lift and see the data
 rulesc <- sort (rules, by="confidence", decreasing=TRUE)
 inspect(rulesc[1:5])

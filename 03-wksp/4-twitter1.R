@@ -1,9 +1,10 @@
 #Twitter 1 - Configure Tweets and Download them
-#@dupadhyaya
-#Working using my Keys
+#@dupadhyaya  #Working using my Keys
+#Load libraries
 library("curl")
 library("twitteR")
 library("ROAuth")
+library("syuzhet") #library for sentiment analysis - comparison
 
 download.file(url="http://curl.haxx.se/ca/cacert.pem",destfile="cacert.pem")
 
@@ -43,7 +44,7 @@ tweets[1:5]
 homeTimeline(n=15)  #my tweets
 mentions(n=15)   # my tags
 
-tweets <- userTimeline("MehulShah333", n=10)
+tweets <- userTimeline("Issakki1", n=10)
 tweets
 
 #------------------------------------

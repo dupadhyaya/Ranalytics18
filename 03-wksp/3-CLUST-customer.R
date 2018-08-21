@@ -7,6 +7,8 @@ url = 'https://docs.google.com/spreadsheets/d/1PWWoMqE5o3ChwJbpexeeYkW6p4BHL9hub
 library(gsheet)
 data = as.data.frame(gsheet2tbl(url))
 str(data)
+head(data)
+
 names(data)
 summary(data)
 ###Verify the data
@@ -20,7 +22,7 @@ summary(data)
 #?amap::Kmeans
 names(data)
 
-k1<-amap::Kmeans(data[,-1],centers=3, iter.max = 200,nstart = 1, 
+k1 <- amap::Kmeans(data[,-1],centers=3, iter.max = 200,nstart = 1, 
            method = c("euclidean"))
 
 k1$centers  # group means

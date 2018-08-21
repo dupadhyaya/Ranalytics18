@@ -11,6 +11,7 @@ library(arulesViz)
 #Method3 Use: ----
 #Data in the form of list
 itemlist = list(c('I1','I2','I5'), c('I2','I4'), c('I2','I3'),c('I1','I2','I4'),c('I1','I3'),c('I2','I3'),c('I1','I3'),c('I1','I2','I3','I5'),c('I1','I2','I3'))
+itemlist
 length(itemlist)
 ## set transaction names
 names(itemlist) <- paste("Tr",c(1:9), sep = "")
@@ -30,15 +31,14 @@ image(tdata)
 
 #Analysis
 freqitems = eclat(tdata) #default support=.1
-#freqitems = eclat(tdata, parameter = list(minlen=1, supp=.01 ))
+freqitems = eclat(tdata, parameter = list(minlen=1, supp=.1, maxlen=2 ))
 
 freqitems
 inspect(freqitems)
 
-support(items(freqitems[1]), transactions=tdata)
+support(items(freqitems[1:2]), transactions=tdata)
 inspect(freqitems[1])
 inspect(items(freqitems[1]))
-
 
 itemFrequencyPlot(tdata,topN = 5,type="absolute")
 itemFrequencyPlot(tdata,topN = 5,type="relative", horiz=T)
@@ -46,7 +46,7 @@ write.csv(as.data.frame(inspect(freqitems)),'freqitems1.csv')
 
 
 #Construct the Rules
-rules = apriori(tdata, parameter = list(supp = 0.01, conf = 0.1, minlen=1))
+rules = apriori(tdata, parameter = list(supp = 0.2, conf = 0.5, minlen=2))
 itemFrequencyPlot(items(rules))
 
 inspect(rules[1:5])
@@ -87,6 +87,7 @@ inspect(rulesNR)
 
 #Rules with LHS and RHS: single or combination
 rules2= rulesNR
+inspect(rules2)
 rules2.lhs1 <- subset(rules2, lhs %in% c("I1", "I5"))
 inspect(rules2.lhs1)
 
