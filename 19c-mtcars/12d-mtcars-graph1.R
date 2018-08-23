@@ -26,14 +26,22 @@ par(mfrow=c(1,1))
 t1=table(mtcars$cyl)
 pie(t1)
 
+#barplot
+(count1 = table(mtcars$cyl))
+barplot(count1, col=2:4)
+
 # Grouped Bar Plot
-counts <- table(mtcars$vs, mtcars$gear)
+(counts <- table(mtcars$vs, mtcars$gear))
+barplot(counts)
+barplot(counts, beside=T,col=1:2)
+
 barplot(counts, main="Car Distribution by Gears and VS",
         xlab="Number of Gears", col=c("darkblue","red"),
         legend = rownames(counts), beside=TRUE)
 
 #boxplot
 boxplot(mtcars$mpg)
+
 boxplot(mpg ~ cyl, data=mtcars, col=5:7)
 boxplot(mpg~cyl*am, data=mtcars, notch=TRUE, 
         col=(c("gold","darkgreen")),
