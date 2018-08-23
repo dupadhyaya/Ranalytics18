@@ -18,3 +18,6 @@ summary(lmfit1)$adj.r.squared
 predict(lmfit1,newdata=ndata, type='response')
 cbind(ndata, predicted=predict(lmfit1,newdata=ndata, type='response'))
 
+#how to select from large number of variables
+#how to select the best model - from variable combination
+

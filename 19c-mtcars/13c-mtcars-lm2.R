@@ -36,8 +36,13 @@ summary(model1b)
 #step method to select best model
 #works on AIC which should be less
 stepboth = stepAIC(model1a,   direction='both')
+
+# select combination of variable where AIC is minimum
 #least AIC with wt, qsec, am
 fit1= lm(mpg ~ wt + qsec + am, data=mtcars)
 summary(fit1)
 
+
+#Step AIC helps is select the variables from large number 
+#variable combination which gives least AIC is selected
 
