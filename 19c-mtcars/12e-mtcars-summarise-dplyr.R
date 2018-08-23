@@ -19,3 +19,9 @@ mtcars %>%group_by(cyl, am) %>% summarise_all(funs(mean, n()))
 #selected columns
 mtcars %>% select(cyl, am, mpg, wt, hp, qsec) %>% group_by(cyl, am) %>% summarise_all(funs(mean, max, min))
 
+#sample 
+sample_n(mtcars, 2)
+sample_frac(mtcars, .2)
+mtcars %>% sample_frac(.2)
+
+#

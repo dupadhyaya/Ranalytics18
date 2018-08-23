@@ -9,6 +9,7 @@ df$am = factor(df$am)
 
 rpart.fit = rpart(am ~ wt + cyl + mpg + hp + gear, data=df, minsplit=7, cp=-1)
 rpart.fit
+printcp(rpart.fit)
 
 rpart.plot(rpart.fit, cex=1, nn=T)
 
@@ -25,3 +26,4 @@ cbind(ndata, predicted=predict(rpart.fit, newdata=ndata, type='class') )
 rpart.fit1 = rpart(am ~ wt + cyl + mpg + hp + gear, data=df, minsplit=7)
 rpart.fit1
 rpart.plot(rpart.fit1)
+

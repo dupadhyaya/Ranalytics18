@@ -69,20 +69,16 @@ duplicated(mtcars[,c('cyl')])
 (x1=c(1,2,3,4,5,6,1,2,3,4,5))
 duplicated(x1)
 
+#missing values in a vector
 (xna=c(1,NA,5,NA,10,5,NA))
 mean(xna)
 mean(xna, na.rm=T)
 is.na(xna)
 sum(is.na(xna))
 
-
-complete.cases(mtcars)
-
-anyNA(mtcars)
-
+#missing values in a df
 df_mtcars = mtcars
 head(df_mtcars)
-
 df_mtcars$disp
 #put missing values in DF for a condition
 df_mtcars[df_mtcars$mpg > 25, c('disp') ] = NA

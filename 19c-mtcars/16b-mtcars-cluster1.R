@@ -45,4 +45,3 @@ cbind(df, mtcars$gear, km4$cluster)
 
 
 
-

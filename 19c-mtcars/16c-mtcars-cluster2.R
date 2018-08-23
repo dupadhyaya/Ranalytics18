@@ -9,19 +9,9 @@ km_fit1
 km_fit1$centers  #average of each cluster
 km_fit1$size  #how many into each cluster
 
-
-
-
-
-
-
-
-
-
-
+#
 kmeanPlot <- par(mar = c(5.1, 4.1, 0, 1))
-plot(df,
-     col = km_fit1$cluster,
+plot(df,   col = km_fit1$cluster,
      pch = 20, cex = 3)
 points(km_fit1$centers, pch = 15, cex = 4, lwd = 4, col='pink')
 
@@ -39,6 +29,7 @@ points(cluster1$centers, pch = 15, cex = 2, col='violet')
 cluster1 = kmeans(data1,4)
 plot(data1,col=cluster1$cluster, cex=cluster1$cluster)
 points(cluster1$centers, pch = 12, cex = 2, col='black')
+
 
 
 
