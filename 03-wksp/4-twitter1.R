@@ -44,7 +44,7 @@ tweets[1:5]
 homeTimeline(n=15)  #my tweets
 mentions(n=15)   # my tags
 
-tweets <- userTimeline("Issakki1", n=10)
+tweets <- userTimeline("smriti_khare", n=10)
 tweets
 
 #------------------------------------
