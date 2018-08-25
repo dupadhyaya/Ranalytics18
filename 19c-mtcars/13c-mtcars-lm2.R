@@ -3,7 +3,7 @@
 mtcars # mtcars data set
 dim(mtcars); names(mtcars)
 
-mtcarsfit1 = lm(mpg ~ cyl + disp + hp + drat + wt + qsec + vs + am +gear +carb , data = mtcars)
+mtcarsfit1 = lm(mpg ~ cyl + disp + hp + drat + wt + qsec + vs + am +gear + carb , data = mtcars)
 summary(mtcarsfit1)
 #only wt seems to be significant
 
@@ -28,10 +28,10 @@ predict(mtcarsfit3b,newdata=ndata, type='response')
 
 library(MASS)
 (model1a = lm(mpg ~ ., data=mtcars)) #full model
-(model1b = lm(mpg ~ 1, data=mtcars)) #wihout any variables
+#(model1b = lm(mpg ~ 1, data=mtcars)) #wihout any variables
 
 summary(model1a)
-summary(model1b)
+#summary(model1b)
 
 #step method to select best model
 #works on AIC which should be less
@@ -43,6 +43,6 @@ fit1= lm(mpg ~ wt + qsec + am, data=mtcars)
 summary(fit1)
 
 
-#Step AIC helps is select the variables from large number 
+#Step AIC helps is select the variables from large number of vars
 #variable combination which gives least AIC is selected
 

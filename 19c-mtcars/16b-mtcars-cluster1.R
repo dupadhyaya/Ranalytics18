@@ -17,9 +17,8 @@ library(fpc)
 
 plotcluster(df, km3$cluster)
 
-#Plot2
-clusplot(df, km3$cluster, color=TRUE, shade=TRUE, 
-         labels=2, lines=0)
+#Plot2:  PCA
+clusplot(df, km3$cluster, color=TRUE, shade=TRUE, labels=2, lines=0)
 
 
 #2nd Set
@@ -41,7 +40,11 @@ km4
 km4$centers  #average of each cluster
 km4$size  #how many into each cluster
 cbind(df, mtcars$gear, km4$cluster)
+table(mtcars$gear)
+table(mtcars$cyl)
+table(mtcars$carb)
 
+summary(mtcars)
 
 
 

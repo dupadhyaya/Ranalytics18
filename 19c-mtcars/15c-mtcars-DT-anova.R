@@ -27,4 +27,5 @@ cbind(ndata, predicted=predict(fit.anova, newdata=ndata, type='vector') )
 printcp(fit.anova)
 ptree2 = prune(fit.anova, cp=0.01)
 #ideally .0051, but for testing select 
+ptree2
 rpart.plot(ptree2,nn=T, cex=.8, roundint = F)
