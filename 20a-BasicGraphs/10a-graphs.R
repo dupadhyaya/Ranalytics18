@@ -65,4 +65,6 @@ head(mtcars)
 cor(mtcars)
 pairs(mtcars)
 options(digits=4)
+pairs(mtcars[1:4])
+
 

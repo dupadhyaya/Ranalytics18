@@ -3,8 +3,7 @@
 
 mtcars
 # using subset function 
-newdata <- subset(mtcars, mpg >=20 & mpg < 30, 
-                  select=c(mpg, disp))
+newdata = subset(mtcars, mpg >=20 & mpg < 30,  select=c(mpg, disp))
 newdata
 #we select cars with mpg >= 20   and < 10 
 #we keep variables mpg and disp
@@ -12,11 +11,11 @@ newdata
 # using subset function (part 2)
 names(mtcars)
 head(mtcars)
-newdata <- subset(mtcars, cyl == 6 & disp > 150,select=mpg:wt)
+newdata = subset(mtcars, cyl == 6 & disp > 150,select=mpg:wt)
 newdata
 
-
-
+newdata2 = mtcars[ order(mtcars$mpg), c('mpg','wt')]
+head(newdata2)
 
 subset(airquality, select = Ozone:Wind)
 subset(airquality, Temp > 80, select = c(Ozone, Temp))

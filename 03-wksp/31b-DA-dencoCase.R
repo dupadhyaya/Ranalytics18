@@ -16,7 +16,7 @@ library(gsheet)
 url = "https://docs.google.com/spreadsheets/d/1h7HU0X_Q4T5h5D1Q36qoK40Tplz94x_HZYHOJJC_edU/edit#gid=216113907"
 sales3 = as.data.frame(gsheet2tbl(url))
 str(sales3)
-
+head(sales3)
 #head(sales1,n=7)
 #names(sales1)
 
@@ -24,10 +24,8 @@ str(sales3)
 sales = sales1  # keeping a backup
 str(sales)
 class(sales)
-str(sales)
 summary(sales)
 
-str(sales)
 dim(sales) #dimensios of DF rows & colnum
 unique(sales$custname)
 length(unique(sales$custname))
@@ -40,9 +38,15 @@ length(unique(sales$region ))
 head(t1)  #unsorted
 t2= sort(t1,decreasing=T )
 head(t2)
+
 #Method-1b - using dplyr
 library(dplyr)
+?count
 sales %>% dplyr::count(custname, sort=TRUE)
+sales %>% count(custname, sort=TRUE)
+
+sales %>% dplyr::group_by(custname) %>% dplyr::summarise(n = n())
+
 sales %>% dplyr::group_by(custname) %>% dplyr::summarise(n = n()) %>% dplyr::arrange(desc(n))
 
 #Reqmt2- Profitable parts----

@@ -4,7 +4,6 @@
 #List avl packages
 library()
 
-
 #Total Avl Packages
 nrow(available.packages())
 
@@ -13,6 +12,7 @@ install.packages('amap')
 
 #Load package
 library(amap)
+library(dplyr)
 
 #Find functions in package
 library(help=amap)
