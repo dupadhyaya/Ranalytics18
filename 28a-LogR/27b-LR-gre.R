@@ -11,6 +11,7 @@ sapply(mydata, sd)
 ## to make sure there are not 0 cells
 xtabs(~admit + rank, data = mydata)
 
+#convert rank into factors
 mydata$rank <- factor(mydata$rank)
 mylogit <- glm(admit ~ gre + gpa + rank, data = mydata, family = "binomial")
 
