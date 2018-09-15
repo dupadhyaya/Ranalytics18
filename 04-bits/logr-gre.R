@@ -9,14 +9,17 @@ sum(is.na(df))
 ## two-way contingency table of categorical outcome and predictors we want to make sure there are no empty cells
 xtabs(~admit + rank, data = df)
 
+str(df)
 #convert rank into factors
 df$rank = factor(df$rank)
+df$admit = factor(df$admit)
+
 fit3 = glm(admit ~ gre + gpa + rank, data=df,family="binomial")
 summary(fit3)
 
 #predict probabilities of original values
 (prob=predict(fit3,type=c("response")))
-cbind(df, prob)
+head(cbind(df, prob))
 
 #Test with new data
 (newdata1 = data.frame(gre = mean(df$gre), gpa = mean(df$gpa), rank = factor(1)))

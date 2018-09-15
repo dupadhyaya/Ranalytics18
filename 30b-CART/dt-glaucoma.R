@@ -4,6 +4,7 @@ library(ipred)
 data(data=GlaucomaMVF , package = "ipred")
 
 library("rpart")
+head(GlaucomaMVF)
 g_rpart <- rpart(Class ~ ., data = GlaucomaMVF)
 print(g_rpart)
 plot(g_rpart)
