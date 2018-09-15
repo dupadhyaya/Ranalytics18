@@ -13,14 +13,19 @@ head(data)
 xtabs( ~ buy + education, data=data)
 
 table(data$buy, data$education)
-dtree1 = rpart(buy ~ education + married, data=data, parms=list(split='gini'),  minsplit=4, minbucket=2,cp=-1)
+
+dtree1 = rpart(buy ~ education + married + income, data=data)
 dtree1
-rpart.plot(dtree1)
+dtree1 = rpart(buy ~ education + married , data=data,   minsplit=4, minbucket=2,cp=-1)
+table(data$buy)
+dtree1
+rpart.plot(dtree1, nn=T)
 printcp(dtree1)
 
 head(data)
-ndata1 = data.frame(education=factor(2), married='S', income=110)
-predict(dtree1, newdata=ndata1, type='class')
-(p1=predict(dtree1, newdata=ndata1, type='prob'))
-cbind(ndata1, p1)
+(ndata1 = data.frame(education=factor(c(2,3)), married=factor(c('S','M')), income=c(110,120)))
+(p1=predict(dtree1, newdata=ndata1, type='class'))
+
+(p2=predict(dtree1, newdata=ndata1, type='prob'))
+cbind(ndata1, p1,p2)
 
