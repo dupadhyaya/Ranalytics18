@@ -19,26 +19,32 @@ sum(v1a) # now you can sum on non NA values
 anyNA(v1) # is there any NA value
 anyNA(v1a)
 ?anyNA
+
 #impute missing values of vector with mean value of non NA values
 v1
-mean(v1, na.rm=T)  # this value to be used
+is.na(v1)
+v1[c(F,F,T,T,F,F,F,T)]
 v1[is.na(v1)]
 v1[is.na(v1)] = mean(v1, na.rm=T)
 v1
+is.na(v1)
 
 #Use VIM package to load sleep dataset with NA values in rows & col
 library(VIM)
 data(sleep, package='VIM')
 summary(sleep)# see NA values in cols
+str(sleep)
 head(sleep)
 dim(sleep)
-complete.cases(sleep) #all complete rows without any missing values
+complete.cases(sleep) #all complete sirows without any missing values
 sum(complete.cases(sleep)) # count non NA rows/ complete 42
 sum(!complete.cases(sleep))  #count NA rows 20
 mean(complete.cases(sleep))  #42/62
 # total cases = 62, complete=42  
-sleep[complete.cases(sleep),] # list rows which are complete
+df2 = sleep[complete.cases(sleep),] # list rows which are complete
+df2
 sleep[!complete.cases(sleep),] # list rows which have NA values
+
 
 # Particular Column
 is.na(sleep$Dream)
@@ -49,6 +55,9 @@ mean(is.na(sleep$Dream))  # 12/62
 sum(is.na(sleep))  #total in data frame
 names(sleep)# check columname
 colSums(is.na(sleep))  #NA values in each column
+v2 = colSums(is.na(sleep))
+v2
+v2[v2> 10]
 rowSums(is.na(sleep))  #NA values in each row
 head(sleep)
 as.data.table(sleep)  #data.table format

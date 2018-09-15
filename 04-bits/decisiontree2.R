@@ -18,15 +18,22 @@ library(rpart)
 dtree1 = rpart(marry ~ . , data=df)
 dtree1
 library(rpart.plot)
-rpart.plot(dtree1)
-
-df[spouseSalary > 36e+3 & spouseAge >=22 & marry=='Yes',c('spouseSalary','spouseAge', 'marry')]
-
+rpart.plot(dtree1, cex=.8, nn=T)
+printcp(dtree1)
+rpart.plot(prune(dtree1, cp=.03))
+df1=df[spouseAge>= 25 & spouseSalary >= 90e+3, c('spouseSalary','spouseAge', 'marry')]
+table(df1$marry)
 
 dtree2 = rpart(marry ~ . , data=df, cp=-1)
 dtree2
 rpart.plot(dtree2)
 
 printcp(dtree2)
-ptree2 = prune(dtree2, cp=.04)
+ptree2 = prune(dtree2, cp=.027)
 rpart.plot(ptree2)
+
+#PRedict
+ndata1 = data.frame(selfGender="M", selfAge=27, selfEdn=3, spouseAge=29, spouseEdn=4, spouseSiblings=4, spouseCity='Rural', spouseSalary=45000 )
+head(df)
+ndata1
+predict(dtree1, newdata= ndata1, type="prob")

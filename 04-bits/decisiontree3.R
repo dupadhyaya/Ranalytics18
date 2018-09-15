@@ -1,9 +1,10 @@
 # Decision Trees : - regression tree
 
-library(ISLR)
+library(ISLR)  #download this
 data(Carseats)
 data = Carseats
 head(data)
+?Carseats
 
 #Libraries for Decision Tree
 library(rpart)
@@ -17,10 +18,12 @@ rpart.plot(tree1, cex=.8)
 #this is large tree, so prune it: check cp
 printcp(tree1)
 #cp value should be chosen such that xerror is least
-prunetree = prune(tree1, cp=0.05)
+prunetree = prune(tree1, cp=0.024)
 #here we have selected a different value to simplify the tree
 
 prunetree
+mean(data$Sales)
+length(data[data$ShelveLoc=="Bad" | data$ShelveLoc=="Medium", c("Sales")])
 rpart.plot(prunetree, nn=T)
 #Interpretation
 #if ShelveLoc=Good, and Price >= 109.5, sales predicted is 9.2
@@ -33,6 +36,8 @@ rpart.plot(prunetree, nn=T, cex=.8, type=4)
 
 #Predict for test value
 (testdata = sample_n(data,2))
+(testdata2 = sample_frac(data,.2))
+
 (predictedSales=predict(prunetree, newdata=testdata, type='vector'))
 cbind(testdata, predictedSales)
 #next line will show error because we have to predict numerical value instead of class/ category, so type of response reqd is vector not class
@@ -42,3 +47,6 @@ cbind(testdata, predictedSales)
 #see online help here
 #https://www.datacamp.com/community/tutorials/decision-trees-R
 
+rpart.plot(prunetree)
+prp(prunetree, digits=4)
+rpart.plot(prunetree, digits=5,cex=.8)
