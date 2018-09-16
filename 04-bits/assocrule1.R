@@ -13,10 +13,13 @@ inspect(Groceries[1:5])  #view
 LIST(Groceries[1:6])  #another view
 
 #Find Frequent Itemset
-frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 5)) 
+frequentItems = eclat (Groceries)
 inspect(frequentItems)
+
+frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 3, maxlen = 5)) 
+inspect(frequentItems[1:6])
 frequentItems
-inspect(frequentItems[10:100])
+inspect(frequentItems[10:32])
 #inspect(frequentItems[100:122])
 #Descending Sort frequent items by count : 1 to 25 itemsets
 inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:25])
@@ -61,11 +64,15 @@ sum(is.redundant(rulesNR))  #ok now
 
 #Find what factors influenced an event ‘X’
 rules3 = apriori (data=Groceries, parameter=list (supp=0.002,conf = 0.8), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F))
+#verbose - output display T or F
 inspect(rules3[1:5])
 inspect(rules3)
 
 #Find out what events were influenced by a given event
-subset1 = subset(rules2, appearance = list (default="lhs",rhs="whole milk"))
+rules3b = apriori (data=Groceries, parameter=list (supp=0.002, conf = 0.7), appearance = list (default="lhs",rhs="whole milk"))
+inspect(rules3b[1:15])
+
+#using subset
 subset1 = subset(rules2, subset=rhs %in% 'bottled beer' )
 inspect(subset1)
 inspect(rules2)
@@ -73,8 +80,10 @@ subset2 = subset(rules2, subset=lhs %ain% c('baking powder','soda') )
 inspect(subset2)
 subset2a = subset(rules2, subset=lhs %in% c('baking powder','soda') )
 inspect(subset2a)
-
-
+subset2b = subset(rules2, subset=lhs %ain% c('bottled beer','liquor') )
+inspect(subset2b)
+subset2c = subset(rules2, subset=rhs %ain% c('whole milk') )
+inspect(subset2c)
 
 
 subset3 = subset(rules2, subset=rhs %in% 'bottled beer' & confidence > .7, by = 'lift', decreasing = T)
@@ -87,7 +96,6 @@ plot(subset1[1:10])
 plot(subset1[1:10], measure=c("support", "lift"), shading="confidence")
 
 #
-
 
 rules4 = apriori (data=Groceries, parameter=list (supp=0.001,conf = 0.4), appearance = list (default="rhs",lhs=c('tropical fruit','herbs')), control = list (verbose=F))
 inspect(rules4[1:5])
