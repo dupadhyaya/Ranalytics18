@@ -41,10 +41,10 @@ tweets <- searchTwitter(search.string, n=no.of.tweets,lang="en")
 tweets[1:5]
 
 #My Tweets : will change if you use your own account
-homeTimeline(n=15)  #my tweets
-mentions(n=15)   # my tags
+homeTimeline(n=30)  #my tweets
+mentions(n=30)   # my tags
 
-tweets <- userTimeline("smriti_khare", n=10)
+tweets <- userTimeline("sarthak231297", n=10)
 tweets
 
 #------------------------------------

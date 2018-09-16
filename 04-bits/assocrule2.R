@@ -1,8 +1,7 @@
 #AR - Groceries - Subset
 
 #Subsetting rules and itemsets
-rules <- apriori(Groceries, parameter = list(support=.001, confidence=.7,
-        maxlen=5, target='rules' ))
+rules <- apriori(Groceries, parameter = list(support=.001, confidence=.7, maxlen=5, target='rules' ))
 #target='rules' # to mine for rules)
 
 inspect(sort(rules, by="confidence", decreasing = T)[1:5])

@@ -13,11 +13,11 @@ plotcluster(iris4, km1$cluster)
 
 #Plot2
 # More complex
-clusplot(dat, clus$cluster, color=TRUE, shade=TRUE, 
+clusplot(data, km1$cluster, color=TRUE, shade=TRUE, 
          labels=2, lines=0)
 
 #plot3
-with(iris, pairs(dat, col=c(1:3)[clus$cluster])) 
+with(iris, pairs(data, col=c(1:3)[km$cluster])) 
 
 #plot4
 X <- data.frame(c1=c(0,1,2,4,5,4,6,7),c2=c(0,1,2,3,3,4,5,5))

@@ -29,7 +29,7 @@ km1$tot.withinss; km2$tot.withinss ; km3$tot.withinss ; km4$tot.withinss ; km5$t
 #Selecting the number of clusters
 library(NbClust)
 nc = NbClust(data, distance="euclidean",min.nc=2, max.nc=15, method="average")
-
+?NbClust
 kiris = kmeans(data, centers=3)
 kiris$centers
 

@@ -17,6 +17,7 @@ plot(data, xlab = "Years", ylab = "Sales")
 
 library(tseries)
 adf.test(data, alternative = "stationary")
+#Null Hypo : non stationary : it is non-stationary here
 
 plot(diff(data), ylab = "1st Order Difference of Sales")
 
