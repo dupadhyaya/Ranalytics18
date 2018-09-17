@@ -1,11 +1,9 @@
 # Association Rule - Simple Example Case
 # read this pdf for help
 #https://cran.r-project.org/web/packages/arules/arules.pdf
-
 #libraries
 library(arules)
 library(arulesViz)
-
 #Create Data
 
 #Method3 Use: ----
@@ -19,6 +17,7 @@ itemlist
 ## coerce into transactions
 tdata3 <- as(itemlist, "transactions")
 tdata3
+Groceries
 summary(tdata3)
 
 tdata=tdata3
@@ -31,7 +30,9 @@ image(tdata)
 
 #Analysis
 freqitems = eclat(tdata) #default support=.1
+inspect(freqitems)
 freqitems = eclat(tdata, parameter = list(minlen=1, supp=.1, maxlen=2 ))
+inspect(freqitems)
 
 freqitems
 inspect(freqitems)

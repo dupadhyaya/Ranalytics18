@@ -19,7 +19,7 @@ class(AirPassengers)
 #stl(x, s.window, t.window = ) # command to do decomp
 stl(AirPassengers, s.window = 'periodic') # seasons to be considered periodic ie not changing over time
 # save it in an object
-
+AirPassengers[1]
 plot(AirPassengers) # Pattern of data : see increasing seasonal values suggesting multiplicative Model
 #no cyclic here - only seasonal, trend, irregual
 #s.window - specifies seasonal effects to be identical across years
@@ -88,6 +88,7 @@ head(exp(fit$time.series),n=20)  # first 20 values see them
 layout(matrix(1,nrow=1))
 #Avg of each month
 monthplot(AirPassengers) #max traffic in Jun/ Jul across years
+
 monthplot(fit, choice='seasonal') # less in winters, more in summers
 monthplot(fit, choice='trend')  #slight increase from Jan to Dec
 #trend increasing for each month, highest passengers in Jul

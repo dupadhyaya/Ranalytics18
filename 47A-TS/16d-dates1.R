@@ -11,14 +11,20 @@ class(dates1b)
 dates1b
 dates1b + 1
 as.Date('2018-04-29') + 1
+as.Date('2018-09-16') + 1:15
+as.Date('2018-09-16') + seq(1,10,2)
+
 
 #default format %Y-%m-%d
 dates2a = c('2018-4-21')
 class(dates2a)  # character so far
 (dates2b = as.Date(dates2a))  # convert to date
 class(dates2b)  # date now
+
 format(dates2b, format=('%d-%m-%Y')) # print in different format
 format(dates2b, format=('%d / %B - %Y')) # print in different format
+format(dates2b, format=('%d / %b - %Y')) # print in different format
+
 dates2b
 
 
@@ -29,7 +35,9 @@ dates2b
 #, %d: 2-digit day of the month (13)
 #%A: weekday (Wednesday), %a: abbreviated weekday (Wed)
 
-format(dates2b, format="%A  %d  %m  %y") # another format
+format(Sys.Date(), "%A")
+
+format(Sys.Date(), format="%A %a %d  %m %b %B %y %Y") # another format
 
 pumba = c('09-07-1993', '08-08-1994', '04-11-1994')
 class(pumba)
@@ -43,8 +51,8 @@ Sys.Date()
 format(Sys.Date(), format="%A: %d %B")
 
 #increment/ decrement dates 
-dates2b
-(course = dates2b + 0:11) # start : 11 days course
+startdt = as.Date("2018-13-09", format="%Y-%d-%m")
+(course = startdt + 0:20) # start : 20 days course
 
 cat(format(course, format="%B-%d"))
 months(course)
@@ -73,10 +81,15 @@ course
 course[c(1,5)] # 1st & 5th date 
 course[1] ; course[9]
 (duration = course[8] - course[1])
+(duration = max(course) - min(course))
+(duration1 = Sys.Date() - as.Date('14-08-1994', '%d-%m-%Y'))
+
 
 #Date of Birth
 dob = as.Date('14-08-1994', '%d-%m-%Y')
 dob
+
+
 dob1= dob + seq(1,1000,30)  # create 1000 dates
 length(dob1)
 Sys.Date()

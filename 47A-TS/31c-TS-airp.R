@@ -17,7 +17,7 @@ summary(AirPassengers)
 
 
 # Sec 2 -------------------------------------------------------------------
-
+AirPassengers
 #The number of passengers are distributed across the spectrum
 plot(AirPassengers)
 #This will plot the time series

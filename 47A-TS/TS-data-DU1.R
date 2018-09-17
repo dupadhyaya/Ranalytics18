@@ -3,22 +3,28 @@
 # Create Time Series data of Finance Sales
 sales = c(18, 33, 41, 7, 34, 35, 24, 25, 24, 21, 25, 20,
           22, 31, 40, 29, 25, 21, 22, 54, 31, 25, 26, 35)
+class(sales)
+str(sales)
 length(sales)
 sales ; class(sales)  # vector of sales values
 
 #put in TS without any dates : format of TS
 ?ts  # help
+
 #ts(data = NA, start = 1, end = numeric(), frequency = 1)
 #start - time of 1st obsv - single no / vector of 2 integers
 #frequency - no of obvsv per unit of time
 #No of obsv per unit time
 (tsales2a = ts(sales, start=1, end=12)) #only first 12 considered
+
 (ts(sales, start=1, end=12, freq=1)) #only first 12 considered
 (ts(sales, start=1, end=12, freq=2)) #
+
 (ts(sales, start=1, end=12, freq=3)) #
 (ts(sales, start=1, end=12, freq=4)) # Qtrly series
 (ts(sales, start=1, end=12, freq=5)) #
 (ts(sales, start=1, end=12, freq=6)) #
+
 (ts(sales, start=1, end=12, freq=12)) #  12 months * 12 years
 
 
@@ -29,7 +35,26 @@ sales ; class(sales)  # vector of sales values
 
 #Specify data periods in start and end
 #specify only start dates & freq
+length(sales)
+
 (tsales3a = ts(sales, start=c(2017, 1), frequency=12)) # years 2017 to 2018, 24 values, monthwise 24 observations spread to 2 years
+sales2 = c(sales, sales)
+length(sales2)
+(tsales3a = ts(sales2, start=c(2017, 1), frequency=12)) # years 2017 to 2018, 
+
+(tsales3a = ts(sales2, start=c(2017, 1), frequency=1)) # years 2017 to 2018, 
+
+
+admission = c(1000, 900, 1200, 3000)
+ts1= ts(admission, start=c(2016), end=c(2018), frequency=1)
+ts1
+plot(ts1)
+admission = c(1000, 900, 1200, 3000)
+ts2= ts(admission, start=c(2016,7), end=c(2016,10), frequency=12)
+ts2
+plot(ts1)
+
+
 ts(sales, start=c(2017, 4), end=c(2018,3), frequency=12)
 ts(sales, start=c(2017, 2), frequency=12)  # different start month
 ts(sales, start=c(2017, 2), frequency=4)  # different start month

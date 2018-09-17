@@ -3,7 +3,8 @@
 
 #Eg1
 library(lubridate)
-lubridate::ymd("20110604")
+dt=lubridate::ymd("20110604")
+dt + 1:10
 lubridate::mdy("06-04-2011")
 lubridate::dmy("04/06/2011")
 #Parsing functions automatically handle a wide variety of formats and separators, which simplifies the parsing process.
@@ -11,8 +12,9 @@ lubridate::dmy("04/06/2011")
 #Eg1
 #If your date includes time information, add h, m, and/or s to the name of the function. ymd_hms() is probably the most common date time format. To read the dates in with a certain time zone, supply the official name of that time zone in the tz argument.
 OlsonNames()
+?Sys.timezone()
 Sys.timezone()
-Sys.timezone(location=F)
+
 arrive <- ymd_hms("2018-04-27 18:40:15", tz = "Asia/Calcutta")
 arrive
 leave <- ymd_hms("2018-04-29 22:00:00", tz = "Asia/Calcutta")
