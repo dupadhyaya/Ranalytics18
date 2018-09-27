@@ -20,3 +20,8 @@ version() #version of R
 Sys.Date() # todays date
 
 getwd()  # working directory
+
+methods(class='matrix')  #methods available for a class of object
+
+plot(1:10) #basic command to plot
+
