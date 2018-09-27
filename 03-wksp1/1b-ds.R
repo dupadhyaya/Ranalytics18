@@ -4,33 +4,51 @@
 #control+enter when you are in the line to execute
 #
 # Vectors-----
-(x=1:10)
-(x=c(1,2,3,4,5))
-(x=letters[1:10])
-(x=c(T,F,T,T))
+x=1:10
+x
+(x1=1:10)
+(x2=c(1,2,3,4,5))
+class(x2)
+(x3=letters[1:10])
+LETTERS[1:26]
+(x3b = c('a',"Dhiraj","4"))
+class(x3b)
+(x4=c(T,FALSE,TRUE,T,F))
+class(x4)
+x5=c(3L,5L)
+class(x5)
+(x5b = c(1, 'a',T, 4L))
+class(x5b)
 
 #access elements
-(x = seq(0,10,by=2))
+(x6 = seq(0,100,by=3))
 #[1]  0  2  4  6  8 10
-x[3]  # access 3rd element
+
+x6[20]
+x6[3]  # access 3rd element
 #[1] 4
-x[c(2, 4)]     # access 2nd and 4th element
-#[1] 2 6
-x[-1]          # access all but 1st element
-#[1]  2  4  6  8 10
-x[c(2, -4)]    # cannot mix positive and negative integers
+x6[c(2, 4)]     # access 2nd and 4th element
+x6[-1]          # access all but 1st element
+x6
+x6[c(2, -4)]    # cannot mix positive and negative integers
 #Error in x[c(2, -4)] : only 0's may be mixed with negative subscripts
 x[c(2.4, 3.54)]    # real numbers are truncated to integers
-#[1] 2 4
+x6[-c(1,5,20)]
+x6
+length(x6)
+x6[-(length(x6)-1)]
 
 #modify
+rev(x6)
+seq(-3, 10, by=.2)
 (x = -3:2)
 #[1] -3 -2 -1  0  1  2
 x[2] <- 0; x        # modify 2nd element
 #[1] -3  0 -1  0  1  2
-
+x
 x[x<0] = 5; x   # modify elements less than 0
 #[1] 5 0 5 0 1 2
+x
 x = x[1:4]; x      # truncate x to first 4 elements
 #[1] 5 0 5 0
 
@@ -47,8 +65,12 @@ x[4]
 
 
 #Matrix-----
+1:12
 (m1 = matrix(1:12, nrow=4))
 (m2 = matrix(1:12, ncol=3, byrow=T))
+x=101:124
+length(x)
+matrix(x, ncol=6)
 
 class(m1)
 #[1] "matrix"
@@ -57,12 +79,20 @@ attributes(m1)
 #[1] 4 3
 dim(m1)
 #[1] 4 3
+m1
+
+m1[1,2:3]
+m1[c(1,3),]
 
 #names of cols and rows
 m1
+paste("C","D",sep="-")
+
 (colnames(m1) = paste('C',1:3, sep=''))
+m1
 (rownames(m1) = paste('R',1:4, sep=''))
 m1
+attributes(m1)
 
 #Vector to Matrix
 (m3 = 1:24)
@@ -81,8 +111,15 @@ m2[c(1,2),c(2,3)]
 m2[,]
 m2[-2,] # exclude 2nd row
 m2[1:5] # matrix is like vector
-m2[c(TRUE,FALSE),c(2,3)] #logical indexing
+m2[c(TRUE,F,F,F),c(2,3)] #logical indexing
 m2[m2 > 5]
+m1
+m1;m2
+m1[1:2,1:2]
+m1[c('R1'),]
+m1[1:2,]
+m1[c(T,T,F,F),]
+m1
 
 #modify Vector
 m2[2,2]
@@ -91,6 +128,7 @@ m2
 m2[m2> 10] = 99
 m2
 rbind(m2, c(50,60,70))
+m2
 cbind(m2, c(55,65,75,85))
 
 #row and col wise summary
@@ -105,10 +143,14 @@ sweep(m1, MARGIN = 2, STATS = c(2,3,4), FUN="*" ) #colwise
 
 #addmargins
 m1
-addmargins(m1,1,sum) #colwise function
+?addmargins
+addmargins(m1,margin=1,sum) #colwise function
+addmargins(m1,1,sd) #colwise function
+
 addmargins(m1,2,mean) #rowwise function
 addmargins(m1,c(1,2),mean) #row & col wise function
-addmargins(m1,c(1,2),list(list(mean,sum), list(var,sd))) #row & col wise function
+
+addmargins(m1,c(1,2),list(list(mean,sum,max), list(var,sd))) #row & col wise function
 
 
 #Array-----
@@ -135,24 +177,32 @@ sum(a1) #total
 (rollno = 1:30)
 (sname = paste('student',1:30,sep=''))
 (gender = sample(c('M','F'), size=30, replace=T, prob=c(.7,.3)))
-(marks = floor(rnorm(30, 50,10)))
+(marks = floor(rnorm(30,mean= 50,sd=10)))
 (marks2 = ceiling(rnorm(30,40,5)))
 (course = sample(c('BBA','MBA'), size=30, replace=T, prob=c(.5,.5)))
+rollno; sname; gender
+marks ; marks2; course
+
 #create DF
-df1= data.frame(rollno, sname, gender, marks, marks2, course)
+df1= data.frame(rollno, sname, gender, marks, marks2, course, stringsAsFactors = F)
 str(df1) #structure of DF
 head(df1) #top 6 rows
 head(df1,n=3) #top 3 rows
 tail(df1) #last 6 rows
 class(df1) # DF
 summary(df1) #summary
+df1$gender = factor(df1$gender)
+df1$course = factor(df1$course)
+str(df1)
+summary(df1)
+
 
 df1  #full data
 df1$gender  # one column
 df1[ , c(2,4)] #multiple columns
 df1[1:10 ,] #select rows, all columns
 #as per conditionis
-df1[ marks > 50 & gender=='F', c('rollno', 'sname')]
+df1[ marks > 50 & gender=='F', c('rollno', 'sname','gender', 'marks')]
 df1[ marks > 50 & gender=='F', c(1,2)]
 df1[ marks > 50 | gender=='F', ]
 
@@ -160,7 +210,10 @@ names(df1)  # names of columns
 dim(df1)  #Dimensions
 
 aggregate(df1$marks, by=list(df1$gender), FUN=max)
-(df2 = aggregate(cbind(marks,marks2) ~ gender + course, data=df1, FUN=max))
+aggregate(marks ~ gender, data=df1, FUN=max)
+
+
+(df2 = aggregate(cbind(marks,marks2) ~ gender + course, data=df1, FUN=mean))
 
 
 
@@ -184,10 +237,20 @@ mylist$ages
 #Factor -----
 
 (grades = sample(c('A','B','C','D'), size=30, replace=T, prob=c(.3,.2,.4,.1)))
+summary(grades)
 table(grades)
 (gradesFactor = factor(grades))
+summary(gradesFactor)
+
 (gradesFactorOrdered = factor(grades, ordered=T))
+summary(gradesFactorOrdered)
+
 (gradesFactorOrderedLevels = factor(grades, ordered=T, levels=c('D','C','B','A')))
+summary(gradesFactorOrderedLevels)
+
+pie(summary(gradesFactorOrderedLevels))
+barplot(summary(gradesFactorOrderedLevels))
+
 class(grades)
 class(gradesFactorOrdered)
 class(gradesFactorOrderedLevels)

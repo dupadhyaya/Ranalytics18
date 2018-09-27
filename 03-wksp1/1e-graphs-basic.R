@@ -6,7 +6,7 @@
 #plot
 women
 plot(women)
-plot(women, type='p', pch=18)
+plot(women, type='p', pch=19)
 plot(women, type='l')
 plot(women, type='b', pch=18, lty=2, col=2)
 plot(women, xlim=c(30,100), ylim=c(min(women$weight)-10, 200), pch=10)
@@ -37,7 +37,7 @@ hist(women$height, breaks=10)
 hist(women$height, breaks=5, col=1:5)
 
 #histogram2
-x = rnorm(100,50,100)
+(x = rnorm(100,50,10))
 hist(x)
 
 hist(x, freq=F, col=1:5)
@@ -47,11 +47,14 @@ lines(density(x))
 plot(density(x), col='red')
 
 #pie
+gender
+table(gender)
+pie(table(gender))
 x = c(10,20,40,50)
 pie(x)
 xlabels = c('A','B','C','D')
 pie(x, labels=xlabels)
-
+x
 #barplot
 barplot(x,col=1:4)
 barplot(x,col=1:4, horiz = T)
@@ -61,7 +64,11 @@ pairs(women)
 cor(women$height,women$weight)
 
 head(mtcars)
+?mtcars
+
 cor(mtcars)
+names(mtcars)
+pairs(mtcars)
 pairs(mtcars[1:4])
 options(digits=4)
 
