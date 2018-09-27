@@ -11,3 +11,4 @@ log(M)
 log(T)+ log(S) + log(I)
 
 log(32); 5 * log(2); log(2) + log(2) + log(2) + log(2) + log(2) 
+
