@@ -74,10 +74,11 @@ AIC(fit, fit2) #lower value of AIC is better
 #Potential Problems
 #Non-linearity of the outcome - predictor relationships
 #Heteroscedasticity: Non-constant variance of error terms.
+#Auto Collinearity, Multi-collinearity
 #Presence of influential values in the data that can be:
 #Outliers: extreme values in the outcome (y) variable
 #High-leverage points: extreme values in the predictors (x) variable
 
 #All these assumptions and potential problems can be checked by producing some diagnostic plots visualizing the residual errors.
 
-
+plot(fit1)

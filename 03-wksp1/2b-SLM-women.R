@@ -13,7 +13,7 @@ cor(women$height, women$weight)
 #0.995 : which shows Strong and Positive relationship betw height & weight
 0.995^2 # also equal R^2 value in this case (Simple Linear Regression)
 
-plot(x=women$height, y=women$weight)
+plot(x=women$height, y=women$weight, type='b')
 abline(lm(weight ~ height, data=women), col='red')
 names(women)  #x- IV, y -DV
 fit1 = lm(weight ~ height, data=women)  # creating a model
@@ -34,6 +34,7 @@ coef(fit1)
 coef(fit1)
 #Y = -87 + 3.4 * X  # no extrapolations
 (Y = -87 + 3.4 * 20)  # weight cannot be negative
+range(women$height)
 (Y = -87 + 3.4 * 58)
 (Y = -87 + 3.4 * 61.5)
 (Y = -87 + 3.4 * 72)
@@ -55,7 +56,8 @@ women
 
 
 #Prediction : for height = 65, 66
-(new1 = data.frame(height=c(65,66)))
+
+(new1 = data.frame(height=c(65,66,66.5)))
 new1
 (p1=predict(fit1, newdata = new1))
 cbind(new1, p1)
