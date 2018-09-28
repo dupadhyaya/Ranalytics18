@@ -22,8 +22,7 @@ summary(data)
 #?amap::Kmeans
 names(data)
 
-k1 <- amap::Kmeans(data[,-1],centers=3, iter.max = 200,nstart = 1, 
-           method = c("euclidean"))
+k1 <- amap::Kmeans(data[,-1],centers=3, iter.max = 200,nstart = 1,  method = c("euclidean"))
 
 k1$centers  # group means
 ###Fetch size/n of obs for the groups
