@@ -11,7 +11,7 @@ library(tidyquant)
 library(timetk)
 library(forcats)
 library(stringr)
-library(gganimate)
+library(gganimate)  #install as mentioned below
 #devtools::install_github("dgrtwo/gganimate")
 library(plyr)
 library(stringr)
