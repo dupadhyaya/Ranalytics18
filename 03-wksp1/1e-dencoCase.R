@@ -6,7 +6,7 @@
 #read file : Method1
 sales1 = read.csv("./data/denco.csv")
 str(sales1) #see if data is loaded and check its structure
-
+head(sales1)
 #read file : Method2 : when location is not in project folder
 sales2 = read.csv(file.choose())
 str(sales2)
@@ -17,8 +17,7 @@ library(gsheet)
 url = "https://docs.google.com/spreadsheets/d/1h7HU0X_Q4T5h5D1Q36qoK40Tplz94x_HZYHOJJC_edU/edit#gid=216113907"
 sales3 = as.data.frame(gsheet2tbl(url))
 str(sales3)
-
-
+head(sales3)
 
 
 # whichever you read the data, store it in sales object
@@ -68,7 +67,7 @@ sales %>% dplyr::group_by(custname) %>% dplyr::summarise(n = n()) %>% dplyr::arr
 
 
 #Case-2 : Customer- Highest Revenue---
-sales %>% group_by(custname) %>%  summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue)) %>% head(n=3)
+sales %>% group_by(custname) %>%  summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue)) %>% tail(n=5)
 #Ans2: Triumph Insulation gave max revenue
 
 # save this object and then analyse
@@ -99,7 +98,7 @@ sales %>% group_by (partnum) %>% summarise(TotalMargin= sum(margin)) %>% arrange
 #Case : Extra ----
 #Find Regions wise sales
 
-salesregionrevenue = sales %>% group_by(region) %>% summarise(Revenue = sum(revenue)) %>% arrange(desc(Revenue))
+(salesregionrevenue = sales %>% group_by(region) %>% summarise(Revenue = sum(revenue)) %>% arrange(desc(Revenue)))
 
 #Some Graphs related to Data Summarised
 pie(x = salesregionrevenue$Revenue, labels=unique(sales$region))

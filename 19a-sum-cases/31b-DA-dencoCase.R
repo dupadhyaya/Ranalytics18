@@ -3,7 +3,7 @@
 #read file : Method1
 sales1 = read.csv("./data/denco.csv")
 str(sales1)
-
+head(sales1)
 #read file : Method2
 sales2 = read.csv(file.choose())
 str(sales2)
