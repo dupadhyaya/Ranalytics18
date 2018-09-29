@@ -34,7 +34,7 @@ kiris = kmeans(data, centers=3)
 kiris$centers
 
 cbind(iris$Species, data, kiris$cluster)
-
+aggregate(cbind(Sepal.Length, Sepal.Width) ~ Species, data=iris, mean)
 
 names(mtcars)
 data2 = mtcars[c('mpg','disp','hp','wt')]

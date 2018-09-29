@@ -25,6 +25,10 @@ names(data)
 
 k1 <- amap::Kmeans(data[,-1],centers=3, iter.max = 200)
 
+nc = NbClust(data[-1], distance="euclidean",min.nc=2, max.nc=15, method="average")
+
+str(data)
+
 k1$centers  # group means
 ###Fetch size/n of obs for the groups
 k1$size

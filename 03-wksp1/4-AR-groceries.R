@@ -13,8 +13,8 @@ inspect(Groceries[1:5])  #view
 LIST(Groceries[1:6])  #another view
 
 #Find Frequent Itemset
-frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 5)) 
-inspect(frequentItems)
+frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 2)) 
+inspect(frequentItems[1:10])
 frequentItems
 inspect(frequentItems[10:100])
 #inspect(frequentItems[100:122])
@@ -26,7 +26,7 @@ inspect(sort (frequentItems, by="count", decreasing=F)[1:25])
 #Plot the Frequency Plot
 itemFrequencyPlot(Groceries,topN = 15,type="absolute")
 itemFrequencyPlot(Groceries, topN = 10, type='relative')
-abline(h=0.2)
+abline(h=0.15)
 
 # Create rules and the relationship between items
 #parameters are min filter conditions 
@@ -42,8 +42,8 @@ inspect (rulesl[1:5])
 
 #How To Control The Number Of Rules in Output ?
 #maxlen, minlen, supp, conf
-rules2 = apriori (Groceries, parameter = list (supp = 0.001, conf = 0.5, minlen=2, maxlen=3)) 
-inspect(rules2[1:5])
+rules2 = apriori (Groceries, parameter = list (supp = 0.01, conf = 0.5, minlen=2, maxlen=3)) 
+inspect(rules2[1:15])
 
 # Are there any duplicate/ Redundant Rules 
 #https://rdrr.io/cran/arules/man/is.redundant.html
@@ -66,6 +66,7 @@ inspect(rules3)
 
 #Find out what events were influenced by a given event
 subset1 = subset(rules2, appearance = list (default="lhs",rhs="whole milk"))
+inspect(subset1)
 subset1 = subset(rules2, subset=rhs %in% 'bottled beer' )
 inspect(subset1)
 inspect(rules2)
