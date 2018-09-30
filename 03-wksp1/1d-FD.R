@@ -1,7 +1,7 @@
 # Frequency Distribution
 
 #Discrete Cat Data
-attend = c('A','P','P','A','P','A')
+(attend = c('A','P','P','A','P','A'))
 table(attend)
 cbind(table(attend))  # A & P on left side
 
@@ -54,4 +54,5 @@ plot(x3b)
 
 
 # and so..on like previous eg
+
 

@@ -10,6 +10,7 @@ head(sales1)
 #read file : Method2 : when location is not in project folder
 sales2 = read.csv(file.choose())
 str(sales2)
+head(sales2)
 
 #read file: Method3
 #install.packages('gsheet')
@@ -67,7 +68,7 @@ sales %>% dplyr::group_by(custname) %>% dplyr::summarise(n = n()) %>% dplyr::arr
 
 
 #Case-2 : Customer- Highest Revenue---
-sales %>% group_by(custname) %>%  summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue)) %>% tail(n=5)
+sales %>% group_by(custname) %>%  summarize(Revenue = sum(revenue)) %>% arrange(desc(Revenue)) %>% head(n=5)
 #Ans2: Triumph Insulation gave max revenue
 
 # save this object and then analyse

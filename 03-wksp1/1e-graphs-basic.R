@@ -1,13 +1,12 @@
 # Combined Plots
-
 #plot, histogram, pie, boxplot, linechart, correlation plot
-
 
 #plot
 women
 plot(women)
-plot(women, type='p', pch=19)
+plot(women, type='p', pch=15, col='red')
 plot(women, type='l')
+plot(women, type='b')
 plot(women, type='b', pch=18, lty=2, col=2)
 plot(women, xlim=c(30,100), ylim=c(min(women$weight)-10, 200), pch=10)
 
@@ -27,6 +26,9 @@ abline(h=c(58, 62,65,68,72))
 #draw lines on plot for number summary
 summary(women)
 quantile(women$height)
+quantile(women$height, seq(0,1,.1))
+quantile(women$height, seq(0,1,.01))
+stem(women$height)
 boxplot(women$height, col='green')
 abline(h=quantile(women$height))
 text(1+.2, quantile(women$height), labels=c('min','1Q','median','3Q','max'))
@@ -53,7 +55,9 @@ pie(table(gender))
 x = c(10,20,40,50)
 pie(x)
 xlabels = c('A','B','C','D')
-pie(x, labels=xlabels)
+x/sum(x)
+(labels2 = paste(xlabels, round(x/sum(x),2) * 100 , sep='-'))
+pie(x, labels=labels2)
 x
 #barplot
 barplot(x,col=1:4)
@@ -62,7 +66,7 @@ barplot(x,col=1:4, horiz = T)
 #correlation plot
 pairs(women)
 cor(women$height,women$weight)
-
+cov(women$height, women$weight)
 head(mtcars)
 ?mtcars
 
@@ -71,4 +75,4 @@ names(mtcars)
 pairs(mtcars)
 pairs(mtcars[1:4])
 options(digits=4)
-
+pairs(mtcars[c('mpg', 'wt','hp')])

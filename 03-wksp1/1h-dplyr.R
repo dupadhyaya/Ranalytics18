@@ -42,7 +42,7 @@ View(mtcars) # spreasheet like form base pacakge
 mtcars %>% group_by(am) 
 #nothing - just separation
 
-mtcars %>% group_by(am) %>% summarise(mean(mpg), max(wt))
+mtcars %>% group_by(am) %>% summarise(mean(mpg), max(wt), min(wt))
 
 
 #summarise----
@@ -109,8 +109,9 @@ distinct(mtcars)
 distinct(df3)
 
 #sampling
-sample_frac(mtcars, 0.2, replace=T)
-sample_n(mtcars, 60, replace=T) %>% select(mpg)
+sample_frac(mtcars, 0.2, replace=F)
+sample_n(mtcars, 2, replace=F)
+#%>% select(mpg)
 slice(mtcars,10:14)
 top_n(mtcars,-2, mpg)  #least 2 mpg
 
