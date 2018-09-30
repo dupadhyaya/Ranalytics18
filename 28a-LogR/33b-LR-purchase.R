@@ -62,3 +62,9 @@ cm = table(test_set[,5], y_pred)
 cm
 caret::confusionMatrix(cm)
 
+#ROCR Curve
+library(ROCR)
+ROCRpred <- prediction(y_pred, test_set$purchased)
+ROCRperf <- performance(ROCRpred, 'tpr','fpr')
+plot(ROCRperf, colorize = TRUE, text.adj = c(-0.2,1.7))
+

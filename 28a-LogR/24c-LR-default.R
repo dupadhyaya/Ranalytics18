@@ -39,6 +39,7 @@ summary(logit2)
 coef(logit2)
 exp(coef(logit2))
 anova(logit2, logit1)
+#if pvalue < 0.05, logit1 is better model otherwise logit2
 
 # Predict : use sample values
 head(Default)
