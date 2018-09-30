@@ -1,59 +1,81 @@
 # Data Structures in Slides
 
-?seq
 #control+enter when you are in the line to execute
 #
 # Vectors-----
-x=1:10
+x=1:10   #create seq of nos from 1 to 10
 x
-(x1=1:10)
-(x2=c(1,2,3,4,5))
+x1 <- 1:20
+x1
+
+(x1=1:30)
+(x2=c(1,2,13,4,5))
 class(x2)
+
 (x3=letters[1:10])
+class(x3)
 LETTERS[1:26]
+?c
 (x3b = c('a',"Dhiraj","4"))
 class(x3b)
+
 (x4=c(T,FALSE,TRUE,T,F))
 class(x4)
+
 x5=c(3L,5L)
 class(x5)
+x5a = c(3,5)
+class(x5a)
 (x5b = c(1, 'a',T, 4L))
 class(x5b)
 
 #access elements
 (x6 = seq(0,100,by=3))
+methods(class='numeric')
+?seq
 #[1]  0  2  4  6  8 10
-
+ls()  #variables in my environment
+x6
+length(x6)
 x6[20]
 x6[3]  # access 3rd element
 #[1] 4
 x6[c(2, 4)]     # access 2nd and 4th element
 x6[-1]          # access all but 1st element
-x6
+x6[-c(1:10, 15:20)]
 x6[c(2, -4)]    # cannot mix positive and negative integers
 #Error in x[c(2, -4)] : only 0's may be mixed with negative subscripts
-x[c(2.4, 3.54)]    # real numbers are truncated to integers
+x6[c(2.4, 3.54)]    # real numbers are truncated to integers
 x6[-c(1,5,20)]
 x6
 length(x6)
 x6[-(length(x6)-1)]
-
+(x7 = c(x6, x2))
 #modify
+x6
+sort(x6)
+sort(x6[-c(1,2)])
+sort(x6, decreasing=T)
 rev(x6)
+
 seq(-3, 10, by=.2)
+x6[-c(1:12)]
+
 (x = -3:2)
-#[1] -3 -2 -1  0  1  2
-x[2] <- 0; x        # modify 2nd element
+x[2] <- 10; x        # modify 2nd element
 #[1] -3  0 -1  0  1  2
 x
-x[x<0] = 5; x   # modify elements less than 0
-#[1] 5 0 5 0 1 2
+x < 0
+x[x<= 1 & x >= -1] = 100; x   # modify elements less than 0
 x
+
+
 x = x[1:4]; x      # truncate x to first 4 elements
 #[1] 5 0 5 0
 
+
 #delete vector
-(x = seq(1,5, length.out = 10))
+(x = seq(1,5, length.out = 15))
 #[1] 1.000 1.444 1.889 2.333 2.778 3.222 3.667 4.111 4.556 5.000
 x = NULL
 x
@@ -62,31 +84,35 @@ x[4]
 #NULL
 
 
+(x = rnorm(100))
+plot(density(x))
+mean(x)
+(x1 = rnorm(1000000, mean=50, sd=5))
+plot(density(x1))
+abline(v=mean(x1),h=0.04)
 
 
 #Matrix-----
-1:12
+100:111
 (m1 = matrix(1:12, nrow=4))
 (m2 = matrix(1:12, ncol=3, byrow=T))
 x=101:124
 length(x)
 matrix(x, ncol=6)
-
 class(m1)
-#[1] "matrix"
 attributes(m1)
-#$dim
-#[1] 4 3
 dim(m1)
-#[1] 4 3
 m1
 
+# access elements of matrix
 m1[1,2:3]
 m1[c(1,3),]
-
+m1[,-c(1,3)]
 #names of cols and rows
 m1
+
 paste("C","D",sep="-")
+paste("C",1:100,sep="-")
 
 (colnames(m1) = paste('C',1:3, sep=''))
 m1
@@ -110,18 +136,21 @@ m2[,2:3] # 2nd to 3rd coln
 m2[c(1,2),c(2,3)]
 m2[,]
 m2[-2,] # exclude 2nd row
+m2
 m2[1:5] # matrix is like vector
-m2[c(TRUE,F,F,F),c(2,3)] #logical indexing
-m2[m2 > 5]
+m2
+m2[c(TRUE,F,T,F),c(F, T, T)] #logical indexing
+m2[m2 > 5 & m2 < 10]
+
 m1
-m1;m2
 m1[1:2,1:2]
-m1[c('R1'),]
+m1[c('R1'),c('C1','C3')]
 m1[1:2,]
 m1[c(T,T,F,F),]
 m1
 
 #modify Vector
+m2
 m2[2,2]
 m2[2,2] = 10
 m2
@@ -130,7 +159,9 @@ m2
 rbind(m2, c(50,60,70))
 m2
 cbind(m2, c(55,65,75,85))
+rbind(m2,m2)
 
+m2
 #row and col wise summary
 m1
 colSums(m1); rowSums(m1)
