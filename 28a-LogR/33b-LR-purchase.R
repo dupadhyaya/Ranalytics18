@@ -1,5 +1,4 @@
 # Logistic Regression : Predict Purchase
-# Financial Analytics Case Study
 
 # Import the dataset
 df1 = read.csv('./data/logr2.csv')
@@ -62,12 +61,4 @@ head(cbind(test_set$purchased, y_pred),15)
 cm = table(test_set[,5], y_pred)
 cm
 caret::confusionMatrix(cm)
-
-names(dataset)
-#ROCR Curve
-library(ROCR)
-ROCRpred <- prediction(y_pred, test_set$purchased)
-ROCRperf <- performance(ROCRpred, 'tpr','fpr')
-plot(ROCRperf, colorize = TRUE, text.adj = c(-0.2,1.7))
-
 
