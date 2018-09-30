@@ -118,7 +118,7 @@ library(quantmod)
 
 
 
-#Detach all mice package
+#This will remove all/Detach all  packages
 library(mise)
 search()
 #mise(vars = TRUE, figs = TRUE, console = TRUE, pkgs = FALSE)

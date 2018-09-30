@@ -1,6 +1,6 @@
 #dplyr - mtcars
 library(dplyr)
-
+library(tidyverse)
 #Filter----
 
 filter(mtcars, cyl == 8)
@@ -39,30 +39,6 @@ slice(by_cyl, 1:2)
 tbl_df(mtcars) # convert to tbl class
 glimpse(mtcars)  # dense summary of tbl data
 View(mtcars) # spreasheet like form base pacakge
-
-
-
-#rownames----
-df = tibble::rownames_to_column(df, var='cars')
-df2 = mtcars
-names(df)
-
-#has
-tibble::has_rownames(mtcars)
-tibble::has_rownames(df)
-
-#remove rownames  
-#see without rownames
-head(df2[1:5])
-tibble::remove_rownames(df2)
-
-#rowid as column
-tibble::rowid_to_column(df, var = "rowid")
-
-#column to rownames
-head(df[1:5])
-tibble::column_to_rownames(df, var = "cars")
-
 mtcars %>% group_by(am) 
 #nothing - just separation
 
@@ -90,9 +66,9 @@ mtcars %>% summarise_all(funs(med = median))
 
 
 
-
-
+#summarise if : 
 mtcars %>% summarise_if(is.numeric, mean, na.rm = TRUE)
+str(iris)  #Species is a factor
 iris %>% summarise_if(is.numeric, mean, na.rm = TRUE)
 
 #specific columns
@@ -100,17 +76,17 @@ mtcars %>% summarise_at(c("mpg", "wt"), mean, na.rm = TRUE)
 
 
 #------------------------------------
-#unsortd----
-dplyr::tbl_df(iris)
+#unsorted----
+dplyr::tbl_df(iris)  #all rows not displayed
 print(dplyr::tbl_df(mtcars), n=20)  #display more columns and rows
 #print(dplyr::tbl_df(mtcars), width=11)
-tbl_df(mtcars) %>% print(n = Inf)
+tbl_df(mtcars) %>% print(n = Inf)  #all rows
 tbl_df(mtcars) %>% print(width = Inf)
 tbl_df(mtcars) %>% as.data.frame(mtcars)
 
 glimpse(mtcars)
 df = mtcars
-row.names(df) = NULL
+row.names(df) = NULL  #remove rownames
 df %>% select(mpg)
 #head(mtcars)
 select(mtcars, mpg, vs)
@@ -124,19 +100,22 @@ mtcars %>% filter(mpg > 23 & wt > 2)
 mtcars %>% select(mpg, wt) %>% filter(mpg > 23) 
 mtcars %>% 
   
-  filter(iris, Sepal.Length > 7)
+filter(iris, Sepal.Length > 7)
 filter(mtcars, cyl == 4)
-distinct(mtcars)
-df  = data.frame(a=c(2,2),b=c(2,2))
-df
-distinct(df)
 
+#distinct rows
+distinct(mtcars)
+(df3  = data.frame(a=c(2,2,3),b=c(2,2,1)))
+distinct(df3)
+
+#sampling
 sample_frac(mtcars, 0.2, replace=T)
 sample_n(mtcars, 60, replace=T) %>% select(mpg)
 slice(mtcars,10:14)
-top_n(mtcars,-2, mpg)
+top_n(mtcars,-2, mpg)  #least 2 mpg
 
 select(mtcars, mpg) %>% arrange(desc(mpg))
+
 #Columns
 select(mtcars, mpg, wt)
 select(mtcars, contains('a'))
@@ -146,11 +125,14 @@ select(mtcars, everything())
 
 mtcars %>% group_by(cyl, am) %>% summarise_all(mean)
 
-df = data.frame(marks=c(1,2,3,7,1))
-cbind(df, dplyr::mutate_each(df, funs(min_rank)))
+(df4 = data.frame(marks=c(1,2,2,3,7,1,100)))
+cbind(df4, dplyr::mutate_all(df4, funs(min_rank)))
 
-mtcars %>% lead() %>% lag()
-dplyr::n(mtcars)
+#shift the columns
+mtcars %>% lead() 
+mtcars %>% lag()
+mtcars %>% summarise(n())
+
 select(mtcars, mpg2 = mpg)
 
 df = mtcars[1:4]
@@ -158,20 +140,19 @@ names(df) = c('MPG','C1','C2','C3')
 df= rename(df, C5=C1)
 names(df)
 df
-rename(df, marks2 = marks)
-df %>% mutate(marks2 = marks + 2, marks3 = marks + 4)
-df %>% transmute(marks2 = marks + 2, marks3 = marks + 4)
+
+df = women
+rename(df, HeightWomen = height)
+df %>% mutate(height2 = height + 2, weight2 = weight + 4)
+#does not show orginal columns
+df %>% transmute(height2 = height + 2, weight2 = weight + 4)
 
 library(nycflights13)
 data(flights)
-
-
+head(flights)
 destinations <- group_by(flights, dest)
 destinations
-summarise(destinations,
-          planes = n_distinct(tailnum),
-          flights = n()
-)
+summarise(destinations, planes = n_distinct(tailnum), flights = n())
 
 
 select(iris, -ends_with("Width")) %>% head
@@ -181,7 +162,6 @@ filter(mtcars, row_number() == n())
 filter(mtcars, between(row_number(), 5, n()))
 
 mtcars %>% group_by(cyl) %>% filter(1:3)
-> mtcars %.% group_by(cyl) %.% filter(sample(n(), 10))
 group_by( mtcars, cyl ) %>% integer_filter(1:2)
 ?integer_filter
 
@@ -292,6 +272,7 @@ df %>% top_n(2)
 # than 2 values here because there's a tie: top_n() either takes
 # all rows with a value, or none.
 df %>% top_n(-2)
+
 
 
 

@@ -1,13 +1,24 @@
 # Data structures in R
 
-#Vectors
+#Vectors----
 
-#Matrices
 
-#Arrays
 
-#Data Frame
 
-#Factors
 
-#Lists
+
+
+
+
+#Matrices----
+
+
+
+
+#Arrays----
+
+#Data Frame----
+
+#Factors----
+
+#Lists----
