@@ -1,5 +1,6 @@
 # Clustering - Number of Clusters
 library(NbClust)
+#https://www.rdocumentation.org/packages/NbClust/versions/3.0/topics/NbClust
 
 income = ceiling(runif(100,60,100))
 age = ceiling(rnorm(100, 35,5))

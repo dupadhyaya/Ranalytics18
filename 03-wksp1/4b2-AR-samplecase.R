@@ -75,6 +75,7 @@ quality(rules_c)
 inspect(rules)
 (redundant = which(is.redundant(rules)))
 inspect(rules[c(8,9,10,11,12,14,14)])
+
 inspect(rules[redundant])
 inspect(rules)
 write.csv(as(rules,"data.frame"), file='./data/rulesR.csv')

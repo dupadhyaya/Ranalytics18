@@ -10,6 +10,15 @@ sm <- ma(wineind,order=12)
 lines(sm,col="red")
 
 
+#centered
+x = ts(runif(25,50,80))
+x
+forecast::ma(x, order=2, centre=T)
+
+plot(wineind)
+csm <- ma(wineind,order=12, centre=T)
+lines(csm,col="red")
+
 
 
 #method1
@@ -39,3 +48,5 @@ plot(forecast(fit1, 3))
 #https://cran.r-project.org/web/packages/smooth/vignettes/sma.html
 require(smooth)
 require(Mcomp)
+sma(M3$N2457$x, h=18, silent=FALSE)
+sma(M3$N2568$x, h=18)

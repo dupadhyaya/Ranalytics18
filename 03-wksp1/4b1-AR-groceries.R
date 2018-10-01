@@ -9,8 +9,8 @@ Groceries
 #Structure of Groceries
 str(Groceries)
 Groceries
-inspect(Groceries[1:5])  #view
-LIST(Groceries[1:6])  #another view
+arules::LIST(Groceries[1:6])  #another view
+arules::inspect(Groceries[1:5])
 
 #Find Frequent Itemset
 frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 2)) 
@@ -44,20 +44,6 @@ inspect (rulesl[1:5])
 #maxlen, minlen, supp, conf
 rules2 = apriori (Groceries, parameter = list (supp = 0.01, conf = 0.5, minlen=2, maxlen=3)) 
 inspect(rules2[1:15])
-
-# Are there any duplicate/ Redundant Rules 
-#https://rdrr.io/cran/arules/man/is.redundant.html
-
-sum(is.redundant(rules2))
-(redundant = which(is.redundant(rules2)))
-inspect(rules2[redundant])
-#inspect(subset(rules2, subset=lhs %ain% c('citrus fruit','rice') & rhs %in% 'whole milk' ))
-#remove it
-rulesNR = rules2[-redundant] 
-is.redundant(rulesNR)
-sum(is.redundant(rulesNR))  #ok now
-
-
 
 #Find what factors influenced an event ‘X’
 rules3 = apriori (data=Groceries, parameter=list (supp=0.002,conf = 0.8), appearance = list (default="lhs",rhs="whole milk"), control = list (verbose=F))

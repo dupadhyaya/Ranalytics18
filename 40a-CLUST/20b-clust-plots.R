@@ -6,10 +6,10 @@ library(cluster)
 library(fpc)
 
 data(iris)
-iris4 <- iris[, -5] # without known classification 
+data = iris[, -5] # without known classification 
 # Kmeans cluster analysis
-km1 =  kmeans(iris4, centers=3)
-plotcluster(iris4, km1$cluster)
+km1 =  kmeans(data, centers=3)
+plotcluster(data, km1$cluster)
 
 #Plot2
 # More complex
@@ -17,7 +17,7 @@ clusplot(data, km1$cluster, color=TRUE, shade=TRUE,
          labels=2, lines=0)
 
 #plot3
-with(iris, pairs(data, col=c(1:3)[km$cluster])) 
+with(iris, pairs(data, col=c(1:3)[km1$cluster])) 
 
 #plot4
 X <- data.frame(c1=c(0,1,2,4,5,4,6,7),c2=c(0,1,2,3,3,4,5,5))
