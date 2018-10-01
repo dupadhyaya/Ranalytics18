@@ -27,14 +27,18 @@ load("twitter authentication.Rdata")
 
 setup_twitter_oauth(consumerKey, consumerSecret, AccessToken, AccessTokenSecret)
 #type 1 : Yes 
-search.string <- "#businessanalytics"
+#search.string <- "#businessanalytics"
+search.string <- "#marketinganalytics"
+
 no.of.tweets <- 100
 
 tweets <- searchTwitter(search.string, n=no.of.tweets,lang="en")
 tweets
 tweets[1:10]
 #Another Topics
-search.string <- "#indvseng"
+#search.string <- "#indvseng"
+search.string <- "#asiacup"
+
 no.of.tweets <- 100
 
 tweets <- searchTwitter(search.string, n=no.of.tweets,lang="en")
@@ -43,18 +47,20 @@ tweets[1:5]
 #My Tweets : will change if you use your own account
 homeTimeline(n=15)  #my tweets
 mentions(n=15)   # my tags
+mentions(n=5)
 
-tweets <- userTimeline("smriti_khare", n=10)
-tweets
+#for user - 
+(tweets = userTimeline("sumanmohanty", n=10))
+userTimeline("drisha_sinha", n=5)
 
 #------------------------------------
 ?userTimeline
-tweets <- userTimeline("realDonaldTrump", n=100)
+tweets = userTimeline("realDonaldTrump", n=100)
 #english
 tweets[1:5]
 n.tweet <- length(tweets)
 n.tweet
-tweets.df <- twListToDF(tweets) 
+tweets.df = twListToDF(tweets) 
 head(tweets.df)
 summary(tweets.df)
 

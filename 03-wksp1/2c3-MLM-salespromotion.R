@@ -46,7 +46,11 @@ summary(fit2)
 #promotion  : +3.6 , pvalue = 9.82e-06 < 0.05 ***: Significant
 #keeping price constant, if promotion is increased by 1 unit, salesqty increases by 53 units
 
-
+fitted(fit2)
+omni$sales
+residuals(fit2)
+summary(residuals(fit2))
+summary(fit2)
 #Predict SalesQty for new combination of Values----
 
 #create a dataframe of new sample values
@@ -55,7 +59,10 @@ p2sales = predict(fit2, newdata=ndata2)
 cbind(ndata2, p2sales)
 
 #Assumptions
+par(mfrow=c(2,2))
 plot(fit2)
+par(mfrow=c(1,1))
+
 plot(fit2,which=1)  # no pattern, equal variance
 plot(fit2,2)  # Residuals are normally distributed
 plot(fit2,3)  # No hetero-scedascity
@@ -79,4 +86,10 @@ summary(fit3)
 
 
 
-
+#questions
+fit2
+summary(fit2)
+head(omni)
+cbind(omni, predict(fit2, newdata = data.frame(omni$price, omni$promotion)))
+cbind(omni, fitted(fit2))
+cbind(omni, fitted(fit2), omni$sales - fitted(fit2), residuals(fit2))

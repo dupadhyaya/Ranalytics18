@@ -1,9 +1,16 @@
 # World Cloud 2
+library(wordcloud)
+library(RColorBrewer)
+library(SnowballC)
+library(RCurl)
+library(XML)
+library(tm)
 
 # Read the text file from file
-text <- readLines(file.choose())
+text = readLines(file.choose())
+text = readLines(con= file("ximb.txt"))
 text
-
+text[1]
 # Load the data as a corpus
 docs = Corpus(VectorSource(text))
 docs

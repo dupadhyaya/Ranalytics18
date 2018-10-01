@@ -1,4 +1,4 @@
-# World Cloud 2
+# World Cloud 2 - error
 library(wordcloud)
 # Read the text file from internet
 filePath = "http://www.sthda.com/sthda/RDoc/example-files/martin-luther-king-i-have-a-dream-speech.txt"

@@ -83,11 +83,5 @@ summary(fit1)
 summary(residuals(fit1))
 
 plot(fit1)
-
-
-x1 = c(1,2,3)
-x2 = c(4,5,6)
-x1
-x2
-cbind(x1,x2)
-rbind(x1,x2)
+cor(fitted(fit1), women$weight)
+summary(fit1)
