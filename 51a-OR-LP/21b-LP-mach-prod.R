@@ -1,4 +1,5 @@
 #LP Cases - Machine A & B, Products X & Y
+#see Mindmap
 #Equations
 #50x + 24y <= 2400
 #30x + 33y <= 2100

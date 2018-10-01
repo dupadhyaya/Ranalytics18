@@ -1,7 +1,7 @@
 #LP - Marketing
 
 #Final Model
-#Max : 750* x1 + 1000 * x2
+#Max : 750 * x1 + 1000 * x2
 #Subject To
 #x1 + x2  <= 10
 #x1 + 2 * x2  <= 15
@@ -33,6 +33,7 @@ get.sensitivity.obj(lprec)
 print.lpExtPtr(lprec)
 #real constraints
 set.type(lprec, c(1,2), type = c("real")); lprec
+#should be real to draw graph
 solve(lprec)
 
 plot.lpExtPtr(lprec)

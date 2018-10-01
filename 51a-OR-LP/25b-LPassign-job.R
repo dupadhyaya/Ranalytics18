@@ -5,8 +5,7 @@
 
 library(lpSolve)
 
-m <- matrix(c(3, 2, 1, 9, 2, 3, 2, 9, 1, 9, 3, 9, 9, 1, 9, 9), 4,
-    dimnames = list(c(1, 2, 3, "U"), c("A", "B", "C", "D")))
+m <- matrix(c(3, 2, 1, 9, 2, 3, 2, 9, 1, 9, 3, 9, 9, 1, 9, 9), 4,  dimnames = list(c(1, 2, 3, "U"), c("A", "B", "C", "D")))
 m
 fm <- lp.assign(m)
 
