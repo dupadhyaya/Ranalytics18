@@ -13,7 +13,7 @@ arules::LIST(Groceries[1:6])  #another view
 arules::inspect(Groceries[1:5])
 
 #Find Frequent Itemset
-frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 2)) 
+frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 5)) 
 inspect(frequentItems[1:10])
 frequentItems
 inspect(frequentItems[10:100])
@@ -51,7 +51,7 @@ inspect(rules3[1:5])
 inspect(rules3)
 
 #Find out what events were influenced by a given event
-subset1 = subset(rules2, appearance = list (default="lhs",rhs="whole milk"))
+subset1 = subset(rules2, subset=rhs %in% "whole milk")
 inspect(subset1)
 subset1 = subset(rules2, subset=rhs %in% 'bottled beer' )
 inspect(subset1)

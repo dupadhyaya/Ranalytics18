@@ -4,9 +4,17 @@
 
 #sample Data
 marks = data.frame(sub1=c(0,1,2,4,5,4,6,7),sub2=c(0,1,2,3,3,4,5,5))
+
+marks
 km1 = kmeans(marks, center=2)
+km1
+km1$centers
 plot(marks,col=km1$cluster,cex=1.5)
 points(km1$center,col=1:2,pch=8,cex=2)
+km1$betweenss
+km1$tot.withinss
+km1$withinss
+km1$betweenss/ (km1$betweenss + km1$tot.withinss)
 
 
 #iris dataset
@@ -16,6 +24,7 @@ library(cluster)
 library(fpc)
 
 data(iris)
+head(iris)
 data = iris[, -5] # without known classification 
 # Kmeans cluster analysis
 iriskm1 =  kmeans(data, centers=3)
@@ -23,8 +32,10 @@ plotcluster(data, iriskm1$cluster)
 
 # More complex : PCA method: 2 dim
 clusplot(data, iriskm1$cluster, color=TRUE, shade=TRUE, labels=2, lines=0)
+iris[c(16,19),]
 
 # another method
+with(iris, pairs(data, col=c(1:3)[iriskm1$cluster])) 
 with(iris, pairs(data, col=c(1:3)[iriskm1$cluster])) 
 
 
@@ -50,7 +61,8 @@ km4$tot.withinss; km4$withinss
 km5= kmeans(data,centers=5)
 km5$tot.withinss;km5$withinss
 
-km1$tot.withinss; km2$tot.withinss ; km3$tot.withinss ; km4$tot.withinss ; km5$tot.withinss
+km1$tot.withinss; km2$tot.withinss ; km3$tot.withinss ; km5$tot.withinss ; km5$tot.withinss
+data[km5$cluster==4,]
 
 #Selecting the number of clusters
 library(NbClust)

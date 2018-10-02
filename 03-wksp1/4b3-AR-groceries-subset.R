@@ -2,6 +2,7 @@
 
 #Subsetting rules and itemsets
 rules <- apriori(Groceries, parameter = list(support=.001, confidence=.7,   maxlen=5, target='rules' ))
+rules
 #target='rules' # to mine for rules)
 
 inspect(sort(rules, by="confidence", decreasing = T)[1:5])
@@ -71,6 +72,9 @@ inspect(sort (singleitems, by="count", decreasing=TRUE)[1:25])
 
 crossTable(Groceries)['canned beer','canned beer']
 crossTable(Groceries)['bottled beer','bottled beer']
+
+crossTable(Groceries)['bottled beer','canned beer']
+crossTable(Groceries)['canned beer','bottled beer']
 
 quality(rules)$chi  <- interestMeasure(rules, measure='chi', significance=T, Groceries)
 quality(rules)$chi[4785:4786]
