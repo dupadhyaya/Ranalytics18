@@ -1,6 +1,8 @@
 # LP - Transportation Problem 
 #https://docs.google.com/spreadsheets/d/1G6-iPDoD_i4THQAHwBeOLeiTfuqn7a6Q7MrOg9v1C5U/edit#gid=166724984
 
+library(lpSolve)
+
 (costs <- matrix (c(3,1,5,2,5,4),ncol=2))
 row.signs <- c("<", "<", "<")
 row.rhs <- c(45, 60, 35)
@@ -23,3 +25,4 @@ library(lpSolve)
 x <- matrix(c(.91,.32,.86,.14,.59,.36,.67,.34,.87,.56,.10,.09),ncol=3,byrow=T)
 lp.transport(x, "min" , rep("==",4) , rep(1,4) , rep(">=",3) , rep(1,3)) 
 lp.transport(x, "min" , rep("==",4) , rep(1,4) , rep(">=",3) , rep(1,3) )$solution
+
