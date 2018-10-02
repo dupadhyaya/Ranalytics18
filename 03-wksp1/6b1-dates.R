@@ -3,7 +3,7 @@
 
 cdate1='15/August/1947'
 cdate1
-cdate2 = c('15-Aug-1947', "26-Jan-1950")
+cdate2 = c('15-Aug-1947', "26-Jan-1950", "01-Oct-2018")
 cdate2
 
 class(cdate1) ; class(cdate2)
@@ -20,7 +20,8 @@ class(date3)
 #Format Types ----
 #%Y: 4-digit year (1982),%y: 2-digit year (82)
 #%m: 2-digit month (01)
-#%B: month (January), %b: abbreviated month (Jan) %d: 2-digit day of the month (13)
+#%B: month (January), %b: abbreviated month (Jan) 
+#%d: 2-digit day of the month (13)
 #%A: weekday (Wednesday), %a: abbreviated weekday (Wed)
 
 #convert cdate1 cdate2 to date formats
@@ -54,9 +55,9 @@ as.numeric(date2)
 #Create Sequence of Dates
 
 #Next day after certain date
-as.Date('2018-04-29') + 1
+as.Date('2018-10-01') + 1
 #Sequence of Dates
-as.Date('2018-09-16') + 1:15
+as.Date('2018-09-16') + 0:14
 #alternative Dates
 as.Date('2018-09-16') + seq(1,10,2)
 
@@ -95,16 +96,19 @@ sd(course1) #no meaning
 #subset / select dates
 course1
 #1st and 5th dates
-course[c(1,5)] # 1st & 5th date 
+course1[c(1,5)] # 1st & 5th date 
 #1st and 5th dates
 course[1] ; course[5]
 
 #duration from 8th date to first date
-(duration1 = course[8] - course[1])
+(duration1 = course1[8] - course1[1])
 #total duration
-(duration2 = max(course) - min(course))
+(duration2 = max(course1) - min(course1))
 
 #duration since independence
 (independencedays = Sys.Date() - as.Date('15-08-1947', '%d-%m-%Y'))
 independencedays/365  #years
 
+as.character(Sys.Date(), format="%Y--%m--%d %A")
+course1
+paste(course1 , as.character(course1, format="%A"), sep=":: ")

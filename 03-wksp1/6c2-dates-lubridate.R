@@ -1,18 +1,15 @@
-Package Lubridate https://data.library.virginia.edu/working-with-dates-and-time-in-r-using-the-lubridate-package/
-  # Date Functions - Deal with Date & Time
-  #lubridate provides a series of functions that are a permutation of the letters “m”, “d” and “y” to represent the ordering of month, day and year. For example, if our data has a column of dates such as May 11, 1996, our dates are ordered month-day-year. Therefore we would use the mdy function to transform the column to a date object. If our dates were in the order of, say, year-month-day, we would use the ymd function. lubridate provides functions for every permutation of “m”, “d”, “y”.
-  
-  
-  #Eg1
-  library(lubridate)
+#Package Lubridate https://data.library.virginia.edu/working-with-dates-and-time-in-r-using-the-lubridate-package/
+# Date Functions - Deal with Date & Time
 
+#lubridate provides a series of functions that are a permutation of the letters “m”, “d” and “y” to represent the ordering of month, day and year. For example, if our data has a column of dates such as May 11, 1996, our dates are ordered month-day-year. Therefore we would use the mdy function to transform the column to a date object. If our dates were in the order of, say, year-month-day, we would use the ymd function. lubridate provides functions for every permutation of “m”, “d”, “y”.
+  
+  
+#Eg1
+library(lubridate)
 (date8a = lubridate::ymd("20110604"))
 (date8 = ymd("20110604"))
-
 class(date8)
-
 date8 + 1:10
-
 #date in different format seq
 mdy("06-04-2011") #mon-date-year
 dmy("04/06/2011") #date-mon-year
@@ -26,6 +23,7 @@ class(end) ## [1] "character"
 
 (begin = mdy(begin))
 ## [1] "1996-05-11" "2001-09-12" "1988-07-01"
+class(begin)
 
 (end = mdy(end))
 ## [1] "1997-07-08" "2002-10-23" "1991-01-04"
@@ -134,3 +132,4 @@ arrive
 arrive2 = as.Date(arrive, format='%d/%m/%y')
 (yrsbetw = year(today)-year(ref_date))
 (yrsbetw = year(today)-year(arrive2))
+

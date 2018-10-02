@@ -1,8 +1,10 @@
 # Indian Stocks
+
 library(quantmod)
 start <- as.Date("2017-01-01")
-end <- as.Date("2018-09-28")
+end <- as.Date("2018-10-01")
 getSymbols("SBIN.NS", src = "yahoo", from = start, to = end)
+
 # What is SBI?
 class(SBIN.NS)
 head(SBIN.NS)

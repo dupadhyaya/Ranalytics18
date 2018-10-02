@@ -26,6 +26,7 @@ load("twitter authentication.Rdata")
 #registerTwitterOAuth(cred)
 
 setup_twitter_oauth(consumerKey, consumerSecret, AccessToken, AccessTokenSecret)
+
 #type 1 : Yes 
 #search.string <- "#businessanalytics"
 search.string <- "#marketinganalytics"
