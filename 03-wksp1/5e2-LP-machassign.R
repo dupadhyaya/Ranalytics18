@@ -6,7 +6,7 @@
 library(lpSolveAPI)
 
 #First we create an empty model x.
-
+?make.lp
 #max: x + y - 50
 lprec <- make.lp(0, 2)
 lprec
@@ -16,7 +16,7 @@ lprec
 lp.control(lprec, sense="max")
 lprec
 
-set.type(lprec, c(1,2), type = c("integer"))
+#set.type(lprec, c(1,2), type = c("integer"))
 lprec
 #50x + 24y <= 2400
 add.constraint(lprec, c(50,24), "<=", 2400)

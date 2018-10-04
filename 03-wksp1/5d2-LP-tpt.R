@@ -19,7 +19,7 @@ lp.transport (costs, "min", row.signs, row.rhs, col.signs, col.rhs)$solution
 (cost <- matrix(c(3,1,5,2,5,4),ncol=2))
 lp.transport(cost, "min" , rep("<",3) , c(45, 60, 35) , rep(">=",2) , c(50, 60) )$solution
 lp.transport(cost, "min" , rep("<",3) , c(45, 60, 35) , rep(">=",2) , c(50, 60) )
-
+?lp.transport
 
 library(lpSolve)
 x <- matrix(c(.91,.32,.86,.14,.59,.36,.67,.34,.87,.56,.10,.09),ncol=3,byrow=T)

@@ -21,7 +21,8 @@ wordcloud2(demoFreq, size=1.6, color=rep_len( c("green","blue"), nrow(demoFreq) 
 wordcloud2(demoFreq, size=1.6, color='random-light', backgroundColor="black")
 
 # Change the shape:
-wordcloud2(demoFreq, size = 0.7, shape = 'star')
+wordcloud2(demoFreq, size = 0.7, shape = 'circle')
+head(demoFreq)
 ?wordcloud2
 # Change the shape using your image
-wordcloud2(demoFreq, figPath = "peace.png", size = 1.5, color = "skyblue", backgroundColor="black")
+wordcloud2(demoFreq, figPath = "india.jpg", size = 1.5, color = "skyblue", backgroundColor="black")

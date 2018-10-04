@@ -21,5 +21,6 @@ Decision_Var <- rbind(
   c(0, 0, 0, 0, -1),
   c(2, 0.3, 1.8, 0.9, 2)
 )
-
+Decision_Var
 solveLP(Max_ROI, Contraint_Vector, Decision_Var, TRUE)
+
