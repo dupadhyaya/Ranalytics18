@@ -82,4 +82,5 @@ f_summary(mtcars$mpg)
 library(PerformanceAnalytics)
 chart.Correlation(iris[,1:4],col=iris$Species)
 
-Hmisc::summary.formula(x)
+library(Hmisc)
+

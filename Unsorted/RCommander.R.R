@@ -1,8 +1,8 @@
 
 library(abind, pos=18)
 library(e1071, pos=19)
-numSummary(df2[,"a", drop=FALSE], statistics=c("mean", "sd", "IQR", 
-  "quantiles", "skewness"), quantiles=c(0,.25,.5,.75,1), type="2")
+numSummary(df2[,"a", drop=FALSE], statistics=c("mean", "sd", "IQR",   "quantiles", "skewness"), quantiles=c(0,.25,.5,.75,1), type="2")
+
 set.seed(52410)
 qnorm(c(.4), mean=0, sd=1, lower.tail=TRUE)
 summary(df)
