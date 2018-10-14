@@ -1,12 +1,10 @@
-# Data Structures in Slides
+# Data Structures in R
 
 #control+enter when you are in the line to execute
-#
 # Vectors-----
 x=1:10   #create seq of nos from 1 to 10
 x
-x1 <- 1:20
-x1
+(x1 <- 1:20)
 
 (x1=1:30)
 (x2=c(1,2,13,4,5))
@@ -15,8 +13,7 @@ class(x2)
 (x3=letters[1:10])
 class(x3)
 LETTERS[1:26]
-?c
-(x3b = c('a',"Dhiraj","4"))
+(x3b = c('a',"Henry","4"))
 class(x3b)
 
 (x4=c(T,FALSE,TRUE,T,F))
@@ -332,4 +329,5 @@ library(Hmisc)
 describe(df1)
 
 
-#lets draw some simple graphs
+#Next Topics
+
