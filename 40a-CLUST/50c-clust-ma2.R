@@ -21,7 +21,7 @@ library(cluster)
 cluster::clusplot(customers, km1$cluster, color=TRUE, shade=TRUE, 
          labels=2, lines=0)
 
-
+#https://blog.datascienceheroes.com/short-lesson-on-cluster-analysis/
 library(clusplus)
 plot_clus_coord(km1, customers)
 
