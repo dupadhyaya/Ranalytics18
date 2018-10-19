@@ -3,11 +3,16 @@
 
 library(dplyr)
 PATH <-"https://raw.githubusercontent.com/thomaspernet/data_csv_r/master/data/Computers.csv"
-df <- read.csv(PATH) %>% select(-c(X, cd, multi, premium))
+data = read.csv(PATH)
+data = read.csv(file.choose())
+names(data)
+dim(data)
+#Remove certain columns
+df <- data %>% select(-c(X, cd, multi, premium))
 glimpse(df)
 
 summary(df)
-
+#scale and remove unscaled columns
 rescale_df <- df %>%
   mutate(price_scal = scale(price),
          hd_scal = scale(hd),
@@ -23,9 +28,8 @@ head(rescale_df)
 set.seed(2345)
 library(animation)
 
-kmeans.ani(rescale_df[2:3], 3)
-
-#
+kmeans.ani(rescale_df[2:5], 5)
+#see the plot area on right hand side of rstudio
 # Step 1: R randomly chooses three points
 # Step 2: Compute the Euclidean distance and draw the clusters. You have one cluster in green at the bottom left, one large cluster colored in black at the right and a red one between them.
 # Step 3: Compute the centroid, i.e. the mean of the clusters
@@ -96,3 +100,4 @@ ggplot(data = center_reshape, aes(x = features, y = cluster, fill = values)) +
   coord_equal() +
   scale_fill_gradientn(colours = hm.palette(90)) +
   theme_classic()
+
