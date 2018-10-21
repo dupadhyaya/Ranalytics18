@@ -1,6 +1,7 @@
 # Scale
 #standardization of the data
 #scale is generic function whose default method centers and/or scales the columns of a numeric matrix.
+#https://t4tutorials.com/decimal-scale-normalization-in-data-mining/
 
 x = c(1,3,5,7,9,2,4,6,8,10)
 (x1 = scale(x, scale=F, center=F))

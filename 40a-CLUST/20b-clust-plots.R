@@ -247,3 +247,19 @@ require(plotrix)
 ablineclip(h=0, v=ticks, col="black", x1=1-(dendHeight+labelHeight), x2=1-labelHeight, y1=0, y2=0.04, lwd=1.5)
 text(ticks, 0+0.08, values, cex=0.8)
 text((1-labelHeight)-(((1-labelHeight)-(1-(dendHeight+labelHeight)))/2), 0+0.14, "Height", cex=0.8)
+
+
+
+#https://en.proft.me/2017/01/29/exploring-hierarchical-clustering-r/
+#Parallel coordinates are a common way of visualizing high-dimensional geometry and analyzing multivariate data. The lines show the relationship between the axes, much like scatterplots, and the patterns that the lines form indicate the relationship. 
+# get nice colors
+library(colorspace)
+
+iris2 <- iris[,-5]
+species_labels <- iris[,5]
+species_col <- rev(rainbow_hcl(3))[as.numeric(species_labels)]
+MASS::parcoord(iris2, col = species_col, var.label = TRUE, lwd = 2)
+title("Parallel coordinates plot of the Iris data")
+legend("top", cex = 1, legend = as.character(levels(species_labels)), fill = unique(species_col), horiz = TRUE)
+
+#We can see that the Setosa species are distinctly different from Versicolor and Virginica (they have lower petal length and width). But Versicolor and Virginica cannot easily be separated based on measurements of their sepal and petal width/length.

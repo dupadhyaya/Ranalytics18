@@ -47,3 +47,5 @@ table(testPred, testData$Species)
 # Entropy = -\sum_{i=0}^{c-1}p(i|t)\log_{2}p(i|t)
 # Gini = 1-\sum_{i=0}^{c-1}[p(i|t)]^{2}
 # Classification error = 1-max_{i}[p(i|t)]
+
+

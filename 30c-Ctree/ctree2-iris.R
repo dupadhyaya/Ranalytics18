@@ -22,3 +22,4 @@ predict(iris.ct, newdata = new.iris)
 predict(iris.ct, newdata = new.iris, type = "node")
 #https://www.r-bloggers.com/package-party-conditional-inference-trees/
 #
+
