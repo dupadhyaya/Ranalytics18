@@ -10,15 +10,17 @@ x
 (x2=c(1,2,13,4,5))
 class(x2)
 
+(x3=c('a',"ABC"))
+class(x3)
 (x3=letters[1:10])
 class(x3)
 LETTERS[1:26]
-(x3b = c('a',"Henry","4"))
+(x3b = c('a',"Henry",4))
 class(x3b)
 
 (x4=c(T,FALSE,TRUE,T,F))
 class(x4)
-
+class(c(3,5))
 x5=c(3L,5L)
 class(x5)
 x5a = c(3,5)
@@ -27,14 +29,18 @@ class(x5a)
 class(x5b)
 
 #access elements
+?seq
 (x6 = seq(0,100,by=3))
-methods(class='numeric')
+seq(0,100,3)
+seq(to=100,from=0,by=3)
+seq(1,5,2)
 ?seq
 #[1]  0  2  4  6  8 10
 ls()  #variables in my environment
 x6
 length(x6)
-x6[20]
+
+x6[10:20]
 x6[3]  # access 3rd element
 #[1] 4
 x6[c(2, 4)]     # access 2nd and 4th element
@@ -45,11 +51,17 @@ x6[c(2, -4)]    # cannot mix positive and negative integers
 x6[c(2.4, 3.54)]    # real numbers are truncated to integers
 x6[-c(1,5,20)]
 x6
+x6[x6 > 30 | x6 < 40]
+
 length(x6)
 x6[-(length(x6)-1)]
 (x7 = c(x6, x2))
+
+
 #modify
 x6
+(x6 = sample(1:50))
+
 sort(x6)
 sort(x6[-c(1,2)])
 sort(x6, decreasing=T)
@@ -57,42 +69,49 @@ rev(x6)
 
 seq(-3, 10, by=.2)
 x6[-c(1:12)]
-
+x6
+x6[x6> 30 & x6 < 40]
 (x = -3:2)
-x[2] <- 10; x        # modify 2nd element
-#[1] -3  0 -1  0  1  2
-x
-x < 0
-x[x<= 1 & x >= -1] = 100; x   # modify elements less than 0
-x
+x6
+x6[2:10] <- 99; x6        # modify 2nd element
+x6[x6 > 30 & x6 < 40] = 999
+x6
 
 
-x = x[1:4]; x      # truncate x to first 4 elements
+x6
+x7 = x6[1:4]; x7      # truncate x to first 4 elements
 #[1] 5 0 5 0
 
-
-#delete vector
+1:5
+#equal partitions within a range
 (x = seq(1,5, length.out = 15))
-#[1] 1.000 1.444 1.889 2.333 2.778 3.222 3.667 4.111 4.556 5.000
+x
 x = NULL
 x
 #NULL
 x[4]
 #NULL
-
-
-(x = rnorm(100))
+?distribution
+?rnorm
+(x = rnorm(1000000))
 plot(density(x))
+abline(v=c(-3,0,3))
 mean(x)
 (x1 = rnorm(1000000, mean=50, sd=5))
 plot(density(x1))
 abline(v=mean(x1),h=0.04)
+hist(x1)
+hist(x1, freq=F)
+lines(density(x1), col=2)
+
 
 
 #Matrix-----
 100:111
-(m1 = matrix(1:12, nrow=4))
-(m2 = matrix(1:12, ncol=3, byrow=T))
+length(100:111)
+(m1 = matrix(100:111, nrow=4))
+(m2 = matrix(100:111, ncol=3, byrow=T))
+
 x=101:124
 length(x)
 matrix(x, ncol=6)
@@ -102,21 +121,24 @@ dim(m1)
 m1
 
 # access elements of matrix
+m1[1,]; m1[,-1]
 m1[1,2:3]
 m1[c(1,3),]
 m1[,-c(1,3)]
+m1[m1> 105 & m1 < 108]
+
 #names of cols and rows
 m1
 
 paste("C","D",sep="-")
 paste("C",1:100,sep="-")
-
+paste("C",1:3,sep='')
 (colnames(m1) = paste('C',1:3, sep=''))
 m1
 (rownames(m1) = paste('R',1:4, sep=''))
 m1
 attributes(m1)
-
+m1[,c('C1','C3')]
 #Vector to Matrix
 (m3 = 1:24)
 dim(m3)= c(6,4)
@@ -141,7 +163,7 @@ m2[m2 > 5 & m2 < 10]
 
 m1
 m1[1:2,1:2]
-m1[c('R1'),c('C1','C3')]
+m1[c('R1','R2'),c('C1','C2')]
 m1[1:2,]
 m1[c(T,T,F,F),]
 m1
@@ -151,7 +173,7 @@ m2
 m2[2,2]
 m2[2,2] = 10
 m2
-m2[m2> 10] = 99
+m2[m2> 107] = 9999
 m2
 rbind(m2, c(50,60,70))
 m2
@@ -159,6 +181,8 @@ cbind(m2, c(55,65,75,85))
 rbind(m2,m2)
 
 m2
+cbind(m2,m2)
+rbind(m2,m2)
 #row and col wise summary
 m1
 colSums(m1); rowSums(m1)
@@ -205,20 +229,21 @@ sum(a1) #total
 (rollno = 1:30)
 (sname = paste('student',1:30,sep=''))
 (gender = sample(c('M','F'), size=30, replace=T, prob=c(.7,.3)))
-(marks = floor(rnorm(30,mean= 50,sd=10)))
+(marks1 = floor(rnorm(30,mean= 50,sd=10)))
 (marks2 = ceiling(rnorm(30,40,5)))
 (course = sample(c('BBA','MBA'), size=30, replace=T, prob=c(.5,.5)))
 rollno; sname; gender
-marks ; marks2; course
+marks1 ; marks2; course
 
 #create DF
-df1= data.frame(rollno, sname, gender, marks, marks2, course, stringsAsFactors = F)
+df1= data.frame(rollno, sname, gender, marks1, marks2, course, stringsAsFactors = F)
 str(df1) #structure of DF
 head(df1) #top 6 rows
 head(df1,n=3) #top 3 rows
 tail(df1) #last 6 rows
 class(df1) # DF
 summary(df1) #summary
+df1$course
 df1$gender = factor(df1$gender)
 df1$course = factor(df1$course)
 str(df1)
@@ -227,24 +252,24 @@ summary(df1)
 
 df1  #full data
 df1$gender  # one column
-df1[ , c(2,4)] #multiple columns
+head(df1[ , c(2,4)]) #multiple columns
 df1[1:10 ,] #select rows, all columns
+df1[1:5,1:4]
 #as per conditionis
-df1[ marks > 50 & gender=='F', c('rollno', 'sname','gender', 'marks')]
-df1[ marks > 50 & gender=='F', c(1,2)]
-df1[ marks > 50 | gender=='F', ]
+df1[ marks1 > 50 & gender=='F', c('rollno', 'sname','gender', 'marks1')]
+df1[ marks1 > 50 & gender=='F', c(1,2)]
+df1[ marks1 > 50 | gender=='F', ]
 
 names(df1)  # names of columns
 dim(df1)  #Dimensions
 
-aggregate(df1$marks, by=list(df1$gender), FUN=max)
-aggregate(marks ~ gender, data=df1, FUN=max)
+aggregate(df1$marks1, by=list(df1$gender), FUN=sum)
+aggregate(marks1 ~ gender, data=df1, FUN=max)
+aggregate(cbind(marks1, marks2) ~ gender, data=df1, FUN=max)
 
 
-(df2 = aggregate(cbind(marks,marks2) ~ gender + course, data=df1, FUN=mean))
-
-
-
+(df2 = aggregate(cbind(marks1,marks2) ~ gender + course, data=df1, FUN=mean))
+df2
 
 #List -----
 g ="My First List"
