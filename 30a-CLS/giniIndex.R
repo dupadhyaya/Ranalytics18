@@ -81,3 +81,4 @@ plot(dt_party)
 df_mtcars = rpart(am ~ ., data=mtcars)
 df_mtcars
 df_mtcars$variable.importance
+

@@ -7,7 +7,7 @@ cheat=c('No','No','No','No','Yes','No','No','Yes','No','Yes')
 train= data.frame(refund, married, income, cheat)
 train
 library(rpart)
-fit1 = rpart(cheat ~ ., data=train)
+fit1 = rpart(cheat ~ ., data=train, cp=-1, minsplit=3)
 fit1
 library(rpart.plot)
 rpart.plot(fit1)

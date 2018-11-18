@@ -1,7 +1,7 @@
 # CHAID 2
 #http://dni-institute.in/blogs/reading-data-in-r/
   
-install.packages("CHAID", repos="http://R-Forge.R-project.org")
+#install.packages("CHAID", repos="http://R-Forge.R-project.org")
 library(CHAID)
 library(help=CHAID)
 #install.packages("CHAID",   repos="http://R-Forge.R-project.org")

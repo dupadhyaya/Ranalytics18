@@ -7,7 +7,7 @@
 library(arules)
 library(arulesViz)
 library(datasets)
-
+data(Groceries)
 # Load the data set : Items set structure - List Type; Cannot see properly
 Groceries
 #str(Groceries)

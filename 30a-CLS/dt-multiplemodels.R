@@ -57,10 +57,10 @@ head(predicted.classes)
 # Compute model accuracy rate on test data
 mean(predicted.classes == test.data$diabetes)
 
-#----
+#caret package----
 # Fit the model on the training set
 set.seed(123)
-model2 <- train(
+model2 <- caret::train(
   diabetes ~., data = train.data, method = "rpart",
   trControl = trainControl("cv", number = 10),
   tuneLength = 10
@@ -88,7 +88,7 @@ mean(predicted.classes == test.data$diabetes)
 
 
 #----
-
+#regression tree
 # Load the data
 data("Boston", package = "MASS")
 # Inspect the data

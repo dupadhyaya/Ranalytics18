@@ -16,7 +16,7 @@ LIST(Groceries[1:6])  #another view
 frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 2, maxlen = 5)) 
 inspect(frequentItems)
 frequentItems
-inspect(frequentItems[10:100])
+inspect(frequentItems[10:15])
 #inspect(frequentItems[100:122])
 #Descending Sort frequent items by count : 1 to 25 itemsets
 inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:25])
