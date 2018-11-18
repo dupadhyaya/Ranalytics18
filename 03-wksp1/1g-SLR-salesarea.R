@@ -6,7 +6,7 @@
 #Create/ Import Data-----
 #Method1 : creating data from Vectors
 #X -is area sqft Y-sales in 1000s units; Find relationship betn X & Y
-X = c(1.7,1.6,2.8,5.6,1.3,2.2, 1.3,1.1,3.2,1.5,5.2,4.6,5.8,3 )
+X = c(1.7,1.6,2.8,5.6,1.3,2.2,1.3,1.1,3.2,1.5,5.2,4.6,5.8,3 )
 Y = c(3.7,3.9,6.7,9.5,3.4,5.6,3.7,2.7,5.5,2.9,10.7,7.6,11.8,4.1 )
 df1 = data.frame(X,Y)
 head(df1)
@@ -41,11 +41,11 @@ cor(df$X,df$Y) ; cor(df$Y,df$X)
 
 #some plots to understand pattern
 plot(df$X, df$Y)  #simple command to plot : Next with features
-plot(y=df$Y, x=df$X,xlab='Area in sqft', ylab='Sales Amount', type='p', ylim=c(0, max(df$Y)), main='Plot of Area Vs Sales', xlim=c(0,max(df$X)), col='red',pch=10)
-
-abline(lm(df$Y ~ df$X), lty=3, lwd=4, col='green') # with regression line
-abline(v=c(3,5),h=c(6,10), col=c('red','blue')) # few straight lines at x & y axis
-
+plot(y=df$Y, x=df$X,xlab='Area in sqft', ylab='Sales Amount', type='p', ylim=c(0, max(df$Y)+1), main='Plot of Area Vs Sales', xlim=c(0,max(df$X)+ 1), col='red',pch=17)
+?plot
+abline(lm(df$Y ~ df$X,data=df1), lty=1, lwd=2, col='green') # with regression line
+abline(v=c(3,5, min(df$X), max(df$X)),h=c(6,10, min(df$Y), max(df$Y)), col=c('red','blue','green','yellow')) # few straight lines at x & y axis
+range(df$X)
 #Model
 fit1 = lm(Y ~ X, data=df) # create Simple Linear Model Y wrt X
 fit1
@@ -79,9 +79,11 @@ cbind(df, fitted(fit1), fitted(fit1)- df$Y, residuals(fit1))
 (Y = 0.9645 + 1.6699 * 4)  # Predict Y for X=4
 #predict for area = 4
 #using equation
+summary(fit1)
+coef(fit1)
 (Y = coef(fit1)[1] + coef(fit1)[2] * 4)
 #using model
-new1 = data.frame(X=c(4))
+(new1 = data.frame(X=c(4,5,3,2)))
 predict(fit1, newdata= new1)
 
 #prediction can only be interpolated not extrapolated
@@ -94,8 +96,8 @@ predict(fit1, newdata= new1) # Predict Function for 4 values of X
 #columnbind with input and predicted values
 cbind(new1, predictedY = predict(fit1, newdata= new1) )
 
-library(forecast)
-accuracy(fit1)
+library(forecast) #install it first
+?accuracy(fit1)
 #RMSE is generally used and should be least when selecting models
 
 anova(fit1)
@@ -110,17 +112,19 @@ plot(fit1)
 par(mfrow=c(1,1))
 
 plot(fit1, which=1)
-
 # Linearity plot of residuals & X # No pattern for assumption that there is linearity betw X & Y
-
+plot(df)
 abline(h=0)
 plot(residuals(fit1))
 
 #Auto Collinearity : relation between successive values of Y
 car::durbinWatsonTest(fit1)
-#pvalue > 0 : Do not reject Ho that there is no correlation
+?car::durbinWatsonTest
+#pvalue > 0 : Do not reject Ho. that means there is no autocorrelation
 
 #Normality of residuals
+resid(fit1)
+#qqplot(fitted(fit1),resid(fit1) )
 plot(fit1, which=2)
 #points to be around the straight line
 
@@ -130,6 +134,7 @@ plot(fit1, which=1)
 
 #Outlier Analysis
 plot(fit1, which=4)
+#abline(h=c(.5))
 #no value of cooks distance > .5 : no data to be removed
 #outlier values can affect the model
 
