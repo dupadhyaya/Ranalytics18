@@ -82,7 +82,7 @@ salesrevenue[1:5,] # first 5 rows
 
 #Case3 : Most Profitable PartsNums ----
 # Look for freq, revenue and/ or profit margin
-
+head(sales)
 # Summarise by Part Num for frequency
 sales %>% dplyr::group_by(partnum) %>% dplyr::summarise(n = n()) %>% dplyr::arrange(desc(n))  %>% head(n=5)
 #Ans3a: Part Num- 764821000 was purchased max times -   122

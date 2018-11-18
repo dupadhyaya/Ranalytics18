@@ -8,13 +8,14 @@ head(titanic)
 names(titanic)
 data = titanic[,c(2,3,5,6,7)]  #select few columns only
 head(data)
-
+dim(data)
 #load libraries
 library(rpart)
 library(rpart.plot)
 
 #Decision Tree
-fit <- rpart(survived~., data = data, method = 'class')
+names(data)
+fit <- rpart(survived ~ ., data = data, method = 'class')
 fit
 rpart.plot(fit, extra = 106, cex=.8,nn=T)  #plot
 
@@ -23,7 +24,7 @@ prunetree2 = prune(fit, cp=.014)
 rpart.plot(prunetree2, cex=.8,nn=T)
 prunetree2
 nrow(data)
-
+table(data$survived)
 #Predict class category or probabilities
 (testdata = sample_n(data,2))
 predict(prunetree2, newdata=testdata, type='class')

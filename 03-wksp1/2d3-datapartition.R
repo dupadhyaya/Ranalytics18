@@ -18,7 +18,7 @@ plot(k)
 k
 summary(lm(mpg ~ wt, data= train))
 summary(lm(mpg ~ wt + hp, data= train))
-
+finalmodel = lm(mpg ~ wt + hp, data= train)
 library(gvlma)
 gvmodel = gvlma(finalmodel)
 gvmodel

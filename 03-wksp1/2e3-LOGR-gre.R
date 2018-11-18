@@ -6,6 +6,7 @@
 inputData <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
 ## view the first few rows of the data
 head(inputData)
+dim(inputData)
 inputData
 summary(inputData)
 sapply(inputData, sd)
@@ -14,9 +15,10 @@ data= inputData  # make a copy for futher analysis
 
 data$rank = factor(data$rank)
 data$admit = factor(data$admit)
-
+str(data)
 ## 2way contingency table of cat outcome and predictors we want
 ## to make sure there are not 0 cells
+table(data$rank, data$admit)
 xtabs(~admit + rank, data = data)
 
 #create Logistic Model
@@ -30,10 +32,11 @@ summary(mylogit)
 
 ## odds ratios only
 exp(coef(mylogit))
-
+(ndata = sample_n(data, 3))
 #Predict admit for input data
-prob=predict(mylogit,type=c("response"))
-cbind(data, prob)
+(prob=predict(mylogit,newdata=ndata, type=c("response")))
+prob
+cbind(ndata, prob)
 
 #cutoff value
 library(InformationValue)

@@ -8,7 +8,7 @@ library(gsheet)
 data = as.data.frame(gsheet2tbl(url))
 str(data)
 head(data)
-
+dim(data)
 names(data)
 summary(data)
 str(data)
@@ -24,13 +24,10 @@ summary(data)
 names(data)
 
 k1 <- amap::Kmeans(data[,-1],centers=3, iter.max = 200)
-
-nc = NbClust(data[-1], distance="euclidean",min.nc=2, max.nc=15, method="average")
-
-str(data)
-
+?Kmeans
 k1$centers  # group means
 ###Fetch size/n of obs for the groups
+attributes(k1)
 k1$size
 ###Fetch sum of squared  for the groups
 k1$withinss

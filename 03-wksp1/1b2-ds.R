@@ -271,6 +271,12 @@ aggregate(cbind(marks1, marks2) ~ gender, data=df1, FUN=max)
 (df2 = aggregate(cbind(marks1,marks2) ~ gender + course, data=df1, FUN=mean))
 df2
 
+df1
+
+
+
+
+
 #List -----
 g ="My First List"
 h = c(25, 26,18,39)

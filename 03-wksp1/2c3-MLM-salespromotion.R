@@ -25,6 +25,7 @@ omni = omni1
 head(omni)
 str(omni)
 nrow(omni)
+dim(omni)
 #MLR  Create Multiple Linear Regression
 # we want to see how Sales Qty depend on Price and Promotion Values
 fit2 = lm(sales ~ price + promotion, data=omni)
@@ -36,7 +37,7 @@ summary(fit2)
 #At least 1 IV can be used to predict sales
 names(summary(fit2))
 summary(fit2)$adj.r.squared  # Adjt R2 here > .6 
-#60% of variation in sales is explained by price and promotion
+#>74% of variation in sales is explained by price and promotion
 
 #coefficients b1, b2
 coef(fit2)
@@ -54,6 +55,7 @@ summary(fit2)
 #Predict SalesQty for new combination of Values----
 
 #create a dataframe of new sample values
+range(omni$price) ; range(omni$promotion)
 (ndata2 = data.frame(price=c(60,70), promotion=c(300,400)))
 p2sales = predict(fit2, newdata=ndata2)
 cbind(ndata2, p2sales)
@@ -67,7 +69,7 @@ plot(fit2,which=1)  # no pattern, equal variance
 plot(fit2,2)  # Residuals are normally distributed
 plot(fit2,3)  # No hetero-scedascity
 plot(fit2,4)  # tells outliers which affect model
-omni[-c(11,14,15),]
+omni[c(11,14,15),]
 
 fit3 = lm(sales ~ price + promotion, data=omni[-c(11,14,15),])
 plot(fit3,4)

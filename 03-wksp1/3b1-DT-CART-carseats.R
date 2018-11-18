@@ -1,7 +1,8 @@
 # Decision Trees : - regression tree
-
+#install and load this library
 library(ISLR)
 data(Carseats)
+?Carseats
 data = Carseats
 head(data)
 
@@ -19,7 +20,7 @@ printcp(tree1)
 #cp value should be chosen such that xerror is least
 prunetree = prune(tree1, cp=0.05)
 #here we have selected a different value to simplify the tree
-
+mean(data$Sales)
 prunetree
 rpart.plot(prunetree, nn=T)
 #Interpretation
