@@ -2,6 +2,15 @@
 
 #control+enter when you are in the line to execute
 # Vectors-----
+c(2,4,6)
+seq(2,3,.5)
+seq(by=.5, from=2,to=3)
+rep(1:3,times=4)
+rep(c(3,6,7,2),each=4)
+rep(c(3,6,7,2), times=4)
+
+?rep
+
 x=1:10   #create seq of nos from 1 to 10
 x
 (x1 <- 1:20)
@@ -21,12 +30,17 @@ class(x3b)
 (x4=c(T,FALSE,TRUE,T,F))
 class(x4)
 class(c(3,5))
+x5a = c(3,5.5)
+class(x5a)
+as.integer(x5a)
+
 x5=c(3L,5L)
 class(x5)
 x5a = c(3,5)
 class(x5a)
 (x5b = c(1, 'a',T, 4L))
 class(x5b)
+#blank variable ?
 
 #access elements
 ?seq
@@ -39,8 +53,9 @@ seq(1,5,2)
 ls()  #variables in my environment
 x6
 length(x6)
-
+x6[1:5]
 x6[10:20]
+x6[ seq(1,length(x6), 2)]
 x6[3]  # access 3rd element
 #[1] 4
 x6[c(2, 4)]     # access 2nd and 4th element
@@ -49,10 +64,14 @@ x6[-c(1:10, 15:20)]
 x6[c(2, -4)]    # cannot mix positive and negative integers
 #Error in x[c(2, -4)] : only 0's may be mixed with negative subscripts
 x6[c(2.4, 3.54)]    # real numbers are truncated to integers
+x6[c(2,3)]
+
 x6[-c(1,5,20)]
 x6
-x6[x6 > 30 | x6 < 40]
+x6[x6 > 30]
 
+x6[x6 > 30 & x6 < 40]  # 31-39
+#or |
 length(x6)
 x6[-(length(x6)-1)]
 (x7 = c(x6, x2))
@@ -60,11 +79,13 @@ x6[-(length(x6)-1)]
 
 #modify
 x6
+set.seed(1234)
 (x6 = sample(1:50))
-
+(x6b = sort(sample(1:50)))
 sort(x6)
 sort(x6[-c(1,2)])
 sort(x6, decreasing=T)
+x6
 rev(x6)
 
 seq(-3, 10, by=.2)
@@ -80,7 +101,6 @@ x6
 
 x6
 x7 = x6[1:4]; x7      # truncate x to first 4 elements
-#[1] 5 0 5 0
 
 1:5
 #equal partitions within a range
@@ -93,22 +113,28 @@ x[4]
 #NULL
 ?distribution
 ?rnorm
-(x = rnorm(1000000))
+(x = rnorm(100))
 plot(density(x))
 abline(v=c(-3,0,3))
 mean(x)
-(x1 = rnorm(1000000, mean=50, sd=5))
+(x1 = rnorm(100, mean=50, sd=5))
 plot(density(x1))
 abline(v=mean(x1),h=0.04)
+hist(x1, breaks=7)
 hist(x1)
 hist(x1, freq=F)
 lines(density(x1), col=2)
-
-
+summary(x1)
+quantile(x1)
+quantile(x1, seq(0,1,.25))
+quantile(x1,c(.1, .5, .8))
+quantile(x1,seq(0,1,.01))
+stem(x1)
 
 #Matrix-----
 100:111
 length(100:111)
+matrix(1,ncol=3, nrow=4)
 (m1 = matrix(100:111, nrow=4))
 (m2 = matrix(100:111, ncol=3, byrow=T))
 
@@ -121,10 +147,13 @@ dim(m1)
 m1
 
 # access elements of matrix
-m1[1,]; m1[,-1]
+m1[1,]
+m1[,1]
+m1[,1, drop=F]
+m1[,-1]  #remove 1st column
 m1[1,2:3]
 m1[c(1,3),]
-m1[,-c(1,3)]
+m1[,-c(1,3), drop=F]
 m1[m1> 105 & m1 < 108]
 
 #names of cols and rows
@@ -135,12 +164,14 @@ paste("C",1:100,sep="-")
 paste("C",1:3,sep='')
 (colnames(m1) = paste('C',1:3, sep=''))
 m1
-(rownames(m1) = paste('R',1:4, sep=''))
+(rownames(m1) = paste("R",1:4, sep=''))
 m1
 attributes(m1)
 m1[,c('C1','C3')]
+m1[,c(1,3)]
 #Vector to Matrix
 (m3 = 1:24)
+m3
 dim(m3)= c(6,4)
 m3
 
@@ -173,20 +204,26 @@ m2
 m2[2,2]
 m2[2,2] = 10
 m2
+m2[,2] = 10
+m2
 m2[m2> 107] = 9999
 m2
 rbind(m2, c(50,60,70))
+rbind(m2,m2)
 m2
 cbind(m2, c(55,65,75,85))
-rbind(m2,m2)
-
+m2m2= cbind(m2,m2)
+m2m2
 m2
 cbind(m2,m2)
 rbind(m2,m2)
 #row and col wise summary
+
 m1
-colSums(m1); rowSums(m1)
-colMeans(m1); rowMeans(m1)
+colSums(m1)
+rowSums(m1)
+colMeans(m1)
+rowMeans(m1)
 
 t(m1) # transpose
 m1
@@ -201,9 +238,9 @@ addmargins(m1,1,sd) #colwise function
 
 addmargins(m1,2,mean) #rowwise function
 addmargins(m1,c(1,2),mean) #row & col wise function
-
-addmargins(m1,c(1,2),list(list(mean,sum,max), list(var,sd))) #row & col wise function
-
+?addmargins
+(M1sum= addmargins(m1,c(1,2),list(list(mean,sum,max, min), list(var,sd, max, min)))) #row & col wise function
+round(M1sum,0)
 
 #Array-----
 length(100:123)
@@ -243,12 +280,16 @@ head(df1,n=3) #top 3 rows
 tail(df1) #last 6 rows
 class(df1) # DF
 summary(df1) #summary
+nrow(df1) 
+dim(df1)
+length(df1)
 df1$course
 df1$gender = factor(df1$gender)
 df1$course = factor(df1$course)
+#df1$sname = as.character(df1$sname)
 str(df1)
 summary(df1)
-
+boxplot(marks1 ~ gender + course, data=df1)
 
 df1  #full data
 df1$gender  # one column
@@ -306,9 +347,12 @@ summary(gradesFactorOrdered)
 
 (gradesFactorOrderedLevels = factor(grades, ordered=T, levels=c('D','C','B','A')))
 summary(gradesFactorOrderedLevels)
-
+gradesFactor
+gradesFactorOrdered
+gradesFactorOrderedLevels
+pie(c(10,15,17))
 pie(summary(gradesFactorOrderedLevels))
-barplot(summary(gradesFactorOrderedLevels))
+barplot(summary(gradesFactorOrderedLevels), col=1:4)
 
 class(grades)
 class(gradesFactorOrdered)
@@ -361,4 +405,9 @@ describe(df1)
 
 
 #Next Topics
-
+x= c(123.2234, 33333.544, 43243.8442)
+floor(x)
+ceiling(x)
+trunc(x)
+round(x,-2)
+round(x, digits = 5)

@@ -31,7 +31,7 @@ detach(package:VIM, unload = T)
 search()
 
 
-
+#----------------- Part I Over
 #Detach Multiple Packages
 (detpkg = c('plyr','tm'))
 library('plyr') #load lib
