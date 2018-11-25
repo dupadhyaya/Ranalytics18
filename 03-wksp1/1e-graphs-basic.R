@@ -4,17 +4,20 @@
 #plot
 women
 plot(women)
-plot(women, type='p', pch=15, col='red')
+?plot
+plot(women, type='p', pch=16, col='red')
 plot(women, type='l')
 plot(women, type='b')
-plot(women, type='b', pch=18, lty=2, col=2)
+plot(women, type='b', pch=18, lty=1, col=2, lwd=4)
 plot(women, xlim=c(30,100), ylim=c(min(women$weight)-10, 200), pch=10)
 
 #more features with plot
 plot(x=women$weight, y=women$height, pch=15, xlab='Weight', ylab='Height', col='red', cex=2, type='b')
 title(main='Main Title', sub='Sub Title')
 #see cheat sheet on base graphs
-
+mtcars$cyl
+#plot(x=mtcars$wt, y=mtcars$mpg, col=mtcars$gear, pch=c(4,6,8), cex=c(1,2))
+#as.numeric(levels(as.factor(mtcars$cyl)))
 plot(women)
 abline(lm(women$weight ~ women$height), col='red', lty=2, lwd=4)
 
@@ -31,7 +34,7 @@ quantile(women$height, seq(0,1,.01))
 stem(women$height)
 boxplot(women$height, col='green')
 abline(h=quantile(women$height))
-text(1+.2, quantile(women$height), labels=c('min','1Q','median','3Q','max'))
+text(1, quantile(women$height), labels=c('min','1Q','median','3Q','max'))
 
 #histogram
 hist(women$height)
@@ -42,21 +45,24 @@ hist(women$height, breaks=5, col=1:5)
 (x = rnorm(100,50,10))
 hist(x)
 
-hist(x, freq=F, col=1:5)
+hist(x, freq=F, col=1:10)
 lines(density(x))
 
 #density plot : shape of data
 plot(density(x), col='red')
 
 #pie
-gender
+gender= sample(c('M','F'), size=100, replace=T)
 table(gender)
 pie(table(gender))
 x = c(10,20,40,50)
 pie(x)
-xlabels = c('A','B','C','D')
+xlabels = c('A ','B ','C ','D ')
 x/sum(x)
 (labels2 = paste(xlabels, round(x/sum(x),2) * 100 , sep='-'))
+(labels3 = paste0(labels2,"%%"))
+(labels2 = paste0(xlabels, round(x/sum(x),2) * 100, '%'))
+
 pie(x, labels=labels2)
 x
 #barplot
