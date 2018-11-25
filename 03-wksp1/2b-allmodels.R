@@ -162,3 +162,14 @@ plot(subset1[1:10], measure=c("support", "lift"), shading="confidence")
 
 #
 
+#install.packages('wordcloud2')
+library(wordcloud2)
+
+df = data.frame(word=c('cbap','cmap','iim','imt','calcutta'),freq=c(20,23,15,10,13))
+df
+wordcloud2(df)
+
+
+head(demoFreq)
+wordcloud2(demoFreq, size = 2, color = "random-light", backgroundColor = "grey")
+names(demoFreq)
