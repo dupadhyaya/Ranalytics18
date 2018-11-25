@@ -1,6 +1,6 @@
 #dplyr - mtcars
 library(dplyr)
-library(tidyverse)
+#library(tidyverse)
 #Filter----
 
 filter(mtcars, cyl == 8)
@@ -39,6 +39,7 @@ slice(by_cyl, 1:2)
 tbl_df(mtcars) # convert to tbl class
 glimpse(mtcars)  # dense summary of tbl data
 View(mtcars) # spreasheet like form base pacakge
+
 mtcars %>% group_by(am) 
 #nothing - just separation
 
@@ -69,6 +70,8 @@ mtcars %>% summarise_all(funs(med = median))
 #summarise if : 
 mtcars %>% summarise_if(is.numeric, mean, na.rm = TRUE)
 str(iris)  #Species is a factor
+iris %>% summarise_all(mean)
+
 iris %>% summarise_if(is.numeric, mean, na.rm = TRUE)
 
 #specific columns
@@ -113,6 +116,7 @@ sample_frac(mtcars, 0.2, replace=F)
 sample_n(mtcars, 2, replace=F)
 #%>% select(mpg)
 slice(mtcars,10:14)
+sort(mtcars$mpg, decreasing = T)
 top_n(mtcars,-2, mpg)  #least 2 mpg
 
 select(mtcars, mpg) %>% arrange(desc(mpg))
@@ -123,6 +127,11 @@ select(mtcars, contains('a'))
 names(mtcars)
 select(mtcars, contains ='vs')
 select(mtcars, everything())
+
+df= mtcars
+df$names = rownames(mtcars)
+head(df)
+df %>% select(1:5,12) %>% arrange(mpg)
 
 mtcars %>% group_by(cyl, am) %>% summarise_all(mean)
 
@@ -166,7 +175,7 @@ mtcars %>% group_by(cyl) %>% filter(1:3)
 group_by( mtcars, cyl ) %>% integer_filter(1:2)
 ?integer_filter
 
-
+#error ???????
 # Select odd
 mtcars %>% slice(from = 1, to = n(), by = 2)
 # Select even
