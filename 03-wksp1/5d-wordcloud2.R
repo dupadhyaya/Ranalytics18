@@ -11,6 +11,13 @@ head(demoFreq)
 
 wordcloud2(demoFreq, size=1)
 
+#create your set of words and freq
+df = data.frame(word=c('cbap','cmap','iim','imt','calcutta'),freq=c(20,23,15,10,13))
+df
+wordcloud2(df)
+
+
+
 # Gives a proposed palette
 wordcloud2(demoFreq, size=1.6, color='random-dark')
 
