@@ -43,7 +43,7 @@ cor(df$X,df$Y) ; cor(df$Y,df$X)
 plot(df$X, df$Y)  #simple command to plot : Next with features
 plot(y=df$Y, x=df$X,xlab='Area in sqft', ylab='Sales Amount', type='p', ylim=c(0, max(df$Y)+1), main='Plot of Area Vs Sales', xlim=c(0,max(df$X)+ 1), col='red',pch=17)
 ?plot
-abline(lm(df$Y ~ df$X,data=df1), lty=1, lwd=2, col='green') # with regression line
+abline(lm(Y ~ X,data=df1), lty=1, lwd=2, col='green') # with regression line
 abline(v=c(3,5, min(df$X), max(df$X)),h=c(6,10, min(df$Y), max(df$Y)), col=c('red','blue','green','yellow')) # few straight lines at x & y axis
 range(df$X)
 #Model
@@ -57,8 +57,10 @@ names(fit1) # attributes(fit1)
 system.time(lm(Y ~ X, data=df)) #time taken to compute linear regression
 coef(fit1)  # Coefficients of Equation Y = mX + C
 fitted(fit1) # predicted values for all X in orginal data
+predict(fit1, newdata=data.frame(X))
 residuals(fit1) # diff between actual and predicted values - residuals
 (R= df$Y - fitted(fit1))
+plot(density(residuals(fit1)))
 #residuals should be less :Diff of Y actual - Y predicted
 #abline(h=coef(fit1)[1])
 
@@ -83,9 +85,10 @@ summary(fit1)
 coef(fit1)
 (Y = coef(fit1)[1] + coef(fit1)[2] * 4)
 #using model
+range(df$X)
 (new1 = data.frame(X=c(4,5,3,2)))
-predict(fit1, newdata= new1)
-
+predicted2= predict(fit1, newdata= new1)
+cbind(new1, predicted2)
 #prediction can only be interpolated not extrapolated
 range(df$X)  #min to max value of X: area
 

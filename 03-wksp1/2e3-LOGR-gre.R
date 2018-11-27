@@ -20,7 +20,7 @@ str(data)
 ## to make sure there are not 0 cells
 table(data$rank, data$admit)
 xtabs(~admit + rank, data = data)
-
+xtabs(~ gear + cyl + am , data=mtcars)
 #create Logistic Model
 mylogit <- glm(admit ~ gre + gpa + rank, data = data, family = "binomial")
 
@@ -32,11 +32,13 @@ summary(mylogit)
 
 ## odds ratios only
 exp(coef(mylogit))
+library(dplyr)
 (ndata = sample_n(data, 3))
 #Predict admit for input data
 (prob=predict(mylogit,newdata=ndata, type=c("response")))
 prob
 cbind(ndata, prob)
+
 
 #cutoff value
 library(InformationValue)

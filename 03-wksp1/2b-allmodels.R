@@ -3,8 +3,10 @@ library(dplyr)
 
 #Linear Regression
 head(women)
+head(mtcars)
 #predict weight for new height
 plot(women)
+plot(women, ylim=c(0, 160), xlim=c(0,90))
 fit1 = lm(weight ~ height, data=women)
 summary(fit1)
 range(women$height)
@@ -79,7 +81,8 @@ library(gsheet)
 data4 = as.data.frame(gsheet2tbl(url4))
 head(data4)
 summary(data4)
-str(data)
+str(data4)
+nrow(data4)
 ###Verify the data
 colnames(data4)
 apply(data4, 2, FUN= class)  #are all numeric
