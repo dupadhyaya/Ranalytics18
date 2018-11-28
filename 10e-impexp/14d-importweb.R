@@ -2,7 +2,7 @@
 library('rvest')
 
 #Specifying the url for desired website to be scrapped
-lego_movie <- html("http://www.imdb.com/title/tt1490017/")
+lego_movie <- read_html("http://www.imdb.com/title/tt1490017/")
 
 #Reading the HTML code from the website
 lego_movie %>%

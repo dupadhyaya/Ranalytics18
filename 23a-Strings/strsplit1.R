@@ -1,7 +1,7 @@
 # String - Splitting Columns
 
 library(splitstackshape)
-
+concat.test
 # Sample data
 temp <- head(concat.test)
 temp
@@ -16,11 +16,14 @@ cSplit(temp, c("Likes", "Hates"), c(",", ";"))
 ## Split "Siblings" into a long form...
 cSplit(temp, "Siblings", ",", direction = "long")
 
+head(temp)
 ## Split "Siblings" into a long form, not removing whitespace
 cSplit(temp, "Siblings", ",", direction = "long", stripWhite = FALSE)
+cSplit(temp, "Siblings", ",", direction = "long", stripWhite = T)
+
 
 ## Split a vector
-y <- c("a_b_c", "a_b", "c_a_b")
+(y <- c("a_b_c", "a_b", "c_a_b"))
 cSplit(data.frame(y), "y", "_")
 
 
@@ -28,6 +31,7 @@ cSplit(data.frame(y), "y", "_")
 
 #---
 library(splitstackshape)
+wordexplantion
 splitstackshape::cSplit(df, wordexplantion, "-")
 
 before <- data.frame(attr = c(1,30,4,6), type=c('foo_and_bar','foo_and_bar_2'))  

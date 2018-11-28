@@ -18,3 +18,4 @@ diff(x4)/2
 a <- seq(0,50,10)
 a
 a[-length(a)] + diff(a)/2
+
