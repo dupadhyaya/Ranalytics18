@@ -21,8 +21,8 @@ ggplot(DF,aes(x=V1,y=V2,size=V3, color=V3))+
   geom_point(shape=20)+
   theme_bw()+
   scale_size(range=c(2,10), guide="none")+
-  scale_color_gradient(high="green", low="yellow")  
-#scale_color_gradient(high="#ff0000", low="#ffffcc")  
+#  scale_color_gradient(high="green", low="yellow", guide="none")  
+scale_color_gradient(high="#ff0000", low="#ffffcc")  
 
 
 #-----
@@ -51,7 +51,7 @@ basic + theme(
 
 # custom box around legend
 basic + theme(
-  legend.box.background = element_rect(color="red", size=2),
+  legend.box.background = element_rect(color="red", size=1),
   legend.box.margin = margin(116, 6, 6, 6)
 )
 

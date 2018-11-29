@@ -25,10 +25,33 @@ df3
 df4 = data.frame(do.call(rbind, strsplit(df3, split = "United Kingdom")))
 df4
 
-word <- c('JNUIndia','IITIndia','OxfordUnited Kingdom')
+word <- c('JNUIndia','IITIndia','OxfordUnited Kingdom','HarvardUSA')
 strsplit(word, split=c('India'))
 strsplit(word, split=c('United Kingdom'))
 strsplit(word, split=c('India','United Kingdom'))
+strsplit(word, split=c('India|United Kingdom|USA'))
+
+sapply(strsplit(word, split=c('India|United Kingdom|USA')),head,1)
+?sapply
+vapply(strsplit(word,split=c('India|United Kingdom|USA'), fixed = F), "[", 1)
+
+vapply(strsplit(word, split=c('India|United Kingdom|USA')), fixed = TRUE, "[", "", 1)
+
+word2 <- c('JNU India','IIT India','Oxford UnitedKingdom','Harvard USA')
+
+Split <- strsplit(word,split=c('India|United Kingdom|USA') , fixed = F)
+Split
+Dates <- sapply(Split, "[", 1)
+Rates <- sapply(Split, "[", 2)
+Dates
+Rates
+
+Split <- strsplit(word2, split=" " , fixed = F)
+Split
+Dates <- sapply(Split, "[", 1)
+Rates <- sapply(Split, "[", 2)
+Dates
+Rates
 
 
 

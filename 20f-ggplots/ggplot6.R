@@ -19,10 +19,9 @@ legend(1975, 400000, c('MA', 'TX'), title='State', col=c('black', 'red'), pch=c(
 ggplot(subset(housing, State %in% c('MA', 'TX')), 
        aes(x=Date, y=Home.Value, color=State)) + geom_point()
 
-
+ggplot(subset(mtcars, gear %in% c(3,4)), aes(x=cyl, y=gear, col=factor(am))) + geom_point()
 
 help.search("geom_", package = "ggplot2")
-geom_
 data("airquality")
 str(airquality)
 str(faithful)
@@ -91,11 +90,7 @@ levels(mydata$cyl)
 mydata$cyl = factor(mydata$cyl)
 
 str(mydata)
-ggplot(data=mtcars, aes(x=hp, y=mpg, shape=cyl, col=cyl)) + 
-    scale_shape_identity() +
-  geom_point(size=1) +
-  facet_grid(am~vs) +
-  labs(title=' Automobile Data by Engine Type', x ='Horsepower', y='Miles per Gallon')
+ggplot(data=mtcars, aes(x=hp, y=mpg, shape=cyl, col=cyl)) +   scale_shape_identity() +  geom_point(size=1) +   facet_grid(am~vs) +  labs(title=' Automobile Data by Engine Type', x ='Horsepower', y='Miles per Gallon')
 
 
 #Eg4 RiA : Singer
@@ -106,7 +101,8 @@ ggplot(singer, aes(x =height)) + geom_histogram()
 ggplot(singer, aes(x=voice.part, y=height)) + geom_boxplot()
 
 #Eg5a: RiA : Salaries
-data(Salaries, package='car')
+data(Salaries, package='carData')
+Salaries
 ggplot(Salaries, aes(x=rank, y=salary)) +
   geom_boxplot( fill='cornflowerblue', color='black', notch=T) +
   geom_point(position='jitter', color='blue', alpha=.5) +
@@ -130,7 +126,7 @@ head(Salaries)
 
 
 #Eg1
-data(Salaries, package='car' )
+data(Salaries, package='carData' )
 ggplot( data=Salaries, aes(x=rank, y=salary, fill=sex)) +
   geom_boxplot() +
   scale_x_discrete( breaks=c('AsstProf', 'AssocProf', 'Prof'), labels= c('Assistant \n Professor', 'Associate \n Professor', 'Full \n Professor' )) +
@@ -157,7 +153,7 @@ ggplot(mtcars, aes(x=wt, y=mpg, size=disp)) +
 
 
 Eg1b
-data(Salaries, package='car')
+data(Salaries, package='carData')
 ggplot(data=Salaries, aes(x=yrs.since.phd, y = salary, color=rank)) +
   #scale_color_manual(values=c('orange', 'olivedrab', 'navy')) +
   scale_color_brewer(palette='Set1') +       
