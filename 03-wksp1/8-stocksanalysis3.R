@@ -1,16 +1,25 @@
 # Finance Stock Analysis
-#Stock Download
+
+#Install Packages 
+#pckgs<-c("Quandl","Sweep","tidyverse")
+#install.packages(pckgs,dependencies = TRUE)
 
 library(Quandl)
+# library(tidyverse)
+# library(ggplot2)
+# library(stringr)
+# library(plyr)
+# library(stringr)
+# library(gridExtra)
+
+#Quandl(Code=“NSE/—”,collapse=“—”,start_date=“—-”,type=“…”)
+#ICICI SBI PNB  price band of Rs 200 to Rs 500. 
 #https://www.quandl.com/account/api 4D8hkYAV4WEkcTmD9LMW
 
 Quandl.api_key("4D8hkYAV4WEkcTmD9LMW")
 
 ## Download the data Set
 ICICI = Quandl("NSE/ICICIBANK",collapse="daily",start_date="2017-09-01",type="raw")
-ICICI
-HDFC = Quandl("NSE/HDFCBANK",collapse="daily",start_date="2017-09-01",type="raw")
-HDFC
 PNB= Quandl("NSE/PNB",collapse="daily",start_date="2017-09-01",type="raw")
 SBI=Quandl("NSE/SBIN",collapse="daily",start_date="2017-09-01",type="raw")
 
@@ -34,7 +43,6 @@ names(allstocks)
 
 #Using Aggregations
 names(allstocks)
-dim(allstocks)
 aggregate(allstocks$Close, by=list(allstocks$Stock), mean)
 aggregate(cbind(Close,  Open) ~ Stock , data= allstocks, mean)
 #https://www.statmethods.net/input/dates.html
@@ -44,18 +52,11 @@ aggregate(allstocks['Close'], by=list(format(allstocks$Date,"%b")), mean)
 aggregate(allstocks[c(3,7)], by=list(format(allstocks$Date,"%m")), mean)
 aggregate(allstocks[c('Close','Open')], by=list(format(allstocks$Date,"%Y")), mean)
 
-#Library to store data in xlsx files
-Sys.setenv(JAVA_HOME="C:\\Program Files\\Java\\jre1.8.0_191")
-library(xlsx) #needs rJava
-
 #using Dplyr Package to do Data Manipulation
 library(dplyr)
 names(allstocks)
 #select Columns
-(df1 <- allstocks %>% select(Stock, Open, Close))
-df1 = as.data.frame(df1)
-write.xlsx(df1, './data/iitgfa.xlsx', sheetName = "IITG12", append = T)
-
+allstocks %>% select(Stock, Open, Close)
 
 #Groupby
 allstocks %>% group_by(Stock)  #nothing summarised
@@ -64,26 +65,14 @@ allstocks %>% group_by(Stock)  #nothing summarised
 allstocks %>% summarise(mean(Open), max(High))
 
 allstocks %>% group_by(Stock) %>% summarise_all(mean)
-#store this data into DF
-(df2 <- allstocks %>% group_by(Stock, format(Date,'%b')) %>% summarise_all(mean) )
-write.csv(df2, './data/iitgfa.csv')
-
-#http://www.sthda.com/english/wiki/writing-data-from-r-to-excel-files-xls-xlsx#using-xlsx-package
-
-
-#write.xlsx(USArrests, file = "myworkbook.xlsx", #check with this file sheetName = "USA-ARRESTS", append = FALSE)
-df2 = as.data.frame(df2)
-write.xlsx(df2, './data/iitgfa.xlsx', sheetName = "IITG2", append = T)
-
-
-options(dplyr.print_max = 1e9)  #print all rows
+allstocks %>% group_by(Stock, format(Date,'%b')) %>% summarise_all(mean)
+options(dplyr.print_max = 1e9)
 allstocks %>% group_by(Stock, format(Date,'%b')) %>% summarise_all(mean)
 
 allstocks %>% group_by(Stock, format(Date,'%b')) %>% summarise_all(funs(mean, max))
 
 #sample using dplyr
 allstocks %>% sample_n(10)
-
 allstocks %>% sample_frac(.05)
 allstocks %>% group_by(Stock) %>%   sample_n(2)
 
