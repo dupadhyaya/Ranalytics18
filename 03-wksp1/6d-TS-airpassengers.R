@@ -4,7 +4,7 @@
 # Data Set - AirPassengers
 x=c(9.23221232,5.3430000)
 x
-options(digits=2)
+options(digits=3)
 x
 
 ?AirPassengers
@@ -21,7 +21,7 @@ stl(AirPassengers, s.window = 'periodic') # seasons to be considered periodic ie
 # save it in an object
 
 plot(AirPassengers) # Pattern of data : see increasing seasonal values suggesting multiplicative Model
-#no cyclic here - only seasonal, trend, irregual
+#no cyclic here - only seasonal, trend, irregular
 #s.window - specifies seasonal effects to be identical across years
 #can handle on additive models
 
@@ -59,11 +59,10 @@ LogAirPassengers = log(AirPassengers)  # make it additive because stl handles on
 
 plot(LogAirPassengers)  #stabilises variation due to multiplication
 #looks like additive : no increase of seasonsal component now over years
-
+plot(AirPassengers)
 (m1 = matrix(1:2, nrow=1, byrow = F))
 layout(m1)
 plot(AirPassengers); plot(LogAirPassengers)  # see again the change
-
 
 #STL
 fit = stl(LogAirPassengers, s.window = 'periodic' )
@@ -87,18 +86,22 @@ head(exp(fit$time.series),n=20)  # first 20 values see them
 #Various Plots - Monthwise, quarter, 
 layout(matrix(1,nrow=1))
 #Avg of each month
+AirPassengers
+stl1 = stl(AirPassengers, s.window = 'periodic')
 monthplot(AirPassengers) #max traffic in Jun/ Jul across years
-monthplot(fit, choice='seasonal') # less in winters, more in summers
-monthplot(fit, choice='trend')  #slight increase from Jan to Dec
+monthplot(LogAirPassengers)
+monthplot(stl1, choice='seasonal') # less in winters, more in summers
+monthplot(stl1, choice='trend')  #slight increase from Jan to Dec
 #trend increasing for each month, highest passengers in Jul
-monthplot(fit, choice='remainder') # irregular components
+monthplot(stl1, choice='remainder') # irregular components
+?monthplot
 
 # see combined plots
 (m2 = matrix(1:3, nrow=3, byrow = T))
 layout(m2)  # change layout of plots
-monthplot(fit, choice='seasonal')
-monthplot(fit, choice='trend')
-monthplot(fit, choice='remainder')
+monthplot(stl1, choice='seasonal')
+monthplot(stl1, choice='trend')
+monthplot(stl1, choice='remainder')
 
 
 # Practise with different methods - Self Practise
@@ -107,10 +110,13 @@ monthplot(fit, choice='remainder')
 AP.decompM = decompose(AirPassengers, type = "multiplicative")
 plot(AP.decompM)
 
-library(forecast)
+library(forecast) #install the library
 # Forecast # adjust for multiplicative model
+?ets
 fit2b = ets(AirPassengers, model='MAM')
 fit2b
+tail(AirPassengers)
 (f2b=forecast(fit2b, 12))
 head(f2b)$mean
 
+plot(f2b)

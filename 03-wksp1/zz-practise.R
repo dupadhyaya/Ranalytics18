@@ -97,3 +97,52 @@ summary(logitmodel2)
 #linear regression
 linear1 = lm(age ~ . , data=students)
 summary(linear1)
+
+
+#iimkpv
+
+#vectors
+x = 1:100
+class(x)
+x = c(1,3,5.5)
+class(x)
+x = LETTERS[1:10]
+class(x)
+x = c(T,F,T,F,F)
+class(x)
+#matrix
+m = matrix(1:24, ncol=6)
+m
+class(m)
+#dataframes
+head(mtcars)
+class(mtcars)
+
+#datastructures
+#filter, sort, delete, missingvalues, stats operations
+colMeans(mtcars)
+colMeans(m)
+?colMeans
+
+#manipulation / summarisation
+library(dplyr)
+names(mtcars)
+mtcars %>% group_by(cyl) %>% summarise(mean(mpg), max(wt), n())
+
+plot(y=mtcars$mpg, x=mtcars$wt)
+abline(lm(mpg ~ wt, data=mtcars))
+#visualisation
+
+#Modeling
+fit = lm(mpg ~ wt + hp, data=mtcars)
+summary(fit)
+#linear regression, logistic regression, decision tree, clustering, market basket analysis
+
+#Time Series 
+#stock data, sales data
+#Financial Analytics, Business 
+
+#Dates are handled in the R
+#create TS objects in R
+#manipulate, Plot, Forecasting
+#decomp

@@ -41,7 +41,7 @@ f2 = auto.arima(JohnsonJohnson)
 summary(f2)
 tail(JohnsonJohnson)  # last few values
 forecast(f2,h=5)
-
+plot(forecast(f2,h=5))
 
 #ARIMA Forecasting  : compare two datasets
 library(tseries)
