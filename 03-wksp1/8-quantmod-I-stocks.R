@@ -9,13 +9,13 @@ if (!require("quantmod")) {
   library(quantmod)
 }
 
-start <- as.Date("2017-01-01")
-end <- as.Date("2018-04-01")
+start <- as.Date("2018-01-01")
+end <- as.Date("2018-12-01")
 getSymbols("SBIN.NS", src = "yahoo", from = start, to = end)
 # What is SBI?
 class(SBIN.NS)
 head(SBIN.NS)
-
+tail(SBIN.NS)
 plot(SBIN.NS[, "SBIN.NS.Close"], main = "SBIN.NS")
 candleChart(SBIN.NS, up.col = "black", dn.col = "red", theme = "white")
 

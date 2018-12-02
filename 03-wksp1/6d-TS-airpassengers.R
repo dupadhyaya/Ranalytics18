@@ -65,6 +65,7 @@ layout(m1)
 plot(AirPassengers); plot(LogAirPassengers)  # see again the change
 
 #STL
+?stl
 fit = stl(LogAirPassengers, s.window = 'periodic' )
 #Seasonal components constrainted to be same across years : periodic
 

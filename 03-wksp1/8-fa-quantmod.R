@@ -7,8 +7,8 @@ if (!require("quantmod")) {
   library(quantmod)
 }
 
-start <- as.Date("2017-01-01")
-end <- as.Date("2018-04-01")
+start <- as.Date("2018-01-01")
+end <- as.Date("2018-12-01")
 
 # Let's get Apple stock data; Apple's ticker symbol is AAPL. We use the
 # quantmod function getSymbols, and pass a string as a first argument to
@@ -25,21 +25,22 @@ getSymbols("AAPL", src = "yahoo", from = start, to = end)
 # What is AAPL?
 class(AAPL)
 head(AAPL)
-
+tail(AAPL)
 plot(AAPL[, "AAPL.Close"], main = "AAPL")
+candleChart(AAPL[1:10,], up.col = "black", dn.col = "red", theme = "white")
 candleChart(AAPL, up.col = "black", dn.col = "red", theme = "white")
-
+#30-Nov-2018	180.29	180.33	177.03	178.58	178.58	3,94,83,800
 
 # Let's get data for Microsoft (MSFT) and Google (GOOG) (actually, Google is
 # held by a holding company called Alphabet, Inc., which is the company
 # traded on the exchange and uses the ticker symbol GOOG).
 getSymbols(c("MSFT", "GOOG"), src = "yahoo", from = start, to = end)
-
+MSFT
 # Create an xts object (xts is loaded with quantmod) that contains closing
 # prices for AAPL, MSFT, and GOOG
 stocks = as.xts(data.frame(AAPL = AAPL[, "AAPL.Close"], MSFT = MSFT[, "MSFT.Close"], GOOG = GOOG[, "GOOG.Close"]))
 head(stocks)
-
+class(stocks)
 
 # Create a plot showing all series as lines; must use as.zoo to use the zoo
 # method for plot, which allows for multiple series to be plotted on same

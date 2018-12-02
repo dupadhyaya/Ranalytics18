@@ -96,6 +96,8 @@ forecast(fit3,4)
 
 Nile
 #Auto ARIMA
+plot(Nile)
+
 library(forecast)
 #forecast::auto.arima()
 fit4 = auto.arima(Nile)

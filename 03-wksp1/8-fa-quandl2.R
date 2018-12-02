@@ -31,7 +31,7 @@ ICICI$Stock = "ICICI"
 PNB$Stock = "PNB"
 SBI$Stock = "SBI"
 SBI
-
+#combine them
 allstocks = rbind(ICICI, PNB, SBI)
 str(allstocks)
 allstocks$Stock = factor(allstocks$Stock)
@@ -45,6 +45,7 @@ names(allstocks)
 names(allstocks)
 aggregate(allstocks$Close, by=list(allstocks$Stock), mean)
 aggregate(cbind(Close,  Open) ~ Stock , data= allstocks, mean)
+
 #https://www.statmethods.net/input/dates.html
 aggregate(allstocks['Close'], by=list(allstocks$Date), mean)
 aggregate(allstocks['Close'], by=list(format(allstocks$Date,"%d")), mean)
