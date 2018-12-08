@@ -38,7 +38,7 @@ rpart.plot(prunetree, nn=T, cex=.8, type=4)
 cbind(testdata, predictedSales)
 #next line will show error because we have to predict numerical value instead of class/ category, so type of response reqd is vector not class
 (predict(prunetree, newdata=testdata, type='class'))
-
+#ERROR - use vector
 
 #see online help here
 #https://www.datacamp.com/community/tutorials/decision-trees-R

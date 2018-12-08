@@ -1,21 +1,52 @@
 #Clustering
 #sample data, iris, no of clusters
-
+library(cluster)
+library(fpc)
+library(dplyr)
 
 #sample Data
 marks = data.frame(sub1=c(0,1,2,4,5,4,6,7),sub2=c(0,1,2,3,3,4,5,5))
-
 marks
-km1 = kmeans(marks, center=2)
-km1
-km1$centers
-plot(marks,col=km1$cluster,cex=1.5)
-points(km1$center,col=1:2,pch=8,cex=2)
-km1$betweenss
-km1$tot.withinss
-km1$withinss
-km1$betweenss/ (km1$betweenss + km1$tot.withinss)
+#with 1 column
+km12 = kmeans(marks[,1], center=3)
+#analyse output
+km12
 
+km12$cluster  #which row is assigned to which cluster No
+km12$size  #size of each cluster
+km12$centers  #average of each variable for each cluster
+km12$iter  #no cycles, optimal cluster was found
+
+marks %>% mutate(cluster = km12$cluster) %>% group_by(cluster) %>%  summarise(mean(sub1))
+
+#Distances
+km12$withinss
+km12$tot.withinss
+km12$betweenss
+km12$tot.withinss + km12$betweenss
+km12$totss
+km12$iter
+
+#now do it for both the columns
+km23 = kmeans(marks, center=3)
+km23
+km23$centers
+
+km23$betweenss
+km23$tot.withinss
+km23$withinss
+km23$betweenss/ (km23$betweenss + km23$tot.withinss)
+km23$betweenss; km23$betweenss/ (km23$totss) #same as below
+km23  #within cluster sum of sq by cluster
+# should be high for good clustering
+
+#plots
+plot(marks,col=km23$cluster,cex=1.5)
+points(km23$center,col=1:2,pch=8,cex=2)  #center point
+#see the change in columns : use PCA
+plotcluster(marks, km23$cluster)
+clusplot(marks, clus=km23$cluster, color=TRUE, shade=TRUE, labels=2, lines=1, plotchar=T, span=T,main="Cluster Plot")
+?clusplot
 
 #iris dataset
 

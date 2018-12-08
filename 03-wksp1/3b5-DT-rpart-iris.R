@@ -33,6 +33,7 @@ rpart.plot(rtree, main='Regression Tree', nn=T, type=2, cex=1)
 #another way to plot
 plot(rtree, uniform=TRUE, main="Regression Tree for Sepal Length")
 text(rtree, use.n=TRUE, cex = 1)
+rtree
 
 #CP
 printcp(rtree)
