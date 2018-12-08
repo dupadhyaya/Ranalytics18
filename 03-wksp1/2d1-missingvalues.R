@@ -5,8 +5,10 @@ is.na(x)
 sum(is.na(x))
 sum(c(T,F,T,F,F))
 mean(x)
+?mean
 mean(x, na.rm=T)
 x
+x[is.na(x)]
 x[is.na(x)] = mean(x, na.rm=T)
 x
 x1 = c(4,6,8,9)
@@ -20,16 +22,17 @@ posn=sample(100000, size=30)
 x2[posn] = NA
 sum(is.na(x2))
 
-
+#install this library
 library(VIM)
+?sleep
 
-head(sleep)
-dim(sleep)
-complete.cases(sleep)
-sum(complete.cases(sleep))
-sum(!complete.cases(sleep))
-sleep[complete.cases(sleep),]
-sleep[!complete.cases(sleep),]
-colSums(is.na(sleep))
-rowSums(is.na(sleep))
+head(sleep) #first few rows of sleep
+dim(sleep)  #dimensions of sleep data
+complete.cases(sleep)  # which row have complete data in T/ F
+sum(complete.cases(sleep))  # no of rows which no missing data
+sum(!complete.cases(sleep))  # no of rows which have missing data
+sleep[complete.cases(sleep),]  #rows which are complete
+sleep[!complete.cases(sleep),] #rows which have missing values
+colSums(is.na(sleep))  #which column how many data missing
+rowSums(is.na(sleep))  #which row how many data missing
  
