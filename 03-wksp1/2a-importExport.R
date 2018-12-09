@@ -46,6 +46,7 @@ head(df_gsheet)
 #Excel----
 #Create a excel file with data in 2 sheets
 # first row contains variable names
+#C:\Program Files\Java\jre1.8.0_191
 Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_191')
 #library(rjava)
 library(xlsx)

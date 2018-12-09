@@ -17,7 +17,8 @@ chaidModel <- chaid(vote3 ~ ., data = sample1, control=chaid_control(minbucket =
 ?chaid
 print(chaidModel)
 plot(chaidModel)
-sample1 %>% filter(ager=='18-24') %>% tally
+sample1 %>% filter(marstat=='married') %>% tally()
+#sample1 %>% filter(ager=='18-24') %>% tally
 dim(sample1)
 chaidModel2 <- chaid(vote3 ~ ., data = sample1, control=chaid_control(minbucket = 20, minsplit=20, minprob=0, maxheight=2))
 plot(chaidModel2) 

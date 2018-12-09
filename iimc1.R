@@ -46,8 +46,20 @@ df1[(order(df1$marks, decreasing = T)), c('sname', 'marks')]
 df1[(order(df1$marks, decreasing = T)), -3]
 #use dplyr
 df1 %>% select(sname, marks )  %>% arrange(desc(marks))
+names(df1)
+df1[sample(1:30, size=5),2] = NA
+#5 missing values on random location in marks column 
+sum(complete.cases(df1))
+sum(!complete.cases(df1))
 
+df1[!complete.cases(df1),2] = mean(df1$marks, na.rm=T)
+mean(df1$marks, na.rm=T)
+df2 = df1[complete.cases(df1), ]
+sum(is.na(df1))
+sum(is.na(df2))
 
+sample(1:30, size=5)
+df1
 df1 %>% sample_n(3)
 df1 %>% sample_frac(.3)
 

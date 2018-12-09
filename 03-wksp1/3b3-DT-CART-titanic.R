@@ -3,7 +3,7 @@
 
 #import data from online site
 path = 'https://raw.githubusercontent.com/thomaspernet/data_csv_r/master/data/titanic_csv.csv'
-titanic <-read.csv(path)
+titanic <- read.csv(path)
 head(titanic)
 names(titanic)
 data = titanic[,c(2,3,5,6,7)]  #select few columns only
@@ -12,16 +12,16 @@ dim(data)
 #load libraries
 library(rpart)
 library(rpart.plot)
-
+str(data)
 #Decision Tree
 names(data)
 fit <- rpart(survived ~ ., data = data, method = 'class')
 fit
-rpart.plot(fit, extra = 106, cex=.8,nn=T)  #plot
+rpart.plot(fit, extra = 104, cex=.8,nn=T)  #plot
 
 printcp(fit) #select complexity parameter
 prunetree2 = prune(fit, cp=.014)
-rpart.plot(prunetree2, cex=.8,nn=T)
+rpart.plot(prunetree2, cex=.8,nn=T, extra=104)
 prunetree2
 nrow(data)
 table(data$survived)

@@ -146,3 +146,43 @@ summary(fit)
 #create TS objects in R
 #manipulate, Plot, Forecasting
 #decomp
+
+# Decision Trees
+
+#types - Regression  & Classification
+iris
+head(iris)
+
+library(rpart)
+library(rpart.plot)
+#regression tree
+#DV - Sepal.Length
+rtree = rpart(Sepal.Length ~ . , data= iris, method='anova')
+rtree
+rpart.plot(rtree,  nn=T, cex=.8, fallen.leaves = T)
+#classification tree
+#DV - Species
+ctree = rpart(Species ~ . ,data = iris, method='class')
+ctree
+rpart.plot(ctree, cex=.8, nn=T, extra=104)
+printcp(ctree)
+ctreeprune1 = prune(ctree, cp=.44)
+ctreeprune1
+rpart.plot(ctreeprune1, cex=.8, nn=T, extra=104)
+(ndata = sample_n(iris,3))
+predict(ctree,newdata=ndata, type='prob')
+
+
+library(gsheet)
+url= "https://docs.google.com/spreadsheets/d/1FTlwpywOynI9dXbgewKCf4WhBc2PwoQmHzlqnAEisuA"
+df = as.data.frame(gsheet2tbl(url))
+head(df)
+
+url2= "https://docs.google.com/spreadsheets/d/1FTlwpywOynI9dXbgewKCf4WhBc2PwoQmHzlqnAEisuA/edit#gid=1123010023"
+df2 = as.data.frame(gsheet2tbl(url2))
+head(df2)
+
+
+df3 = read.csv('./data/iimc1.csv')
+head(df3)
+

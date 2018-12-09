@@ -8,6 +8,7 @@ library(dplyr)
 marks = data.frame(sub1=c(0,1,2,4,5,4,6,7),sub2=c(0,1,2,3,3,4,5,5))
 marks
 #with 1 column
+marks[,1]
 km12 = kmeans(marks[,1], center=3)
 #analyse output
 km12
@@ -21,7 +22,7 @@ marks %>% mutate(cluster = km12$cluster) %>% group_by(cluster) %>%  summarise(me
 
 #Distances
 km12$withinss
-km12$tot.withinss
+km12$tot.withinss  #sum of withinss
 km12$betweenss
 km12$tot.withinss + km12$betweenss
 km12$totss
