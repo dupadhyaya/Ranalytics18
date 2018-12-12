@@ -8,7 +8,7 @@ if (!require("quantmod")) {
 }
 
 start <- as.Date("2018-01-01")
-end <- as.Date("2018-12-01")
+end <- as.Date("2018-12-09")
 
 # Let's get Apple stock data; Apple's ticker symbol is AAPL. We use the
 # quantmod function getSymbols, and pass a string as a first argument to

@@ -5,7 +5,7 @@ library(lpSolveAPI)
 
 #First we create an empty model x.
 ?make.lp
-#two variables ie. crops A & B: find which crop to be grown how much to max profit
+#two variables ie. crops A & B: find which crop to be grown how many acres to max profit
 lprecF1 <- make.lp(0, 2)
 lprecF1
 #Profit :: 150A + 200B

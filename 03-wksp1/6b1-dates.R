@@ -28,6 +28,8 @@ class(date3)
 cdate1 #"15/August/1947
 date1 = as.Date(cdate1, format='%d/%B/%Y')
 date1
+class(date1)
+date1 - 1:15
 #
 cdate2 #"15-Aug-1947" "26-Jan-1950"
 date2 = as.Date(cdate2, format='%d-%b-%Y')
@@ -49,6 +51,7 @@ class(cdate2)
 #The “Date” class means dates are stored as the number of days since January 1, 1970, with negative values for earlier dates. We can use the as.numeric function to view the raw values.
 
 date1
+class(date1)
 as.numeric(date1)
 date2
 as.numeric(date2)
@@ -67,7 +70,7 @@ as.Date('2018-12-01') + 0:33
 
 #alternative Dates
 seq(1,30,2)
-as.Date('2018-12-01') + seq(0,29,7)
+as.Date('2018-12-09') + seq(0,29,7)
 
 
 #system date
@@ -123,7 +126,8 @@ as.character(course1, format="%A")
 paste(course1 , as.character(course1, format="%A"), sep=":: ")
 
 #day on which you were born
-dob = "14/08/1994"
+dob = "07/03/1996"
 dob_date = as.Date(dob,format='%d/%m/%Y')
 dob_date
 as.character(dob_date, format="%A")
+

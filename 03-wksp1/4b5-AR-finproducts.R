@@ -19,6 +19,7 @@ ordertrans <- arules::read.transactions(
   file = "./data/fintransactions.csv",  format = "single",
   sep = ",",  cols=c("transactionID","item"),  rm.duplicates = T
 )
+ordertrans
 inspect(ordertrans[1:5])
 ordertrans
 summary(ordertrans)
@@ -41,7 +42,7 @@ abline(h=0.15)
 #Create Rules
 rules1 <- arules::apriori(ordertrans, parameter = list(supp = 0.005, conf = 0.5))
 rules1
-write.csv(inspect(rules1, 'rules.csv'))
+write.csv(inspect(rules1, './data/rules.csv'))
 inspect(rules1[1:5])
 
 rules1L = sort (rules1, by="lift", decreasing=TRUE)
@@ -90,8 +91,7 @@ inspect(subset(rules1, subset= lhs %pin% "Debit Card" & rhs %in% "Savings Accoun
 
 #Export Rules into a table
 library(data.table)
-rules_dt <- data.table( lhs = labels( lhs(rules2) ), 
-                        rhs = labels( rhs(rules2) ), 
+rules_dt <- data.table( lhs = labels( lhs(rules2) ),      rhs = labels( rhs(rules2) ), 
                         quality(rules2) )[ order(-lift), ]
 rules_dt
 DT::datatable(rules_dt)  # wrapper for datatables

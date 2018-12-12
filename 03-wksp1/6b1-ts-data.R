@@ -13,7 +13,7 @@ length(sales)
 (ysales = ts(sales, frequency = 1))
 
 (yearlysales = ts(sales, start=c(1980), frequency=1))
-
+plot(yearlysales)
 (yearlysales1 = ts(sales, start=c(1980,3), frequency=1)) 
 # 3rd yr from 1980
 plot(yearlysales)

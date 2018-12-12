@@ -10,7 +10,7 @@ if (!require("quantmod")) {
 }
 
 start <- as.Date("2018-01-01")
-end <- as.Date("2018-12-01")
+end <- as.Date("2018-12-09")
 getSymbols("SBIN.NS", src = "yahoo", from = start, to = end)
 # What is SBI?
 class(SBIN.NS)

@@ -10,10 +10,10 @@ col.signs <- rep (">", 2)
 col.rhs <- c(50, 60)
 #edit(costs)
 # Run
-lp.transport (costs, "min", row.signs, row.rhs, col.signs, col.rhs)
+tptproblem = lp.transport (costs, "min", row.signs, row.rhs, col.signs, col.rhs)
 ## Not run: Success: the objective function is 7790
-
-lp.transport (costs, "min", row.signs, row.rhs, col.signs, col.rhs)$solution
+tptproblem$solution
+#lp.transport (costs, "min", row.signs, row.rhs, col.signs, col.rhs)$solution
 
 #Eg2
 (cost <- matrix(c(3,1,5,2,5,4),ncol=2))

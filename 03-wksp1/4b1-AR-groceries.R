@@ -13,10 +13,10 @@ arules::LIST(Groceries[1:6])  #another view
 arules::inspect(Groceries[1:5])
 
 #Find Frequent Itemset
-frequentItems = eclat (Groceries, parameter = list(supp = 0.01, minlen= 3, maxlen = 5)) 
-inspect(frequentItems[1:10])
+frequentItems = eclat (Groceries, parameter = list(supp = 0.006, minlen= 4, maxlen = 5)) 
+inspect(frequentItems[1:4])
 frequentItems
-inspect(frequentItems[10:100])
+inspect(frequentItems[10:200])
 #inspect(frequentItems[100:122])
 #Descending Sort frequent items by count : 1 to 25 itemsets
 inspect(sort (frequentItems, by="count", decreasing=TRUE)[1:25])
@@ -42,7 +42,7 @@ inspect (rulesl[1:5])
 
 #How To Control The Number Of Rules in Output ?
 #maxlen, minlen, supp, conf
-rules2 = apriori (Groceries, parameter = list (supp = 0.01, conf = 0.5, minlen=2, maxlen=3)) 
+rules2 = apriori (Groceries, parameter = list (supp = 0.001, conf = 0.5, minlen=2, maxlen=3)) 
 inspect(rules2[1:15])
 
 #Find what factors influenced an event ‘X’
@@ -62,16 +62,14 @@ subset2a = subset(rules2, subset=lhs %in% c('baking powder','soda') )
 inspect(subset2a)
 
 
-
-
 subset3 = subset(rules2, subset=rhs %in% 'bottled beer' & confidence > .7, by = 'lift', decreasing = T)
 inspect(subset3)
 subset4 = subset(rules2, subset=lhs %in% 'bottled beer' & rhs %in% 'whole milk' )
 inspect(subset4)
 
 #Visualizing The Rules -----
-plot(subset1[1:10]) 
-plot(subset1[1:10], measure=c("support", "lift"), shading="confidence")
+plot(subset1) 
+plot(subset1, measure=c("support", "lift"), shading="confidence")
 
 #
 
