@@ -51,3 +51,7 @@ a <- ggplot(mtcars, aes(x = mpg)) + geom_histogram(binwidth = 0.1)
 b <- ggplot(mtcars, aes(x = "", y = mpg)) + geom_boxplot() +  coord_flip()
 
 grid.arrange(a,b,nrow=2)
+
+
+my3cols <- c("#E7B800", "#2E9FDF", "#FC4E07")
+ggplot(mtcars, aes(x=cyl, y=mpg , group=gear)) + geom_dotplot(aes(color = gear, fill = gear), binaxis = 'y', stackdir = 'center') + scale_color_manual(values = my3cols) + scale_fill_manual(values = my3cols)
