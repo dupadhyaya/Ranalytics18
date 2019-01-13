@@ -32,3 +32,23 @@ grid.arrange(tableGrob(DT1), g, ncol=2, widths=c(.2,.8))
 grid.arrange( tableGrob(DT1, theme=ttheme_default()), g, ncol = 2, widths = c(.5, 1))
 
 #no legend : + theme(legend.position="none")
+
+
+#https://flowingdata.com/2010/11/23/how-to-make-bubble-charts/
+
+crime <- read.csv("http://datasets.flowingdata.com/crimeRatesByState2005.tsv", header=TRUE, sep="\t")
+
+symbols(crime$murder, crime$burglary, circles=crime$population)
+
+radius <- sqrt( crime$population/ pi )
+symbols(crime$murder, crime$burglary, circles=radius)
+symbols(crime$murder, crime$burglary, circles=radius, inches=0.35, fg="white", bg="red", xlab="Murder Rate", ylab="Burglary Rate")
+
+symbols(crime$murder, crime$burglary, circles=radius, inches=0.35, xlab="Murder Rate", ylab="Burglary Rate", fg='red', bg=rgb(255,255,255,50,maxColorValue=255))
+symbols(crime$murder, crime$burglary, squares=sqrt(crime$population), inches=0.5)
+text(crime$murder, crime$burglary, crime$state, cex=0.5)
+?text
+
+
+library(ggplot2)
+qplot(murder, burglary, data = crime, label = state, colour='red', size = 50*population)+ geom_text(colour = "black", hjust=0,vjust=1, size=3)+  xlim(c(0,10))
