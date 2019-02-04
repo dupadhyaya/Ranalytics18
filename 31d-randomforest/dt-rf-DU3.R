@@ -26,3 +26,4 @@ names(df)=c("Y",allX)
 require(randomForest)
 fit=randomForest(factor(Y)~., data=df)
 (VI_F=importance(fit))
+
