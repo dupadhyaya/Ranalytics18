@@ -14,6 +14,7 @@ rpart.plot()
 control_1 = rpart.control(cp = 0.005, minsplit=10, minbucket = 5)
 control_2 = rpart.control(cp = -1)
 
+#using iris dataset
 set.seed(123)
 irisclass = rpart(Species ~ ., data = iris, control = control_1)
 irisclass
@@ -26,7 +27,8 @@ rpart.plot(irisclass2, cex=.8)
 
 
 #----------------------
-names(iris)
+#regression Tree-----
+names(iris)  #which is numeric column - Length
 irisregression = rpart(Sepal.Length ~ ., data = iris, method="anova", control = control_1)
 irisregression
 rpart.plot(irisregression)
