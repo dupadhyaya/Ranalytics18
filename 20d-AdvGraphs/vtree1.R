@@ -2,6 +2,18 @@
 #https://cran.r-project.org/web/packages/vtree/vtree.pdf
 
 library(vtree)
+#other packages needed
+pack = c('vtree','glue','tibble','purrr','XML','colorspace','stringi', 'lazyeval','Rcpp','V8','DiagrammeRsvg','rsvg')
+
+#Function
+ipak <- function(pkg){
+  new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+  if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+  sapply(pkg, require, character.only = TRUE)
+}
+ipak(pack)
+#packages loaded
 
 FakeData
 
