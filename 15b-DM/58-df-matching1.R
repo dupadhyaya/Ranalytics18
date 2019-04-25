@@ -40,6 +40,9 @@ as.data.frame(m2)
 df2$stock
 
 
+#sqldf
+sqldf("select df1.stockname, df2.stock FROM df1 JOIN df2 on df1.stockname LIKE '%' || df2.stock || '%'")
+
 #-----
 library(data.table)
 mtcars[rownames(mtcars) %like% "Merc", ]
