@@ -8,3 +8,8 @@ pmatch(c("", "ab", "ab"), c("abc", "ab"), dup = FALSE)
 pmatch(c("", "ab", "ab"), c("abc", "ab"), dup = TRUE)
 ## compare
 charmatch(c("", "ab", "ab"), c("abc", "ab"))
+
+charmatch("", "")                             # returns 1
+charmatch("m",   c("mean", "median", "mode")) # returns 0
+charmatch("med", c("mean", "median", "mode")) # returns 2
+
