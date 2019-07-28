@@ -1,6 +1,7 @@
 # KNN algo Analytics Vidya
 #https://www.analyticsvidhya.com/blog/2015/08/learning-concept-knn-algorithms-programming/
-prc = read.csv(file=file.choose(), stringsAsFactors = F)
+#prc = read.csv(file=file.choose(), stringsAsFactors = F)
+prc = read.csv('https://raw.githubusercontent.com/dupadhyaya/Ranalytics/master/data/Prostate_Cancer.csv', stringsAsFactors=F)
 head(prc)
 str(prc)
 prc = prc[-1] # remove id column
