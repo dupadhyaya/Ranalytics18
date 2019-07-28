@@ -1,9 +1,8 @@
-# K neigbour
+# K neigbour - glass
+
 library(kknn)  #Weighted k-Nearest Neighbors
-kknn(formula = formula(train), train, test, na.action = na.omit(),
-     k = 7, distance = 2, kernel = "optimal", ykernel = NULL, scale=TRUE,
-     contrasts = c('unordered' = "contr.dummy", ordered = "contr.ordinal"))
-kknn.dist(learn, valid, k = 10, distance = 2)
+#kknn(formula = formula(train), train, test, na.action = na.omit(),    k = 7, distance = 2, kernel = "optimal", ykernel = NULL, scale=TRUE,     contrasts = c('unordered' = "contr.dummy", ordered = "contr.ordinal"))
+#kknn.dist(learn, valid, k = 10, distance = 2)
 
 #https://cran.r-project.org/web/packages/kknn/kknn.pdf
 data(glass)
@@ -32,6 +31,6 @@ data(miete)
 str(miete)
 
 # Spectral Clustering
-specClust(data=miete, centers=NULL, nn = 7, method = "symmetric", gmax=NULL, ...)
+#specClust(data=miete, centers=NULL, nn = 7, method = "symmetric", gmax=NULL, ...)
 ## S3 method for class 'specClust'
 plot(x, ...)
